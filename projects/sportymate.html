@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SportyMate — Case Study | Hussein Mohamed</title>
+<meta name="description" content="A cross-platform sports management app connecting players, trainers, and clubs — built with Flutter, BLoC, and Firebase."/>
+<link rel="canonical" href="https://husseinmohamed99.github.io/projects/sportymate.html"/>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Cabinet+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script defer data-domain="husseinmohamed99.github.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<a href="https://wa.me/201034442174" target="_blank" class="wa-fab" id="wa-fab" aria-label="WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">Hussein Mohamed <span class="nav-dot"></span></a>
+  <div class="nav-right">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#hero-section">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#projects" class="active">Projects</a></li>
+      <li><a href="../index.html#certifications">Certifications</a></li>
+      <li><a href="https://github.com/HusseinMohamed99" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a></li>
+      <li><a href="../index.html#contact" class="nav-hire">Hire me</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div style="position:relative">
+        <button class="theme-toggle" id="settings-trigger" aria-label="Settings" title="Preferences"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+        <div class="nav-settings-panel" id="settings-panel">
+          <div class="sp-title">// Preferences</div>
+          <div class="sp-row">
+            <span class="sp-label">Dark Mode</span>
+            <button class="sp-toggle" id="sp-dark-toggle" aria-label="Toggle dark mode"></button>
+          </div>
+          <hr class="sp-divider"/>
+          <div class="sp-row" style="flex-direction:column;align-items:flex-start;gap:.5rem">
+            <span class="sp-label">Accent Color</span>
+            <div class="sp-colors">
+              <div class="sp-color active" data-color="green" style="background:#1a6b45" title="Green"></div>
+              <div class="sp-color" data-color="blue" style="background:#1d4ed8" title="Blue"></div>
+              <div class="sp-color" data-color="purple" style="background:#7c3aed" title="Purple"></div>
+              <div class="sp-color" data-color="rose" style="background:#e11d48" title="Rose"></div>
+              <div class="sp-color" data-color="cyan" style="background:#0891b2" title="Cyan"></div>
+              <div class="sp-color" data-color="amber" style="background:#d97706" title="Amber"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" class="icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg viewBox="0 0 24 24" class="icon-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../index.html#hero-section">Home</a>
+  <a href="../index.html#about">About</a>
+  <a href="../index.html#skills">Skills</a>
+  <a href="../index.html#experience">Experience</a>
+  <a href="../index.html#projects" class="active">Projects</a>
+  <a href="../index.html#certifications">Certifications</a>
+  <a href="https://github.com/HusseinMohamed99" target="_blank">GitHub ↗</a>
+  <a href="https://wa.me/201034442174" target="_blank">WhatsApp ↗</a>
+  <a href="../index.html#contact" class="m-hire">Hire me</a>
+</div>
+
+<div class="cs-back">
+  <a href="../index.html#projects">← Back to Portfolio</a>
+</div>
+
+<div class="cs-hero">
+  <div class="cs-icon">🏃</div>
+  <div>
+    <div class="cs-tag">Case Study · Sports Tech · Octopus Software Solutions</div>
+    <h1 class="cs-title">SportyMate</h1>
+  </div>
+  <div class="cs-links">
+    
+  </div>
+</div>
+
+<div class="cs-band">
+  <div class="cs-overview">
+    <div>
+      <div class="cs-h2">Overview</div>
+      <p>SportyMate is a sports management platform that connects players, trainers, and clubs across <strong>iOS, Android, and web</strong> from a single Flutter codebase. Trainers manage their schedules and rosters, players book sessions and track progress, and clubs get a shared space to run it all.<br><br>My focus was on the booking and real-time communication layers, plus getting the whole pipeline building reliably across three platforms at once — which turned out to be the harder half of the job.</p>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat"><span class="cs-stat-n">3</span><span class="cs-stat-l">Platforms from one codebase (iOS, Android, Web)</span></div><div class="cs-stat"><span class="cs-stat-n">Real-time</span><span class="cs-stat-l">Chat between players, trainers & clubs</span></div><div class="cs-stat"><span class="cs-stat-n">CI/CD</span><span class="cs-stat-l">Automated via GitHub Actions + Fastlane</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="cs-caps">
+  <div class="sec-tag">Core Capabilities</div>
+  <h2 class="cs-h2" style="font-size:1.75rem;margin-bottom:2rem">What the app does</h2>
+  <div class="cs-cap-grid">
+    <div class="cs-cap"><div class="cs-cap-ico">📅</div><div class="cs-cap-tx"><b>Smart booking</b><p>Players book sessions against trainer availability, with conflict checks handled before a slot is confirmed.</p></div></div><div class="cs-cap"><div class="cs-cap-ico">💬</div><div class="cs-cap-tx"><b>Real-time chat</b><p>Direct messaging between players, trainers, and clubs, built on Firebase-backed real-time data.</p></div></div><div class="cs-cap"><div class="cs-cap-ico">🔑</div><div class="cs-cap-tx"><b>Secure auth</b><p>REST-backed authentication with session persistence across app restarts.</p></div></div><div class="cs-cap"><div class="cs-cap-ico">📊</div><div class="cs-cap-tx"><b>Role-based views</b><p>Distinct dashboards for players, trainers, and club admins from the same shared component library.</p></div></div>
+  </div>
+</section>
+
+<div class="cs-arch">
+  <div class="cs-arch-in">
+    <div class="sec-tag">Architecture</div>
+    <h2 class="cs-h2" style="font-size:1.75rem">One codebase, three build targets</h2>
+    <p>SportyMate uses BLoC for state management, with feature modules kept independent so the web build doesn't drag in mobile-only dependencies. Firebase handles auth, real-time chat data, and push notifications, while REST APIs power bookings and profile data. The CI/CD pipeline builds and tests all three platforms on every push, with Fastlane driving signing and store delivery for iOS and Android.</p>
+    <div class="cs-flow"><span class="cs-flow-step">UI (BLoC)</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">Repository</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">REST API + Firebase</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">iOS / Android / Web build targets</span></div>
+  </div>
+</div>
+
+<section class="cs-challenges">
+  <div class="sec-tag">Problems Solved</div>
+  <h2 class="cs-h2" style="font-size:1.75rem;margin-bottom:2rem">Real engineering challenges</h2>
+  <div class="cs-challenge"><div class="cs-ch-label">Multi-platform CI</div><div class="cs-ch-body"><b>Getting iOS, Android, and web green in the same pipeline</b><p>Set up GitHub Actions + Fastlane so a single push runs automated tests and builds for all three targets, instead of maintaining three separate manual release processes.</p></div></div><div class="cs-challenge"><div class="cs-ch-label">Build stability</div><div class="cs-ch-body"><b>AGP mismatches & CocoaPods issues across contributors</b><p>Debugged recurring Android Gradle Plugin version mismatches and iOS CocoaPods dependency conflicts that only showed up on certain machines, and locked toolchain versions to make builds reproducible.</p></div></div>
+</section>
+
+<div class="cs-tech-band">
+  <div class="cs-tech-in">
+    <div class="sec-tag" style="justify-content:center">Technologies Employed</div>
+    <h2 class="cs-h2" style="font-size:1.5rem">Built with</h2>
+    <div class="cs-tech-tags">
+      <span class="tag hi">Flutter</span><span class="tag hi">BLoC</span><span class="tag hi">Firebase</span><span class="tag">REST APIs</span><span class="tag">Fastlane</span><span class="tag">GitHub Actions</span>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nextprev">
+  <a href="tuwaiq-pay.html" class="cs-nav-card"><div class="cs-nav-lbl">← Previous project</div><div class="cs-nav-nm">Tuwaiq Pay</div></a>
+  <a href="systempro.html" class="cs-nav-card" style="text-align:right"><div class="cs-nav-lbl">Next project →</div><div class="cs-nav-nm">SystemPro</div></a>
+</div>
+
+<footer>
+  <span>© <span id="copy-year"></span> Hussein Mohamed</span>
+  <a href="javascript:void(0)" id="em-link-footer" style="font-family:'Geist Mono',monospace;font-size:.73rem;color:var(--contact-label);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--contact-label)'">hussein.mohamed.software@gmail.com</a>
+  <span style="font-family:'Geist Mono',monospace">Flutter Developer · Cairo, Egypt</span>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
