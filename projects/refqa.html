@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rifqa — Case Study | Hussein Mohamed</title>
+<meta name="description" content="How Rifqa, a comprehensive offline-first Islamic companion app, was built: a native Kotlin adhan pipeline, on-device recitation checking, a full Mushaf renderer, and a privacy-first architecture."/>
+<link rel="canonical" href="https://husseinmohamed99.github.io/projects/rifqa.html"/>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Cabinet+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../styles.css"/>
+<script defer data-domain="husseinmohamed99.github.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<a href="https://wa.me/201034442174" target="_blank" class="wa-fab" id="wa-fab" aria-label="WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">Hussein Mohamed <span class="nav-dot"></span></a>
+  <div class="nav-right">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#hero-section">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#projects" class="active">Projects</a></li>
+      <li><a href="../index.html#certifications">Certifications</a></li>
+      <li><a href="https://github.com/HusseinMohamed99" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a></li>
+      <li><a href="../index.html#contact" class="nav-hire">Hire me</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div style="position:relative">
+        <button class="theme-toggle" id="settings-trigger" aria-label="Settings" title="Preferences"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+        <div class="nav-settings-panel" id="settings-panel">
+          <div class="sp-title">// Preferences</div>
+          <div class="sp-row">
+            <span class="sp-label">Dark Mode</span>
+            <button class="sp-toggle" id="sp-dark-toggle" aria-label="Toggle dark mode"></button>
+          </div>
+          <hr class="sp-divider"/>
+          <div class="sp-row" style="flex-direction:column;align-items:flex-start;gap:.5rem">
+            <span class="sp-label">Accent Color</span>
+            <div class="sp-colors">
+              <div class="sp-color active" data-color="green" style="background:#1a6b45" title="Green"></div>
+              <div class="sp-color" data-color="blue" style="background:#1d4ed8" title="Blue"></div>
+              <div class="sp-color" data-color="purple" style="background:#7c3aed" title="Purple"></div>
+              <div class="sp-color" data-color="rose" style="background:#e11d48" title="Rose"></div>
+              <div class="sp-color" data-color="cyan" style="background:#0891b2" title="Cyan"></div>
+              <div class="sp-color" data-color="amber" style="background:#d97706" title="Amber"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" class="icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg viewBox="0 0 24 24" class="icon-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../index.html#hero-section">Home</a>
+  <a href="../index.html#about">About</a>
+  <a href="../index.html#skills">Skills</a>
+  <a href="../index.html#experience">Experience</a>
+  <a href="../index.html#projects" class="active">Projects</a>
+  <a href="../index.html#certifications">Certifications</a>
+  <a href="https://github.com/HusseinMohamed99" target="_blank">GitHub ↗</a>
+  <a href="https://wa.me/201034442174" target="_blank">WhatsApp ↗</a>
+  <a href="../index.html#contact" class="m-hire">Hire me</a>
+</div>
+
+<div class="cs-back">
+  <a href="../index.html#projects">← Back to Portfolio</a>
+</div>
+
+<div class="cs-hero">
+  <div class="cs-icon"><img src="../rifqa_icon.png" alt="Rifqa icon"/></div>
+  <div>
+    <div class="cs-tag">Case Study · Islamic Lifestyle · Offline-First · Open Source</div>
+    <h1 class="cs-title">Rifqa (رِفقة)</h1>
+  </div>
+  <div class="cs-links">
+    <a href="https://github.com/HusseinMohamed99/Refqa" target="_blank" class="pl pl-store">GitHub ↗</a>
+  </div>
+</div>
+
+<div class="cs-band">
+  <div class="cs-overview">
+    <div>
+      <div class="cs-h2">Overview</div>
+      <p>Rifqa is a comprehensive Islamic companion app I designed and built end to end — Quran, Hadith, Tafsir, prayer times, adhan, duas, and daily spiritual habit-tracking, all in one bilingual (Arabic/English), offline-first Flutter app. It's the kind of app where "it mostly works" isn't good enough: the adhan has to fire at the exact second, five times a day, without launching the app UI, and a user's location and recitation audio can never leave their device.<br><br>I own the full stack: the Flutter/Riverpod app layer, a custom native Kotlin pipeline for unattended background adhan playback, and every architectural decision around privacy, offline resilience, and real-device verification — this project pushed me to debug and ship fixes I verified live on real hardware and emulators, not just in code review.</p>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat"><span class="cs-stat-n">604</span><span class="cs-stat-l">Page Mushaf renderer with authentic RTL page-turn</span></div><div class="cs-stat"><span class="cs-stat-n">0 bytes</span><span class="cs-stat-l">Of recitation audio or location ever leave the device</span></div><div class="cs-stat"><span class="cs-stat-n">Native</span><span class="cs-stat-l">Kotlin adhan pipeline, independent of the Flutter engine</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="cs-caps">
+  <div class="sec-tag">Core Capabilities</div>
+  <h2 class="cs-h2" style="font-size:1.75rem;margin-bottom:2rem">What the app does</h2>
+  <div class="cs-cap-grid">
+    <div class="cs-cap"><div class="cs-cap-ico">📖</div><div class="cs-cap-tx"><b>Dual-mode Quran reading</b><p>A browsable Surah/Juz'/Hizb index with search, plus a full 604-page Madani Mushaf renderer with authentic RTL page-swipe direction and inline ayah markers.</p></div></div><div class="cs-cap"><div class="cs-cap-ico">🕌</div><div class="cs-cap-tx"><b>Unattended native adhan</b><p>A custom Kotlin AlarmManager + ForegroundService pipeline plays the full call to prayer at the exact computed time — no Activity launch, no Flutter engine involved at fire time.</p></div></div><div class="cs-cap"><div class="cs-cap-ico">🎙️</div><div class="cs-cap-tx"><b>On-device recitation checking</b><p>Tasmee' compares spoken recitation against the Quran text using entirely on-device speech recognition — audio never touches a server, with a graceful fallback message on hardware that lacks offline Arabic support.</p></div></div><div class="cs-cap"><div class="cs-cap-ico">🧭</div><div class="cs-cap-tx"><b>Prayer times & Qibla</b><p>Multiple calculation methods with automatic, location-aware method selection, plus a live Qibla compass.</p></div></div><div class="cs-cap"><div class="cs-cap-ico">📊</div><div class="cs-cap-tx"><b>Stats dashboard</b><p>Range-scoped activity summaries, a time-spent-per-category donut breakdown, Hijri/Gregorian monthly calendars, and khatm (completion) tracking.</p></div></div><div class="cs-cap"><div class="cs-cap-ico">🔒</div><div class="cs-cap-tx"><b>Privacy by architecture</b><p>Coordinates are scrubbed before any crash report is sent; no accounts, no ads, no third-party analytics SDKs.</p></div></div>
+  </div>
+</section>
+
+<div class="cs-arch">
+  <div class="cs-arch-in">
+    <div class="sec-tag">Architecture</div>
+    <h2 class="cs-h2" style="font-size:1.75rem">Feature-first Clean Architecture, with a native escape hatch</h2>
+    <p>The Flutter layer follows a strict feature-first data/domain/presentation split, with Riverpod (freezed union states) managing everything above the repository boundary and Drift/sqflite backing structured local data. But the adhan feature couldn't live in Dart alone: Android kills the Flutter engine when the app isn't foregrounded, and the adhan has to fire exactly on time regardless. So the unattended path drops to native Kotlin entirely — an exact AlarmManager alarm wakes a BroadcastReceiver, which starts a mediaPlayback ForegroundService that reads the audio file and plays it, with zero Dart execution required at fire time.</p>
+    <div class="cs-flow"><span class="cs-flow-step">Riverpod (Presentation)</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">Repository Interface</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">Drift/sqflite + REST</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">AlQuran.cloud / AlAdhan / Sunnah.com</span></div>
+    <div class="cs-flow" style="margin-top:1rem"><span class="cs-flow-step">Exact AlarmManager</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">BroadcastReceiver</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">Kotlin ForegroundService</span><span class="cs-flow-arrow">→</span><span class="cs-flow-step">Adhan plays, no UI, no Flutter engine</span></div>
+  </div>
+</div>
+
+<div class="cs-walk">
+  <div class="cs-walk-in">
+    <div class="cs-walk-head">
+      <div>
+        <div class="sec-tag">Walkthrough</div>
+        <h2 class="cs-h2" style="font-size:1.75rem">See it in action</h2>
+      </div>
+      <div class="cs-walk-tabs"><div class="cs-walk-tab active" style="cursor:default"><span class="cs-walk-tab-dot"></span><span class="cs-walk-tab-nm">App Walkthrough</span></div></div>
+      <p class="cs-walk-note">Screen recording captured on a real device/emulator, played back at native speed straight from the device build.</p>
+    </div>
+    <div class="cs-phone-wrap">
+      <span class="cs-phone-lbl">Device</span>
+      <div class="cs-phone">
+        <div class="cs-phone-screen">
+          <video controls playsinline preload="metadata" poster="">
+            <source src="../videos/rifqa/demo.mp4" type="video/mp4">
+            <div class="cs-phone-fallback"><img src="../rifqa_icon.png" alt="Rifqa icon"/><span>Your browser can't play this video. Drop your MP4 at <code>videos/rifqa/demo.mp4</code>.</span></div>
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cs-challenges">
+  <div class="sec-tag">Problems Solved</div>
+  <h2 class="cs-h2" style="font-size:1.75rem;margin-bottom:2rem">Real engineering challenges</h2>
+  <div class="cs-challenge"><div class="cs-ch-label">Android Resource Shrinking</div><div class="cs-ch-body"><b>Notification sounds worked in debug, went silent in release</b><p>R8's resource shrinker was stripping the adhan/salawat audio files from release APKs because they were referenced dynamically by name at runtime, not by a static R.raw reference the shrinker could trace. Fixed with a res/raw/keep.xml rule and verified by unzipping the actual shipped APK to confirm the files survived.</p></div></div><div class="cs-challenge"><div class="cs-ch-label">Android Channel Immutability</div><div class="cs-ch-body"><b>A notification channel permanently silent, from before its sound file even existed</b><p>Git history traced a channel to a commit that created it pointing at a sound resource added in a later commit — any device that ran that window cached the channel as permanently silent, since Android fixes a channel's sound at creation. Fixed by bumping the channel id and making the sound state part of the id, so toggling it in-app actually takes effect.</p></div></div><div class="cs-challenge"><div class="cs-ch-label">Binder Transaction Limit</div><div class="cs-ch-body"><b>A "play the whole Qur'an" range would have crashed the app</b><p>Honoring a full custom recitation range built a 6,236-item playlist queue; publishing that to Android's platform MediaSession crosses a Binder transaction capped near 1MB, which would throw TransactionTooLargeException. Caught it before it shipped by capping what gets published to the media session while keeping the full queue in memory for playback logic.</p></div></div><div class="cs-challenge"><div class="cs-ch-label">Full-Screen Intent Removal</div><div class="cs-ch-body"><b>The "auto-play full adhan" feature was launching the app UI as its entire mechanism</b><p>An earlier unattended-adhan implementation used a full-screen intent — but launching an Activity is that primitive's literal definition, so the app UI popped over the lock screen at every prayer. Replaced it with the native AlarmManager → ForegroundService pipeline described above, which plays audio with no Activity involved at all, and removed the now-unnecessary USE_FULL_SCREEN_INTENT permission (avoiding an unnecessary Play Console alarm-functionality declaration).</p></div></div><div class="cs-challenge"><div class="cs-ch-label">Cross-Surah Playback</div><div class="cs-ch-body"><b>A saved custom recitation range was silently never read by the player</b><p>Users could configure a range spanning two surahs, but the audio players built their playlists from the currently open surah and ignored the saved range entirely — a same-surah range only ever "worked" by coincidence. Fixed by expanding any range into global ayah numbers and building both readers' playlists from that, with a regression test specifically covering a boundary that crosses two surahs.</p></div></div>
+</section>
+
+<div class="cs-tech-band">
+  <div class="cs-tech-in">
+    <div class="sec-tag" style="justify-content:center">Technologies Employed</div>
+    <h2 class="cs-h2" style="font-size:1.5rem">Built with</h2>
+    <div class="cs-tech-tags">
+      <span class="tag hi">Flutter</span><span class="tag hi">Riverpod</span><span class="tag hi">Clean Architecture</span><span class="tag">Freezed</span><span class="tag">Drift / sqflite</span><span class="tag">Kotlin (native)</span><span class="tag">go_router</span><span class="tag">just_audio</span><span class="tag">audio_service</span><span class="tag">easy_localization</span><span class="tag">Sentry</span>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nextprev">
+  <a href="tuwaiq-pay.html" class="cs-nav-card"><div class="cs-nav-lbl">← Previous project</div><div class="cs-nav-nm">Tuwaiq Pay</div></a>
+  <a href="sportymate.html" class="cs-nav-card" style="text-align:right"><div class="cs-nav-lbl">Next project →</div><div class="cs-nav-nm">SportyMate</div></a>
+</div>
+
+<footer>
+  <span>© <span id="copy-year"></span> Hussein Mohamed</span>
+  <a href="javascript:void(0)" id="em-link-footer" style="font-family:'Geist Mono',monospace;font-size:.73rem;color:var(--contact-label);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--contact-label)'">hussein.mohamed.software@gmail.com</a>
+  <span style="font-family:'Geist Mono',monospace">Flutter Developer · Cairo, Egypt</span>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
