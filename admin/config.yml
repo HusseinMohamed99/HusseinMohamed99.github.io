@@ -1,0 +1,80 @@
+backend:
+  name: github
+  repo: HusseinMohamed99/husseinmohamed99.github.io   # عدّل ده لو اسم الريبو مختلف
+  branch: main
+  base_url: https://YOUR-NETLIFY-AUTH-SITE.netlify.app  # اسم موقع الـ Netlify اللي عملته في مرحلة الـ OAuth
+  auth_endpoint: auth
+
+# فولدر الصور والفيديوهات اللي بيتم الرفع فيها من الداشبورد
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    label_singular: "Project"
+    folder: "data/projects"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    summary: "{{name}} — {{category}}"
+    fields:
+      - { label: "Project Name", name: "name", widget: "string" }
+      - { label: "Category / Tagline", name: "category", widget: "string" }
+      - { label: "Short Card Description", name: "short_description", widget: "text" }
+      - { label: "Full Case Study Description", name: "description", widget: "markdown" }
+      - label: "Badge"
+        name: "badge"
+        widget: "select"
+        options: ["Featured Project", "Personal Project", "Graduation", "Company Project"]
+      - label: "Tech Tags"
+        name: "tech_tags"
+        widget: "list"
+        field: { label: "Tag", name: "tag", widget: "string" }
+
+      - label: "App Icon"
+        name: "icon"
+        widget: "image"
+        required: false
+
+      - label: "Screenshots / Mockups"
+        name: "mockups"
+        widget: "list"
+        required: false
+        summary: "{{fields.caption}}"
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Caption", name: "caption", widget: "string" }
+
+      - label: "Demo Video (MP4, keep under 20MB)"
+        name: "video"
+        widget: "file"
+        required: false
+        media_library:
+          config:
+            max_file_size: 20971520   # 20MB بالبايت
+
+      - label: "Links"
+        name: "links"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Case Study Page", name: "case_study", widget: "string", required: false }
+          - { label: "GitHub", name: "github", widget: "string", required: false }
+          - { label: "App Store", name: "app_store", widget: "string", required: false }
+          - { label: "Google Play", name: "google_play", widget: "string", required: false }
+
+      - label: "Problems Solved (Case Study Section)"
+        name: "challenges"
+        widget: "list"
+        required: false
+        summary: "{{fields.title}}"
+        fields:
+          - { label: "Label (e.g. 'Strategy Pattern')", name: "label", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+
+      - { label: "Display Order", name: "order", widget: "number", default: 0 }
