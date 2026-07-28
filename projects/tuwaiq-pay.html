@@ -12,6 +12,45 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Cabinet+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../styles.css"/>
 <script defer data-domain="husseinmohamed99.github.io" src="https://plausible.io/js/script.js"></script>
+<style>
+  /* ===== Mockup grid (screenshots-only walkthrough mode) ===== */
+  .cs-mockup-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:2rem;
+    padding:2rem 0;
+  }
+  .cs-mockup{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.9rem;
+  }
+  .cs-phone-mini{
+    width:100%;
+    max-width:230px;
+    aspect-ratio:9/19.5;
+    border-radius:28px;
+    border:6px solid #111;
+    overflow:hidden;
+    box-shadow:0 12px 40px rgba(0,0,0,.25);
+    background:#000;
+  }
+  .cs-phone-mini img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .cs-mockup-cap{
+    font-family:'Geist Mono',monospace;
+    font-size:.72rem;
+    color:var(--muted);
+    text-align:center;
+  }
+  .cs-walk-tabs{cursor:pointer}
+  .cs-walk-tab{cursor:pointer}
+</style>
 </head>
 <body>
 
@@ -120,6 +159,7 @@
   </div>
 </div>
 
+<!-- ===== Walkthrough: Screenshots (default) + Video (optional tab) ===== -->
 <div class="cs-walk">
   <div class="cs-walk-in">
     <div class="cs-walk-head">
@@ -127,10 +167,37 @@
         <div class="sec-tag">Walkthrough</div>
         <h2 class="cs-h2" style="font-size:1.75rem">See it in action</h2>
       </div>
-      <div class="cs-walk-tabs"><div class="cs-walk-tab active" style="cursor:default"><span class="cs-walk-tab-dot"></span><span class="cs-walk-tab-nm">Merchant App Walkthrough</span></div></div>
-      <p class="cs-walk-note">Screen recording captured on a simulator/emulator, played back at native speed straight from the device build.</p>
+      <div class="cs-walk-tabs">
+        <div class="cs-walk-tab active" data-walk="mockups"><span class="cs-walk-tab-dot"></span><span class="cs-walk-tab-nm">Screenshots</span></div>
+        <div class="cs-walk-tab" data-walk="video"><span class="cs-walk-tab-dot"></span><span class="cs-walk-tab-nm">Video Demo</span></div>
+      </div>
+      <p class="cs-walk-note">Static mockups shown by default — no live merchant data. Toggle to Video Demo for the full emulator walkthrough.</p>
     </div>
-    <div class="cs-phone-wrap">
+
+    <!-- Screenshots mode -->
+    <div class="cs-mockup-grid" data-walk-panel="mockups">
+      <div class="cs-mockup">
+        <div class="cs-phone-mini">
+          <img src="../images/tuwaiq-pay/home.png" alt="Tuwaiq Pay home screen"/>
+        </div>
+        <span class="cs-mockup-cap">Merchant Dashboard</span>
+      </div>
+      <div class="cs-mockup">
+        <div class="cs-phone-mini">
+          <img src="../images/tuwaiq-pay/payment.png" alt="Payment provider selection"/>
+        </div>
+        <span class="cs-mockup-cap">NearPay / HyperPay / Geidea</span>
+      </div>
+      <div class="cs-mockup">
+        <div class="cs-phone-mini">
+          <img src="../images/tuwaiq-pay/subaccounts.png" alt="Sub-account management"/>
+        </div>
+        <span class="cs-mockup-cap">Sub-account Management</span>
+      </div>
+    </div>
+
+    <!-- Video mode -->
+    <div class="cs-phone-wrap" data-walk-panel="video" style="display:none">
       <span class="cs-phone-lbl">Emulator</span>
       <div class="cs-phone">
         <div class="cs-phone-screen">
@@ -143,7 +210,6 @@
     </div>
   </div>
 </div>
-
 
 <section class="cs-challenges">
   <div class="sec-tag">Problems Solved</div>
@@ -172,5 +238,18 @@
 </footer>
 
 <script src="../script.js"></script>
+<script>
+  // Walkthrough tab toggle (Screenshots ⇄ Video)
+  document.querySelectorAll('.cs-walk-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.cs-walk-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var target = tab.getAttribute('data-walk');
+      document.querySelectorAll('[data-walk-panel]').forEach(function(panel){
+        panel.style.display = (panel.getAttribute('data-walk-panel') === target) ? '' : 'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>
