@@ -114,7 +114,7 @@ mockups:
   - image: images/tuwaiq-pay/20.jpg
     caption: Manage Sub-Accounts
   - image: images/tuwaiq-pay/21.jpg
-    caption: Bank Accounts
+    caption: Manage Bank Accounts
   - image: images/tuwaiq-pay/22.jpg
     caption: Refunds
   - image: images/tuwaiq-pay/23.jpg
