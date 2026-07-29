@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: HusseinMohamed99/husseinmohamed99.github.io   # عدّل ده لو اسم الريبو مختلف
+  repo: HusseinMohamed99/HusseinMohamed99.github.io
   branch: main
-  base_url: https://YOUR-NETLIFY-AUTH-SITE.netlify.app  # اسم موقع الـ Netlify اللي عملته في مرحلة الـ OAuth
+  base_url: https://peppy-speculoos-6dc7de.netlify.app
   auth_endpoint: auth
 
 # فولدر الصور والفيديوهات اللي بيتم الرفع فيها من الداشبورد
