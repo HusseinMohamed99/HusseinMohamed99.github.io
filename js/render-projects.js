@@ -2,6 +2,9 @@
   const grid = document.getElementById("proj-grid");
   if (!grid) return;
 
+  const ICON_BASE = grid.dataset.iconBase || "";
+  const CASE_BASE = grid.dataset.caseBase !== undefined ? grid.dataset.caseBase : "projects/";
+
   function escapeHtml(str) {
     if (str == null) return "";
     return String(str).replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
@@ -115,7 +118,7 @@
     const isLive = !!(p.links && (p.links.app_store || p.links.google_play));
 
     const iconBox = p.icon
-      ? `<img src="${escapeHtml(p.icon)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:12px"/>`
+      ? `<img src="${ICON_BASE}${escapeHtml(p.icon)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:12px"/>`
       : `<span style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:${color}">${escapeHtml((p.name || "?").charAt(0))}</span>`;
 
     const techTags = (p.tech_tags || []).slice(0, 5).map(t => `<span>${escapeHtml(t.tag || t)}</span>`).join("");
@@ -127,7 +130,7 @@
       links.google_play ? `<a href="${escapeHtml(links.google_play)}" target="_blank" class="pl pl-store">Google Play ↗</a>` : "",
     ].join("");
 
-    const href = `projects/project.html?slug=${encodeURIComponent(p.slug)}`;
+    const href = `${CASE_BASE}project.html?slug=${encodeURIComponent(p.slug)}`;
 
     return `
     <div class="proj-x-card" style="--dot:${color};animation-delay:${i * 0.05}s">
@@ -154,7 +157,7 @@
     const links = p.links || {};
     const isLive = !!(links.app_store || links.google_play);
     const iconBox = p.icon
-      ? `<img src="${escapeHtml(p.icon)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:18px"/>`
+      ? `<img src="${ICON_BASE}${escapeHtml(p.icon)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:18px"/>`
       : `<span style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;color:${color}">${escapeHtml((p.name || "?").charAt(0))}</span>`;
 
     const topBadges = (p.tech_tags || []).slice(0, 4).map(t => {
@@ -170,7 +173,7 @@
       links.google_play ? `<a href="${escapeHtml(links.google_play)}" target="_blank" class="pl pl-store">Google Play ↗</a>` : "",
     ].join("");
 
-    const href = `projects/project.html?slug=${encodeURIComponent(p.slug)}`;
+    const href = `${CASE_BASE}project.html?slug=${encodeURIComponent(p.slug)}`;
 
     return `
     <div class="proj-card proj-feat proj-feat-hero">
@@ -213,20 +216,38 @@
   }
 
   try {
-    const projects = await SiteData.fetchAllProjects();
+    const allProjects = await SiteData.fetchAllProjects();
 
-    if (!projects.length) {
+    if (!allProjects.length) {
       grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;font-family:'Geist Mono',monospace;color:var(--muted)">No projects yet — add one from /admin</div>`;
       return;
     }
 
-    grid.innerHTML = projects.map((p, i) => {
+    const limit = parseInt(grid.dataset.limit || "0", 10);
+    const showLimited = limit > 0 && allProjects.length > limit;
+    const projects = showLimited ? allProjects.slice(0, limit) : allProjects;
+
+    let html = projects.map((p, i) => {
       const color = p.accent_color || PALETTE[i % PALETTE.length];
       if (p.badge === "Featured Project") {
         return renderHeroCard(p, p.accent_color || "#1D5CFF");
       }
       return renderCompactCard(p, i, color);
     }).join("");
+
+    if (showLimited) {
+      const remaining = allProjects.length - limit;
+      html += `
+        <a href="${CASE_BASE}all-projects.html" class="proj-x-card" style="align-items:center;justify-content:center;text-decoration:none;min-height:280px;border:2px dashed var(--border,rgba(0,0,0,.12));background:transparent;box-shadow:none">
+          <div style="text-align:center;padding:2rem">
+            <div style="font-size:1.9rem;margin-bottom:.6rem">＋${remaining}</div>
+            <div style="font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;color:var(--text,#111);margin-bottom:.3rem">See all projects</div>
+            <div style="font-size:.8rem;color:var(--muted)">${allProjects.length} shipped and counting</div>
+          </div>
+        </a>`;
+    }
+
+    grid.innerHTML = html;
   } catch (e) {
     grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;font-family:'Geist Mono',monospace;color:var(--muted)">Couldn't load projects (${escapeHtml(e.message)})</div>`;
   }
