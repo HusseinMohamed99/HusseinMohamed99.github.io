@@ -112,6 +112,11 @@ async function renderProject() {
     return `<span class="cs-flow-step">${escapeHtml(step)}</span>${arrow}`;
   }).join("");
 
+  const banner = p.banner ? `
+    <div style="grid-column:1/-1">
+      <img src="../${escapeAttr(p.banner)}" alt="${escapeAttr(p.name)} Screenshots Banner" style="width:100%;border-radius:18px;display:block;">
+    </div>` : "";
+
   const mockups = (p.mockups || []).map(m => `
     <div class="cs-mockup">
       <div class="cs-phone-mini"><img src="../${escapeAttr(m.image)}" alt="${escapeAttr(m.caption || "")}"/></div>
@@ -127,6 +132,7 @@ async function renderProject() {
       <div class="cs-walk-tab active" data-walk="mockups"><span class="cs-walk-tab-dot"></span><span class="cs-walk-tab-nm">Screenshots</span></div>
       <div class="cs-walk-tab" data-walk="video"><span class="cs-walk-tab-dot"></span><span class="cs-walk-tab-nm">Video Demo</span></div>
     </div>` : "";
+  const walkNote = hasVideo && hasMockups ? `<p class="cs-walk-note">Static mockups shown by default — no live merchant data. Toggle to Video Demo for the full emulator walkthrough.</p>` : "";
 
   const challenges = (p.challenges || []).map(c => `
     <div class="cs-challenge"><div class="cs-ch-label">${escapeHtml(c.label)}</div><div class="cs-ch-body"><b>${escapeHtml(c.title)}</b><p>${escapeHtml(c.body)}</p></div></div>
@@ -189,7 +195,8 @@ async function renderProject() {
           </div>
           ${walkTabs}
         </div>
-        ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups">${mockups}</div>` : ""}
+        ${walkNote}
+        ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups">${banner}${mockups}</div>` : ""}
         ${hasVideo ? `
         <div class="cs-phone-wrap" data-walk-panel="video" style="${hasMockups ? "display:none" : ""}">
           <span class="cs-phone-lbl">Emulator</span>
