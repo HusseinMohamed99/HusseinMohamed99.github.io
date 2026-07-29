@@ -3,6 +3,7 @@ name: "SystemPro"
 category: "Real Estate · Saudi Market"
 badge: "Company Project"
 short_description: "Advanced real estate platform for the Saudi market with property search, smart filters, bookmarks, real-time updates, and offline access via Hive. Scalable BLoC architecture with pagination, dependency injection, and 30% performance boost from profiling."
+icon: "systempro_icon.png"
 order: 4
 overview: |
   SystemPro is a real estate platform built for the Saudi market, letting buyers and renters search properties with smart filters, bookmark listings, and keep browsing even without a connection. It was one of my earlier deep dives into performance work — profiling the app under real usage rather than guessing at bottlenecks.
