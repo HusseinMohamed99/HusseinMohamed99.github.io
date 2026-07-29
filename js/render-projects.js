@@ -137,7 +137,7 @@
       <div class="proj-x-visual" style="background:${color};background-image:radial-gradient(circle,rgba(255,255,255,.18) 1px,transparent 1px)">
         <span class="proj-x-idx">0${i + 1}</span>
         <div class="proj-x-icon">${iconBox}</div>
-        <span class="proj-x-live">${isLive ? "🟢 Live" : "✓ Shipped"}</span>
+        <span class="proj-x-live">${isLive ? "🟢 Live" : "✓ Delivered"}</span>
       </div>
       <div class="proj-x-body">
         <div class="proj-x-badge">${badgeIcon} ${escapeHtml(badgeLabel)}</div>
@@ -185,8 +185,8 @@
           ${topBadges ? `<div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center">${topBadges}</div>` : ""}
           <div style="display:flex;gap:1.5rem;margin-top:.5rem">
             <div style="text-align:center">
-              <div style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1">${isLive ? "Live" : "Shipped"}</div>
-              <div style="font-size:.6rem;color:rgba(255,255,255,.7);margin-top:.15rem">${isLive ? "on stores" : "& delivered"}</div>
+              <div style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1">${isLive ? "Live" : "Delivered"}</div>
+              <div style="font-size:.6rem;color:rgba(255,255,255,.7);margin-top:.15rem">${isLive ? "on stores" : "successfully"}</div>
             </div>
             <div style="width:1px;background:rgba(255,255,255,.25)"></div>
             <div style="text-align:center">
