@@ -92,7 +92,7 @@ async function renderProject() {
   try {
     p = await SiteData.fetchProject(slug);
   } catch (e) {
-    skeleton.textContent = "Project not found: " + slug;
+    skeleton.textContent = "Couldn't load project '" + slug + "': " + (e.message || e);
     return;
   }
 
