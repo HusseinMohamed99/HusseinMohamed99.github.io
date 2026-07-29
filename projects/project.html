@@ -11,7 +11,21 @@
 <link rel="stylesheet" href="../styles.css"/>
 <script defer data-domain="husseinmohamed99.github.io" src="https://plausible.io/js/script.js"></script>
 <style>
-  .cs-mockup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2.25rem;padding:2.5rem 0}
+  .cs-mockup-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:1.75rem;
+    padding:2.5rem 0;
+    width:100vw;
+    position:relative;
+    left:50%;
+    right:50%;
+    margin-left:-50vw;
+    margin-right:-50vw;
+    padding-left:max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+    padding-right:max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+    box-sizing:border-box;
+  }
   .cs-mockup{display:flex;flex-direction:column;align-items:center;gap:1rem}
   .cs-phone-mini{
     position:relative;
@@ -42,7 +56,7 @@
     z-index:2;
   }
   .cs-phone-mini-inner{width:100%;height:100%;border-radius:26px;overflow:hidden;background:#000}
-  .cs-phone-mini img{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
+  .cs-phone-mini img{width:100%;height:100%;object-fit:cover;background:#000;display:block}
   .cs-mockup-cap{
     font-family:'Geist Mono',monospace;
     font-size:.68rem;
