@@ -32,6 +32,7 @@
 
   async function listProjectFiles() {
     const res = await fetch(LIST_URL);
+    if (res.status === 404) return []; // folder doesn't exist yet — no projects created
     if (!res.ok) throw new Error("Could not list data/projects (" + res.status + ")");
     const files = await res.json();
     return files
