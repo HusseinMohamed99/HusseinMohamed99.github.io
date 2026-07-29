@@ -2,7 +2,7 @@ backend:
   name: github
   repo: HusseinMohamed99/HusseinMohamed99.github.io
   branch: main
-  base_url: https://peppy-speculoos-6dc7de.netlify.app
+  base_url: https://api.netlify.com
   auth_endpoint: auth
 
 # فولدر الصور والفيديوهات اللي بيتم الرفع فيها من الداشبورد
