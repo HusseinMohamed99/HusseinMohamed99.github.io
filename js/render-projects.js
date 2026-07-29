@@ -88,8 +88,22 @@
       .proj-x-card:hover .proj-x-tech span:nth-child(1){border-color:var(--dot,#1D5CFF);color:var(--dot,#1D5CFF)}
       .proj-x-links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:auto}
 
-      /* Full-width hero card for the Featured project (reuses the original design) */
-      .proj-feat-hero{grid-column:1 / -1}
+      /* Grid layout: predictable columns so the hero card can share its row */
+      #proj-grid{
+        display:grid !important;
+        grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)) !important;
+        gap:1.75rem !important;
+        align-items:stretch;
+      }
+      .proj-feat-hero{
+        grid-column:span 2;
+      }
+      @media (max-width:900px){
+        .proj-feat-hero{grid-column:1 / -1}
+      }
+      @media (max-width:560px){
+        #proj-grid{grid-template-columns:1fr !important}
+      }
     `;
     document.head.appendChild(style);
   }
