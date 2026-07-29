@@ -67,6 +67,10 @@ collections:
         field: { label: "Step", name: "step", widget: "string" }
 
       # ===== Case Study: Walkthrough =====
+      - label: "Screenshots Banner (optional, full-width image)"
+        name: "banner"
+        widget: "image"
+        required: false
       - label: "Screenshots / Mockups"
         name: "mockups"
         widget: "list"
