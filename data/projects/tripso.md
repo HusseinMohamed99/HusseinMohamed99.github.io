@@ -3,7 +3,7 @@ name: "Tripso"
 category: "Travel Planning · Graduation Project"
 badge: "Graduation"
 short_description: "Tourism app covering Egypt, UAE, France, and Italy with top attractions, ticket pricing, interactive maps, and historical insights. Graduation project built with Cubit state management, Dio REST integration, and Firebase auth."
-icon: "tripso_icon.png"
+icon: "images/tripso/tripso_icon.png"
 order: 7
 overview: |
   Tripso is a tourism planning app built as my graduation project — covering top attractions, ticket pricing, interactive maps, and historical context across Egypt, the UAE, France, and Italy. It was where I first put Cubit state management and Firebase auth into practice on a full app, end to end.

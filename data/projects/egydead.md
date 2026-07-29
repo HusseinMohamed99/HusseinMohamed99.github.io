@@ -3,7 +3,7 @@ name: "EGY DEAD"
 category: "Entertainment · Google Play"
 badge: "Personal Project"
 short_description: "Media browser for movies, series, and anime with 10K+ downloads on Google Play. Smart recommendations, trailers, cast details, and categorized search — built with BLoC, Dio, and shimmer loading UX."
-icon: "egydead_icon.png"
+icon: "images/egydead/egydead_icon.png"
 order: 5
 overview: |
   EGY DEAD is a self-published media browser for discovering movies, series, and anime — trailers, cast details, and smart recommendations, wrapped in a shimmer-loading UI that feels fast even on a slow connection. It's crossed 10,000+ downloads on Google Play as a solo side project.

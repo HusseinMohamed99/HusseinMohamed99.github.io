@@ -131,24 +131,28 @@ if(cursor && ring) {
     requestAnimationFrame(animRing);
   }
   animRing();
-  document.querySelectorAll('a,button,.skill-card,.proj-card,.cert-card,.cs-cap,.cs-nav-card').forEach(function(el) {
-    el.addEventListener('mouseenter', function() { cursor.classList.add('expand'); ring.classList.add('expand'); });
-    el.addEventListener('mouseleave', function() { cursor.classList.remove('expand'); ring.classList.remove('expand'); });
+
+  // Delegated so it also covers cards rendered later from data/projects/*.md
+  var HOVER_TARGETS = 'a,button,.skill-card,.proj-card,.proj-x-card,.cert-card,.cs-cap';
+  function isTarget(node) {
+    return !!(node && node.closest && node.closest(HOVER_TARGETS));
+  }
+  function setExpand(on) {
+    cursor.classList.toggle('expand', on);
+    ring.classList.toggle('expand', on);
+  }
+  document.addEventListener('mouseover', function(e) {
+    if (isTarget(e.target)) setExpand(true);
+  });
+  document.addEventListener('mouseout', function(e) {
+    if (!isTarget(e.relatedTarget)) setExpand(false);
   });
 }
 
 // Scroll animations
+// Exposed as SiteFX.applyReveals(root) so dynamically rendered content (project
+// cards, case-study sections) can be wired up the moment it lands in the DOM.
 (function(){
-  document.querySelectorAll('.skill-card').forEach(function(el,i){ el.classList.add('reveal'); el.style.transitionDelay=(i*0.07)+'s'; });
-  document.querySelectorAll('.proj-card').forEach(function(el,i){ el.classList.add('reveal-scale'); el.style.transitionDelay=(i*0.08)+'s'; });
-  document.querySelectorAll('.cert-card').forEach(function(el,i){ el.classList.add('reveal'); el.style.transitionDelay=(i*0.07)+'s'; });
-  document.querySelectorAll('.exp-row').forEach(function(el,i){ el.classList.add('reveal'); el.style.transitionDelay=(i*0.1)+'s'; });
-  document.querySelectorAll('.sec-tag,.sec-h').forEach(function(el){ el.classList.add('reveal'); });
-  document.querySelectorAll('.about-in > div').forEach(function(el,i){ el.classList.add('reveal'); el.style.transitionDelay=(i*0.12)+'s'; });
-  document.querySelectorAll('.ct-h,.ct-sub,.ct-btns,.ct-info').forEach(function(el,i){ el.classList.add('reveal'); el.classList.add('ct-reveal'); el.style.transitionDelay=(i*0.1)+'s'; });
-  document.querySelectorAll('.cs-cap').forEach(function(el,i){ el.classList.add('reveal'); el.style.transitionDelay=(i*0.06)+'s'; });
-  document.querySelectorAll('.cs-challenge').forEach(function(el,i){ el.classList.add('reveal'); el.style.transitionDelay=(i*0.08)+'s'; });
-
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
   },{threshold:0.12});
@@ -156,10 +160,37 @@ if(cursor && ring) {
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obsCt.unobserve(e.target); } });
   },{threshold:0.01});
 
-  document.querySelectorAll('.reveal,.reveal-left,.reveal-scale').forEach(function(el){
-    if(el.classList.contains('ct-reveal')) obsCt.observe(el);
-    else obs.observe(el);
-  });
+  // [selector, reveal class, per-item stagger in seconds, extra class]
+  var GROUPS = [
+    ['.skill-card',                   'reveal',       0.07],
+    ['.proj-card',                    'reveal-scale', 0.08],
+    ['.cert-card',                    'reveal',       0.07],
+    ['.exp-row',                      'reveal',       0.1 ],
+    ['.sec-tag,.sec-h',               'reveal',       0   ],
+    ['.about-in > div',               'reveal',       0.12],
+    ['.ct-h,.ct-sub,.ct-btns,.ct-info','reveal',      0.1 , 'ct-reveal'],
+    ['.cs-cap',                       'reveal',       0.06],
+    ['.cs-challenge',                 'reveal',       0.08],
+  ];
+
+  function applyReveals(root){
+    var scope = root || document;
+    GROUPS.forEach(function(g){
+      var sel = g[0], cls = g[1], stagger = g[2], extra = g[3];
+      scope.querySelectorAll(sel).forEach(function(el,i){
+        if(el.dataset.fx) return; // already wired up by an earlier pass
+        el.dataset.fx = '1';
+        el.classList.add(cls);
+        if(extra) el.classList.add(extra);
+        if(stagger) el.style.transitionDelay = (i*stagger)+'s';
+        if(el.classList.contains('ct-reveal')) obsCt.observe(el);
+        else obs.observe(el);
+      });
+    });
+  }
+
+  window.SiteFX = { applyReveals: applyReveals };
+  applyReveals(document);
 })();
 
 // Mobile hamburger
@@ -175,27 +206,6 @@ if(cursor && ring) {
     a.addEventListener('click', function(){
       menu.classList.remove('open');
       btn.classList.remove('open');
-    });
-  });
-})();
-
-// Case study walkthrough video tabs
-(function(){
-  document.querySelectorAll('.cs-walk-in').forEach(function(wrap){
-    var tabs = wrap.querySelectorAll('.cs-walk-tab');
-    var video = wrap.querySelector('.cs-phone-screen video');
-    if(!tabs.length || !video) return;
-    tabs.forEach(function(tab){
-      tab.addEventListener('click', function(){
-        tabs.forEach(function(t){ t.classList.remove('active'); });
-        tab.classList.add('active');
-        var src = tab.getAttribute('data-src');
-        if(src && video.querySelector('source').getAttribute('src') !== src){
-          video.pause();
-          video.querySelector('source').setAttribute('src', src);
-          video.load();
-        }
-      });
     });
   });
 })();

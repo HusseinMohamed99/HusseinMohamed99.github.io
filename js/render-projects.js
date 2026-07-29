@@ -248,6 +248,8 @@
     }
 
     grid.innerHTML = html;
+    // Same tick as the insert, so nothing paints before the reveal classes land
+    if (window.SiteFX) window.SiteFX.applyReveals(grid);
   } catch (e) {
     grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;font-family:'Geist Mono',monospace;color:var(--muted)">Couldn't load projects (${escapeHtml(e.message)})</div>`;
   }

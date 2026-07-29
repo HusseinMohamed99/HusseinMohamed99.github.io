@@ -363,6 +363,9 @@ async function renderProject() {
   skeleton.style.display = "none";
   root.style.display = "";
 
+  // Same tick as the reveal, so nothing paints before the reveal classes land
+  if (window.SiteFX) window.SiteFX.applyReveals(root);
+
   // Walkthrough tab toggle
   document.querySelectorAll(".cs-walk-tab").forEach(tab => {
     tab.addEventListener("click", () => {

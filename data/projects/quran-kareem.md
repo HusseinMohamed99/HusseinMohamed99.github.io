@@ -3,7 +3,7 @@ name: "Quran Kareem"
 category: "Islamic · Offline-First"
 badge: "Personal Project"
 short_description: "A focused, single-purpose reading app — full Arabic Quran text with verse-by-verse navigation and bookmarks, built to work fully offline once installed."
-icon: "logo.svg"
+icon: "images/quran-kareem/logo.svg"
 order: 8
 overview: |
   Quran Kareem is a focused, single-purpose reading app — full Arabic Quran text with verse-by-verse navigation and bookmarks, built to work fully offline once installed.
