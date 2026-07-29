@@ -5,7 +5,7 @@ backend:
   base_url: https://api.netlify.com
   auth_endpoint: auth
 
-# فولدر الصور والفيديوهات اللي بيتم الرفع فيها من الداشبورد
+# Where uploaded images/videos are stored
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
