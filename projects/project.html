@@ -11,18 +11,39 @@
 <link rel="stylesheet" href="../styles.css"/>
 <script defer data-domain="husseinmohamed99.github.io" src="https://plausible.io/js/script.js"></script>
 <style>
+  /* Screenshot gallery. The parent .cs-walk-in is a `1fr auto` grid, so the panel
+     has to span both tracks — otherwise it is squeezed into 1fr next to the
+     380px-wide .cs-walk-note and leaves a dead column on the right.
+     Row filling: items are flex-based on an exact 1/N share of the row, so every
+     full row runs edge-to-edge and only a partial last row is short (centered).
+     --cs-cols-lg/-md/-sm are set inline per item count so the row split stays
+     balanced (7 -> 4+3, 8 -> 4+4, 10 -> 5+5) instead of orphaning one phone. */
   .cs-mockup-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-    gap:1.75rem;
+    --cs-gap:1.75rem;
+    --cs-cols:var(--cs-cols-lg,5);
+    grid-column:1 / -1;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:flex-start;
+    gap:var(--cs-gap);
     padding:2.5rem 0;
   }
-  .cs-walk-in{ max-width: 1400px !important; }
+  .cs-mockup-grid > .cs-mockup{
+    /* -1px absorbs sub-pixel rounding so the Nth item never wraps early */
+    flex:0 1 calc((100% - (var(--cs-cols) - 1) * var(--cs-gap) - 1px) / var(--cs-cols));
+    min-width:0;
+    max-width:340px;
+  }
+  .cs-mockup-banner{flex:0 0 100%;max-width:100%}
+  @media(max-width:1100px){ .cs-mockup-grid{--cs-cols:var(--cs-cols-md,4)} }
+  @media(max-width:700px){ .cs-mockup-grid{--cs-cols:var(--cs-cols-sm,2);--cs-gap:1rem} }
+  .cs-walk-in{ max-width: 1500px !important; }
   .cs-mockup{display:flex;flex-direction:column;align-items:center;gap:1rem}
   .cs-phone-mini{
     position:relative;
     width:100%;
-    max-width:230px;
+    max-width:100%;
     aspect-ratio:9/19.5;
     border-radius:32px;
     padding:6px;
@@ -242,7 +263,7 @@ async function renderProject() {
   }).join("");
 
   const banner = p.banner ? `
-    <div style="grid-column:1/-1">
+    <div class="cs-mockup-banner">
       <img src="../${escapeAttr(p.banner)}" alt="${escapeAttr(p.name)} Screenshots Banner" style="width:100%;border-radius:18px;display:block;">
     </div>` : "";
 
@@ -257,6 +278,16 @@ async function renderProject() {
 
   const hasVideo = !!p.video;
   const hasMockups = (p.mockups || []).length > 0;
+
+  // Fewest columns that still uses `max` rows, so the last row is as full as possible.
+  const balancedCols = (n, max) => {
+    const cap = Math.min(max, Math.max(1, n));
+    return Math.ceil(n / Math.ceil(n / cap));
+  };
+  const mockupCount = (p.mockups || []).length;
+  const gridVars = hasMockups
+    ? `style="--cs-cols-lg:${balancedCols(mockupCount, 6)};--cs-cols-md:${balancedCols(mockupCount, 4)};--cs-cols-sm:${balancedCols(mockupCount, 2)}"`
+    : "";
 
   const walkTabs = hasVideo && hasMockups ? `
     <div class="cs-walk-tabs">
@@ -328,7 +359,7 @@ async function renderProject() {
           ${walkTabs}
         </div>
         ${walkNote}
-        ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups">${banner}${mockups}</div>` : ""}
+        ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups" ${gridVars}>${banner}${mockups}</div>` : ""}
         ${hasVideo ? `
         <div class="cs-phone-wrap" data-walk-panel="video" style="${hasMockups ? "display:none" : ""}">
           <span class="cs-phone-lbl">Emulator</span>
