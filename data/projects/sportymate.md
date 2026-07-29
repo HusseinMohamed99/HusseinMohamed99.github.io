@@ -3,7 +3,7 @@ name: "SportyMate"
 category: "Sports Tech · iOS, Android & Web"
 badge: "Company Project"
 short_description: "Cross-platform sports management platform connecting players, trainers, and clubs across iOS, Android & web. Smart bookings, real-time chat, performance tracking, and analytics dashboards — built with BLoC and deployed via Fastlane CI/CD."
-icon: "sporty_icon.png"
+icon: "images/sportymate/sporty_icon.png"
 order: 3
 overview: |
   SportyMate is a sports management platform that connects players, trainers, and clubs across iOS, Android, and web from a single Flutter codebase. Trainers manage their schedules and rosters, players book sessions and track progress, and clubs get a shared space to run it all.

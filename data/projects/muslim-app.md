@@ -3,7 +3,7 @@ name: "Muslim App"
 category: "Islamic Lifestyle · Google Play"
 badge: "Personal Project"
 short_description: "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Published on Google Play with bilingual AR/EN support, light & dark themes, and Firebase sync for cross-device data."
-icon: "muslim_icon.png"
+icon: "images/muslim-app/muslim_icon.png"
 order: 6
 overview: |
   Muslim App bundles the daily tools a practicing Muslim reaches for most — Quran, Hadith, Azkar, and a Zakat calculator — into one bilingual app with Firebase sync, so a user's saved bookmarks and settings follow them across devices.
