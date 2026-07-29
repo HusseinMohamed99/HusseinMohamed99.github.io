@@ -79,6 +79,44 @@
   }
 
   #skeleton{padding:4rem 2rem;text-align:center;font-family:'Geist Mono',monospace;color:var(--muted)}
+
+  /* Compact walkthrough tabs (override any larger default styling) */
+  .cs-walk-tabs{
+    display:inline-flex !important;
+    width:auto !important;
+    gap:.4rem;
+    background:var(--card-bg,rgba(0,0,0,.04));
+    padding:.3rem;
+    border-radius:100px;
+  }
+  .cs-walk-tab{
+    display:inline-flex !important;
+    align-items:center;
+    gap:.4rem;
+    width:auto !important;
+    padding:.4rem .9rem !important;
+    font-size:.78rem;
+    border-radius:100px;
+    border:none !important;
+    background:transparent !important;
+    color:var(--muted);
+    font-weight:600;
+  }
+  .cs-walk-tab .cs-walk-tab-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:currentColor;
+    opacity:.5;
+    display:inline-block;
+  }
+  .cs-walk-tab.active{
+    background:#fff !important;
+    color:var(--text,#111);
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+  }
+  .cs-walk-tab.active .cs-walk-tab-dot{
+    background:var(--green,#1D5CFF);
+    opacity:1;
+  }
 </style>
 </head>
 <body>
