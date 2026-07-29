@@ -43,6 +43,7 @@ architecture_flow:
   - step: "Repository Interface"
   - step: "Data (Dio + DTOs)"
   - step: "NearPay / HyperPay / Geidea SDKs"
+banner: "image/tuwaiq-pay/Tuwaiq G ScreenshotsBanner.jpg"
 mockups:
   - image: "image/tuwaiq-pay/18.jpg"
     caption: "Screen 18"
