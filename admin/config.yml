@@ -22,24 +22,51 @@ collections:
     identifier_field: "name"
     summary: "{{name}} — {{category}}"
     fields:
+      # ===== Card / Hero basics =====
       - { label: "Project Name", name: "name", widget: "string" }
       - { label: "Category / Tagline", name: "category", widget: "string" }
-      - { label: "Short Card Description", name: "short_description", widget: "text" }
-      - { label: "Full Case Study Description", name: "description", widget: "markdown" }
       - label: "Badge"
         name: "badge"
         widget: "select"
         options: ["Featured Project", "Personal Project", "Graduation", "Company Project"]
-      - label: "Tech Tags"
-        name: "tech_tags"
-        widget: "list"
-        field: { label: "Tag", name: "tag", widget: "string" }
-
+      - { label: "Short Card Description (shown on homepage grid)", name: "short_description", widget: "text" }
       - label: "App Icon"
         name: "icon"
         widget: "image"
         required: false
+      - { label: "Display Order (lower = first)", name: "order", widget: "number", default: 0 }
 
+      # ===== Case Study: Overview =====
+      - { label: "Overview Paragraph", name: "overview", widget: "markdown", required: false }
+      - label: "Overview Stats (the 3 highlight numbers)"
+        name: "stats"
+        widget: "list"
+        required: false
+        summary: "{{fields.number}} — {{fields.label}}"
+        fields:
+          - { label: "Number / Short Value (e.g. '3', 'Live', 'AR / EN')", name: "number", widget: "string" }
+          - { label: "Label", name: "label", widget: "string" }
+
+      # ===== Case Study: Core Capabilities =====
+      - label: "Core Capabilities"
+        name: "capabilities"
+        widget: "list"
+        required: false
+        summary: "{{fields.title}}"
+        fields:
+          - { label: "Emoji Icon (e.g. 💳)", name: "icon", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+
+      # ===== Case Study: Architecture =====
+      - { label: "Architecture Paragraph", name: "architecture_text", widget: "markdown", required: false }
+      - label: "Architecture Flow Steps (in order)"
+        name: "architecture_flow"
+        widget: "list"
+        required: false
+        field: { label: "Step", name: "step", widget: "string" }
+
+      # ===== Case Study: Walkthrough =====
       - label: "Screenshots / Mockups"
         name: "mockups"
         widget: "list"
@@ -48,26 +75,16 @@ collections:
         fields:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "Caption", name: "caption", widget: "string" }
-
       - label: "Demo Video (MP4, keep under 20MB)"
         name: "video"
         widget: "file"
         required: false
         media_library:
           config:
-            max_file_size: 20971520   # 20MB بالبايت
+            max_file_size: 20971520
 
-      - label: "Links"
-        name: "links"
-        widget: "object"
-        required: false
-        fields:
-          - { label: "Case Study Page", name: "case_study", widget: "string", required: false }
-          - { label: "GitHub", name: "github", widget: "string", required: false }
-          - { label: "App Store", name: "app_store", widget: "string", required: false }
-          - { label: "Google Play", name: "google_play", widget: "string", required: false }
-
-      - label: "Problems Solved (Case Study Section)"
+      # ===== Case Study: Problems Solved =====
+      - label: "Problems Solved"
         name: "challenges"
         widget: "list"
         required: false
@@ -77,4 +94,17 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "text" }
 
-      - { label: "Display Order", name: "order", widget: "number", default: 0 }
+      # ===== Tech + Links =====
+      - label: "Tech Tags"
+        name: "tech_tags"
+        widget: "list"
+        required: false
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - label: "Links"
+        name: "links"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "GitHub", name: "github", widget: "string", required: false }
+          - { label: "App Store", name: "app_store", widget: "string", required: false }
+          - { label: "Google Play", name: "google_play", widget: "string", required: false }
