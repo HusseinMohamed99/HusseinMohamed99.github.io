@@ -68,7 +68,7 @@
         padding:.25rem .6rem;border-radius:100px;white-space:nowrap;
         position:relative;z-index:1;
       }
-      .proj-x-body{padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;flex:1;position:relative}
+      .proj-x-body{padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;flex:1;position:relative;min-height:0}
       .proj-x-badge{
         display:flex;align-items:center;gap:.35rem;
         font-family:'Geist Mono',monospace;font-size:.6rem;letter-spacing:.06em;
@@ -76,7 +76,8 @@
       }
       .proj-x-nm{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;line-height:1.15;margin-bottom:.2rem}
       .proj-x-cat{font-size:.78rem;color:var(--muted);margin-bottom:.7rem}
-      .proj-x-desc{font-size:.85rem;line-height:1.55;color:var(--text-secondary,#555);margin-bottom:1rem;flex:1;
+      .proj-x-desc{font-size:.85rem;line-height:1.55;color:var(--text-secondary,#555);margin-bottom:1rem;
+        flex:1;min-height:0;max-height:calc(1.55em * 3);
         display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
       .proj-x-tech{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.1rem}
       .proj-x-tech span{
