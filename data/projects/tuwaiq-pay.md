@@ -1,95 +1,127 @@
 ---
-name: "Tuwaiq Pay"
-category: "Fintech · iOS & Android · Saudi Market"
-badge: "Featured Project"
-short_description: "Production fintech app used by real merchants across Saudi Arabia for invoicing, payment processing, and transaction management. Features biometric login, NearPay SDK tap-to-pay, HyperPay card payments, sub-account management, Firebase Remote Config feature flags, and full Arabic/English localization."
-icon: "images/tuwaiq-pay/tuwaiq_icon.png"
+name: Tuwaiq Pay
+category: Fintech · iOS & Android · Saudi Market
+badge: Featured Project
+short_description: Production fintech app used by real merchants across Saudi
+  Arabia for invoicing, payment processing, and transaction management. Features
+  biometric login, NearPay SDK tap-to-pay, HyperPay card payments, sub-account
+  management, Firebase Remote Config feature flags, and full Arabic/English
+  localization.
+icon: images/tuwaiq-pay/tuwaiq_icon.png
 order: 1
-overview: |
-  Tuwaiq Pay is a production fintech app used by real merchants across Saudi Arabia to manage invoicing, accept in-person and card payments, and track transactions. I own the mobile stack end to end — from the Clean Architecture foundation to the pipeline that ships builds to the App Store and Google Play.
+overview: >
+  Tuwaiq Pay is a production fintech app used by real merchants across Saudi
+  Arabia to manage invoicing, accept in-person and card payments, and track
+  transactions. I own the mobile stack end to end — from the Clean Architecture
+  foundation to the pipeline that ships builds to the App Store and Google Play.
+
 
   The app integrates three payment providers (NearPay NFC tap-to-pay, HyperPay, and Geidea) behind a single interface, so merchants can accept payments however their customers pay, without the app ever feeling like three different apps stitched together.
 stats:
   - number: "3"
-    label: "Payment providers unified behind one interface"
-  - number: "Live"
-    label: "Shipping on both App Store & Google Play"
-  - number: "AR / EN"
-    label: "Full bilingual merchant experience"
+    label: Payment providers unified behind one interface
+  - number: Live
+    label: Shipping on both App Store & Google Play
+  - number: AR / EN
+    label: Full bilingual merchant experience
 capabilities:
-  - icon: "💳"
-    title: "Multi-provider payments"
-    description: "NearPay NFC tap-to-pay, HyperPay card payments, and Geidea, each wrapped behind a shared Strategy interface so the UI never branches on provider."
-  - icon: "🔐"
-    title: "Biometric & secure auth"
-    description: "Face ID / fingerprint login layered on top of token-based session handling, with a dedicated auth gate in the router."
-  - icon: "🧾"
-    title: "Sub-accounts"
-    description: "Merchants can create and manage sub-accounts with their own OTP verification, permissions, and status controls."
-  - icon: "🚩"
-    title: "Remote feature flags"
-    description: "Firebase Remote Config drives kill-switches and gradual rollouts (e.g. disabling NearPay instantly if a provider has an outage)."
-  - icon: "🌍"
-    title: "Arabic / English"
-    description: "Every screen, error message, and NFC failure reason is localized with easy_localization."
-  - icon: "🚀"
-    title: "CI/CD to both stores"
-    description: "GitHub Actions + Fastlane build, sign, and ship Dev/UAT/Prod flavors to Firebase App Distribution and TestFlight automatically."
-architecture_text: |
-  The app is split into clear data / domain / presentation layers, with Riverpod (codegen + freezed state) managing everything above the repository boundary. Three build flavors — Dev, UAT, and Prod — each point at their own Firebase project, so a bug in staging can never leak into a merchant's production data. Routing uses go_router with typed routes and a splash/auth gate that decides where a cold-started user lands before any screen renders.
-architecture_flow:
-  - step: "Presentation (Riverpod)"
-  - step: "Domain (Use Cases)"
-  - step: "Repository Interface"
-  - step: "Data (Dio + DTOs)"
-  - step: "NearPay / HyperPay / Geidea SDKs"
-banner: "images/tuwaiq-pay/Tuwaiq G ScreenshotsBanner.jpg"
-mockups:
-  - image: "images/tuwaiq-pay/18.jpg"
-    caption: "Accept Payments"
-  - image: "images/tuwaiq-pay/19.jpg"
-    caption: "Payment Links & Invoices"
-  - image: "images/tuwaiq-pay/20.jpg"
-    caption: "Manage Sub-Accounts"
-  - image: "images/tuwaiq-pay/21.jpg"
-    caption: "Bank Transfers"
-  - image: "images/tuwaiq-pay/22.jpg"
-    caption: "Refunds"
-  - image: "images/tuwaiq-pay/23.jpg"
-    caption: "Live Dashboard"
-  - image: "images/tuwaiq-pay/24.jpg"
-    caption: "No Setup Fees"
-video: "videos/tuwaiq-pay/demo.mp4"
+  - icon: 💳
+    title: Multi-provider payments
+    description: NearPay NFC tap-to-pay, HyperPay card payments, and Geidea, each
+      wrapped behind a shared Strategy interface so the UI never branches on
+      provider.
+  - icon: 🔐
+    title: Biometric & secure auth
+    description: Face ID / fingerprint login layered on top of token-based session
+      handling, with a dedicated auth gate in the router.
+  - icon: 🧾
+    title: Sub-accounts
+    description: Merchants can create and manage sub-accounts with their own OTP
+      verification, permissions, and status controls.
+  - icon: 🚩
+    title: Remote feature flags
+    description: Firebase Remote Config drives kill-switches and gradual rollouts
+      (e.g. disabling NearPay instantly if a provider has an outage).
+  - icon: 🌍
+    title: Arabic / English
+    description: Every screen, error message, and NFC failure reason is localized
+      with easy_localization.
+  - icon: 🚀
+    title: CI/CD to both stores
+    description: GitHub Actions + Fastlane build, sign, and ship Dev/UAT/Prod
+      flavors to Firebase App Distribution and TestFlight automatically.
+video: videos/tuwaiq-pay/demo.mp4
 challenges:
-  - label: "Strategy Pattern"
-    title: "Adding a third payment provider without a third UI"
-    body: "When Geidea joined NearPay and HyperPay as a bill payment option, I refactored the provider-specific logic into GeideaBillStrategy, HyperPayBillStrategy, and NearPayBillStrategy classes behind one interface — new providers plug in without touching a single screen."
-  - label: "Remote Config"
-    title: "Stale cache & a race condition on cold start"
-    body: "Firebase Remote Config was occasionally serving stale flags right after app launch. Fixed the fetch/activate sequencing so the app never reads a flag before the first successful config fetch resolves."
-  - label: "App Store Review"
-    title: "Rejection over tracking disclosure"
-    body: "The app was rejected over missing NSUserTrackingUsageDescription / ATT handling for IDFA. Added the proper permission prompt and usage string, and the resubmission passed review."
-  - label: "Android 16KB pages"
-    title: "Play Store's new memory page-size requirement"
-    body: "Newer Android devices require 16KB memory page size compliance. Resolved it via useLegacyPackaging configuration in the Android build rather than waiting on every native dependency to update."
-  - label: "R8 / ProGuard"
-    title: "A feature flag that vanished only in release builds"
-    body: "A production feature was invisible only in release APKs — R8 was tree-shaking code the release build thought was unused. Traced it to over-aggressive shrinking and shipped a --no-shrink workaround while a proper keep-rule was rolled out."
+  - label: Strategy Pattern
+    title: Adding a third payment provider without a third UI
+    body: When Geidea joined NearPay and HyperPay as a bill payment option, I
+      refactored the provider-specific logic into GeideaBillStrategy,
+      HyperPayBillStrategy, and NearPayBillStrategy classes behind one interface
+      — new providers plug in without touching a single screen.
+  - label: Remote Config
+    title: Stale cache & a race condition on cold start
+    body: Firebase Remote Config was occasionally serving stale flags right after
+      app launch. Fixed the fetch/activate sequencing so the app never reads a
+      flag before the first successful config fetch resolves.
+  - label: App Store Review
+    title: Rejection over tracking disclosure
+    body: The app was rejected over missing NSUserTrackingUsageDescription / ATT
+      handling for IDFA. Added the proper permission prompt and usage string,
+      and the resubmission passed review.
+  - label: Android 16KB pages
+    title: Play Store's new memory page-size requirement
+    body: Newer Android devices require 16KB memory page size compliance. Resolved
+      it via useLegacyPackaging configuration in the Android build rather than
+      waiting on every native dependency to update.
+  - label: R8 / ProGuard
+    title: A feature flag that vanished only in release builds
+    body: A production feature was invisible only in release APKs — R8 was
+      tree-shaking code the release build thought was unused. Traced it to
+      over-aggressive shrinking and shipped a --no-shrink workaround while a
+      proper keep-rule was rolled out.
 tech_tags:
-  - tag: "Flutter"
-  - tag: "Riverpod"
-  - tag: "Clean Architecture"
-  - tag: "NearPay SDK"
-  - tag: "HyperPay"
-  - tag: "Geidea"
-  - tag: "Freezed"
-  - tag: "GoRouter"
-  - tag: "Firebase Remote Config"
-  - tag: "Dio"
-  - tag: "GitHub Actions"
-  - tag: "Fastlane"
+  - tag: Flutter
+  - tag: Riverpod
+  - tag: Clean Architecture
+  - tag: NearPay SDK
+  - tag: HyperPay
+  - tag: Geidea
+  - tag: Freezed
+  - tag: GoRouter
+  - tag: Firebase Remote Config
+  - tag: Dio
+  - tag: GitHub Actions
+  - tag: Fastlane
+banner: images/tuwaiq-pay/Tuwaiq G ScreenshotsBanner.jpg
+architecture_text: >
+  The app is split into clear data / domain / presentation layers, with Riverpod
+  (codegen + freezed state) managing everything above the repository boundary.
+  Three build flavors — Dev, UAT, and Prod — each point at their own Firebase
+  project, so a bug in staging can never leak into a merchant's production data.
+  Routing uses go_router with typed routes and a splash/auth gate that decides
+  where a cold-started user lands before any screen renders.
+architecture_flow:
+  - step: Presentation (Riverpod)
+  - step: Domain (Use Cases)
+  - step: Repository Interface
+  - step: Data (Dio + DTOs)
+  - step: NearPay / HyperPay / Geidea SDKs
+mockups:
+  - image: images/tuwaiq-pay/18.jpg
+    caption: Select Payment Methods
+  - image: images/tuwaiq-pay/19.jpg
+    caption: Payment Links & Invoices
+  - image: images/tuwaiq-pay/20.jpg
+    caption: Manage Sub-Accounts
+  - image: images/tuwaiq-pay/21.jpg
+    caption: Bank Accounts
+  - image: images/tuwaiq-pay/22.jpg
+    caption: Refunds
+  - image: images/tuwaiq-pay/23.jpg
+    caption: Transactions
+  - image: images/tuwaiq-pay/24.jpg
+    caption: Business Registration
 links:
-  app_store: "https://apps.apple.com/sa/app/tuwaiq-pay/id6745802564"
-  google_play: "https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay"
+  app_store: https://apps.apple.com/sa/app/tuwaiq-pay/id6745802564
+  google_play: https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay
 ---
