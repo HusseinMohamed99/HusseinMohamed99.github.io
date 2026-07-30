@@ -52,7 +52,7 @@ architecture_flow:
   - step: Hive (offline cache)
 mockups:
   - image: /images/uploads/real-estate-home.png
-    caption: Home
+    caption: RealEstate Home
   - image: /images/uploads/favorites.png
     caption: Favorites
   - image: /images/uploads/filter.png
