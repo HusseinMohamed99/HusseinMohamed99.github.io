@@ -44,9 +44,8 @@ architecture_flow:
   - step: UI
   - step: Local cache (SharedPreferences)
   - step: Firebase sync
+banner: images/muslim-app/muslim-cover.png
 mockups:
-  - image: /images/uploads/muslim-cover.png
-    caption: Muslim
   - image: /images/uploads/275237644-999b5948-7976-4e3d-a23b-e4054bce0db1.png
     caption: Splash Light
   - image: /images/uploads/275237714-869fb410-7843-40e6-91e8-f99c19d4f5bc.png
