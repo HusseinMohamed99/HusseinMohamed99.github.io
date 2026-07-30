@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T14:43:35.410Z",
+  "generated": "2026-07-30T15:30:47.517Z",
   "count": 8,
   "projects": [
     {
@@ -172,13 +172,49 @@
           "tag": "Flutter"
         },
         {
-          "tag": "BLoC"
+          "tag": "flutter_bloc"
+        },
+        {
+          "tag": "get_it"
         },
         {
           "tag": "Dio"
         },
         {
-          "tag": "Shimmer"
+          "tag": "dartz"
+        },
+        {
+          "tag": "equatable"
+        },
+        {
+          "tag": "TMDB API"
+        },
+        {
+          "tag": "Clean Architecture"
+        },
+        {
+          "tag": "Firebase Remote Config"
+        },
+        {
+          "tag": "connectivity_plus"
+        },
+        {
+          "tag": "cached_network_image"
+        },
+        {
+          "tag": "skeletonizer"
+        },
+        {
+          "tag": "carousel_slider"
+        },
+        {
+          "tag": "flutter_dotenv"
+        },
+        {
+          "tag": "url_launcher"
+        },
+        {
+          "tag": "Shorebird"
         }
       ],
       "links": {
