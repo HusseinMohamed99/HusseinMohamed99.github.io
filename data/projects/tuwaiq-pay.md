@@ -50,7 +50,6 @@ capabilities:
     title: CI/CD to both stores
     description: GitHub Actions + Fastlane build, sign, and ship Dev/UAT/Prod
       flavors to Firebase App Distribution and TestFlight automatically.
-video: videos/tuwaiq-pay/demo.mp4
 challenges:
   - label: Strategy Pattern
     title: Adding a third payment provider without a third UI

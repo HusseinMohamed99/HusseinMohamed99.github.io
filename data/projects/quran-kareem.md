@@ -31,7 +31,6 @@ architecture_flow:
   - step: "Hive (bundled Quran text)"
   - step: "SharedPreferences (bookmarks)"
 mockups: []
-video: "videos/quran-kareem/demo.mp4"
 challenges: []
 tech_tags:
   - tag: "Flutter"

@@ -37,7 +37,6 @@ architecture_flow:
   - step: "REST API + Firebase"
   - step: "iOS / Android / Web build targets"
 mockups: []
-video: "videos/sportymate/demo.mp4"
 challenges:
   - label: "Multi-platform CI"
     title: "Getting iOS, Android, and web green in the same pipeline"

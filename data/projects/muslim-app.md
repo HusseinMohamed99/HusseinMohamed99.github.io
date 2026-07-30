@@ -34,7 +34,6 @@ architecture_flow:
   - step: "Local cache (SharedPreferences)"
   - step: "Firebase sync"
 mockups: []
-video: "videos/muslim-app/demo.mp4"
 challenges: []
 tech_tags:
   - tag: "Flutter"

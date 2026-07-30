@@ -35,7 +35,6 @@ architecture_flow:
   - step: "Dio (REST)"
   - step: "Firebase Auth"
 mockups: []
-video: "videos/tripso/demo.mp4"
 challenges: []
 tech_tags:
   - tag: "Flutter"
