@@ -65,7 +65,7 @@ mockups:
   - image: /images/uploads/choose-role.png
     caption: Choose Role
   - image: /images/uploads/sporty-mate-home.png
-    caption: Home
+    caption: Sporty Mate Home
   - image: /images/uploads/all-categories.png
     caption: All Categories
   - image: /images/uploads/club-when-selected.png
