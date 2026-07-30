@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T19:44:24.791Z",
+  "generated": "2026-07-30T19:46:44.973Z",
   "count": 8,
   "projects": [
     {
@@ -235,13 +235,40 @@
           "tag": "Flutter"
         },
         {
-          "tag": "Firebase"
+          "tag": "Provider"
         },
         {
-          "tag": "Localization"
+          "tag": "ChangeNotifier"
         },
         {
           "tag": "SharedPreferences"
+        },
+        {
+          "tag": "Dio"
+        },
+        {
+          "tag": "audioplayers"
+        },
+        {
+          "tag": "Firebase Core"
+        },
+        {
+          "tag": "Firebase Remote Config"
+        },
+        {
+          "tag": "flutter_screenutil"
+        },
+        {
+          "tag": "flutter_localizations / intl"
+        },
+        {
+          "tag": "url_launcher"
+        },
+        {
+          "tag": "package_info_plus"
+        },
+        {
+          "tag": "Shorebird code push"
         }
       ],
       "links": {
