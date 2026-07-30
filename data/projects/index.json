@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T20:11:32.802Z",
+  "generated": "2026-07-30T20:24:04.671Z",
   "count": 8,
   "projects": [
     {
@@ -336,9 +336,9 @@
     {
       "slug": "quran-kareem",
       "name": "Quran Kareem",
-      "category": "Islamic · Offline-First",
+      "category": "Islamic Education · Personal Project",
       "badge": "Personal Project",
-      "short_description": "A focused, single-purpose reading app — full Arabic Quran text with verse-by-verse navigation and bookmarks, built to work fully offline once installed.",
+      "short_description": "Arabic-first Quran app with full mushaf reading, verse and surah recitation, live radio, audio tafsir, reciters directory, and riwayat browser — published on Google Play.",
       "icon": "images/quran-kareem/logo.svg",
       "order": 8,
       "tech_tags": [
@@ -346,13 +346,43 @@
           "tag": "Flutter"
         },
         {
-          "tag": "Hive"
+          "tag": "flutter_bloc / Cubit"
         },
         {
-          "tag": "Localization"
+          "tag": "Dio"
         },
         {
-          "tag": "SharedPreferences"
+          "tag": "audioplayers"
+        },
+        {
+          "tag": "video_player"
+        },
+        {
+          "tag": "connectivity_plus"
+        },
+        {
+          "tag": "Firebase Core"
+        },
+        {
+          "tag": "Firebase Crashlytics"
+        },
+        {
+          "tag": "Firebase Remote Config"
+        },
+        {
+          "tag": "flutter_screenutil"
+        },
+        {
+          "tag": "share_plus"
+        },
+        {
+          "tag": "url_launcher"
+        },
+        {
+          "tag": "mp3quran API"
+        },
+        {
+          "tag": "alquran.cloud API"
         }
       ],
       "links": {
