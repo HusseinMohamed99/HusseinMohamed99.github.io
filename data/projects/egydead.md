@@ -32,7 +32,6 @@ architecture_flow:
   - step: "Dio"
   - step: "Media API"
 mockups: []
-video: "videos/egydead/demo.mp4"
 challenges: []
 tech_tags:
   - tag: "Flutter"

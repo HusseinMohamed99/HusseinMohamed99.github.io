@@ -35,7 +35,6 @@ architecture_flow:
   - step: "Dio (remote)"
   - step: "Hive (offline cache)"
 mockups: []
-video: "videos/systempro/demo.mp4"
 challenges:
   - label: "Build failure"
     title: "A missing .env file silently broke the build"

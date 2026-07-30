@@ -12,6 +12,10 @@
   --contact-border:rgba(250,248,243,.1); --contact-label:rgba(250,248,243,.28);
   --about-text:rgba(250,248,243,.55); --about-strong:#faf8f3;
   --stat-dark-bg:#0f0e0b; --stat-dark-text:#faf8f3; --stat-dark-sub:rgba(250,248,243,.4);
+  /* Consumed by the JS-rendered project cards (js/render-projects.js) and the
+     case-study walkthrough tabs. --text tracks --ink so it flips with the theme
+     automatically; --text-secondary needs a per-theme value. */
+  --text:var(--ink); --text-secondary:#5a584f;
 }
 [data-theme="dark"]{
   --cream:#0d0d0f; --ink:#f0ede8; --ink2:#d4d0c8; --muted:#7a7870;
@@ -26,6 +30,7 @@
   --contact-border:rgba(240,237,232,.1); --contact-label:rgba(240,237,232,.25);
   --about-text:rgba(240,237,232,.5); --about-strong:#f0ede8;
   --stat-dark-bg:#1e1e1e; --stat-dark-text:#f0ede8; --stat-dark-sub:rgba(240,237,232,.4);
+  --text-secondary:#a8a49c;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}

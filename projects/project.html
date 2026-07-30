@@ -4,6 +4,21 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title id="page-title">Project — Hussein Mohamed Ammar</title>
+<!-- Static fallbacks: social crawlers (LinkedIn, Slack, WhatsApp, Twitter) do not run
+     JS, so these are what an unfurled link actually shows. renderProject() overwrites
+     them per-project below, which is what Google picks up on its rendering pass. -->
+<meta id="m-desc" name="description" content="Mobile engineering case study by Hussein Mohamed — architecture, implementation detail, and the real problems solved shipping a production Flutter app."/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Hussein Mohamed — Flutter Developer"/>
+<meta id="m-og-url" property="og:url" content="https://husseinmohamed99.github.io/projects/project.html"/>
+<meta id="m-og-title" property="og:title" content="Case Study — Hussein Mohamed"/>
+<meta id="m-og-desc" property="og:description" content="Mobile engineering case study by Hussein Mohamed — architecture, implementation detail, and the real problems solved shipping a production Flutter app."/>
+<meta id="m-og-image" property="og:image" content="https://husseinmohamed99.github.io/photo.jpg"/>
+<meta id="m-tw-card" name="twitter:card" content="summary_large_image"/>
+<meta id="m-tw-title" name="twitter:title" content="Case Study — Hussein Mohamed"/>
+<meta id="m-tw-desc" name="twitter:description" content="Mobile engineering case study by Hussein Mohamed — architecture, implementation detail, and the real problems solved shipping a production Flutter app."/>
+<meta id="m-tw-image" name="twitter:image" content="https://husseinmohamed99.github.io/photo.jpg"/>
+<link id="m-canonical" rel="canonical" href="https://husseinmohamed99.github.io/projects/project.html"/>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -150,8 +165,16 @@
   }
   .cs-walk-tab.active{
     background:#fff !important;
-    color:var(--text,#111);
+    color:#111;
     box-shadow:0 2px 6px rgba(0,0,0,.1);
+  }
+  /* The track and the active pill are both hardcoded for light mode above, so the
+     whole control needs inverting — a cream --text on a #fff pill is invisible. */
+  [data-theme="dark"] .cs-walk-tabs{ background:rgba(255,255,255,.06); }
+  [data-theme="dark"] .cs-walk-tab.active{
+    background:var(--border2) !important;
+    color:var(--ink);
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
   }
   .cs-walk-tab.active .cs-walk-tab-dot{
     background:var(--green,#1D5CFF);
@@ -241,6 +264,7 @@ async function renderProject() {
 
   document.title = (p.name || "Project") + " — Case Study | Hussein Mohamed";
   document.getElementById("page-title").textContent = document.title;
+  applyMeta(p, slug);
 
   const stats = (p.stats || []).map(s => `
     <div class="cs-stat"><span class="cs-stat-n">${escapeHtml(s.number)}</span><span class="cs-stat-l">${escapeHtml(s.label)}</span></div>
@@ -422,6 +446,51 @@ async function renderProject() {
   document.getElementById("cs-lightbox-close").addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+}
+
+const SITE_ORIGIN = "https://husseinmohamed99.github.io";
+
+/** Trim to a whole word at/under `max` chars — meta descriptions get cut around 160. */
+function truncate(str, max) {
+  const s = String(str || "").replace(/\s+/g, " ").trim();
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[,;:.\-—\s]+$/, "") + "…";
+}
+
+/** Repo-relative media path -> absolute, URL-encoded URL (some filenames contain spaces). */
+function absMediaUrl(relPath) {
+  return SITE_ORIGIN + "/" + String(relPath).split("/").map(encodeURIComponent).join("/");
+}
+
+function setMeta(id, attr, value) {
+  const el = document.getElementById(id);
+  if (el && value) el.setAttribute(attr, value);
+}
+
+function applyMeta(p, slug) {
+  const title = (p.name || "Project") + " — Case Study | Hussein Mohamed";
+  const desc = truncate(p.short_description || p.overview || "", 160);
+  const canonical = SITE_ORIGIN + "/projects/project.html?slug=" + encodeURIComponent(slug);
+  // Banner is wide (good for a large summary card); an app icon is square, so
+  // downgrade to the small card rather than let it get letterboxed/cropped.
+  // SVG is rejected as an og:image by every major crawler, so those fall through.
+  const isRaster = (path) => /\.(png|jpe?g|webp|gif)$/i.test(path || "");
+  const image = isRaster(p.banner) ? absMediaUrl(p.banner)
+              : isRaster(p.icon)   ? absMediaUrl(p.icon)
+              : SITE_ORIGIN + "/photo.jpg";
+
+  setMeta("m-desc", "content", desc);
+  setMeta("m-og-url", "content", canonical);
+  setMeta("m-og-title", "content", title);
+  setMeta("m-og-desc", "content", desc);
+  setMeta("m-og-image", "content", image);
+  setMeta("m-tw-card", "content", p.banner ? "summary_large_image" : "summary");
+  setMeta("m-tw-title", "content", title);
+  setMeta("m-tw-desc", "content", desc);
+  setMeta("m-tw-image", "content", image);
+  setMeta("m-canonical", "href", canonical);
 }
 
 function escapeHtml(str) {

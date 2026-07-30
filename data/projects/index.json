@@ -1,0 +1,271 @@
+{
+  "generated": "2026-07-30T14:37:31.724Z",
+  "count": 8,
+  "projects": [
+    {
+      "slug": "tuwaiq-pay",
+      "name": "Tuwaiq Pay",
+      "category": "Fintech · iOS & Android · Saudi Market",
+      "badge": "Featured Project",
+      "short_description": "Production fintech app used by real merchants across Saudi Arabia for invoicing, payment processing, and transaction management. Features biometric login, NearPay SDK tap-to-pay, HyperPay card payments, sub-account management, Firebase Remote Config feature flags, and full Arabic/English localization.",
+      "icon": "images/tuwaiq-pay/tuwaiq_icon.png",
+      "order": 1,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "Riverpod"
+        },
+        {
+          "tag": "Clean Architecture"
+        },
+        {
+          "tag": "NearPay SDK"
+        },
+        {
+          "tag": "HyperPay"
+        },
+        {
+          "tag": "Geidea"
+        },
+        {
+          "tag": "Freezed"
+        },
+        {
+          "tag": "GoRouter"
+        },
+        {
+          "tag": "Firebase Remote Config"
+        },
+        {
+          "tag": "Dio"
+        },
+        {
+          "tag": "GitHub Actions"
+        },
+        {
+          "tag": "Fastlane"
+        }
+      ],
+      "links": {
+        "app_store": "https://apps.apple.com/sa/app/tuwaiq-pay/id6745802564",
+        "google_play": "https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay"
+      },
+      "lastmod": "2026-07-30"
+    },
+    {
+      "slug": "refqa",
+      "name": "Refqa (رِفقة)",
+      "category": "Islamic Lifestyle · Offline-First · Arabic/English",
+      "badge": "Personal Project",
+      "short_description": "A comprehensive Islamic companion app: dual-mode Quran reading (browsable index + a full 604-page Madani Mushaf renderer), on-device speech-recognition recitation checking with zero audio leaving the device, native unattended adhan playback via a custom Kotlin AlarmManager + ForegroundService pipeline, Hadith, Tafsir, Duas, Qibla, khatm tracking, streaks, and a full stats dashboard with time-spent-per-category tracking — all privacy-first, with location and PII scrubbed before any crash report.",
+      "icon": "images/refqa/refqa_logo.png",
+      "order": 2,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "Riverpod"
+        },
+        {
+          "tag": "Clean Architecture"
+        },
+        {
+          "tag": "Freezed"
+        },
+        {
+          "tag": "Drift / sqflite"
+        },
+        {
+          "tag": "Kotlin (native)"
+        },
+        {
+          "tag": "go_router"
+        },
+        {
+          "tag": "just_audio"
+        },
+        {
+          "tag": "audio_service"
+        },
+        {
+          "tag": "easy_localization"
+        },
+        {
+          "tag": "Sentry"
+        }
+      ],
+      "links": {},
+      "lastmod": "2026-07-30"
+    },
+    {
+      "slug": "sportymate",
+      "name": "SportyMate",
+      "category": "Sports Tech · iOS, Android & Web",
+      "badge": "Company Project",
+      "short_description": "Cross-platform sports management platform connecting players, trainers, and clubs across iOS, Android & web. Smart bookings, real-time chat, performance tracking, and analytics dashboards — built with BLoC and deployed via Fastlane CI/CD.",
+      "icon": "images/sportymate/sporty_icon.png",
+      "order": 3,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "BLoC"
+        },
+        {
+          "tag": "Firebase"
+        },
+        {
+          "tag": "REST APIs"
+        },
+        {
+          "tag": "Fastlane"
+        },
+        {
+          "tag": "GitHub Actions"
+        }
+      ],
+      "links": {},
+      "lastmod": "2026-07-30"
+    },
+    {
+      "slug": "systempro",
+      "name": "SystemPro",
+      "category": "Real Estate · Saudi Market",
+      "badge": "Company Project",
+      "short_description": "Advanced real estate platform for the Saudi market with property search, smart filters, bookmarks, real-time updates, and offline access via Hive. Scalable BLoC architecture with pagination, dependency injection, and 30% performance boost from profiling.",
+      "icon": "images/systempro/systempro_icon.png",
+      "order": 4,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "BLoC"
+        },
+        {
+          "tag": "Dio"
+        },
+        {
+          "tag": "Hive"
+        },
+        {
+          "tag": "Freezed"
+        }
+      ],
+      "links": {},
+      "lastmod": "2026-07-30"
+    },
+    {
+      "slug": "egydead",
+      "name": "EGY DEAD",
+      "category": "Entertainment · Google Play",
+      "badge": "Personal Project",
+      "short_description": "Media browser for movies, series, and anime with 10K+ downloads on Google Play. Smart recommendations, trailers, cast details, and categorized search — built with BLoC, Dio, and shimmer loading UX.",
+      "icon": "images/egydead/egydead_icon.png",
+      "order": 5,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "BLoC"
+        },
+        {
+          "tag": "Dio"
+        },
+        {
+          "tag": "Shimmer"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/HusseinMohamed99/EGY_DEAD"
+      },
+      "lastmod": "2026-07-30"
+    },
+    {
+      "slug": "muslim-app",
+      "name": "Muslim App",
+      "category": "Islamic Lifestyle · Google Play",
+      "badge": "Personal Project",
+      "short_description": "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Published on Google Play with bilingual AR/EN support, light & dark themes, and Firebase sync for cross-device data.",
+      "icon": "images/muslim-app/muslim_icon.png",
+      "order": 6,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "Firebase"
+        },
+        {
+          "tag": "Localization"
+        },
+        {
+          "tag": "SharedPreferences"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/HusseinMohamed99/Muslim"
+      },
+      "lastmod": "2026-07-30"
+    },
+    {
+      "slug": "tripso",
+      "name": "Tripso",
+      "category": "Travel Planning · Graduation Project",
+      "badge": "Graduation",
+      "short_description": "Tourism app covering Egypt, UAE, France, and Italy with top attractions, ticket pricing, interactive maps, and historical insights. Graduation project built with Cubit state management, Dio REST integration, and Firebase auth.",
+      "icon": "images/tripso/tripso_icon.png",
+      "order": 7,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "Cubit"
+        },
+        {
+          "tag": "Dio"
+        },
+        {
+          "tag": "Firebase"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/HusseinMohamed99/Tripso"
+      },
+      "lastmod": "2026-07-30"
+    },
+    {
+      "slug": "quran-kareem",
+      "name": "Quran Kareem",
+      "category": "Islamic · Offline-First",
+      "badge": "Personal Project",
+      "short_description": "A focused, single-purpose reading app — full Arabic Quran text with verse-by-verse navigation and bookmarks, built to work fully offline once installed.",
+      "icon": "images/quran-kareem/logo.svg",
+      "order": 8,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "Hive"
+        },
+        {
+          "tag": "Localization"
+        },
+        {
+          "tag": "SharedPreferences"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/HusseinMohamed99/Quran_Kareem"
+      },
+      "lastmod": "2026-07-30"
+    }
+  ]
+}

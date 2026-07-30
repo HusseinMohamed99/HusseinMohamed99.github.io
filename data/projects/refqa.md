@@ -68,7 +68,6 @@ mockups:
     caption: "Challenges"
   - image: "images/refqa/rifqa_10_daily_feed.png"
     caption: "Daily Feed"
-video: "videos/refqa/demo.mp4"
 challenges:
   - label: "Android Resource Shrinking"
     title: "Notification sounds worked in debug, went silent in release"
@@ -97,6 +96,5 @@ tech_tags:
   - tag: "audio_service"
   - tag: "easy_localization"
   - tag: "Sentry"
-links:
-  github: "https://github.com/HusseinMohamed99/Refqa"
+links: {}
 ---
