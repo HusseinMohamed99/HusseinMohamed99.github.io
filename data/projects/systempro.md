@@ -51,7 +51,7 @@ architecture_flow:
   - step: Dio (remote)
   - step: Hive (offline cache)
 mockups:
-  - image: /images/uploads/home.png
+  - image: /images/uploads/real-estate-home.png
     caption: Home
   - image: /images/uploads/favorites.png
     caption: Favorites
