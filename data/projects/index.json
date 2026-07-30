@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T19:53:21.650Z",
+  "generated": "2026-07-30T20:11:32.802Z",
   "count": 8,
   "projects": [
     {
@@ -289,13 +289,43 @@
           "tag": "Flutter"
         },
         {
-          "tag": "Cubit"
+          "tag": "flutter_bloc / Cubit"
         },
         {
-          "tag": "Dio"
+          "tag": "Provider (ChangeNotifier)"
         },
         {
-          "tag": "Firebase"
+          "tag": "Firebase Auth"
+        },
+        {
+          "tag": "Cloud Firestore"
+        },
+        {
+          "tag": "Firebase Storage"
+        },
+        {
+          "tag": "shared_preferences"
+        },
+        {
+          "tag": "REST (WeatherAPI)"
+        },
+        {
+          "tag": "flutter_screenutil"
+        },
+        {
+          "tag": "cached_network_image"
+        },
+        {
+          "tag": "flutter_tts"
+        },
+        {
+          "tag": "image_picker / image_cropper"
+        },
+        {
+          "tag": "connectivity_plus"
+        },
+        {
+          "tag": "url_launcher"
         }
       ],
       "links": {
