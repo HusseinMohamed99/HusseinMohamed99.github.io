@@ -64,7 +64,7 @@ mockups:
     caption: OnBoarding 4
   - image: /images/uploads/choose-role.png
     caption: Choose Role
-  - image: /images/uploads/home.png
+  - image: /images/uploads/sporty-mate-home.png
     caption: Home
   - image: /images/uploads/all-categories.png
     caption: All Categories
