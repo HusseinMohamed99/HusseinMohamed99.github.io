@@ -5,9 +5,10 @@ backend:
   base_url: https://api.netlify.com
   auth_endpoint: auth
 
-# Where uploaded images/videos are stored
+# Global fallback only. The projects collection overrides this so uploads land in
+# per-project folders (see media_folder/public_folder on the collection below).
 media_folder: "images/uploads"
-public_folder: "/images/uploads"
+public_folder: "images/uploads"
 
 publish_mode: simple
 
@@ -21,9 +22,26 @@ collections:
     slug: "{{slug}}"
     identifier_field: "name"
     summary: "{{name}} — {{category}}"
+    # Uploads go to images/<project-slug>/ at the repo root, matching the folder
+    # layout every existing asset already uses.
+    #   media_folder  — leading "/" makes it repo-root relative (without it, Decap
+    #                   treats it as relative to this collection's folder,
+    #                   i.e. data/projects/).
+    #   public_folder — the string written into the .md. Deliberately has NO
+    #                   leading slash, because the renderers prefix it
+    #                   (project.html uses "../", render-projects.js uses
+    #                   data-icon-base) and every existing path is relative.
+    media_folder: "/images/{{slug}}"
+    public_folder: "images/{{slug}}"
     fields:
       # ===== Card / Hero basics =====
-      - { label: "Project Name", name: "name", widget: "string" }
+      - label: "Project Name"
+        name: "name"
+        widget: "string"
+        hint: >-
+          Fill this in FIRST on a new project. The filename and the images/<slug>/
+          upload folder are both derived from it, and it is not renamed later if
+          you change this.
       - { label: "Category / Tagline", name: "category", widget: "string" }
       - label: "Badge"
         name: "badge"
@@ -88,6 +106,13 @@ collections:
         name: "video"
         widget: "file"
         required: false
+        hint: >-
+          Leave EMPTY unless you have actually uploaded a video here. A path to a
+          file that does not exist renders a dead black player as the entire
+          walkthrough section.
+        # Overrides the collection's /images/{{slug}} so videos land in videos/<slug>/.
+        media_folder: "/videos/{{slug}}"
+        public_folder: "videos/{{slug}}"
         media_library:
           config:
             max_file_size: 20971520

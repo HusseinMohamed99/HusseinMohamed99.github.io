@@ -230,7 +230,11 @@
 <div id="project-root" style="display:none"></div>
 <div class="cs-lightbox" id="cs-lightbox">
   <button class="cs-lightbox-close" id="cs-lightbox-close" aria-label="Close">✕</button>
-  <img id="cs-lightbox-img" src="" alt="Screenshot preview"/>
+  <!-- No src attribute. src="" is invalid per spec ("valid non-empty URL") and makes
+       img.src resolve to the document URL, so the element reports as a broken image
+       in audits. Current Chrome does not refetch the document for it, but older
+       engines did. Set on open, removed on close. -->
+  <img id="cs-lightbox-img" alt="Screenshot preview"/>
 </div>
 
 <footer>
@@ -442,7 +446,8 @@ async function renderProject() {
       lightbox.classList.add("open");
     });
   });
-  function closeLightbox() { lightbox.classList.remove("open"); lightboxImg.src = ""; }
+  // removeAttribute, not src="" — see the note on the <img> above.
+  function closeLightbox() { lightbox.classList.remove("open"); lightboxImg.removeAttribute("src"); }
   document.getElementById("cs-lightbox-close").addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
