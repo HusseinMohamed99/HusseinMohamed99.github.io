@@ -1,91 +1,151 @@
 ---
-name: "Muslim App"
-category: "Islamic Lifestyle · Google Play"
-badge: "Personal Project"
-short_description: "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Published on Google Play with bilingual AR/EN support, light & dark themes, and Firebase sync for cross-device data."
-icon: "images/muslim-app/muslim_icon.png"
+name: Muslim App
+category: Islamic Lifestyle · Google Play
+badge: Personal Project
+short_description: All-in-one Islamic app with Quran, Hadith, Azkar, Zakat
+  calculator, and prayer tools. Published on Google Play with bilingual AR/EN
+  support, light & dark themes, and Firebase sync for cross-device data.
+icon: images/muslim-app/muslim_icon.png
 order: 6
-overview: |
-  Muslim App is a cross-platform Flutter app (Android, iOS, plus desktop/web build targets) that bundles the daily-practice essentials for Muslim users into one offline-first place: the full Quran, a Hadith collection, morning/evening and situational Azkar, a digital Sebha counter, a Zakat calculator, and live Quran radio streams. The Quran (114 surah text files) and Hadith corpus ship inside the app bundle, so everything except radio works with no network connection. The entire UI is fully bilingual Arabic/English with light and dark themes, and the user's language and theme choices persist across launches.
+overview: >
+  Muslim App is a cross-platform Flutter app (Android, iOS, plus desktop/web
+  build targets) that bundles the daily-practice essentials for Muslim users
+  into one offline-first place: the full Quran, a Hadith collection,
+  morning/evening and situational Azkar, a digital Sebha counter, a Zakat
+  calculator, and live Quran radio streams. The Quran (114 surah text files) and
+  Hadith corpus ship inside the app bundle, so everything except radio works
+  with no network connection. The entire UI is fully bilingual Arabic/English
+  with light and dark themes, and the user's language and theme choices persist
+  across launches.
 stats:
-  - number: "4-in-1"
-    label: "Quran, Hadith, Azkar & Zakat in one app"
-  - number: "AR / EN"
-    label: "Fully bilingual with light & dark themes"
-  - number: "Offline"
-    label: "Quran and Hadith bundled — no connection needed"
+  - number: 4-in-1
+    label: Quran, Hadith, Azkar & Zakat in one app
+  - number: AR / EN
+    label: Fully bilingual with light & dark themes
+  - number: Offline
+    label: Quran and Hadith bundled — no connection needed
 capabilities:
-  - icon: "📖"
-    title: "Full Quran Reader"
-    description: "All 114 surahs read from bundled asset files and rendered verse-by-verse in RTL with authentic Arabic-numeral verse-end ornaments."
-  - icon: "📜"
-    title: "Hadith Collection"
-    description: "A bundled Hadith corpus parsed at runtime from language-specific text files, switching between the Arabic and English source based on the active locale."
-  - icon: "🤲"
-    title: "Azkar & Duaa Library"
-    description: "Curated sets of morning, evening, waking, sleeping, after-prayer azkar and duaa, browsable from the home screen as illustrated cards."
-  - icon: "📿"
-    title: "Digital Sebha"
-    description: "An animated rotating tasbih counter that cycles through the six standard post-prayer azkar as the count advances."
-  - icon: "🧮"
-    title: "Zakat Calculator"
-    description: "A live 2.5% zakat calculation that updates in real time as the user types the amount."
-  - icon: "📻"
-    title: "Live Quran Radio"
-    description: "Streams reciter radio stations fetched from the mp3quran.net API, with play/pause and next/previous station controls."
-  - icon: "🌍"
-    title: "Arabic / English Localization"
-    description: "Complete bilingual UI with a custom Arabic font and correct RTL text direction throughout."
-  - icon: "🌓"
-    title: "Persistent Theme & Language"
-    description: "Light/dark theming and locale selection saved to SharedPreferences so they survive app restarts."
-  - icon: "🚀"
-    title: "Remote Update Prompt"
-    description: "Firebase Remote Config compares the latest published version against the installed one and prompts users to update via the Play Store."
-  - icon: "📱"
-    title: "Responsive Layout Engine"
-    description: "A custom clamped font-scaling helper keeps typography and spacing readable across phone, tablet, and desktop widths."
-architecture_text: |
-  A layered, feature-folder Flutter app using Provider (ChangeNotifier) as the single state management solution — no Bloc/Cubit anywhere in the project. main.dart handles bootstrap only (Firebase init, sizing, Dio client init, package info lookup) and wraps the app in a single ChangeNotifierProvider that exposes a SettingsProvider owning theme mode, locale, and radio player state.
+  - icon: 📖
+    title: Full Quran Reader
+    description: All 114 surahs read from bundled asset files and rendered
+      verse-by-verse in RTL with authentic Arabic-numeral verse-end ornaments.
+  - icon: 📜
+    title: Hadith Collection
+    description: A bundled Hadith corpus parsed at runtime from language-specific
+      text files, switching between the Arabic and English source based on the
+      active locale.
+  - icon: 🤲
+    title: Azkar & Duaa Library
+    description: Curated sets of morning, evening, waking, sleeping, after-prayer
+      azkar and duaa, browsable from the home screen as illustrated cards.
+  - icon: 📿
+    title: Digital Sebha
+    description: An animated rotating tasbih counter that cycles through the six
+      standard post-prayer azkar as the count advances.
+  - icon: 🧮
+    title: Zakat Calculator
+    description: A live 2.5% zakat calculation that updates in real time as the user
+      types the amount.
+  - icon: 📻
+    title: Live Quran Radio
+    description: Streams reciter radio stations fetched from the mp3quran.net API,
+      with play/pause and next/previous station controls.
+  - icon: 🌍
+    title: Arabic / English Localization
+    description: Complete bilingual UI with a custom Arabic font and correct RTL
+      text direction throughout.
+  - icon: 🌓
+    title: Persistent Theme & Language
+    description: Light/dark theming and locale selection saved to SharedPreferences
+      so they survive app restarts.
+  - icon: 🚀
+    title: Remote Update Prompt
+    description: Firebase Remote Config compares the latest published version
+      against the installed one and prompts users to update via the Play Store.
+  - icon: 📱
+    title: Responsive Layout Engine
+    description: A custom clamped font-scaling helper keeps typography and spacing
+      readable across phone, tablet, and desktop widths.
+architecture_text: >
+  A layered, feature-folder Flutter app using Provider (ChangeNotifier) as the
+  single state management solution — no Bloc/Cubit anywhere in the project.
+  main.dart handles bootstrap only (Firebase init, sizing, Dio client init,
+  package info lookup) and wraps the app in a single ChangeNotifierProvider that
+  exposes a SettingsProvider owning theme mode, locale, and radio player state.
+
 
   Code is organized as core (Dio helper, constants, launch-url helper), model (plain data models for Quran, Hadith, Sura and Radio), screens (one folder per feature: home, layout, quran, hadith, sebha, radio, settings), and shared (theme, reusable widgets, asset paths, the provider). Navigation is a named-route table on MaterialApp with a bottom-navigation shell as the initial route.
 architecture_flow:
-  - step: "main() bootstraps Firebase, sizing, and the Dio client"
-  - step: "A single ChangeNotifierProvider<SettingsProvider> wraps the app"
-  - step: "Saved language and theme are rehydrated from SharedPreferences"
-  - step: "MaterialApp resolves locale, theme, and the named-route table"
-  - step: "Bottom-nav shell renders Home, Hadith, Quran, Sebha, Radio"
-  - step: "Content screens read Quran/Hadith/Azkar from bundled assets"
-  - step: "RadioScreen reads live data via SettingsProvider + Dio"
-  - step: "Settings changes write to SharedPreferences and notify listeners to rebuild the tree"
-mockups: []
+  - step: main() bootstraps Firebase, sizing, and the Dio client
+  - step: A single ChangeNotifierProvider<SettingsProvider> wraps the app
+  - step: Saved language and theme are rehydrated from SharedPreferences
+  - step: MaterialApp resolves locale, theme, and the named-route table
+  - step: Bottom-nav shell renders Home, Hadith, Quran, Sebha, Radio
+  - step: Content screens read Quran/Hadith/Azkar from bundled assets
+  - step: RadioScreen reads live data via SettingsProvider + Dio
+  - step: Settings changes write to SharedPreferences and notify listeners to
+      rebuild the tree
+banner: images/muslim-app/muslim-cover.png
+mockups:
+  - image: images/muslim-app/275237644-999b5948-7976-4e3d-a23b-e4054bce0db1.png
+    caption: Splash
+  - image: images/muslim-app/275237714-869fb410-7843-40e6-91e8-f99c19d4f5bc.png
+    caption: Quran List
+  - image: images/muslim-app/275237809-0d81fb42-5199-40b9-934d-a8d4ce42fa9b.png
+    caption: Sura Details
+  - image: images/muslim-app/275237917-e12eddc6-505d-4cbc-8d34-e3a456a3184d.png
+    caption: Hadith List
+  - image: images/muslim-app/275237675-d6828593-5b06-4669-81d8-678087c81ca2.png
+    caption: Splash Dark
+  - image: images/muslim-app/275237750-745b340d-6b27-42b8-9940-df363609ce63.png
+    caption: Quran List Dark
+  - image: images/muslim-app/275237825-810ac246-8976-4532-815c-1454f16f2961.png
+    caption: Sura Details Dark
 challenges:
-  - label: "Typography"
-    title: "Text broke layouts on devices with large system font settings"
-    body: "Arabic and English strings rendered at very different sizes across devices, and OS-level font scaling pushed text out of cards entirely. The fix pins the app's text scaling to a fixed value so system font settings can't distort the layout, plus a responsive font-size helper that adapts to screen width but clamps the result to ±20% of the design size, so text never overflows. Every screen was migrated to that helper."
-  - label: "Localization"
-    title: "System locale auto-detection was the wrong default and broke RTL text"
-    body: "An attempt to auto-detect the device locale and follow the system theme was rolled back two days later: it silently overrode the language and theme the user had explicitly chosen and saved. The app went back to being driven entirely by the user's stored preference. The same pass fixed RTL rendering in the Zakat screen, where Arabic text and the numeric input needed explicit right-to-left direction handling to align correctly."
-  - label: "Release Ops"
-    title: "Shipping update prompts without waiting on a store rollout"
-    body: "To stop users sitting on stale builds, the app checks a remotely published version number against the installed one — comparing version segments individually rather than as plain strings, so 1.2.10 correctly compares above 1.2.9. The whole check is wrapped so a failed fetch can never block startup, and the update prompt deep-links straight to the Play Store listing."
-  - label: "Desktop Build"
-    title: "Sandboxed macOS release build couldn't reach the network"
-    body: "The macOS release build ships sandboxed, which blocked outbound network calls that worked fine in debug. The release entitlements needed explicit network-client permissions added for the app to reach the radio API in a signed release build."
+  - label: Typography
+    title: Text broke layouts on devices with large system font settings
+    body: Arabic and English strings rendered at very different sizes across
+      devices, and OS-level font scaling pushed text out of cards entirely. The
+      fix pins the app's text scaling to a fixed value so system font settings
+      can't distort the layout, plus a responsive font-size helper that adapts
+      to screen width but clamps the result to ±20% of the design size, so text
+      never overflows. Every screen was migrated to that helper.
+  - label: Localization
+    title: System locale auto-detection was the wrong default and broke RTL text
+    body: "An attempt to auto-detect the device locale and follow the system theme
+      was rolled back two days later: it silently overrode the language and
+      theme the user had explicitly chosen and saved. The app went back to being
+      driven entirely by the user's stored preference. The same pass fixed RTL
+      rendering in the Zakat screen, where Arabic text and the numeric input
+      needed explicit right-to-left direction handling to align correctly."
+  - label: Release Ops
+    title: Shipping update prompts without waiting on a store rollout
+    body: To stop users sitting on stale builds, the app checks a remotely published
+      version number against the installed one — comparing version segments
+      individually rather than as plain strings, so 1.2.10 correctly compares
+      above 1.2.9. The whole check is wrapped so a failed fetch can never block
+      startup, and the update prompt deep-links straight to the Play Store
+      listing.
+  - label: Desktop Build
+    title: Sandboxed macOS release build couldn't reach the network
+    body: The macOS release build ships sandboxed, which blocked outbound network
+      calls that worked fine in debug. The release entitlements needed explicit
+      network-client permissions added for the app to reach the radio API in a
+      signed release build.
 tech_tags:
-  - tag: "Flutter"
-  - tag: "Provider"
-  - tag: "ChangeNotifier"
-  - tag: "SharedPreferences"
-  - tag: "Dio"
-  - tag: "audioplayers"
-  - tag: "Firebase Core"
-  - tag: "Firebase Remote Config"
-  - tag: "flutter_screenutil"
-  - tag: "flutter_localizations / intl"
-  - tag: "url_launcher"
-  - tag: "package_info_plus"
-  - tag: "Shorebird code push"
+  - tag: Flutter
+  - tag: Provider
+  - tag: ChangeNotifier
+  - tag: SharedPreferences
+  - tag: Dio
+  - tag: audioplayers
+  - tag: Firebase Core
+  - tag: Firebase Remote Config
+  - tag: flutter_screenutil
+  - tag: flutter_localizations / intl
+  - tag: url_launcher
+  - tag: package_info_plus
+  - tag: Shorebird code push
 links:
-  github: "https://github.com/HusseinMohamed99/Muslim"
+  github: https://github.com/HusseinMohamed99/Muslim
 ---
