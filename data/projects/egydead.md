@@ -96,6 +96,12 @@ mockups:
     caption: Movies
   - image: /images/uploads/275292630-18affedc-2eda-4ac9-946d-f36b71bc20d3.jpg
     caption: Upcoming Movies
+  - image: /images/uploads/275292641-3d5c630a-1c35-4bd1-bfdd-6a9eb9d04aeb.jpg
+    caption: Movie Details
+  - image: /images/uploads/275292655-b805849d-e0d8-47ac-bb9a-5785a2804bf3.jpg
+    caption: Tvs
+  - image: /images/uploads/275292648-f69cb8bd-0f7f-4c1b-afd3-d60923f69a6f.jpg
+    caption: "Top Rated Tvs "
 challenges:
   - label: Connectivity
     title: Offline gate misreporting valid connections
