@@ -15,6 +15,7 @@
     #cursor, #cursor-ring { display: none !important; }
   }
   .cs-mockup-grid{
+    grid-column: 1 / -1;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
     gap:1.75rem;
@@ -252,7 +253,7 @@ async function renderProject() {
   const mockups = (p.mockups || []).map(m => `
     <div class="cs-mockup">
       <div class="cs-phone-mini" data-lightbox-src="../${escapeAttr(m.image)}">
-        <div class="cs-phone-mini-inner"><img src="../${escapeAttr(m.image)}" alt="${escapeAttr(m.caption || "")}"/></div>
+        <div class="cs-phone-mini-inner"><img src="../${escapeAttr(m.image)}" alt="${escapeAttr(m.caption ||"")}"/></div>
       </div>
       <span class="cs-mockup-cap">${escapeHtml(m.caption || "")}</span>
     </div>
@@ -285,7 +286,7 @@ async function renderProject() {
     <div class="cs-hero">
       ${p.icon ? `<div class="cs-icon"><img src="../${escapeAttr(p.icon)}" alt="${escapeAttr(p.name)} icon"/></div>` : ""}
       <div>
-        <div class="cs-tag">${escapeHtml(p.badge || "Project")}${p.category ? " · " + escapeHtml(p.category) : ""}</div>
+        <div class="cs-tag">${escapeHtml(p.badge || "Project")}${p.category ? " · " + escapeHtml(p.category): ""}</div>
         <h1 class="cs-title">${escapeHtml(p.name || "")}</h1>
       </div>
       <div class="cs-links">${linkButtons}</div>
