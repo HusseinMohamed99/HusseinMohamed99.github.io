@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-01T16:36:05.518Z",
+  "generated": "2026-08-01T17:07:01.230Z",
   "count": 8,
   "projects": [
     {
@@ -305,7 +305,7 @@
       "name": "Muslim App",
       "category": "Islamic Lifestyle · Google Play",
       "badge": "Personal Project",
-      "short_description": "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Published on Google Play with bilingual AR/EN support, light & dark themes, and Firebase sync for cross-device data.",
+      "short_description": "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Published on Google Play with bilingual AR/EN support, light & dark themes, and the full Quran and Hadith bundled for offline use.",
       "icon": "images/muslim-app/muslim_icon.png",
       "order": 6,
       "tech_tags": [
