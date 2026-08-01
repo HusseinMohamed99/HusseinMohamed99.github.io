@@ -4,7 +4,8 @@ category: Islamic Lifestyle · Google Play
 badge: Personal Project
 short_description: All-in-one Islamic app with Quran, Hadith, Azkar, Zakat
   calculator, and prayer tools. Published on Google Play with bilingual AR/EN
-  support, light & dark themes, and Firebase sync for cross-device data.
+  support, light & dark themes, and the full Quran and Hadith bundled for
+  offline use.
 icon: images/muslim-app/muslim_icon.png
 order: 6
 overview: >
