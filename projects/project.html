@@ -3,22 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title id="page-title">Project — Hussein Mohamed Ammar</title>
-<!-- Static fallbacks: social crawlers (LinkedIn, Slack, WhatsApp, Twitter) do not run
-     JS, so these are what an unfurled link actually shows. renderProject() overwrites
-     them per-project below, which is what Google picks up on its rendering pass. -->
-<meta id="m-desc" name="description" content="Mobile engineering case study by Hussein Mohamed — architecture, implementation detail, and the real problems solved shipping a production Flutter app."/>
-<meta property="og:type" content="article"/>
-<meta property="og:site_name" content="Hussein Mohamed — Flutter Developer"/>
-<meta id="m-og-url" property="og:url" content="https://husseinmohamed99.github.io/projects/project.html"/>
-<meta id="m-og-title" property="og:title" content="Case Study — Hussein Mohamed"/>
-<meta id="m-og-desc" property="og:description" content="Mobile engineering case study by Hussein Mohamed — architecture, implementation detail, and the real problems solved shipping a production Flutter app."/>
-<meta id="m-og-image" property="og:image" content="https://husseinmohamed99.github.io/photo.jpg"/>
-<meta id="m-tw-card" name="twitter:card" content="summary_large_image"/>
-<meta id="m-tw-title" name="twitter:title" content="Case Study — Hussein Mohamed"/>
-<meta id="m-tw-desc" name="twitter:description" content="Mobile engineering case study by Hussein Mohamed — architecture, implementation detail, and the real problems solved shipping a production Flutter app."/>
-<meta id="m-tw-image" name="twitter:image" content="https://husseinmohamed99.github.io/photo.jpg"/>
-<link id="m-canonical" rel="canonical" href="https://husseinmohamed99.github.io/projects/project.html"/>
+<title id="page-title">Project — Hussein Mohamed</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -26,39 +11,21 @@
 <link rel="stylesheet" href="../styles.css"/>
 <script defer data-domain="husseinmohamed99.github.io" src="https://plausible.io/js/script.js"></script>
 <style>
-  /* Screenshot gallery. The parent .cs-walk-in is a `1fr auto` grid, so the panel
-     has to span both tracks — otherwise it is squeezed into 1fr next to the
-     380px-wide .cs-walk-note and leaves a dead column on the right.
-     Row filling: items are flex-based on an exact 1/N share of the row, so every
-     full row runs edge-to-edge and only a partial last row is short (centered).
-     --cs-cols-lg/-md/-sm are set inline per item count so the row split stays
-     balanced (7 -> 4+3, 8 -> 4+4, 10 -> 5+5) instead of orphaning one phone. */
+  @media (hover: none) and (pointer: coarse) {
+    #cursor, #cursor-ring { display: none !important; }
+  }
   .cs-mockup-grid{
-    --cs-gap:1.75rem;
-    --cs-cols:var(--cs-cols-lg,5);
-    grid-column:1 / -1;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:flex-start;
-    gap:var(--cs-gap);
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:1.75rem;
     padding:2.5rem 0;
   }
-  .cs-mockup-grid > .cs-mockup{
-    /* -1px absorbs sub-pixel rounding so the Nth item never wraps early */
-    flex:0 1 calc((100% - (var(--cs-cols) - 1) * var(--cs-gap) - 1px) / var(--cs-cols));
-    min-width:0;
-    max-width:340px;
-  }
-  .cs-mockup-banner{flex:0 0 100%;max-width:100%}
-  @media(max-width:1100px){ .cs-mockup-grid{--cs-cols:var(--cs-cols-md,4)} }
-  @media(max-width:700px){ .cs-mockup-grid{--cs-cols:var(--cs-cols-sm,2);--cs-gap:1rem} }
-  .cs-walk-in{ max-width: 1500px !important; }
+  .cs-walk-in{ max-width: 1400px !important; }
   .cs-mockup{display:flex;flex-direction:column;align-items:center;gap:1rem}
   .cs-phone-mini{
     position:relative;
     width:100%;
-    max-width:100%;
+    max-width:230px;
     aspect-ratio:9/19.5;
     border-radius:32px;
     padding:6px;
@@ -165,16 +132,8 @@
   }
   .cs-walk-tab.active{
     background:#fff !important;
-    color:#111;
+    color:var(--text,#111);
     box-shadow:0 2px 6px rgba(0,0,0,.1);
-  }
-  /* The track and the active pill are both hardcoded for light mode above, so the
-     whole control needs inverting — a cream --text on a #fff pill is invisible. */
-  [data-theme="dark"] .cs-walk-tabs{ background:rgba(255,255,255,.06); }
-  [data-theme="dark"] .cs-walk-tab.active{
-    background:var(--border2) !important;
-    color:var(--ink);
-    box-shadow:0 2px 6px rgba(0,0,0,.35);
   }
   .cs-walk-tab.active .cs-walk-tab-dot{
     background:var(--green,#1D5CFF);
@@ -230,11 +189,7 @@
 <div id="project-root" style="display:none"></div>
 <div class="cs-lightbox" id="cs-lightbox">
   <button class="cs-lightbox-close" id="cs-lightbox-close" aria-label="Close">✕</button>
-  <!-- No src attribute. src="" is invalid per spec ("valid non-empty URL") and makes
-       img.src resolve to the document URL, so the element reports as a broken image
-       in audits. Current Chrome does not refetch the document for it, but older
-       engines did. Set on open, removed on close. -->
-  <img id="cs-lightbox-img" alt="Screenshot preview"/>
+  <img id="cs-lightbox-img" src="" alt="Screenshot preview"/>
 </div>
 
 <footer>
@@ -268,7 +223,6 @@ async function renderProject() {
 
   document.title = (p.name || "Project") + " — Case Study | Hussein Mohamed";
   document.getElementById("page-title").textContent = document.title;
-  applyMeta(p, slug);
 
   const stats = (p.stats || []).map(s => `
     <div class="cs-stat"><span class="cs-stat-n">${escapeHtml(s.number)}</span><span class="cs-stat-l">${escapeHtml(s.label)}</span></div>
@@ -291,7 +245,7 @@ async function renderProject() {
   }).join("");
 
   const banner = p.banner ? `
-    <div class="cs-mockup-banner">
+    <div style="grid-column:1/-1">
       <img src="../${escapeAttr(p.banner)}" alt="${escapeAttr(p.name)} Screenshots Banner" style="width:100%;border-radius:18px;display:block;">
     </div>` : "";
 
@@ -306,16 +260,6 @@ async function renderProject() {
 
   const hasVideo = !!p.video;
   const hasMockups = (p.mockups || []).length > 0;
-
-  // Fewest columns that still uses `max` rows, so the last row is as full as possible.
-  const balancedCols = (n, max) => {
-    const cap = Math.min(max, Math.max(1, n));
-    return Math.ceil(n / Math.ceil(n / cap));
-  };
-  const mockupCount = (p.mockups || []).length;
-  const gridVars = hasMockups
-    ? `style="--cs-cols-lg:${balancedCols(mockupCount, 6)};--cs-cols-md:${balancedCols(mockupCount, 4)};--cs-cols-sm:${balancedCols(mockupCount, 2)}"`
-    : "";
 
   const walkTabs = hasVideo && hasMockups ? `
     <div class="cs-walk-tabs">
@@ -341,7 +285,7 @@ async function renderProject() {
     <div class="cs-hero">
       ${p.icon ? `<div class="cs-icon"><img src="../${escapeAttr(p.icon)}" alt="${escapeAttr(p.name)} icon"/></div>` : ""}
       <div>
-        <div class="cs-tag">Case Study${p.category ? " · " + escapeHtml(p.category) : ""}</div>
+        <div class="cs-tag">${escapeHtml(p.badge || "Project")}${p.category ? " · " + escapeHtml(p.category) : ""}</div>
         <h1 class="cs-title">${escapeHtml(p.name || "")}</h1>
       </div>
       <div class="cs-links">${linkButtons}</div>
@@ -387,7 +331,7 @@ async function renderProject() {
           ${walkTabs}
         </div>
         ${walkNote}
-        ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups" ${gridVars}>${banner}${mockups}</div>` : ""}
+        ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups">${banner}${mockups}</div>` : ""}
         ${hasVideo ? `
         <div class="cs-phone-wrap" data-walk-panel="video" style="${hasMockups ? "display:none" : ""}">
           <span class="cs-phone-lbl">Emulator</span>
@@ -422,9 +366,6 @@ async function renderProject() {
   skeleton.style.display = "none";
   root.style.display = "";
 
-  // Same tick as the reveal, so nothing paints before the reveal classes land
-  if (window.SiteFX) window.SiteFX.applyReveals(root);
-
   // Walkthrough tab toggle
   document.querySelectorAll(".cs-walk-tab").forEach(tab => {
     tab.addEventListener("click", () => {
@@ -446,56 +387,10 @@ async function renderProject() {
       lightbox.classList.add("open");
     });
   });
-  // removeAttribute, not src="" — see the note on the <img> above.
-  function closeLightbox() { lightbox.classList.remove("open"); lightboxImg.removeAttribute("src"); }
+  function closeLightbox() { lightbox.classList.remove("open"); lightboxImg.src = ""; }
   document.getElementById("cs-lightbox-close").addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
-}
-
-const SITE_ORIGIN = "https://husseinmohamed99.github.io";
-
-/** Trim to a whole word at/under `max` chars — meta descriptions get cut around 160. */
-function truncate(str, max) {
-  const s = String(str || "").replace(/\s+/g, " ").trim();
-  if (s.length <= max) return s;
-  const cut = s.slice(0, max);
-  const lastSpace = cut.lastIndexOf(" ");
-  return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[,;:.\-—\s]+$/, "") + "…";
-}
-
-/** Repo-relative media path -> absolute, URL-encoded URL (some filenames contain spaces). */
-function absMediaUrl(relPath) {
-  return SITE_ORIGIN + "/" + String(relPath).split("/").map(encodeURIComponent).join("/");
-}
-
-function setMeta(id, attr, value) {
-  const el = document.getElementById(id);
-  if (el && value) el.setAttribute(attr, value);
-}
-
-function applyMeta(p, slug) {
-  const title = (p.name || "Project") + " — Case Study | Hussein Mohamed";
-  const desc = truncate(p.short_description || p.overview || "", 160);
-  const canonical = SITE_ORIGIN + "/projects/project.html?slug=" + encodeURIComponent(slug);
-  // Banner is wide (good for a large summary card); an app icon is square, so
-  // downgrade to the small card rather than let it get letterboxed/cropped.
-  // SVG is rejected as an og:image by every major crawler, so those fall through.
-  const isRaster = (path) => /\.(png|jpe?g|webp|gif)$/i.test(path || "");
-  const image = isRaster(p.banner) ? absMediaUrl(p.banner)
-              : isRaster(p.icon)   ? absMediaUrl(p.icon)
-              : SITE_ORIGIN + "/photo.jpg";
-
-  setMeta("m-desc", "content", desc);
-  setMeta("m-og-url", "content", canonical);
-  setMeta("m-og-title", "content", title);
-  setMeta("m-og-desc", "content", desc);
-  setMeta("m-og-image", "content", image);
-  setMeta("m-tw-card", "content", p.banner ? "summary_large_image" : "summary");
-  setMeta("m-tw-title", "content", title);
-  setMeta("m-tw-desc", "content", desc);
-  setMeta("m-tw-image", "content", image);
-  setMeta("m-canonical", "href", canonical);
 }
 
 function escapeHtml(str) {
