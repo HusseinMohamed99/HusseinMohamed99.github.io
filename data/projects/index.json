@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-01T15:50:52.924Z",
+  "generated": "2026-08-01T16:36:05.518Z",
   "count": 8,
   "projects": [
     {
@@ -103,9 +103,9 @@
     {
       "slug": "sportymate",
       "name": "SportyMate",
-      "category": "Sports Booking Marketplace · Android & iOS · Arabic/English",
+      "category": "Sports Booking Marketplace · Android & iOS · Arabic/English · Octopus Software Solutions",
       "badge": "Company Project",
-      "short_description": "Two-sided sports booking marketplace connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline.",
+      "short_description": "Two-sided sports booking marketplace built at Octopus Software Solutions, connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline.",
       "icon": "images/sportymate/sporty_icon.png",
       "order": 3,
       "tech_tags": [
@@ -176,9 +176,9 @@
     {
       "slug": "systempro",
       "name": "SystemPro",
-      "category": "Real Estate · Saudi Market",
+      "category": "Real Estate Marketplace · Valuerythm",
       "badge": "Company Project",
-      "short_description": "Advanced real estate platform for the Saudi market with property search, smart filters, bookmarks, real-time updates, and offline access via Hive. Scalable BLoC architecture with pagination, dependency injection, and 30% performance boost from profiling.",
+      "short_description": "Bilingual (Arabic/English) real estate marketplace built at Valuerythm for the Saudi market — listings for sale, rent and booking, advanced filters, bilingual location search, and direct agent contact via call or WhatsApp.",
       "icon": "images/systempro/systempro_icon.png",
       "order": 4,
       "tech_tags": [
@@ -186,20 +186,56 @@
           "tag": "Flutter"
         },
         {
-          "tag": "BLoC"
+          "tag": "Bloc / Cubit"
+        },
+        {
+          "tag": "HydratedBloc"
         },
         {
           "tag": "Dio"
         },
         {
-          "tag": "Hive"
+          "tag": "Retrofit"
         },
         {
           "tag": "Freezed"
+        },
+        {
+          "tag": "GetIt"
+        },
+        {
+          "tag": "flutter_secure_storage"
+        },
+        {
+          "tag": "Firebase Core"
+        },
+        {
+          "tag": "Sentry"
+        },
+        {
+          "tag": "Branch SDK"
+        },
+        {
+          "tag": "flutter_localizations"
+        },
+        {
+          "tag": "flutter_screenutil"
+        },
+        {
+          "tag": "cached_network_image"
+        },
+        {
+          "tag": "permission_handler"
+        },
+        {
+          "tag": "url_launcher"
+        },
+        {
+          "tag": "Fastlane + GitHub Actions"
         }
       ],
       "links": {},
-      "lastmod": "2026-07-30"
+      "lastmod": "2026-08-01"
     },
     {
       "slug": "egydead",
