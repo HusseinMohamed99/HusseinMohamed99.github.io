@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T20:24:04.671Z",
+  "generated": "2026-08-01T15:50:52.924Z",
   "count": 8,
   "projects": [
     {
@@ -103,9 +103,9 @@
     {
       "slug": "sportymate",
       "name": "SportyMate",
-      "category": "Sports Tech · iOS, Android & Web",
+      "category": "Sports Booking Marketplace · Android & iOS · Arabic/English",
       "badge": "Company Project",
-      "short_description": "Cross-platform sports management platform connecting players, trainers, and clubs across iOS, Android & web. Smart bookings, real-time chat, performance tracking, and analytics dashboards — built with BLoC and deployed via Fastlane CI/CD.",
+      "short_description": "Two-sided sports booking marketplace connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline.",
       "icon": "images/sportymate/sporty_icon.png",
       "order": 3,
       "tech_tags": [
@@ -113,23 +113,65 @@
           "tag": "Flutter"
         },
         {
-          "tag": "BLoC"
+          "tag": "flutter_bloc / Cubit"
         },
         {
-          "tag": "Firebase"
+          "tag": "HydratedBloc"
         },
         {
-          "tag": "REST APIs"
+          "tag": "Freezed"
         },
         {
-          "tag": "Fastlane"
+          "tag": "get_it"
         },
         {
-          "tag": "GitHub Actions"
+          "tag": "Dio + Retrofit"
+        },
+        {
+          "tag": "json_serializable"
+        },
+        {
+          "tag": "flutter_secure_storage"
+        },
+        {
+          "tag": "shared_preferences"
+        },
+        {
+          "tag": "Paymob / InstaPay"
+        },
+        {
+          "tag": "mobile_scanner (QR)"
+        },
+        {
+          "tag": "geolocator / geocoding"
+        },
+        {
+          "tag": "intl (Arabic / English)"
+        },
+        {
+          "tag": "flutter_screenutil"
+        },
+        {
+          "tag": "Firebase Analytics & Performance"
+        },
+        {
+          "tag": "Sentry"
+        },
+        {
+          "tag": "Syncfusion (PDF & calendar)"
+        },
+        {
+          "tag": "video_player / Chewie"
+        },
+        {
+          "tag": "flutter_phoenix"
+        },
+        {
+          "tag": "Fastlane + GitHub Actions"
         }
       ],
       "links": {},
-      "lastmod": "2026-07-30"
+      "lastmod": "2026-08-01"
     },
     {
       "slug": "systempro",
