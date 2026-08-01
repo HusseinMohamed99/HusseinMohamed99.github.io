@@ -1,8 +1,8 @@
 ---
 name: SportyMate
-category: "Sports Booking Marketplace · Android & iOS · Arabic/English"
+category: "Sports Booking Marketplace · Android & iOS · Arabic/English · Octopus Software Solutions"
 badge: Company Project
-short_description: "Two-sided sports booking marketplace connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline."
+short_description: "Two-sided sports booking marketplace built at Octopus Software Solutions, connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline."
 icon: images/sportymate/sporty_icon.png
 order: 3
 overview: |
