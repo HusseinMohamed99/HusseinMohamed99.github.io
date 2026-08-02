@@ -109,13 +109,6 @@ h1 em{font-style:italic;color:var(--green)}
 .photo-badge{position:absolute;bottom:-8px;right:-20px;background:var(--card-bg);border:1px solid var(--green);opacity:.9;border-color:var(--green);border-radius:14px;padding:.7rem 1rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:.5rem;z-index:3}
 .badge-n{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--green);line-height:1}
 .badge-l{font-size:.68rem;color:var(--muted);line-height:1.3}
-.stats-row{display:grid;grid-template-columns:1fr;gap:.75rem;width:100%;max-width:340px}
-.stat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1rem 1.1rem;box-shadow:var(--shadow)}
-.stat-n{font-family:'Fraunces',serif;font-size:1.85rem;font-weight:700;color:var(--ink);line-height:1}
-.stat-l{font-size:.69rem;color:var(--muted);margin-top:.2rem}
-.stat-card.dark{background:var(--stat-dark-bg)}
-.stat-card.dark .stat-n{color:var(--stat-dark-text)}
-.stat-card.dark .stat-l{color:var(--stat-dark-sub)}
 
 /* ABOUT BAND */
 .about-band{background:var(--about-band);color:var(--about-strong);padding:4rem 3rem}
@@ -217,7 +210,7 @@ footer span{font-size:.73rem;color:var(--contact-label)}
 /* MOBILE STATS STRIP */
 .mobile-stats{display:none}
 @media(max-width:960px){
-  .mobile-stats{display:grid;grid-template-columns:repeat(2,1fr);background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.75rem 1.5rem}
+  .mobile-stats{display:grid;grid-template-columns:1fr;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.75rem 1.5rem}
   .mobile-stat{display:flex;flex-direction:column;align-items:center;gap:.15rem}
   .ms-n{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--ink);line-height:1}
   .ms-l{font-size:.6rem;color:var(--muted);text-align:center;line-height:1.3}
@@ -285,8 +278,6 @@ footer span{font-size:.73rem;color:var(--contact-label)}
 [data-theme="dark"] .btn-line{border-color:var(--border2);color:var(--ink)}
 [data-theme="dark"] .btn-line:hover{border-color:var(--ink);background:var(--surface)}
 [data-theme="dark"] .nav-hire{background:var(--ink)!important;color:var(--cream)!important}
-[data-theme="dark"] .stat-card{background:var(--card-bg)}
-[data-theme="dark"] .stat-card.dark{background:var(--stat-dark-bg)}
 [data-theme="dark"] .photo-badge{background:var(--card-bg);border-color:var(--border)}
 [data-theme="dark"] .skill-ico{background:var(--surface);border-color:var(--border)}
 [data-theme="dark"] .tag{background:var(--surface);color:var(--ink2);border-color:var(--border)}
