@@ -47,7 +47,15 @@ capabilities:
   - icon: 🧭
     title: Prayer times & Qibla
     description: Multiple calculation methods with automatic, location-aware method
-      selection, plus a live Qibla compass.
+      selection, plus a live Qibla compass with a light beam that tracks the
+      qibla bearing — its geometry fitted from pixel measurements of the
+      reference design rather than approximated.
+  - icon: 🔔
+    title: Per-prayer alert styles
+    description: Each of the five prayers is independently set to adhan,
+      notification tone, vibrate-only, or silent, with its own muezzin — one
+      notification channel per style, because Android freezes a channel's sound
+      and vibration at creation and ignores every later edit.
   - icon: 📊
     title: Stats dashboard
     description: Range-scoped activity summaries, a time-spent-per-category donut
@@ -145,6 +153,20 @@ challenges:
       plays audio with no Activity involved at all, and removed the
       now-unnecessary USE_FULL_SCREEN_INTENT permission (avoiding an unnecessary
       Play Console alarm-functionality declaration).
+  - label: Signal Indistinguishability
+    title: '"Vibrate only" was reported broken — it was firing perfectly'
+    body: A user-selectable vibrate-only prayer alert read as doing nothing. The
+      platform's own vibration history proved it was firing to the millisecond —
+      but a notification channel created with vibration enabled and no explicit
+      pattern inherits Android's stock waveform, the identical buzz every other
+      app plays. Nothing distinguished it but the absence of a sound, which is
+      not a cue a user can perceive. Fixed with a deliberate long-short-long
+      waveform, and the channel id bumped because Android freezes a channel's
+      vibration at creation. A later "still not working" report turned out to be
+      a different diagnosis entirely - two build flavours were installed side by
+      side, and the one carrying the fix had its notification permission revoked
+      by a reinstall, caught by reading the permission grant state rather than
+      trusting the report's premise.
   - label: Cross-Surah Playback
     title: A saved custom recitation range was silently never read by the player
     body: Users could configure a range spanning two surahs, but the audio players
