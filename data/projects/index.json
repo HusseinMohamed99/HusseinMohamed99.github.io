@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-03T23:01:02.793Z",
+  "generated": "2026-09-03T23:07:43.779Z",
   "count": 10,
   "projects": [
     {
@@ -59,7 +59,7 @@
       "name": "Refqa (رِفقة)",
       "category": "Islamic Lifestyle · Offline-First · Arabic/English",
       "badge": "Personal Project",
-      "short_description": "A comprehensive Islamic companion app: dual-mode Quran reading (browsable index + a full 604-page Madani Mushaf renderer), on-device speech-recognition recitation checking with zero audio leaving the device, native unattended adhan playback via a custom Kotlin AlarmManager + ForegroundService pipeline, Hadith, Tafsir, Duas, Qibla, khatm tracking, streaks, and a full stats dashboard with time-spent-per-category tracking — all privacy-first, with location and PII scrubbed before any crash report.",
+      "short_description": "A comprehensive Islamic companion app: dual-mode Quran reading (browsable index + a full 604-page Madani Mushaf renderer), live Qur'an radio and per-reciter profiles, on-device speech-recognition recitation checking with zero audio leaving the device, per-prayer adhan and alert styles via a custom Kotlin AlarmManager + ForegroundService pipeline with a tilt-free Qibla light beam, the Prophet's ﷺ Seerah and lineage, the Ten Promised Paradise, the 99 Names of Allah, Hadith, Tafsir, Duas, khatm tracking, streaks, and a full stats dashboard with time-spent-per-category tracking — all privacy-first, with location and PII scrubbed before any crash report.",
       "icon": "images/refqa/refqa_logo.png",
       "order": 2,
       "tech_tags": [
@@ -76,7 +76,7 @@
           "tag": "Freezed"
         },
         {
-          "tag": "Drift / sqflite"
+          "tag": "sqflite"
         },
         {
           "tag": "Kotlin (native)"
@@ -91,14 +91,20 @@
           "tag": "audio_service"
         },
         {
+          "tag": "speech_to_text"
+        },
+        {
           "tag": "easy_localization"
+        },
+        {
+          "tag": "hijri"
         },
         {
           "tag": "Sentry"
         }
       ],
       "links": {},
-      "lastmod": "2026-08-26"
+      "lastmod": "2026-09-04"
     },
     {
       "slug": "x_5_fitness",

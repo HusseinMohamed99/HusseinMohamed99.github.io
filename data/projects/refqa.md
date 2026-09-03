@@ -3,12 +3,15 @@ name: Refqa (رِفقة)
 category: Islamic Lifestyle · Offline-First · Arabic/English
 badge: Personal Project
 short_description: "A comprehensive Islamic companion app: dual-mode Quran
-  reading (browsable index + a full 604-page Madani Mushaf renderer), on-device
-  speech-recognition recitation checking with zero audio leaving the device,
-  native unattended adhan playback via a custom Kotlin AlarmManager +
-  ForegroundService pipeline, Hadith, Tafsir, Duas, Qibla, khatm tracking,
-  streaks, and a full stats dashboard with time-spent-per-category tracking —
-  all privacy-first, with location and PII scrubbed before any crash report."
+  reading (browsable index + a full 604-page Madani Mushaf renderer), live
+  Qur'an radio and per-reciter profiles, on-device speech-recognition
+  recitation checking with zero audio leaving the device, per-prayer adhan
+  and alert styles via a custom Kotlin AlarmManager + ForegroundService
+  pipeline with a tilt-free Qibla light beam, the Prophet's ﷺ Seerah and
+  lineage, the Ten Promised Paradise, the 99 Names of Allah, Hadith, Tafsir,
+  Duas, khatm tracking, streaks, and a full stats dashboard with
+  time-spent-per-category tracking — all privacy-first, with location and PII
+  scrubbed before any crash report."
 icon: images/refqa/refqa_logo.png
 order: 2
 overview: >
@@ -20,7 +23,7 @@ overview: >
   UI, and a user's location and recitation audio can never leave their device.
 
 
-  I own the full stack: the Flutter/Riverpod app layer, a custom native Kotlin pipeline for unattended background adhan playback, and every architectural decision around privacy, offline resilience, and real-device verification — this project pushed me to debug and ship fixes I verified live on real hardware and emulators, not just in code review.
+  I own the full stack: the Flutter/Riverpod app layer, a custom native Kotlin pipeline for unattended background adhan playback, and every architectural decision around privacy, offline resilience, and real-device verification. Since the first release, the app has grown to cover the Prophet's ﷺ Seerah and lineage, the Ten Promised Paradise, the 99 Names of Allah, live Qur'an radio, and per-prayer alert styles — each shipped with the same bar: real-device verification, not just code review.
 stats:
   - number: "604"
     label: Page Mushaf renderer with authentic RTL page-turn
@@ -33,7 +36,7 @@ capabilities:
     title: Dual-mode Quran reading
     description: A browsable Surah/Juz'/Hizb index with search, plus a full 604-page
       Madani Mushaf renderer with authentic RTL page-swipe direction and inline
-      ayah markers.
+      ayah markers, multiple reciters, and khatm (completion) tracking.
   - icon: 🕌
     title: Unattended native adhan
     description: A custom Kotlin AlarmManager + ForegroundService pipeline plays the
@@ -45,40 +48,62 @@ capabilities:
       entirely on-device speech recognition — audio never touches a server, with
       a graceful fallback message on hardware that lacks offline Arabic support.
   - icon: 🧭
-    title: Prayer times & Qibla
+    title: Prayer times & Qibla light beam
     description: Multiple calculation methods with automatic, location-aware method
-      selection, plus a live Qibla compass with a light beam that tracks the
-      qibla bearing — its geometry fitted from pixel measurements of the
-      reference design rather than approximated.
+      selection, plus a tilt-free light beam on the Qibla screen that points
+      along the bearing as you turn — anchored to the dial's measured centre.
   - icon: 🔔
     title: Per-prayer alert styles
     description: Each of the five prayers is independently set to adhan,
       notification tone, vibrate-only, or silent, with its own muezzin — one
       notification channel per style, because Android freezes a channel's sound
       and vibration at creation and ignores every later edit.
+  - icon: 📻
+    title: Live Qur'an radio & reciter profiles
+    description: Browse and play live Qur'an radio stations with automatic retry
+      on flaky streams, or browse reciters as profiles and play any surah in a
+      chosen voice — all coordinated with the adhan pipeline so only one audio
+      source ever plays at a time.
+  - icon: 🕋
+    title: Seerah, Nasab & the Ten Promised Paradise
+    description: The Prophet's ﷺ full Seerah in chapters and his lineage (Nasab)
+      as a visual chain, plus profiles of the ten companions given the glad
+      tidings of Paradise — the historically certain portion of the lineage
+      visually distinct from the traditionally held extension.
+  - icon: 📿
+    title: 99 Names of Allah
+    description: Asma Allah al-Husna, each with its meaning and an explanation,
+      bundled offline and shareable as an image card like any verse.
   - icon: 📊
     title: Stats dashboard
     description: Range-scoped activity summaries, a time-spent-per-category donut
-      breakdown, Hijri/Gregorian monthly calendars, and khatm (completion)
-      tracking.
+      breakdown, Hijri/Gregorian monthly calendars, streaks, and a
+      GitHub-style contribution heatmap driven by real engagement, not just
+      opening a screen.
+  - icon: 🔎
+    title: Full bilingual search
+    description: One search box across surah names, verse text, and hadith, with
+      number-aware jump-to (Western or Arabic-Indic digits) and Arabic-normalized
+      matching that ignores diacritics and spelling variants.
   - icon: 🔒
     title: Privacy by architecture
     description: Coordinates are scrubbed before any crash report is sent; no
       accounts, no ads, no third-party analytics SDKs.
 architecture_text: >
   The Flutter layer follows a strict feature-first data/domain/presentation
-  split, with Riverpod (freezed union states) managing everything above the
-  repository boundary and Drift/sqflite backing structured local data. But the
-  adhan feature couldn't live in Dart alone: Android kills the Flutter engine
-  when the app isn't foregrounded, and the adhan has to fire exactly on time
-  regardless. So the unattended path drops to native Kotlin entirely — an exact
-  AlarmManager alarm wakes a BroadcastReceiver, which starts a mediaPlayback
-  ForegroundService that reads the audio file and plays it, with zero Dart
-  execution required at fire time.
+  split, with Riverpod (freezed union states for real async lifecycles)
+  managing everything above the repository boundary and sqflite backing
+  structured local data. But the adhan feature couldn't live in Dart alone:
+  Android kills the Flutter engine when the app isn't foregrounded, and the
+  adhan has to fire exactly on time regardless. So the unattended path drops
+  to native Kotlin entirely — an exact AlarmManager alarm wakes a
+  BroadcastReceiver, which starts a mediaPlayback ForegroundService that reads
+  the audio file and plays it, with zero Dart execution required at fire
+  time.
 architecture_flow:
   - step: Riverpod (Presentation)
   - step: Repository Interface
-  - step: Drift/sqflite + REST
+  - step: sqflite + REST
   - step: AlQuran.cloud / AlAdhan / Sunnah.com
 banner: images/refqa-رِفقة/image1.jpeg
 tech_tags:
@@ -86,12 +111,14 @@ tech_tags:
   - tag: Riverpod
   - tag: Clean Architecture
   - tag: Freezed
-  - tag: Drift / sqflite
+  - tag: sqflite
   - tag: Kotlin (native)
   - tag: go_router
   - tag: just_audio
   - tag: audio_service
+  - tag: speech_to_text
   - tag: easy_localization
+  - tag: hijri
   - tag: Sentry
 architecture_flow_2:
   - step: Exact AlarmManager
