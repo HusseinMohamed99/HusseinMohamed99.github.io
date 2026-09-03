@@ -46,7 +46,7 @@ collections:
       - label: "Badge"
         name: "badge"
         widget: "select"
-        options: ["Featured Project", "Personal Project", "Graduation", "Company Project"]
+        options: ["Featured Project", "Personal Project", "Graduation", "Company Project", "Coming Soon"]
       - { label: "Short Card Description (shown on homepage grid)", name: "short_description", widget: "text" }
       - label: "App Icon"
         name: "icon"

@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://husseinmohamed99.github.io/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://husseinmohamed99.github.io/projects/all-projects.html</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -20,43 +20,55 @@
   </url>
   <url>
     <loc>https://husseinmohamed99.github.io/projects/project.html?slug=refqa</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://husseinmohamed99.github.io/projects/project.html?slug=x_5_fitness</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://husseinmohamed99.github.io/projects/project.html?slug=expense_splitter</loc>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://husseinmohamed99.github.io/projects/project.html?slug=sportymate</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://husseinmohamed99.github.io/projects/project.html?slug=systempro</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://husseinmohamed99.github.io/projects/project.html?slug=egydead</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://husseinmohamed99.github.io/projects/project.html?slug=muslim-app</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://husseinmohamed99.github.io/projects/project.html?slug=tripso</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://husseinmohamed99.github.io/projects/project.html?slug=quran-kareem</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>

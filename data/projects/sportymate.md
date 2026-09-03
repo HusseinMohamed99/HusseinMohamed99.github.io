@@ -4,7 +4,7 @@ category: "Sports Booking Marketplace · Android & iOS · Arabic/English · Octo
 badge: Company Project
 short_description: "Two-sided sports booking marketplace built at Octopus Software Solutions, connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline."
 icon: images/sportymate/sporty_icon.png
-order: 3
+order: 5
 overview: |
   SportyMate is a two-sided sports booking marketplace for Android and iOS, built for players who want to find and book training and for trainers who want to sell it. Players browse sports categories, clubs and trainers, request a session on a trainer's published schedule, pay for it once the trainer confirms, and check in on the day with a QR scan. Trainers publish their own availability, work through incoming requests, connect their own payment account, and track what they've earned.
 

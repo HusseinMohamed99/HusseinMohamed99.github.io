@@ -4,7 +4,7 @@ category: "Real Estate Marketplace · Valuerythm"
 badge: Company Project
 short_description: "Bilingual (Arabic/English) real estate marketplace built at Valuerythm for the Saudi market — listings for sale, rent and booking, advanced filters, bilingual location search, and direct agent contact via call or WhatsApp."
 icon: images/systempro/systempro_icon.png
-order: 4
+order: 6
 overview: |
   SystemPro is a bilingual (Arabic/English) real estate marketplace app for the Saudi market, built in Flutter. Property seekers browse listings for sale, rent, and short-term booking, filter them by category, price, size, bedrooms, bathrooms and amenities, search by district/city/region in either language, save favorites, and contact the listing agency directly by phone or WhatsApp. Listings are published by real estate companies, each with its own browsable profile page. The app ships with full RTL support, light/dark theming, offline-capable caching, and an automated Fastlane + GitHub Actions pipeline that distributes builds to testers via Firebase App Distribution.
 stats:

@@ -6,7 +6,7 @@ short_description: Media browser for movies, series, and anime with 10K+
   downloads on Google Play. Smart recommendations, trailers, cast details, and
   categorized search — built with BLoC, Dio, and shimmer loading UX.
 icon: images/egydead/egydead_icon.png
-order: 5
+order: 7
 overview: >
   EGY DEAD is a Flutter movie and TV-series discovery app for Android and iOS,
   built on the TMDB API. It lets viewers browse curated rails (now playing,
