@@ -232,7 +232,13 @@ footer span{font-size:.73rem;color:var(--contact-label)}
   .nav-right{gap:.4rem}
   .nav-hamburger{display:flex}
   #hero{grid-template-columns:1fr;padding:6.5rem 1.5rem 3rem;gap:0}
-  .hero-right{display:none}
+  /* Photo shows above the hero text on mobile, centered and scaled down */
+  .hero-right{display:flex;justify-content:center;order:-1;margin-bottom:1.75rem}
+  .hero-right .photo-wrap{width:200px;height:200px}
+  .hero-right .photo-box{width:160px;height:160px}
+  .hero-right .photo-glow{width:178px;height:178px}
+  .hero-right .photo-glow2{width:200px;height:200px}
+  .hero-right .photo-badge{bottom:-4px;right:-10px;padding:.5rem .75rem}
   .about-in{grid-template-columns:1fr;gap:1.75rem}
   .about-band{padding:3rem 1.5rem}
   .skills-g{grid-template-columns:1fr 1fr}
