@@ -113,24 +113,42 @@ if(document.getElementById('hero-section')){
   }
 })();
 
-// Smooth cursor
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-if(cursor && ring) {
-  let mx=0,my=0,rx=0,ry=0;
+// Cursor mascot — follows the pointer, then docks above the footer
+const mascot = document.getElementById('mascot');
+if(mascot) {
+  var DOCK_THRESHOLD = 260;  // px from the bottom of the page before it settles
+  var HYSTERESIS = 40;       // extra travel needed to undock, so it can't flicker
+  var EASE = 0.14;
+
+  var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  var x = mx, y = my;
+  var docked = false;
+
   document.addEventListener('mousemove', function(e) {
     mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx+'px';
-    cursor.style.top = my+'px';
   });
-  function animRing() {
-    rx += (mx - rx) * 0.1;
-    ry += (my - ry) * 0.1;
-    ring.style.left = rx+'px';
-    ring.style.top = ry+'px';
-    requestAnimationFrame(animRing);
+
+  function gapToBottom() {
+    var docH = Math.max(document.body.offsetHeight, document.documentElement.offsetHeight);
+    return docH - (window.innerHeight + window.scrollY);
   }
-  animRing();
+
+  function checkDock() {
+    var gap = gapToBottom();
+    if(!docked && gap <= DOCK_THRESHOLD) docked = true;
+    else if(docked && gap > DOCK_THRESHOLD + HYSTERESIS) docked = false;
+    mascot.classList.toggle('docked', docked);
+  }
+
+  // One loop for both states: docked just swaps the target it eases toward.
+  function animMascot() {
+    var tx = docked ? window.innerWidth / 2 : mx;
+    var ty = docked ? window.innerHeight - 96 : my;
+    x += (tx - x) * EASE;
+    y += (ty - y) * EASE;
+    mascot.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-50%)';
+    requestAnimationFrame(animMascot);
+  }
 
   // Delegated so it also covers cards rendered later from data/projects/*.md
   var HOVER_TARGETS = 'a,button,.skill-card,.proj-card,.proj-x-card,.cert-card,.cs-cap';
@@ -138,8 +156,7 @@ if(cursor && ring) {
     return !!(node && node.closest && node.closest(HOVER_TARGETS));
   }
   function setExpand(on) {
-    cursor.classList.toggle('expand', on);
-    ring.classList.toggle('expand', on);
+    mascot.classList.toggle('expand', on);
   }
   document.addEventListener('mouseover', function(e) {
     if (isTarget(e.target)) setExpand(true);
@@ -147,6 +164,11 @@ if(cursor && ring) {
   document.addEventListener('mouseout', function(e) {
     if (!isTarget(e.relatedTarget)) setExpand(false);
   });
+
+  window.addEventListener('scroll', checkDock, { passive: true });
+  window.addEventListener('resize', checkDock);
+  checkDock();
+  animMascot();
 }
 
 // Scroll animations

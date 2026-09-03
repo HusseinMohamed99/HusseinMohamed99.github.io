@@ -73,14 +73,31 @@ nav.stuck{border-color:var(--border);background:var(--nav-stuck)}
 .mobile-menu a:hover,.mobile-menu a.active{color:var(--green);background:var(--green-light)}
 .mobile-menu .m-hire{background:var(--ink);color:var(--cream)!important;font-weight:600;text-align:center;margin-top:.5rem;border-radius:100px;padding:.75rem}
 .mobile-menu .m-hire:hover{background:var(--ink2)}
-/* Custom cursor */
-.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--green);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s,opacity .2s;mix-blend-mode:multiply}
-.cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(26,107,69,.4);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s}
-.cursor.expand{transform:translate(-50%,-50%) scale(2.5);opacity:.5}
-.cursor-ring.expand{width:48px;height:48px;opacity:.2}
+/* Custom cursor — a mascot that follows the pointer and docks above the footer.
+   Position is written to transform in one rAF loop (script.js), so nothing here
+   animates left/top. The halo deliberately echoes .photo-glow on the hero. */
+.mascot{position:fixed;top:0;left:0;width:34px;height:34px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);will-change:transform}
+.mascot svg{display:block;width:100%;height:100%;overflow:visible}
+.m-halo{stroke:var(--green);fill:none;opacity:.45;transform-origin:center;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .3s}
+.m-core{fill:var(--green)}
+.m-leaf{fill:var(--green-mid)}
+.m-stem{stroke:var(--green);fill:none}
+/* The eyes stay light in both themes — they belong to the character, not the page */
+.m-eye{fill:#faf8f3;transform-origin:center;transition:transform .2s ease}
+.m-body{transform-origin:center;transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+/* Over a link or button: the halo opens, the body dips, the eyes widen */
+.mascot.expand .m-halo{transform:scale(1.55);opacity:.75}
+.mascot.expand .m-body{transform:scale(.86)}
+.mascot.expand .m-eye{transform:scaleY(1.25)}
+/* Parked above the footer: the loop stops tracking and the halo breathes */
+.mascot.docked .m-halo{animation:m-breathe 3s ease-in-out infinite}
+@keyframes m-breathe{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.18);opacity:.7}}
+@media (prefers-reduced-motion:reduce){
+  .mascot,.m-halo,.m-body,.m-eye{transition:none!important;animation:none!important}
+}
 /* Touch devices have no pointer to follow — hide the custom cursor entirely */
 @media (hover: none) and (pointer: coarse) {
-  #cursor, #cursor-ring { display: none !important; }
+  #mascot { display: none !important; }
 }
 
 /* HERO */
