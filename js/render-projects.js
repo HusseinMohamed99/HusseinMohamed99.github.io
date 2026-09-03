@@ -15,6 +15,7 @@
     "Personal Project": "🎮",
     "Graduation": "🎓",
     "Company Project": "🏢",
+    "Coming Soon": "🕐",
   };
 
   const PALETTE = ["#0EA5E9", "#7C3AED", "#059669", "#DB2777", "#D97706", "#0F766E", "#DC2626", "#4F46E5"];
@@ -77,6 +78,12 @@
         font-family:'Geist Mono',monospace;font-size:.6rem;letter-spacing:.06em;
         text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;
       }
+      /* Unreleased work reads as amber, so it never looks like a shipped badge */
+      .proj-x-badge.is-soon{
+        display:inline-flex;align-self:flex-start;
+        color:var(--amber);background:var(--amber-light);
+        padding:.22rem .6rem;border-radius:100px;
+      }
       .proj-x-nm{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;line-height:1.15;margin-bottom:.2rem}
       .proj-x-cat{font-size:.78rem;color:var(--muted);margin-bottom:.7rem}
       .proj-x-desc{font-size:.85rem;line-height:1.55;color:var(--text-secondary,#555);margin-bottom:1rem;
@@ -115,7 +122,8 @@
   function renderCompactCard(p, i, color) {
     const badgeLabel = p.badge || "Personal Project";
     const badgeIcon = badgeIcons[badgeLabel] || "📱";
-    const isLive = !!(p.links && (p.links.app_store || p.links.google_play));
+    const isComingSoon = p.badge === "Coming Soon";
+    const isLive = !isComingSoon && !!(p.links && (p.links.app_store || p.links.google_play));
 
     const iconBox = p.icon
       ? `<img src="${ICON_BASE}${escapeHtml(p.icon)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:12px"/>`
@@ -135,12 +143,12 @@
     return `
     <div class="proj-x-card" style="--dot:${color};animation-delay:${i * 0.05}s">
       <div class="proj-x-visual" style="background:${color};background-image:radial-gradient(circle,rgba(255,255,255,.18) 1px,transparent 1px)">
-        <span class="proj-x-idx">0${i + 1}</span>
+        <span class="proj-x-idx">${String(i + 1).padStart(2, "0")}</span>
         <div class="proj-x-icon">${iconBox}</div>
-        <span class="proj-x-live">${isLive ? "🟢 Live" : "✓ Delivered"}</span>
+        <span class="proj-x-live">${isComingSoon ? "🕐 Coming Soon" : (isLive ? "🟢 Live" : "✓ Delivered")}</span>
       </div>
       <div class="proj-x-body">
-        <div class="proj-x-badge">${badgeIcon} ${escapeHtml(badgeLabel)}</div>
+        <div class="proj-x-badge${isComingSoon ? " is-soon" : ""}">${badgeIcon} ${escapeHtml(badgeLabel)}</div>
         <div class="proj-x-nm">${escapeHtml(p.name || "")}</div>
         <div class="proj-x-cat">${escapeHtml(p.category || "")}</div>
         <p class="proj-x-desc">${escapeHtml(p.short_description || "")}</p>

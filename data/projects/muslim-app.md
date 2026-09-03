@@ -7,7 +7,7 @@ short_description: All-in-one Islamic app with Quran, Hadith, Azkar, Zakat
   support, light & dark themes, and the full Quran and Hadith bundled for
   offline use.
 icon: images/muslim-app/muslim_icon.png
-order: 6
+order: 8
 overview: >
   Muslim App is a cross-platform Flutter app (Android, iOS, plus desktop/web
   build targets) that bundles the daily-practice essentials for Muslim users

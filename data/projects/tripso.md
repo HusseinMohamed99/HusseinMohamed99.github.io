@@ -7,7 +7,7 @@ short_description: Tourism app covering Egypt, UAE, France, and Italy with top
   Graduation project built with Cubit state management, Dio REST integration,
   and Firebase auth.
 icon: images/tripso/tripso_icon.png
-order: 7
+order: 9
 overview: |
   Tripso is a Flutter travel-planning app for people who want to build their own day-by-day itinerary instead of booking a fixed package tour. Users browse curated cities across Egypt, Italy, France and the UAE, read and listen to the history of each landmark, save places to a wishlist, then pick a date range and assign sights to each day of the trip. Everything — accounts, cities, places, wishlists and itineraries — is backed by Firebase, with live weather pulled from WeatherAPI, so plans stay in sync across sessions and devices. It was Hussein's graduation project, and the first full app where Cubit state management and Firebase auth were put into practice end to end.
 stats:
