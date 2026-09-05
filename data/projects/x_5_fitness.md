@@ -7,6 +7,7 @@ short_description: A bilingual (Arabic/English) fitness companion built on
   logging against a 42-exercise reference library, body progress charted against
   InBody figures, and a plain-language privacy screen that exports everything
   the app holds about you.
+icon: images/5x-fitness/logo.png
 order: 3
 accent_color: "#39ff88"
 overview: >
