@@ -123,26 +123,36 @@ architecture_flow_2:
   - step: Kotlin ForegroundService
   - step: Adhan plays, no UI, no Flutter engine
 mockups:
-  - image: images/refqa/rifqa_01_home.png
-    caption: Home
-  - image: images/refqa/rifqa_02_qibla.png
-    caption: Qibla
-  - image: images/refqa/rifqa_03_quick_access.png
-    caption: Quick Access
-  - image: images/refqa/rifqa_04_tasbih.png
-    caption: Tasbih
-  - image: images/refqa/rifqa_05_achievements.png
-    caption: Achievements
-  - image: images/refqa/rifqa_06_tafsir.png
-    caption: Tafsir
-  - image: images/refqa/rifqa_07_hadith.png
-    caption: Hadith
-  - image: images/refqa/rifqa_08_quran.png
-    caption: Quran
-  - image: images/refqa/rifqa_09_challenges.png
-    caption: Challenges
-  - image: images/refqa/rifqa_10_daily_feed.png
-    caption: Daily Feed
+  - image: images/refqa-رِفقة/rifqa_01_home.png
+    caption: الصفحة الرئيسية
+  - image: images/refqa-رِفقة/rifqa_02_tasmee.png
+    caption: تسميع
+  - image: images/refqa-رِفقة/rifqa_05_qibla_times.png
+    caption: القبلة
+  - image: images/refqa-رِفقة/rifqa_10_tasbih.png
+    caption: تسبيح
+  - image: images/refqa-رِفقة/rifqa_15_achievements.png
+    caption: الإنجازات
+  - image: images/refqa-رِفقة/rifqa_07_tafsir.png
+    caption: تفسير القرآن
+  - image: images/refqa-رِفقة/rifqa_11_hadith.png
+    caption: الأحاديث النبوية
+  - image: images/refqa-رِفقة/rifqa_06_quran.png
+    caption: القرآن الكريم
+  - image: images/refqa-رِفقة/rifqa_09_radio.png
+    caption: الراديو
+  - image: images/refqa-رِفقة/rifqa_04_azkar.png
+    caption: الأذكار
+  - image: images/refqa-رِفقة/rifqa_03_more.png
+    caption: المزيد
+  - image: images/refqa-رِفقة/rifqa_12_seerah.png
+    caption: السيرة النبوية
+  - image: images/refqa-رِفقة/rifqa_08_qurra.png
+    caption: القرأ
+  - image: images/refqa-رِفقة/rifqa_13_asharah.png
+    caption: العشرة المبشرون بالجنة
+  - image: images/refqa-رِفقة/rifqa_14_asmaa.png
+    caption: أسماء الله الحسني
 challenges:
   - label: Android Resource Shrinking
     title: Notification sounds worked in debug, went silent in release
