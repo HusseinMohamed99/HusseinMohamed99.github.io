@@ -13,6 +13,7 @@ short_description: "A comprehensive Islamic companion app: dual-mode Quran
   all privacy-first, with location and PII scrubbed before any crash report."
 icon: images/refqa/refqa_logo.png
 order: 2
+accent_color: "#2d6e96"
 overview: >
   Refqa is a comprehensive Islamic companion app I designed and built end to end
   — Quran, Hadith, Tafsir, prayer times, adhan, duas, and daily spiritual
@@ -87,21 +88,6 @@ capabilities:
     title: Privacy by architecture
     description: Coordinates are scrubbed before any crash report is sent; no
       accounts, no ads, no third-party analytics SDKs.
-architecture_text: >
-  The Flutter layer follows a strict feature-first data/domain/presentation
-  split, with Riverpod (freezed union states for real async lifecycles) managing
-  everything above the repository boundary and sqflite backing structured local
-  data. But the adhan feature couldn't live in Dart alone: Android kills the
-  Flutter engine when the app isn't foregrounded, and the adhan has to fire
-  exactly on time regardless. So the unattended path drops to native Kotlin
-  entirely — an exact AlarmManager alarm wakes a BroadcastReceiver, which starts
-  a mediaPlayback ForegroundService that reads the audio file and plays it, with
-  zero Dart execution required at fire time.
-architecture_flow:
-  - step: Riverpod (Presentation)
-  - step: Repository Interface
-  - step: sqflite + REST
-  - step: AlQuran.cloud / AlAdhan / Sunnah.com
 banner: images/refqa-رِفقة/refqa_cover.png
 tech_tags:
   - tag: Flutter
@@ -122,6 +108,21 @@ architecture_flow_2:
   - step: BroadcastReceiver
   - step: Kotlin ForegroundService
   - step: Adhan plays, no UI, no Flutter engine
+architecture_text: >
+  The Flutter layer follows a strict feature-first data/domain/presentation
+  split, with Riverpod (freezed union states for real async lifecycles) managing
+  everything above the repository boundary and sqflite backing structured local
+  data. But the adhan feature couldn't live in Dart alone: Android kills the
+  Flutter engine when the app isn't foregrounded, and the adhan has to fire
+  exactly on time regardless. So the unattended path drops to native Kotlin
+  entirely — an exact AlarmManager alarm wakes a BroadcastReceiver, which starts
+  a mediaPlayback ForegroundService that reads the audio file and plays it, with
+  zero Dart execution required at fire time.
+architecture_flow:
+  - step: Riverpod (Presentation)
+  - step: Repository Interface
+  - step: sqflite + REST
+  - step: AlQuran.cloud / AlAdhan / Sunnah.com
 mockups:
   - image: images/refqa-رِفقة/rifqa_01_home.png
     caption: الصفحة الرئيسية
