@@ -9,7 +9,7 @@ short_description: A bilingual (Arabic/English) fitness companion built on
   the app holds about you.
 icon: images/5x-fitness/logo.png
 order: 3
-accent_color: "#39ff88"
+accent_color: "#00d4ff"
 overview: >
   5X Fitness is a fitness habit-tracker I'm building end to end on Flutter and
   Firebase — gym attendance, a daily plank habit, workout logging, and body
