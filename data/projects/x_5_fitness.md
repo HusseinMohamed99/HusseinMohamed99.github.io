@@ -8,6 +8,7 @@ short_description: A bilingual (Arabic/English) fitness companion built on
   InBody figures, and a plain-language privacy screen that exports everything
   the app holds about you.
 order: 3
+accent_color: "#39ff88"
 overview: >
   5X Fitness is a fitness habit-tracker I'm building end to end on Flutter and
   Firebase — gym attendance, a daily plank habit, workout logging, and body
