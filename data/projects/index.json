@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-05T07:07:10.446Z",
+  "generated": "2026-09-05T07:10:25.608Z",
   "count": 10,
   "projects": [
     {
@@ -113,6 +113,7 @@
       "badge": "Coming Soon",
       "short_description": "A bilingual (Arabic/English) fitness companion built on Flutter and Firebase — gym attendance streaks, a daily plank habit, workout logging against a 42-exercise reference library, body progress charted against InBody figures, and a plain-language privacy screen that exports everything the app holds about you.",
       "order": 3,
+      "accent_color": "#39ff88",
       "tech_tags": [
         {
           "tag": "Flutter"
