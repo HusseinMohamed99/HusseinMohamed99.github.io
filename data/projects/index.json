@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-05T07:14:46.190Z",
+  "generated": "2026-09-11T19:59:51.689Z",
   "count": 10,
   "projects": [
     {
@@ -157,7 +157,9 @@
       "category": "Shared Expenses · Offline-First · Bilingual Arabic/English",
       "badge": "Coming Soon",
       "short_description": "An offline-first, guest-first expense-splitting app for travel friends, roommates, and work teams — record who paid, split equally or custom, and get a deterministic settlement engine that works out the minimum number of payments needed to settle the whole group.",
+      "icon": "images/splitly-قسمة/logo.svg",
       "order": 4,
+      "accent_color": "#087a55",
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -185,7 +187,7 @@
         }
       ],
       "links": {},
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-09-11"
     },
     {
       "slug": "sportymate",
