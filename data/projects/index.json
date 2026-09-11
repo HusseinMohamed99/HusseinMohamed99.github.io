@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-11T19:59:51.689Z",
+  "generated": "2026-09-11T20:03:55.122Z",
   "count": 10,
   "projects": [
     {
@@ -159,7 +159,7 @@
       "short_description": "An offline-first, guest-first expense-splitting app for travel friends, roommates, and work teams — record who paid, split equally or custom, and get a deterministic settlement engine that works out the minimum number of payments needed to settle the whole group.",
       "icon": "images/splitly-قسمة/logo.svg",
       "order": 4,
-      "accent_color": "#087a55",
+      "accent_color": "#ddf8ec",
       "tech_tags": [
         {
           "tag": "Flutter"
