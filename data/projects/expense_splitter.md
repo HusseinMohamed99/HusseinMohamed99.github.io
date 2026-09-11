@@ -8,7 +8,7 @@ short_description: An offline-first, guest-first expense-splitting app for
   number of payments needed to settle the whole group.
 icon: images/splitly-قسمة/logo.svg
 order: 4
-accent_color: "#ddf8ec"
+accent_color: "#10b981"
 overview: >
   Splitly starts from a simple promise: every person should know exactly how
   much they paid, how much they owe, and who they need to pay — without
