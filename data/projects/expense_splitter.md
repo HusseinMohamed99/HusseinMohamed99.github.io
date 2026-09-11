@@ -3,16 +3,18 @@ name: Splitly (قسمة)
 category: Shared Expenses · Offline-First · Bilingual Arabic/English
 badge: Coming Soon
 short_description: An offline-first, guest-first expense-splitting app for
-  travel friends, roommates, and work teams — record who paid, split equally
-  or custom, and get a deterministic settlement engine that works out the
-  minimum number of payments needed to settle the whole group.
+  travel friends, roommates, and work teams — record who paid, split equally or
+  custom, and get a deterministic settlement engine that works out the minimum
+  number of payments needed to settle the whole group.
+icon: images/splitly-قسمة/logo.svg
 order: 4
+accent_color: "#087a55"
 overview: >
   Splitly starts from a simple promise: every person should know exactly how
   much they paid, how much they owe, and who they need to pay — without
   spreadsheets and without an account wall. A user can create a group, add
-  members and expenses, and see balances and settlement suggestions as a
-  guest, before ever signing in.
+  members and expenses, and see balances and settlement suggestions as a guest,
+  before ever signing in.
 
 
   Money is modeled as integer minor units end to end — never floating-point — so a settlement is exactly reproducible, not "close enough." The settlement engine matches debtors against creditors to minimize the number of transfers needed to zero out a group, while an append-only expense-revision model keeps full history even as expenses are edited or deleted.
@@ -26,31 +28,29 @@ stats:
 capabilities:
   - icon: 👥
     title: Groups & members
-    description: Create groups for a trip, a flat, or a team, and add members
-      by name — no accounts required to get started.
+    description: Create groups for a trip, a flat, or a team, and add members by
+      name — no accounts required to get started.
   - icon: 🧾
     title: Equal & custom splits
-    description: Split an expense evenly across selected members, or assign
-      exact custom amounts — both validated to match the expense total
-      exactly.
+    description: Split an expense evenly across selected members, or assign exact
+      custom amounts — both validated to match the expense total exactly.
   - icon: ⚖️
     title: Deterministic balance engine
-    description: Paid, owed, and net are computed per member from an
-      append-only expense-revision ledger, so edits and deletions never lose
-      history.
+    description: Paid, owed, and net are computed per member from an append-only
+      expense-revision ledger, so edits and deletions never lose history.
   - icon: 🤝
     title: Settlement suggestions
-    description: A debtor/creditor-matching algorithm works out who should pay
-      whom, minimizing the number of transfers needed to settle the group.
+    description: A debtor/creditor-matching algorithm works out who should pay whom,
+      minimizing the number of transfers needed to settle the group.
   - icon: 🔑
     title: Guest-first, account-optional
-    description: The full guest flow — groups, expenses, balances, settlement
-      — works with zero sign-up; an account is only needed for cloud backup
-      and cross-device sync.
+    description: The full guest flow — groups, expenses, balances, settlement —
+      works with zero sign-up; an account is only needed for cloud backup and
+      cross-device sync.
   - icon: 🌍
     title: Arabic / English
-    description: Fully bilingual with intentional RTL layout, built on
-      Flutter's gen-l10n rather than any hard-coded UI strings.
+    description: Fully bilingual with intentional RTL layout, built on Flutter's
+      gen-l10n rather than any hard-coded UI strings.
 architecture_text: >
   Splitly follows a feature-first Flutter architecture with strict layer
   boundaries: domain services own the financial rules (splitting, balance
@@ -60,8 +60,28 @@ architecture_text: >
   and versioned, tested migrations. A later V1 layer adds Firebase
   Authentication, idempotent guest-to-account migration, and cloud
   synchronization behind a trusted backend — accepted mutations get a
-  server-assigned financial sequence and idempotency key, so a retried sync
-  can never double-apply a settlement.
+  server-assigned financial sequence and idempotency key, so a retried sync can
+  never double-apply a settlement.
+banner: images/splitly-قسمة/00_feature_graphic_ar_1024x500.png
+mockups:
+  - image: images/splitly-قسمة/01_splash_1080x1920.png
+    caption: Splash Screen
+  - image: images/splitly-قسمة/03_create_group_1080x1920.png
+    caption: Create Group
+  - image: images/splitly-قسمة/02_groups_1080x1920.png
+    caption: Groups
+  - image: images/splitly-قسمة/04_members_1080x1920.png
+    caption: Members
+  - image: images/splitly-قسمة/05_itemized_expense_1080x1920.png
+    caption: Itemized Expense
+  - image: images/splitly-قسمة/06_each_person_share_1080x1920.png
+    caption: Each Person Share
+  - image: images/splitly-قسمة/07_balances_1080x1920.png
+    caption: Balances
+  - image: images/splitly-قسمة/08_settlements_1080x1920.png
+    caption: Settlements
+  - image: images/splitly-قسمة/09_account_choice_1080x1920.png
+    caption: Account Choice
 tech_tags:
   - tag: Flutter
   - tag: Riverpod
