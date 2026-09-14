@@ -62,26 +62,30 @@ architecture_text: >
   synchronization behind a trusted backend — accepted mutations get a
   server-assigned financial sequence and idempotency key, so a retried sync can
   never double-apply a settlement.
-banner: images/splitly-قسمة/00_feature_graphic_ar_1024x500.png
+banner: images/splitly-قسمة/splitly_00_cover.png
 mockups:
-  - image: images/splitly-قسمة/01_splash_1080x1920.png
+  - image: images/splitly-قسمة/splitly_13_splash.png
     caption: Splash Screen
-  - image: images/splitly-قسمة/03_create_group_1080x1920.png
+  - image: images/splitly-قسمة/splitly_02_create_group.png
     caption: Create Group
-  - image: images/splitly-قسمة/02_groups_1080x1920.png
+  - image: images/splitly-قسمة/splitly_01_groups_list.png
     caption: Groups
-  - image: images/splitly-قسمة/04_members_1080x1920.png
+  - image: images/splitly-قسمة/splitly_03_members.png
     caption: Members
-  - image: images/splitly-قسمة/05_itemized_expense_1080x1920.png
+  - image: images/splitly-قسمة/splitly_04_expense_form.png
     caption: Itemized Expense
-  - image: images/splitly-قسمة/06_each_person_share_1080x1920.png
+  - image: images/splitly-قسمة/splitly_05_expense_detail.png
     caption: Each Person Share
-  - image: images/splitly-قسمة/07_balances_1080x1920.png
+  - image: images/splitly-قسمة/splitly_06_balances.png
     caption: Balances
-  - image: images/splitly-قسمة/08_settlements_1080x1920.png
+  - image: images/splitly-قسمة/splitly_07_settlements.png
     caption: Settlements
-  - image: images/splitly-قسمة/09_account_choice_1080x1920.png
+  - image: images/splitly-قسمة/splitly_08_bill_split.png
+    caption: Bill Split
+  - image: images/splitly-قسمة/splitly_09_no_account.png
     caption: Account Choice
+  - image: images/splitly-قسمة/splitly_12_archived.png
+    caption: Archived
 tech_tags:
   - tag: Flutter
   - tag: Riverpod
