@@ -113,20 +113,51 @@ if(document.getElementById('hero-section')){
   }
 })();
 
-// Cursor mascot — follows the pointer, then docks above the footer
+// Cursor companion — the H.Solutions character follows the pointer on desktop and
+// docks above the footer; on touch devices it floats beside the back-to-top button
+// and leans with the scroll instead. One rAF loop drives both modes, writing only
+// transforms: #mascot gets position, .m-body gets lean/bob, .m-figure is left to
+// CSS for the hover/press classes so the two never fight over one property.
 const mascot = document.getElementById('mascot');
 if(mascot) {
+  var mBody = mascot.querySelector('.m-body') || mascot;
+
   var DOCK_THRESHOLD = 260;  // px from the bottom of the page before it settles
   var HYSTERESIS = 40;       // extra travel needed to undock, so it can't flicker
-  var EASE = 0.14;
+  var FOLLOW = 0.2;          // ease toward the pointer per 60fps frame: trails, never lags
+  var OFFSET_X = 16, OFFSET_Y = 14;  // character sits down-right of the hotspot
+  var LEAN_MAX = 10;         // deg at a fast flick
+  var LEAN_PER_PX = 0.5;     // deg per px-per-frame of horizontal speed
+  var LEAN_EASE = 0.14;
+  var STRETCH_MAX = 0.05;    // slight stretch in the direction of fast travel
+  var BOB_AMP = 2, BOB_PERIOD = 3200;   // idle float when docked / on touch
+  var SCROLL_VMAX = 28;      // px/frame of scroll that counts as "fast"
+  var SCROLL_LEAN = 9, SCROLL_SHIFT = 10, SCROLL_EASE = 0.1;
+  var TAU = Math.PI * 2;
 
-  var mx = window.innerWidth / 2, my = window.innerHeight / 2;
-  var x = mx, y = my;
-  var docked = false;
+  var coarse = window.matchMedia('(hover: none) and (pointer: coarse)');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  document.addEventListener('mousemove', function(e) {
-    mx = e.clientX; my = e.clientY;
-  });
+  var mx = 0, my = 0;          // pointer
+  var x = 0, y = 0;            // smoothed position of the box's top-left corner
+  var w = 48, h = 84;          // box size, re-read on resize (never in the loop)
+  var seen = false, away = true, docked = false;
+  var lean = 0, stretch = 0, scrollVel = 0;
+  var lastScrollY = window.scrollY, lastFrame = 0;
+  var lastPos = '', lastBody = '';
+
+  function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+  // Frame-rate independent ease: `ease` is the per-60fps-frame fraction.
+  function decay(ease, k) { return 1 - Math.pow(1 - ease, k); }
+  function write(el, t, last) {
+    if (t !== last) el.style.transform = t;
+    return t;
+  }
+
+  function measure() {
+    w = mascot.offsetWidth || w;
+    h = mascot.offsetHeight || h;
+  }
 
   function gapToBottom() {
     var docH = Math.max(document.body.offsetHeight, document.documentElement.offsetHeight);
@@ -135,40 +166,121 @@ if(mascot) {
 
   function checkDock() {
     var gap = gapToBottom();
-    if(!docked && gap <= DOCK_THRESHOLD) docked = true;
+    if (coarse.matches) docked = false;
+    else if(!docked && gap <= DOCK_THRESHOLD) docked = true;
     else if(docked && gap > DOCK_THRESHOLD + HYSTERESIS) docked = false;
     mascot.classList.toggle('docked', docked);
+    syncVisible();
   }
 
-  // One loop for both states: docked just swaps the target it eases toward.
-  function animMascot() {
-    var tx = docked ? window.innerWidth / 2 : mx;
-    var ty = docked ? window.innerHeight - 96 : my;
-    x += (tx - x) * EASE;
-    y += (ty - y) * EASE;
-    mascot.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-50%)';
-    requestAnimationFrame(animMascot);
+  // Shown once the pointer has been seen and is still inside the window, or
+  // whenever it's parked above the footer. Touch mode is always shown.
+  function syncVisible() {
+    var show = coarse.matches || docked || (seen && !away);
+    mascot.classList.toggle('hidden', !show);
+  }
+
+  function frame(now) {
+    requestAnimationFrame(frame);
+    var dt = lastFrame ? Math.min(now - lastFrame, 64) : 16.7;
+    lastFrame = now;
+    var k = dt / 16.7;
+    var still = reduceMotion.matches;
+    var bob;
+
+    if (coarse.matches) {
+      // Touch: the box is placed by CSS; only the scroll reaction moves. Sampled
+      // per frame so a 120Hz screen and a throttled one reach the same amplitude.
+      var sy = window.scrollY;
+      var raw = still ? 0 : clamp((sy - lastScrollY) / k, -SCROLL_VMAX, SCROLL_VMAX) / SCROLL_VMAX;
+      lastScrollY = sy;
+      scrollVel += (raw - scrollVel) * decay(SCROLL_EASE, k);
+      bob = still ? 0 : Math.sin((now / BOB_PERIOD) * TAU) * BOB_AMP;
+      lastBody = write(mBody,
+        'translate3d(0,' + (scrollVel * SCROLL_SHIFT + bob).toFixed(2) + 'px,0) ' +
+        'rotate(' + (scrollVel * SCROLL_LEAN).toFixed(2) + 'deg)', lastBody);
+      return;
+    }
+
+    // Desktop: docked just swaps the target the same ease glides toward.
+    var tx = docked ? window.innerWidth / 2 - w / 2 : mx + OFFSET_X;
+    var ty = docked ? window.innerHeight - 96 - h / 2 : my + OFFSET_Y;
+    var e = still ? 1 : decay(FOLLOW, k);
+    var px = x;
+    x += (tx - x) * e;
+    y += (ty - y) * e;
+
+    // Lean into the direction of travel, harder when fast, back to neutral at rest
+    var vx = (x - px) / k;
+    var targetLean = still ? 0 : clamp(vx * LEAN_PER_PX, -LEAN_MAX, LEAN_MAX);
+    lean += (targetLean - lean) * decay(LEAN_EASE, k);
+    var speed = still ? 0 : Math.min(Math.abs(vx) / 30, 1);
+    stretch += (speed * STRETCH_MAX - stretch) * decay(LEAN_EASE, k);
+    bob = (docked && !still) ? Math.sin((now / BOB_PERIOD) * TAU) * BOB_AMP : 0;
+
+    lastPos = write(mascot, 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)', lastPos);
+    lastBody = write(mBody,
+      'translate3d(0,' + bob.toFixed(2) + 'px,0) rotate(' + lean.toFixed(2) + 'deg) ' +
+      'scale(' + (1 + stretch).toFixed(3) + ',' + (1 - stretch * .6).toFixed(3) + ')', lastBody);
   }
 
   // Delegated so it also covers cards rendered later from data/projects/*.md
-  var HOVER_TARGETS = 'a,button,.skill-card,.proj-card,.proj-x-card,.cert-card,.cs-cap';
+  var HOVER_TARGETS = 'a,button,.btn,[role="button"],summary,label,.skill-card,.proj-card,.proj-x-card,.cert-card,.cs-cap';
+  var TEXT_TARGETS = 'input,textarea,select,[contenteditable]';
   function isTarget(node) {
     return !!(node && node.closest && node.closest(HOVER_TARGETS));
   }
-  function setExpand(on) {
-    mascot.classList.toggle('expand', on);
+  function isText(node) {
+    return !!(node && node.closest && node.closest(TEXT_TARGETS));
   }
   document.addEventListener('mouseover', function(e) {
-    if (isTarget(e.target)) setExpand(true);
+    if (isTarget(e.target)) mascot.classList.add('expand');
+    // Over a field the character steps back so it never covers what's being typed
+    mascot.classList.toggle('quiet', isText(e.target));
   });
   document.addEventListener('mouseout', function(e) {
-    if (!isTarget(e.relatedTarget)) setExpand(false);
+    if (!isTarget(e.relatedTarget)) mascot.classList.remove('expand');
   });
 
+  window.addEventListener('pointermove', function(e) {
+    if (e.pointerType === 'touch') return;
+    mx = e.clientX; my = e.clientY;
+    if (!seen) { seen = true; x = mx + OFFSET_X; y = my + OFFSET_Y; }
+    if (away) { away = false; syncVisible(); }
+  }, { passive: true });
+
+  window.addEventListener('pointerdown', function(e) {
+    if (e.pointerType !== 'touch') mascot.classList.add('press');
+  }, { passive: true });
+  function release() { mascot.classList.remove('press'); }
+  window.addEventListener('pointerup', release, { passive: true });
+  window.addEventListener('pointercancel', release, { passive: true });
+
+  // Pointer off the page or the window lost focus: fade out until it's back
+  function leave() { away = true; release(); syncVisible(); }
+  document.documentElement.addEventListener('mouseleave', leave);
+  window.addEventListener('blur', leave);
+
+  // Fine <-> coarse can flip live (a tablet gaining a mouse): clear what the
+  // other mode wrote so CSS placement takes over cleanly.
+  function modeChange() {
+    mascot.style.transform = '';
+    mBody.style.transform = '';
+    lastPos = lastBody = '';
+    lean = stretch = scrollVel = 0;
+    lastScrollY = window.scrollY;
+    mascot.classList.remove('expand', 'press', 'quiet');
+    measure();
+    checkDock();
+  }
+  if (coarse.addEventListener) coarse.addEventListener('change', modeChange);
+  else if (coarse.addListener) coarse.addListener(modeChange);
+
   window.addEventListener('scroll', checkDock, { passive: true });
-  window.addEventListener('resize', checkDock);
+  window.addEventListener('resize', function() { measure(); checkDock(); });
+  measure();
   checkDock();
-  animMascot();
+  requestAnimationFrame(frame);
 }
 
 // Scroll animations
