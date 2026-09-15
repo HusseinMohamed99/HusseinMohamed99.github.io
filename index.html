@@ -138,6 +138,20 @@
         </div>
       </div>
     </div>
+
+    <!-- H.Solutions mascot — interactive brand character.
+         Layers carry data-mascot-depth so js/mascot.js can drive each one at a
+         different strength (parallax now, independent body parts later). -->
+    <div class="hs-mascot" id="hs-mascot">
+      <div class="hs-stage">
+        <div class="hs-glow" data-mascot-depth=".45" aria-hidden="true"></div>
+        <div class="hs-ring" data-mascot-depth=".22" aria-hidden="true"></div>
+        <div class="hs-figure" data-mascot-depth="1">
+          <img src="images/mascot/h-solutions-mascot.jpg" alt="H.Solutions mascot" width="900" height="900" decoding="async"/>
+        </div>
+      </div>
+      <div class="hs-cap">// H.Solutions</div>
+    </div>
   </div>
 </section>
 
@@ -480,6 +494,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="js/mascot.js"></script>
 <script src="js/js-yaml.min.js"></script>
 <script src="js/site-data.js"></script>
 <script src="js/render-projects.js"></script>
