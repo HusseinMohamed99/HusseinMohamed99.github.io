@@ -125,29 +125,20 @@
         <a href="https://github.com/HusseinMohamed99" target="_blank" class="btn-line" style="display:inline-flex;align-items:center;gap:.45rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg> GitHub ↗</a>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="photo-wrap">
-        <div class="photo-glow"></div>
-        <div class="photo-glow2"></div>
-        <div class="photo-box">
-          <img src="photo.jpg" alt="Hussein Mohamed"/>
-        </div>
-        <div class="photo-badge">
-          <div class="badge-n">3+</div>
-          <div class="badge-l">Years of<br>Experience</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- H.Solutions mascot — interactive brand character.
-         Layers carry data-mascot-depth so js/mascot.js can drive each one at a
-         different strength (parallax now, independent body parts later). -->
+    <!-- H.Solutions mascot — the hero's primary visual, floating free on the
+         page rather than boxed. Layers carry data-mascot-depth so js/mascot.js
+         drives each at its own strength (parallax now, independent body parts
+         later); the glow, halo and ground shadow trail the figure. -->
     <div class="hs-mascot" id="hs-mascot">
       <div class="hs-stage">
-        <div class="hs-glow" data-mascot-depth=".45" aria-hidden="true"></div>
-        <div class="hs-ring" data-mascot-depth=".22" aria-hidden="true"></div>
+        <div class="hs-glow" data-mascot-depth=".4" aria-hidden="true"></div>
+        <div class="hs-ring" data-mascot-depth=".18" aria-hidden="true"></div>
+        <div class="hs-shadow" data-mascot-depth=".22" aria-hidden="true"></div>
         <div class="hs-figure" data-mascot-depth="1">
-          <img src="images/mascot/h-solutions-mascot.jpg" alt="H.Solutions mascot" width="900" height="900" decoding="async"/>
+          <picture>
+            <source srcset="images/mascot/h-solutions-mascot.webp" type="image/webp"/>
+            <img src="images/mascot/h-solutions-mascot.png" alt="H.Solutions mascot" width="546" height="960" decoding="async"/>
+          </picture>
         </div>
       </div>
       <div class="hs-cap">// H.Solutions</div>
@@ -161,7 +152,24 @@
 
 <div class="about-band" id="about">
   <div class="about-in">
-    <div><div class="about-title">Building apps<br><em>people rely on</em></div></div>
+    <div>
+      <div class="about-title">Building apps<br><em>people rely on</em></div>
+      <!-- Portrait moved here from the hero so the mascot owns the hero's right
+           column; the markup and .photo-* styles are the hero's, rescaled. -->
+      <div class="about-portrait">
+        <div class="photo-wrap">
+          <div class="photo-glow"></div>
+          <div class="photo-glow2"></div>
+          <div class="photo-box">
+            <img src="photo.jpg" alt="Hussein Mohamed"/>
+          </div>
+          <div class="photo-badge">
+            <div class="badge-n">3+</div>
+            <div class="badge-l">Years of<br>Experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div>
       <p class="about-body">I'm a Cairo-based <strong>Flutter Developer</strong> specializing in <strong>Clean Architecture, Riverpod,</strong> and end-to-end CI/CD. I've shipped production apps for real merchants, thousands of users, and live stores — not just side projects.<br><br>Currently at <strong>Tuwaiq Pay</strong> — a live fintech platform where I own the full mobile stack: from <strong>NearPay NFC payments</strong> and biometric auth to CI/CD pipelines and App Store releases. Previously mentored <strong>50+ developers</strong> at Google Developer Student Clubs, leading real-world Flutter projects from scratch to deployment.</p>
     </div>
