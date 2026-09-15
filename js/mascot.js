@@ -27,12 +27,12 @@
     y: 15,            // px of vertical follow
     ry: 9,            // deg of yaw
     rx: 6,            // deg of pitch
-    scrollY: 17,      // px the figure lags behind the page at peak velocity
-    scrollRx: 5,      // deg it leans while scrolling
+    scrollY: 22,      // px the figure lags behind the page at peak velocity
+    scrollRx: 6,      // deg it leans while scrolling
     idleY: 4.5,       // px of idle float
     idlePeriod: 4200, // ms per idle cycle
     driftPeriod: 9000,// ms per slow yaw drift cycle
-    vMax: 34,         // px/frame that counts as a fast flick
+    vMax: 26,         // px/frame that counts as a fast flick
     pointerEase: 0.075,
     scrollEase: 0.09,
     strengthEase: 0.07,

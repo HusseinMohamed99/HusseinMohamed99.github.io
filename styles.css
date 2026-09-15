@@ -455,34 +455,24 @@ nav.stuck {
 }
 
 /* HERO */
-/* Two columns, two rows: the intro spans both rows on the left, the photo and
-   the mascot stack in the right rail. Explicit placement (rather than source
-   order) is what lets the mascot drop below the CTA on narrow screens. */
+/* The mascot's glow bleeds past the grid cell on purpose; clipping the section
+   on the x axis keeps that from ever widening the document. `clip` rather than
+   `hidden` leaves the y axis visible and creates no scroll container. */
+#hero-section {
+  overflow-x: clip
+}
+
+/* Intro on the left, the interactive mascot on the right. The visual column is
+   wider than the old portrait's rail so the mascot has room to move. */
 #hero {
   min-height: 100vh;
   max-width: 1280px;
   margin: 0 auto;
   padding: 7rem 3rem 4rem;
   display: grid;
-  grid-template-columns: 1fr 420px;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr minmax(300px, 460px);
   align-items: center;
-  gap: 1.75rem 5rem
-}
-
-#hero > .hero-left {
-  grid-column: 1;
-  grid-row: 1 / span 2
-}
-
-#hero > .hero-right {
-  grid-column: 2;
-  grid-row: 1
-}
-
-#hero > .hs-mascot {
-  grid-column: 2;
-  grid-row: 2
+  gap: 4rem
 }
 
 h1 {
@@ -564,14 +554,7 @@ h1 em {
   background: var(--surface)
 }
 
-/* HERO RIGHT - PHOTO */
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem
-}
-
+/* PORTRAIT — lives in the About band now, styles shared with nothing else */
 .photo-wrap {
   position: relative;
   width: 300px;
@@ -686,32 +669,26 @@ h1 em {
 }
 
 /* H.SOLUTIONS MASCOT
-   The artwork ships with its own dark-navy studio backdrop, so the stage repaints
-   that same backdrop in CSS and the figure is masked to a soft edge — the two
-   blend, which is what lets the figure translate inside a clipped stage without
-   ever showing a seam. All motion is written to transform by js/mascot.js. */
+   No frame: the character is a cut-out PNG floating on the hero, with its glow,
+   halo and ground shadow painted straight onto the page background. Nothing
+   clips, so the full travel of the pointer parallax stays visible.
+   All motion is written to transform by js/mascot.js, which discovers the
+   layers below via their data-mascot-depth attribute. */
 .hs-mascot {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .6rem;
+  gap: .5rem;
   min-width: 0
 }
 
 .hs-stage {
   position: relative;
-  width: min(292px, 100%);
-  height: clamp(252px, 32vh, 364px);
-  border-radius: 26px;
-  overflow: hidden;
-  border: 1px solid rgba(90, 160, 255, .14);
-  background:
-    radial-gradient(ellipse 58% 26% at 50% 88%, rgba(25, 78, 190, .5), transparent 72%),
-    radial-gradient(ellipse 66% 60% at 50% 44%, #0a2260 0%, #041030 56%, #010614 100%),
-    #010614;
-  box-shadow: 0 1px 2px rgba(1, 6, 21, .3), 0 24px 60px -18px rgba(8, 40, 110, .55);
+  width: 100%;
+  height: clamp(400px, 62vh, 620px);
   /* 3D context for the rotateX/rotateY the pointer drives */
-  perspective: 900px;
+  perspective: 1000px;
   transform-style: preserve-3d;
   /* Purely decorative: never swallow a tap, a scroll gesture or a hover target */
   pointer-events: none
@@ -719,66 +696,72 @@ h1 em {
 
 .hs-glow,
 .hs-ring,
+.hs-shadow,
 .hs-figure {
   position: absolute;
   inset: 0;
   will-change: transform
 }
 
-/* Cyan/blue key light behind the character; trails the figure for depth */
+/* Cyan/blue key light. Bleeds well past the figure so it reads as light on the
+   page rather than a panel behind the character. */
 .hs-glow {
+  inset: -13% -17%;
   background:
-    radial-gradient(circle at 50% 46%, rgba(42, 130, 255, .38) 0%, rgba(20, 70, 180, .16) 42%, transparent 70%),
-    radial-gradient(ellipse 46% 16% at 50% 87%, rgba(34, 211, 238, .3), transparent 70%)
+    radial-gradient(52% 44% at 50% 40%, rgba(46, 130, 255, var(--hs-glow-a, .13)) 0%, rgba(46, 130, 255, .045) 46%, rgba(46, 130, 255, 0) 100%),
+    radial-gradient(34% 15% at 50% 84%, rgba(34, 211, 238, var(--hs-glow-b, .13)) 0%, rgba(34, 211, 238, 0) 100%)
 }
 
-.hs-ring {
-  display: grid;
-  place-items: center
-}
-
+/* Thin halo echoing the accent rings the portrait uses elsewhere on the page */
 .hs-ring::before {
   content: '';
-  width: 72%;
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  width: min(72%, 330px);
   aspect-ratio: 1;
+  transform: translateX(-50%);
   border-radius: 50%;
-  border: 1px solid rgba(34, 211, 238, .22);
-  box-shadow: 0 0 0 16px rgba(34, 211, 238, .05)
+  border: 1px solid rgba(var(--accent-rgb), var(--hs-ring-a, .14))
 }
 
-.hs-figure {
-  inset: -7% 0
+/* Contact shadow: grounds the figure so it floats rather than hovers loose */
+.hs-shadow {
+  top: auto;
+  height: 12%;
+  bottom: 2%;
+  background: radial-gradient(50% 50% at 50% 60%, rgba(4, 12, 34, var(--hs-shadow-a, .3)), transparent 72%)
+}
+
+.hs-figure picture {
+  display: block;
+  width: 100%;
+  height: 100%
 }
 
 .hs-figure img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center bottom;
   display: block;
-  /* Dissolves the asset's square edge into the stage backdrop */
-  -webkit-mask-image: radial-gradient(86% 78% at 50% 50%, #000 46%, transparent 98%);
-  mask-image: radial-gradient(86% 78% at 50% 50%, #000 46%, transparent 98%)
+  filter: drop-shadow(0 14px 22px rgba(4, 12, 34, .28))
 }
 
 .hs-cap {
   font-family: 'Geist Mono', monospace;
-  font-size: .6rem;
-  letter-spacing: .12em;
+  font-size: .62rem;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--muted)
 }
 
-/* Short-but-wide viewports (laptops around 720-800px tall): keep the whole
-   right rail — photo, stage and caption — inside the first screen. */
-@media (min-width:961px) and (max-height:820px) {
-  #hero {
-    padding-top: 5.5rem;
-    gap: 1.25rem 4rem
-  }
-
-  .hs-stage {
-    height: clamp(206px, 30vh, 300px)
-  }
+/* Dark theme: the key light does the work, the contact shadow almost none */
+[data-theme="dark"] {
+  --hs-glow-a: .3;
+  --hs-glow-b: .24;
+  --hs-ring-a: .26;
+  --hs-shadow-a: .5
 }
 
 /* No pointer to track and no motion budget to spend: park everything neutral */
@@ -786,6 +769,7 @@ h1 em {
 
   .hs-glow,
   .hs-ring,
+  .hs-shadow,
   .hs-figure {
     transform: none !important;
     will-change: auto
@@ -819,6 +803,44 @@ h1 em {
 .about-title em {
   font-style: italic;
   opacity: .4
+}
+
+/* The portrait sits under the band's title, scaled down from its hero size */
+.about-portrait {
+  margin-top: 2.25rem;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: .5rem
+}
+
+.about-portrait .photo-wrap {
+  width: 210px;
+  height: 210px
+}
+
+.about-portrait .photo-box {
+  width: 170px;
+  height: 170px
+}
+
+.about-portrait .photo-glow {
+  width: 188px;
+  height: 188px
+}
+
+.about-portrait .photo-glow2 {
+  width: 210px;
+  height: 210px
+}
+
+.about-portrait .photo-badge {
+  bottom: -6px;
+  right: -14px;
+  padding: .55rem .8rem
+}
+
+.about-portrait .badge-n {
+  font-size: 1.35rem
 }
 
 .about-body {
@@ -1475,56 +1497,29 @@ footer span {
     gap: 0
   }
 
-  /* One column: photo, intro, CTA, then the mascot closing the section */
-  #hero > .hero-left,
-  #hero > .hero-right,
-  #hero > .hs-mascot {
-    grid-column: 1;
-    grid-row: auto
-  }
-
-  /* Photo shows above the hero text on mobile, centered and scaled down */
-  .hero-right {
-    display: flex;
-    justify-content: center;
-    order: -1;
-    margin-bottom: 1.75rem
-  }
-
+  /* One column: the mascot opens the hero, then the intro and the CTAs */
   .hs-mascot {
-    order: 1;
-    margin-top: 2.25rem
+    order: -1;
+    margin-bottom: 1.5rem
   }
 
   .hs-stage {
-    width: min(272px, 100%);
-    height: clamp(240px, 42vw, 330px)
+    width: min(100%, 340px);
+    height: clamp(240px, 42vh, 330px)
   }
 
-  .hero-right .photo-wrap {
-    width: 200px;
-    height: 200px
+  .hs-glow {
+    inset: -9% -14%
   }
 
-  .hero-right .photo-box {
-    width: 160px;
-    height: 160px
+  .hs-ring::before {
+    width: min(70%, 240px)
   }
 
-  .hero-right .photo-glow {
-    width: 178px;
-    height: 178px
-  }
-
-  .hero-right .photo-glow2 {
-    width: 200px;
-    height: 200px
-  }
-
-  .hero-right .photo-badge {
-    bottom: -4px;
-    right: -10px;
-    padding: .5rem .75rem
+  .about-portrait {
+    margin-top: 1.75rem;
+    justify-content: center;
+    padding-left: 0
   }
 
   .about-in {
