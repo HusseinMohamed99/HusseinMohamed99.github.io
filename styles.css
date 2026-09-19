@@ -348,24 +348,37 @@ nav.stuck {
   background: var(--ink2)
 }
 
-/* HSM SOFTWARE MASCOT — a companion character that travels with the visitor
-   and lands above the Send Message button. js/hsm-mascot.js builds the layers
-   and owns every transform; this file only sizes, stacks and colours them:
-     #hsm-mascot          fixed 0×size box whose top-left is the character's
-                          visor — the one point the controller moves (one
+/* HSM SOFTWARE MASCOT — the character that travels with the visitor: the
+   visual cursor on desktop, a scroll-driven flyer on touch, and the thing
+   that lands above the Send Message button. js/hsm-mascot.js builds the
+   layers and owns every transform; this file only sizes, stacks and colours:
+     #hsm-mascot          fixed 0×size box whose origin is the character's
+                          chest — the one point the controller moves (one
                           transform per frame: position, lean, scale, float)
      .hsm-mascot__glow    accent aura that lags the body a little (JS translate)
      .hsm-mascot__trail   accent streak behind the body while flying
      .hsm-mascot__pose    one <img> per pose, crossfaded by .is-active
+     .hsm-hotspot         the real pointer position while the mascot is the
+                          cursor (sibling, so it never inherits the lag)
    Nothing here animates left/top. Everything accent-coloured reads the live
    --accent-rgb the settings panel already writes, so a new accent or theme
-   recolours the aura, trail and shadow on the next paint. The PNGs are never
-   hue-shifted: the suit, visor and HSM branding stay as drawn. */
+   recolours the aura, trail and shadow on the next paint. The artwork is
+   never hue-shifted: the suit, visor and HSM branding stay as drawn. */
+:root {
+  --hsm-size: clamp(110px, 9.5vw, 150px)
+}
+
+/* Touch / coarse pointer: a little smaller, the page is narrower */
+@media (hover: none), (pointer: coarse) {
+  :root {
+    --hsm-size: clamp(90px, 24vw, 124px)
+  }
+}
+
 .hsm-mascot {
-  --hsm-size: clamp(104px, 10vw, 150px);
-  --hsm-glow-a: .26;
+  --hsm-glow-a: .24;
   --hsm-trail-a: .5;
-  --hsm-shadow: drop-shadow(0 6px 10px rgba(var(--accent-rgb), .3)) drop-shadow(0 2px 3px rgba(15, 14, 11, .2));
+  --hsm-shadow: drop-shadow(0 6px 10px rgba(var(--accent-rgb), .28)) drop-shadow(0 2px 3px rgba(15, 14, 11, .2));
   position: fixed;
   top: 0;
   left: 0;
@@ -381,6 +394,12 @@ nav.stuck {
   transition: opacity .4s ease
 }
 
+/* js adds html.hsm-active once the mascot runs: leave room above the Send
+   Message button so the docked character never covers the textarea */
+html.hsm-active .ct-form-submit {
+  margin-top: calc(var(--hsm-size) * .92)
+}
+
 .hsm-mascot.is-ready {
   opacity: 1
 }
@@ -391,9 +410,9 @@ nav.stuck {
 }
 
 [data-theme="dark"] .hsm-mascot {
-  --hsm-glow-a: .4;
-  --hsm-trail-a: .68;
-  --hsm-shadow: drop-shadow(0 0 1.5px rgba(255, 255, 255, .32)) drop-shadow(0 8px 16px rgba(var(--accent-rgb), .5))
+  --hsm-glow-a: .38;
+  --hsm-trail-a: .66;
+  --hsm-shadow: drop-shadow(0 0 1.5px rgba(255, 255, 255, .3)) drop-shadow(0 8px 16px rgba(var(--accent-rgb), .48))
 }
 
 .hsm-mascot__glow {
@@ -402,7 +421,7 @@ nav.stuck {
   top: 0;
   width: calc(var(--hsm-size) * 1.6);
   height: calc(var(--hsm-size) * 1.6);
-  margin: calc(var(--hsm-size) * -.6) 0 0 calc(var(--hsm-size) * -.8);
+  margin: calc(var(--hsm-size) * -.8) 0 0 calc(var(--hsm-size) * -.8);
   will-change: transform, opacity
 }
 
@@ -433,7 +452,7 @@ nav.stuck {
 .hsm-mascot__trail {
   position: absolute;
   left: 0;
-  top: calc(var(--hsm-size) * .16);
+  top: 0;
   width: calc(var(--hsm-size) * 1.35);
   height: calc(var(--hsm-size) * .46);
   margin: calc(var(--hsm-size) * -.23) 0 0 calc(var(--hsm-size) * -1.35);
@@ -453,15 +472,14 @@ nav.stuck {
   height: 100%
 }
 
-/* height / translate per pose (and the clip on the img) are inline, from the
-   POSES metadata in js/hsm-mascot.js */
+/* height / translate per pose are inline, from POSES in js/hsm-mascot.js */
 .hsm-pose {
   position: absolute;
   left: 0;
   top: 0;
   display: block;
   opacity: 0;
-  transition: opacity .15s ease;
+  transition: opacity .12s ease;
   filter: var(--hsm-shadow);
   will-change: opacity
 }
@@ -477,6 +495,56 @@ nav.stuck {
 
 .hsm-pose.is-active {
   opacity: 1
+}
+
+/* Cursor mode (desktop, free phase only — js toggles html.hsm-cursor): the
+   mascot is the cursor, the hotspot marks the exact click point. The native
+   cursor stays on anything that needs it: text fields, embeds, resize grips,
+   and the case-study lightbox. Touch devices never get this class. */
+.hsm-hotspot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: rgba(var(--accent-rgb), .9);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .85), 0 0 0 3px rgba(var(--accent-rgb), .35);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity .15s ease, width .15s ease, height .15s ease, margin .15s ease;
+  will-change: transform
+}
+
+html.hsm-cursor .hsm-hotspot {
+  opacity: 1
+}
+
+html.hsm-cursor .hsm-hotspot.is-off {
+  opacity: 0
+}
+
+html.hsm-cursor .hsm-hotspot.is-link {
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  background: rgba(var(--accent-rgb), .35)
+}
+
+html.hsm-cursor,
+html.hsm-cursor :where(*) {
+  cursor: none
+}
+
+html.hsm-cursor :where(input, textarea, select, [contenteditable], iframe, embed, object, video, .cs-lightbox, .cs-lightbox *) {
+  cursor: auto
+}
+
+html.hsm-cursor :where(textarea) {
+  cursor: text
 }
 
 @keyframes hsm-breathe {
@@ -512,7 +580,8 @@ nav.stuck {
     animation: none !important
   }
 
-  .hsm-mascot__trail {
+  .hsm-mascot__trail,
+  .hsm-hotspot {
     display: none
   }
 }
