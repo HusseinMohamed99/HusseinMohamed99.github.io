@@ -1,7 +1,7 @@
 ---
 name: Refqa (رِفقة)
 category: Islamic Lifestyle · Offline-First · Arabic/English
-badge: Personal Project
+badge: Coming Soon
 short_description: "A comprehensive Islamic companion app: dual-mode Quran
   reading (browsable index + a full 604-page Madani Mushaf renderer), live
   Qur'an radio and per-reciter profiles, on-device speech-recognition recitation
@@ -11,7 +11,7 @@ short_description: "A comprehensive Islamic companion app: dual-mode Quran
   Paradise, the 99 Names of Allah, Hadith, Tafsir, Duas, khatm tracking,
   streaks, and a full stats dashboard with time-spent-per-category tracking —
   all privacy-first, with location and PII scrubbed before any crash report."
-icon: images/refqa/refqa_logo.png
+icon: images/refqa-رِفقة/play_store_icon_512.png
 order: 2
 accent_color: "#2d6e96"
 overview: >
