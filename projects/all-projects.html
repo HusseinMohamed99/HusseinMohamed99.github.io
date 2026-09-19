@@ -4,7 +4,10 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>All Projects — Hussein Mohamed</title>
-<link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="../images/brand/hsm-icon-512.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"/>
+<meta name="theme-color" content="#0A6EF5"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Cabinet+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -24,7 +27,11 @@
 <button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
 <nav id="nav">
-  <a class="nav-logo" href="../index.html">Hussein Mohamed <span class="nav-dot"></span></a>
+  <a class="nav-logo" href="../index.html" aria-label="Hussein Mohamed — HSM Software, home">
+    <img class="brand-mark brand-mark--light" src="../images/brand/hsm-mark-light.png" alt="HSM Software" width="381" height="160"/>
+    <img class="brand-mark brand-mark--dark" src="../images/brand/hsm-mark-dark.png" alt="" aria-hidden="true" width="417" height="160"/>
+    Hussein Mohamed
+  </a>
   <div class="nav-right">
     <ul class="nav-links" id="nav-links">
       <li><a href="../index.html#hero-section">Home</a></li>
@@ -69,7 +76,13 @@
 </section>
 
 <footer>
-  <span>© <span id="copy-year"></span> Hussein Mohamed</span>
+  <div class="footer-brand">
+    <img src="../images/brand/hsm-logo-dark.png" alt="HSM Software" width="443" height="240"/>
+    <div class="footer-brand-tx">
+      <span>© <span id="copy-year"></span> Hussein Mohamed</span>
+      <small>An HSM Software portfolio</small>
+    </div>
+  </div>
   <a href="javascript:void(0)" id="em-link-footer" style="font-family:'Geist Mono',monospace;font-size:.73rem;color:var(--contact-label);text-decoration:none">hussein.mohamed.software@gmail.com</a>
   <span style="font-family:'Geist Mono',monospace">Flutter Developer · Cairo, Egypt</span>
 </footer>

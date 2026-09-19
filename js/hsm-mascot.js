@@ -2,7 +2,7 @@
 //
 // Desktop (fine pointer): it IS the visual cursor. The pointer drives a target,
 // the body glides to it, and dedicated flying-left / flying-right art plays
-// while it moves. The native cursor is hidden and a small accent hotspot marks
+// while it moves. The native cursor is hidden and a small HSM-blue hotspot marks
 // the real click point (restored over text fields and embeds).
 // Touch (coarse pointer): scrolling drives a journey through responsive
 // waypoints beside the real sections.
@@ -107,7 +107,7 @@
     ['text',    'input, textarea, select, [contenteditable]']
   ];
   var TEXT_FIELDS = HOVER_CTX[3][1];
-  var INTERACTIVE = 'a, button, [role="button"], label, summary, .sp-color, .sp-toggle';
+  var INTERACTIVE = 'a, button, [role="button"], label, summary';
   // Where styles.css hands the native cursor back; the hotspot hides there.
   var NATIVE_CURSOR = TEXT_FIELDS + ', iframe, embed, object, video, .cs-lightbox';
 
@@ -133,7 +133,7 @@
 
   var imgs = {}, loaded = {};
   function addPose(name) {
-    // <span> carries size, anchor, crossfade and the accent shadow; the <img>
+    // <span> carries size, anchor, crossfade and the HSM-blue shadow; the <img>
     // inside just draws the artwork at 100% of that height.
     var p = POSES[name], box = el('span', 'hsm-pose'), img = document.createElement('img');
     img.alt = '';

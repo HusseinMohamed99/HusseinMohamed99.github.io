@@ -18,7 +18,9 @@
     "Coming Soon": "🕐",
   };
 
-  const PALETTE = ["#0EA5E9", "#7C3AED", "#059669", "#DB2777", "#D97706", "#0F766E", "#DC2626", "#4F46E5"];
+  // Cards without their own `accent_color` (the app's own brand colour, set
+  // per project in /admin) fall back to HSM Blue — same value as --hsm-blue.
+  const HSM_BLUE = "#0A6EF5";
 
   if (!document.getElementById("proj-x-styles")) {
     const style = document.createElement("style");
@@ -78,10 +80,11 @@
         font-family:'Geist Mono',monospace;font-size:.6rem;letter-spacing:.06em;
         text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;
       }
-      /* Unreleased work reads as amber, so it never looks like a shipped badge */
+      /* Unreleased work reads as a dashed neutral pill, so it never looks like a shipped badge */
       .proj-x-badge.is-soon{
         display:inline-flex;align-self:flex-start;
-        color:var(--amber);background:var(--amber-light);
+        color:var(--text-secondary,#555);background:var(--surface);
+        border:1px dashed var(--border2);
         padding:.22rem .6rem;border-radius:100px;
       }
       .proj-x-nm{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;line-height:1.15;margin-bottom:.2rem}
@@ -96,7 +99,7 @@
         color:var(--muted);padding:.2rem .55rem;border-radius:100px;
         transition:border-color .2s, color .2s;
       }
-      .proj-x-card:hover .proj-x-tech span:nth-child(1){border-color:var(--dot,#1D5CFF);color:var(--dot,#1D5CFF)}
+      .proj-x-card:hover .proj-x-tech span:nth-child(1){border-color:var(--dot,var(--hsm-blue));color:var(--dot,var(--hsm-blue))}
       .proj-x-links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:auto}
 
       /* Grid layout: predictable columns so the hero card can share its row */
@@ -236,9 +239,9 @@
     const projects = showLimited ? allProjects.slice(0, limit) : allProjects;
 
     let html = projects.map((p, i) => {
-      const color = p.accent_color || PALETTE[i % PALETTE.length];
+      const color = p.accent_color || HSM_BLUE;
       if (p.badge === "Featured Project") {
-        return renderHeroCard(p, p.accent_color || "#1D5CFF");
+        return renderHeroCard(p, p.accent_color || HSM_BLUE);
       }
       return renderCompactCard(p, i, color);
     }).join("");

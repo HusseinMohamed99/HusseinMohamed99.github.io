@@ -53,7 +53,7 @@ collections:
         widget: "image"
         required: false
       - { label: "Display Order (lower = first)", name: "order", widget: "number", default: 0 }
-      - label: "Card Accent Color (hex, optional — leave empty for auto)"
+      - label: "Card Colour (hex, optional — leave empty for HSM Blue)"
         name: "accent_color"
         widget: "color"
         required: false
