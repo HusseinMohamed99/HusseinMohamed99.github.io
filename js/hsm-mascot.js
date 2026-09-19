@@ -1,22 +1,29 @@
-// HSM Software mascot — a companion character that travels with the visitor
-// through the portfolio and lands above the Send Message button.
+// HSM Software mascot — the character that travels with the visitor.
 //
-// One controller, one rAF loop, one transform. Every frame composes the motion
-// target (pointer, scroll waypoint, or dock), the eased position, velocity lean,
-// speed scale and idle float into a single transform on #hsm-mascot. The glow
-// and trail are children with their own small transforms (lag / streak) so
-// nothing ever fights over the character's transform.
+// Desktop (fine pointer): it IS the visual cursor. The pointer drives a target,
+// the body glides to it, and dedicated flying-left / flying-right art plays
+// while it moves. The native cursor is hidden and a small accent hotspot marks
+// the real click point (restored over text fields and embeds).
+// Touch (coarse pointer): scrolling drives a journey through responsive
+// waypoints beside the real sections.
+// Both: when the Send Message button scrolls into view the mascot stops
+// following, approaches, lands and docks on it; scrolling away takes off.
 //
-// Poses are twelve separate PNGs, one <img> each, crossfaded by class. Each pose
-// is scaled against the same reference (the idle character's height) and pinned
-// at its visor, so switching poses never changes the character's size or makes
-// its face jump. The dock target is computed from the pose's feet instead, so
-// whatever pose is showing stands on the button.
+// One controller, one rAF loop, one transform. Each frame composes the active
+// target (pointer | waypoint | dock | takeoff hop), eased position, velocity
+// lean, speed scale and idle float into one translate3d on #hsm-mascot. Glow
+// and trail are children with their own small transforms; the hotspot is a
+// sibling so it never inherits the character's lag.
 //
-// Motion phases (authoritative):  FREE → APPROACHING → LANDING → DOCKED → TAKEOFF
-// Visual states (derived):        hidden, intro, idle, flying-left/right, wave,
-//                                 pointing, thinking, excited, idea, surprised,
-//                                 landing, docked, takeoff
+// Poses are twelve separate images (no sprite sheet), one <img> each,
+// crossfaded by class. POSES normalises them: `unit` is the source-pixel length
+// that maps to --hsm-size, so every pose renders the character at the same
+// perceived size, and (ax, ay) is the same landmark — the chest — in every
+// image, so a pose switch never makes the character jump.
+//
+// Phases:  free → approaching → landing → docked → takeoff → free
+// Poses:   idle, flyingRight, flyingLeft, landing, docked, wave, pointing,
+//          thinking, idea, surprised, excited, coding
 (function () {
   'use strict';
 
@@ -26,81 +33,90 @@
   var ASSETS = root.getAttribute('data-assets') || 'images/mascot/';
 
   // ---------------------------------------------------------------------------
-  // Pose metadata (source pixels). Every PNG shares one drawing scale, so a
-  // single k = size / REF_H maps all of them. ax/ay is the visor centre (the
-  // point the controller moves), feet is the lowest row of the character, and
-  // crop trims sheet artefacts baked into some exports (label pills, slivers of
-  // neighbouring poses) and cw is the visible character width where the canvas
-  // is much wider — the files themselves are untouched.
+  // Pose metadata, in the ORIGINAL artwork's pixels (the shipped WebPs are
+  // proportional downscales, so only ratios are used).
+  //   w, h   canvas size            unit  source px that render as --hsm-size
+  //   ax, ay chest (the anchor)     feet  lowest row of the character
+  // HOT is the pointer → chest offset (× size) in desktop cursor mode.
   // ---------------------------------------------------------------------------
-  var REF_H = 297; // idle character height in source px
   var POSES = {
-    idle:        { file: 'hsm-mascot-idle.png',         w: 408, h: 335, ax: 193, ay: 130, feet: 322, cw: 199, crop: [0, 118, 0, 0] },
-    flyingRight: { file: 'hsm-mascot-flying-right.png', w: 400, h: 334, ax: 210, ay: 134, feet: 303 },
-    flyingLeft:  { file: 'hsm-mascot-flying-left.png',  w: 393, h: 335, ax: 167, ay: 139, feet: 316 },
-    landing:     { file: 'hsm-mascot-landing.png',      w: 396, h: 335, ax: 231, ay: 154, feet: 322 },
-    docked:      { file: 'hsm-mascot-docked.png',       w: 354, h: 336, ax: 125, ay: 135, feet: 310, crop: [26, 0, 24, 0] },
-    wave:        { file: 'hsm-mascot-wave.png',         w: 407, h: 336, ax: 220, ay: 136, feet: 310, crop: [26, 0, 24, 0] },
-    pointing:    { file: 'hsm-mascot-pointing.png',     w: 401, h: 336, ax: 183, ay: 135, feet: 311, crop: [26, 0, 23, 0] },
-    thinking:    { file: 'hsm-mascot-thinking.png',     w: 389, h: 336, ax: 213, ay: 145, feet: 310, crop: [26, 0, 24, 0] },
-    excited:     { file: 'hsm-mascot-excited.png',      w: 383, h: 335, ax: 184, ay: 137, feet: 288, crop: [0, 0, 43, 0] },
-    idea:        { file: 'hsm-mascot-idea.png',         w: 395, h: 335, ax: 206, ay: 150, feet: 294, crop: [0, 0, 39, 0] },
-    surprised:   { file: 'hsm-mascot-surprised.png',    w: 353, h: 335, ax: 139, ay: 150, feet: 290, crop: [0, 0, 41, 0] },
-    back:        { file: 'hsm-mascot-back.png',         w: 389, h: 335, ax: 199, ay: 150, feet: 289, crop: [0, 0, 41, 0] }
+    idle:        { file: 'hsm-mascot-idle.webp',         w: 1160, h: 1355, unit: 1301, ax: 615, ay: 860, feet: 1342 },
+    flyingRight: { file: 'hsm-mascot-flying-right.webp', w: 1536, h: 1024, unit: 1230, ax: 820, ay: 600, feet: 968 },
+    flyingLeft:  { file: 'hsm-mascot-flying-left.webp',  w: 1536, h: 1024, unit: 1230, ax: 716, ay: 600, feet: 974 },
+    landing:     { file: 'hsm-mascot-landing.webp',      w: 1374, h: 1145, unit: 1230, ax: 820, ay: 730, feet: 1080 },
+    docked:      { file: 'hsm-mascot-docked.webp',       w: 1254, h: 1254, unit: 1260, ax: 672, ay: 780, feet: 1215 },
+    wave:        { file: 'hsm-mascot-wave.webp',         w: 1145, h: 1374, unit: 1318, ax: 640, ay: 860, feet: 1317 },
+    pointing:    { file: 'hsm-mascot-pointing.webp',     w: 1145, h: 1374, unit: 1272, ax: 552, ay: 860, feet: 1301 },
+    thinking:    { file: 'hsm-mascot-thinking.webp',     w: 1145, h: 1374, unit: 1343, ax: 562, ay: 870, feet: 1324 },
+    idea:        { file: 'hsm-mascot-idea.webp',         w: 1145, h: 1374, unit: 1326, ax: 560, ay: 880, feet: 1315 },
+    surprised:   { file: 'hsm-mascot-surprised.webp',    w: 1145, h: 1374, unit: 1318, ax: 571, ay: 855, feet: 1308 },
+    excited:     { file: 'hsm-mascot-excited.webp',      w: 1145, h: 1374, unit: 1233, ax: 598, ay: 845, feet: 1311 },
+    coding:      { file: 'hsm-mascot-coding.webp',       w: 1145, h: 1374, unit: 1276, ax: 600, ay: 845, feet: 1297 }
   };
   // The experience starts once these five are decoded; the rest load after.
   var ESSENTIAL = ['idle', 'flyingRight', 'flyingLeft', 'landing', 'docked'];
+  var HOT = { x: 0.30, y: 0.36 }; // chest sits below-right of the pointer, like an arrow tip
 
   // ---------------------------------------------------------------------------
   // Tunables. Speeds are px per 60fps frame; eases are the per-frame fraction.
   // ---------------------------------------------------------------------------
-  var FOLLOW_POINTER = 0.17;   // trails the pointer, never lags
+  var FOLLOW_POINTER = 0.26;   // tight: it must still read as the cursor
   var FOLLOW_TRAVEL = 0.085;   // gentle glide between scroll waypoints
   var FOLLOW_APPROACH = 0.075; // slows down on the way to the button
   var FOLLOW_LAND = 0.11;
   var FOLLOW_DOCK = 0.2;
+  var FOLLOW_TAKEOFF = 0.12;
   var FOLLOW_REDUCED = 0.22;   // short simple transition for reduced motion
-  var FLY_ON = 1.1, FLY_OFF = 0.55, SETTLE_MS = 380;   // flying hysteresis
-  var DIR_DEAD = 0.45, DIR_MIN_MS = 140;               // no flips on pixel noise
-  var LEAN_MAX = 6, LEAN_PER_PX = 0.3, SCALE_MAX = 0.05, SPEED_REF = 26;
-  var BOB_AMP = 3, BOB_DOCK_AMP = 1.5, BOB_PERIOD = 2600;
-  var DOCK_GAP = 6;            // px between the feet and the button's top edge
+  var FLY_ON = 1.2, FLY_OFF = 0.5, SETTLE_MS = 420;   // flying hysteresis + stop delay
+  var DIR_DEAD = 0.5, DIR_MIN_MS = 160;                // no flips on pixel noise
+  var LEAN_MAX = 5, LEAN_PER_PX = 0.22, SCALE_MAX = 0.06, SPEED_REF = 30;
+  var BOB_AMP = 3, BOB_DOCK_AMP = 1.2, BOB_PERIOD = 2600;
+  var DOCK_GAP = 4;            // px between the feet and the button's top edge
   var DOCK_MARGIN = 40;        // button top must be this far above the fold to dock
   var UNDOCK_SLACK = 10;       // ...and this far below it to release (hysteresis)
   var LAND_DIST = 0.9;         // × size: switch to the landing pose this close
   var DOCK_SNAP = 2.5;         // px: close enough to count as landed
   var TAKEOFF_MS = 340, TAKEOFF_LIFT = 0.55;
-  var INTRO_MS = 1500, CONTEXT_DELAY = 1200, CONTEXT_MS = 2200;
+  var INTRO_MS = 1600, CONTEXT_DELAY = 900, CONTEXT_MS = 2200;
   var HOVER_DELAY = 260, HOVER_MS = 1800, HOVER_COOLDOWN = 6000, IDEA_COOLDOWN = 12000;
   var REACT_MS = 2600;
   var NAV_H = 64;
   var TAU = Math.PI * 2;
 
-  // Journey through the real sections. Sides alternate so the character crosses
-  // the screen (and therefore turns) between stops; y is a viewport fraction.
-  // `pose` is a contextual pose played once, when the visitor settles there;
-  // `yNarrow` replaces y when the layout stacks (≤960px).
-  // Missing ids are skipped, so the same file serves the sub-pages.
+  // Journey through the real sections (missing ids are skipped, so the same
+  // file serves the sub-pages). Sides alternate so the character crosses the
+  // screen — and turns — between stops; y is a viewport fraction (yNarrow when
+  // the layout stacks, ≤960px). `pose` plays once, when the visitor settles.
   var PLAN = [
-    { id: 'hero-section',   side: 'right', y: 0.27, yNarrow: 0.5, pose: null },
-    { id: 'about',          side: 'left',  y: 0.50, pose: 'wave' },
+    { id: 'hero-section',   side: 'right', y: 0.30, yNarrow: 0.56, pose: null },
+    { id: 'about',          side: 'left',  y: 0.50, pose: 'thinking' },
     { id: 'skills',         side: 'right', y: 0.42, pose: 'idea' },
-    { id: 'experience',     side: 'right', y: 0.58, pose: null },
-    { id: 'projects',       side: 'left',  y: 0.40, pose: 'pointing' },
-    { id: 'certifications', side: 'right', y: 0.46, pose: 'thinking' },
+    { id: 'experience',     side: 'left',  y: 0.58, pose: 'coding' },
+    { id: 'projects',       side: 'right', y: 0.40, pose: 'pointing' },
+    { id: 'certifications', side: 'left',  y: 0.46, pose: 'thinking' },
     { id: 'contact',        side: 'dock',  y: 0.55, pose: null },
-    { id: 'all-projects',   side: 'right', y: 0.30, pose: 'pointing' },
-    { id: 'project-root',   side: 'right', y: 0.30, pose: null }
+    { id: 'all-projects',   side: 'right', y: 0.30, pose: 'coding' },
+    { id: 'project-root',   side: 'right', y: 0.30, pose: 'pointing' }
   ];
   var CONTENT_W = 1280; // .sec-wrap / #hero max-width: the margins beside it are safe
   var DOCK_SELECTOR = '#ct-form-submit';
-  var PROJECT_HOVER = '.proj-card, .proj-x-card';
-  var SKILL_HOVER = '.skill-card';
-  var TEXT_FIELDS = 'input, textarea, select, [contenteditable]';
+  var HOVER_CTX = [
+    ['project', '.proj-card, .proj-x-card'],
+    ['code',    'a[href*="github.com"], .pl-store, .cs-walk-tab'],
+    ['skill',   '.skill-card'],
+    ['text',    'input, textarea, select, [contenteditable]']
+  ];
+  var TEXT_FIELDS = HOVER_CTX[3][1];
+  var INTERACTIVE = 'a, button, [role="button"], label, summary, .sp-color, .sp-toggle';
+  // Where styles.css hands the native cursor back; the hotspot hides there.
+  var NATIVE_CURSOR = TEXT_FIELDS + ', iframe, embed, object, video, .cs-lightbox';
 
   // ---------------------------------------------------------------------------
   // Layers
   // ---------------------------------------------------------------------------
+  function el(tag, cls) { var n = document.createElement(tag); n.className = cls; return n; }
+  function pct(n) { return (n * 100).toFixed(3) + '%'; }
+
   var glow = el('div', 'hsm-mascot__glow');
   var glowCore = el('div', 'hsm-mascot__glow-core');
   var ring = el('div', 'hsm-mascot__ring');
@@ -111,26 +127,20 @@
   root.appendChild(glow);
   root.appendChild(trail);
   root.appendChild(poseLayer);
+  var hot = el('div', 'hsm-hotspot');
+  hot.setAttribute('aria-hidden', 'true');
+  root.parentNode.insertBefore(hot, root.nextSibling);
 
   var imgs = {}, loaded = {};
-  function el(tag, cls) { var n = document.createElement(tag); n.className = cls; return n; }
-  function pct(n) { return (n * 100).toFixed(3) + '%'; }
   function addPose(name) {
     // <span> carries size, anchor, crossfade and the accent shadow; the <img>
-    // inside carries the clip, so the shadow is cast by the clipped shape and
-    // never by the artefacts that were clipped away.
+    // inside just draws the artwork at 100% of that height.
     var p = POSES[name], box = el('span', 'hsm-pose'), img = document.createElement('img');
     img.alt = '';
     img.draggable = false;
     img.decoding = 'async';
     img.width = p.w; img.height = p.h;
-    if (p.crop) {
-      img.style.clipPath = 'inset(' + pct(p.crop[0] / p.h) + ' ' + pct(p.crop[1] / p.w) + ' ' +
-        pct(p.crop[2] / p.h) + ' ' + pct(p.crop[3] / p.w) + ')';
-    }
-    // Uniform scale: height relative to the box (= --hsm-size = REF_H source px);
-    // pinned so the visor sits on the box origin.
-    box.style.height = pct(p.h / REF_H);
+    box.style.height = pct(p.h / p.unit);
     box.style.transform = 'translate(' + pct(-p.ax / p.w) + ',' + pct(-p.ay / p.h) + ')';
     img.onload = function () { loaded[name] = true; };
     img.onerror = function () { loaded[name] = false; };
@@ -146,17 +156,17 @@
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  var size = 120, k = size / REF_H;   // rendered idle height, px per source px
+  var size = 120;                     // --hsm-size in px (rendered idle height)
   var vw = window.innerWidth, vh = window.innerHeight, maxScroll = 0;
-  var waypoints = [];                 // [{key, x, y, pose, id}] sorted by key
+  var waypoints = [];                 // [{id, key, x, y, pose}] sorted by key
   var dock = null;                    // {top, cx} of the Send Message button, document coords
 
   var phase = 'free';                 // free | approaching | landing | docked | takeoff
   var pose = null;
-  var override = null;                // {pose, until, cancelOnMove, sticky}
+  var override = null;                // {pose, until, cancelOnMove, sticky, intro}
   var started = false;
 
-  var x = 0, y = 0, tx = 0, ty = 0;   // visor position / target (viewport px)
+  var x = 0, y = 0, tx = 0, ty = 0;   // chest position / target (viewport px)
   var vx = 0, vy = 0, spd = 0;
   var flying = false, dir = 1, dirAt = 0, slowSince = 0, settledAt = 0;
   var lean = 0, scale = 1, glowA = 0, trailA = 0, trailAng = 0, trailLen = 0.5;
@@ -164,32 +174,36 @@
   var phaseAt = 0, lastNow = 0;
   var liftX = 0, liftY = 0;           // where the takeoff hop aims
 
-  var pointer = { x: 0, y: 0, active: false };
-  var hover = { ctx: null, since: 0, lastPointAt: -1e9, lastIdeaAt: -1e9 };
+  var pointer = { x: 0, y: 0, active: false, over: false };
+  var hover = { ctx: null, since: 0, lastPointAt: -1e9, lastIdeaAt: -1e9, lastCodeAt: -1e9 };
+  var focusedField = false;
   var played = {};                    // contextual poses already shown per section
   var lastTf = '', lastGlowTf = '', lastGlowA = -1, lastTrailTf = '', lastTrailA = -1;
+  var lastHotTf = '', cursorMode = false;
 
   function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
   function decay(ease, kf) { return 1 - Math.pow(1 - ease, kf); }
   function smooth(t) { return t * t * (3 - 2 * t); }
-  function feetDy(name) { var p = POSES[name] || POSES.idle; return (p.feet - p.ay) * k; }
-  function charW(name) { var p = POSES[name] || POSES.idle; return (p.cw || p.w) * k; }
+  function kOf(name) { var p = POSES[name] || POSES.idle; return size / p.unit; }
+  function feetDy(name) { var p = POSES[name] || POSES.idle; return (p.feet - p.ay) * kOf(name); }
+  function charW(name) { var p = POSES[name] || POSES.idle; return p.w * kOf(name); }
+  function cursorFollow() { return fine.matches && pointer.active && !reduce.matches; }
 
   // ---------------------------------------------------------------------------
   // Measurement — cached; refreshed on resize / orientation / layout changes
   // ---------------------------------------------------------------------------
   function edgeX(side) {
-    // Prefer the empty margin beside the centred content; on narrow screens hug
-    // the edge with a little overhang so the character covers as little as it can.
+    // Prefer the empty margin beside the centred content. On narrow screens
+    // keep the whole character on screen, hugging the edge, so it overlaps as
+    // little of the (full-width) content as it can while staying visible.
     var w = charW('idle');
-    var margin = Math.max(0, (vw - CONTENT_W) / 2) + (vw > 960 ? 48 : 24);
-    var inset = margin >= w * 0.9 ? margin / 2 : w * 0.27;
+    var margin = Math.max(0, (vw - CONTENT_W) / 2) + (vw > 960 ? 48 : 16);
+    var inset = margin >= w * 1.1 ? margin / 2 : w * 0.5 + 4;
     return side === 'left' ? inset : vw - inset;
   }
 
   function measure() {
     size = root.offsetHeight || size;
-    k = size / REF_H;
     vw = window.innerWidth; vh = window.innerHeight;
     var sy = window.scrollY;
     var docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
@@ -202,7 +216,7 @@
       if (b.width && b.height) dock = { top: b.top + sy, cx: b.left + b.width / 2 };
     }
 
-    var yLo = NAV_H + size * 0.45, yHi = vh - 120 - size * 0.4;
+    var yLo = NAV_H + size * 0.5, yHi = vh - 110 - size * 0.45;
     var list = [], prevKey = -1;
     PLAN.forEach(function (w) {
       var sec = document.getElementById(w.id);
@@ -259,21 +273,25 @@
   // Feet-on-button y for the current pose, in viewport px. null when no button.
   function dockFeetY(sy) { return dock ? dock.top - sy - DOCK_GAP : null; }
 
+  function pointerTarget(out) {
+    out.x = clamp(pointer.x + size * HOT.x, size * 0.34, vw - size * 0.34);
+    out.y = clamp(pointer.y + size * HOT.y, size * 0.42, vh - size * 0.38);
+  }
+
   var wp = { x: 0, y: 0 };
-  function pickTarget(sy, still) {
-    var feet = dockFeetY(sy);
+  function freeTarget(sy, out) {
+    if (cursorFollow()) return pointerTarget(out);
+    if (reduce.matches) { var s = sectionAt(sy); out.x = s.x; out.y = s.y; return; }
+    waypointAt(sy, out);
+  }
+
+  function pickTarget(sy) {
     if (phase === 'approaching' || phase === 'landing' || phase === 'docked') {
-      tx = dock.cx; ty = feet - feetDy(pose || 'docked');
+      tx = dock.cx; ty = dockFeetY(sy) - feetDy(pose || 'docked');
       return;
     }
     if (phase === 'takeoff') { tx = liftX; ty = liftY; return; }
-    if (fine.matches && pointer.active && !still) {
-      tx = clamp(pointer.x + size * 0.42, size * 0.3, vw - size * 0.3);
-      ty = clamp(pointer.y + size * 0.36, size * 0.45, vh - size * 0.35);
-      return;
-    }
-    if (still) { var s = sectionAt(sy); tx = s.x; ty = s.y; return; }
-    waypointAt(sy, wp); tx = wp.x; ty = wp.y;
+    freeTarget(sy, wp); tx = wp.x; ty = wp.y;
   }
 
   // ---------------------------------------------------------------------------
@@ -285,10 +303,14 @@
     if (override && !override.sticky) override = null;
     root.setAttribute('data-phase', p);
     if (p === 'docked') pulse();
-    if (p === 'takeoff') { liftX = x; liftY = y - size * TAKEOFF_LIFT; }
+    if (p === 'takeoff') {
+      // Hop up, already facing wherever the journey continues.
+      liftX = x; liftY = y - size * TAKEOFF_LIFT;
+      freeTarget(window.scrollY, wp);
+      if (Math.abs(wp.x - x) > 4) { dir = wp.x > x ? 1 : -1; dirAt = now; }
+    }
     if (p === 'approaching') {
       if (Math.abs(dock.cx - x) > 4) { dir = dock.cx > x ? 1 : -1; dirAt = now; }
-      play('excited', 650, false, false, now);
     }
   }
 
@@ -298,7 +320,7 @@
     return true;
   }
 
-  function setPose(name, now) {
+  function setPose(name) {
     if (name === pose || !imgs[name]) return;
     if (!loaded[name]) name = loaded[pose] ? pose : 'idle';
     if (name === pose) return;
@@ -316,12 +338,9 @@
 
   function stateName() {
     if (!started) return 'hidden';
-    if (override) {
-      if (override.pose === 'wave' && override.intro) return 'intro';
-      return override.pose;
-    }
-    if (phase === 'free' || phase === 'approaching') {
-      return flying || phase === 'approaching' ? (dir > 0 ? 'flying-right' : 'flying-left') : 'idle';
+    if (override) return override.intro ? 'intro' : override.pose;
+    if (phase === 'free' || phase === 'approaching' || phase === 'takeoff') {
+      return flying ? (dir > 0 ? 'flying-right' : 'flying-left') : 'idle';
     }
     return phase;
   }
@@ -346,20 +365,20 @@
       if (canDock && phase === 'free') setPhase('approaching', now);
       else if (canDock && phase === 'takeoff' && now - phaseAt > TAKEOFF_MS) setPhase('approaching', now);
       else if (release && (phase === 'approaching' || phase === 'landing' || phase === 'docked')) {
-        if (phase === 'docked' && !still) { setPhase('takeoff', now); }
+        if (phase === 'docked' && !still) setPhase('takeoff', now);
         else setPhase('free', now);
       }
     } else if (phase !== 'free') setPhase('free', now);
     if (phase === 'takeoff' && now - phaseAt > TAKEOFF_MS) setPhase('free', now);
 
     // --- target + ease -------------------------------------------------------
-    pickTarget(sy, still);
+    pickTarget(sy);
     var ease = still ? FOLLOW_REDUCED
       : phase === 'approaching' ? FOLLOW_APPROACH
       : phase === 'landing' ? FOLLOW_LAND
       : phase === 'docked' ? FOLLOW_DOCK
-      : phase === 'takeoff' ? 0.12
-      : (fine.matches && pointer.active) ? FOLLOW_POINTER : FOLLOW_TRAVEL;
+      : phase === 'takeoff' ? FOLLOW_TAKEOFF
+      : cursorFollow() ? FOLLOW_POINTER : FOLLOW_TRAVEL;
     var e = decay(ease, kf);
     var px = x, py = y;
     x += (tx - x) * e;
@@ -373,19 +392,19 @@
     if (phase === 'approaching' && dist < size * LAND_DIST) setPhase('landing', now);
     if (phase === 'landing' && (dist < DOCK_SNAP || now - phaseAt > 1400)) setPhase('docked', now);
 
-    // --- flying / direction (hysteresis + dead zone) ------------------------
+    // --- flying / direction (hysteresis + dead zone + persistence) ----------
     var moving = spd > FLY_ON && !still;
     if (Math.abs(vx) > DIR_DEAD && now - dirAt > DIR_MIN_MS) {
       var nd = vx > 0 ? 1 : -1;
       if (nd !== dir) { dir = nd; dirAt = now; }
     }
-    if (phase === 'free' || phase === 'approaching') {
+    if (phase === 'free' || phase === 'approaching' || phase === 'takeoff') {
       if (moving) { flying = true; slowSince = 0; }
       else if (flying && spd < FLY_OFF) {
         if (!slowSince) slowSince = now;
         else if (now - slowSince > SETTLE_MS) { flying = false; slowSince = 0; settledAt = now; }
       } else slowSince = 0;
-      if (phase === 'approaching' && !still) flying = true;
+      if ((phase === 'approaching' || phase === 'takeoff') && !still) flying = true;
     } else flying = false;
 
     // --- overrides: expiry, cancellation, contextual triggers ----------------
@@ -394,11 +413,12 @@
     }
     if (!override && phase === 'free' && !flying && now - settledAt > CONTEXT_DELAY) {
       var sec = sectionAt(sy);
-      if (fine.matches && hover.ctx === 'project' && now - hover.since > HOVER_DELAY &&
-          now - hover.lastPointAt > HOVER_COOLDOWN) {
+      var hovered = fine.matches && now - hover.since > HOVER_DELAY;
+      if (hovered && hover.ctx === 'project' && now - hover.lastPointAt > HOVER_COOLDOWN) {
         if (play('pointing', HOVER_MS, true, false, now)) hover.lastPointAt = now;
-      } else if (fine.matches && hover.ctx === 'skill' && now - hover.since > HOVER_DELAY &&
-          now - hover.lastIdeaAt > IDEA_COOLDOWN) {
+      } else if (hovered && hover.ctx === 'code' && now - hover.lastCodeAt > HOVER_COOLDOWN) {
+        if (play('coding', HOVER_MS, true, false, now)) hover.lastCodeAt = now;
+      } else if (hovered && hover.ctx === 'skill' && now - hover.lastIdeaAt > IDEA_COOLDOWN) {
         if (play('idea', HOVER_MS, true, false, now)) hover.lastIdeaAt = now;
       } else if (sec.pose && !played[sec.id]) {
         played[sec.id] = true;
@@ -411,17 +431,16 @@
     if (override) want = override.pose;
     else if (phase === 'docked') want = 'docked';
     else if (phase === 'landing') want = 'landing';
-    else if (phase === 'takeoff') want = 'back';
     else if (flying) want = dir > 0 ? 'flyingRight' : 'flyingLeft';
     else want = 'idle';
-    setPose(want, now);
+    setPose(want);
 
     // --- effects: lean, scale, float, glow, trail ----------------------------
     var speedN = clamp(spd / SPEED_REF, 0, 1);
     var grounded = phase === 'docked' || phase === 'landing';
-    var leanT = (still || grounded) ? 0 : clamp(vx * LEAN_PER_PX, -LEAN_MAX, LEAN_MAX);
+    var leanT = (still || grounded || !flying) ? 0 : clamp(vx * LEAN_PER_PX, -LEAN_MAX, LEAN_MAX);
     lean += (leanT - lean) * decay(0.14, kf);
-    var scaleT = still ? 1 : 1 + speedN * SCALE_MAX * (grounded ? 0 : 1);
+    var scaleT = (still || grounded) ? 1 : 1 + speedN * SCALE_MAX;
     scale += (scaleT - scale) * decay(0.14, kf);
     var bob = 0;
     if (!still) {
@@ -430,7 +449,8 @@
     }
     var glowT = phase === 'docked' ? 1 : phase === 'landing' ? 0.9 : flying ? 0.6 + speedN * 0.4 : 0.5;
     glowA += (glowT - glowA) * decay(0.1, kf);
-    var trailT = (still || !(flying || phase === 'takeoff')) ? 0 : clamp(spd / 16, 0, 1) * 0.95;
+    var trailOn = !still && !override && (flying || phase === 'takeoff') && !grounded;
+    var trailT = trailOn ? clamp(spd / 16, 0, 1) * 0.95 : 0;
     trailA += (trailT - trailA) * decay(trailT > trailA ? 0.2 : 0.09, kf);
     if (v > 0.8) {
       var ang = Math.atan2(vy, vx) * 180 / Math.PI;
@@ -457,6 +477,18 @@
     }
     var st = stateName();
     if (st !== root.getAttribute('data-state')) root.setAttribute('data-state', st);
+
+    // --- cursor mode: hide the native cursor only while the mascot is the
+    // cursor (free phase, fine pointer, inside the window, motion allowed) ---
+    var cm = cursorFollow() && pointer.over && phase === 'free';
+    if (cm !== cursorMode) {
+      cursorMode = cm;
+      document.documentElement.classList.toggle('hsm-cursor', cm);
+    }
+    if (cm) {
+      var htf = 'translate3d(' + pointer.x + 'px,' + pointer.y + 'px,0)';
+      if (htf !== lastHotTf) { hot.style.transform = htf; lastHotTf = htf; }
+    }
   }
 
   // ---------------------------------------------------------------------------
@@ -465,22 +497,28 @@
   window.addEventListener('pointermove', function (e) {
     if (e.pointerType === 'touch') return;
     pointer.x = e.clientX; pointer.y = e.clientY;
-    pointer.active = true;
+    pointer.active = true; pointer.over = true;
   }, { passive: true });
-  function pointerGone() { pointer.active = false; }
+  function pointerGone() { pointer.over = false; }
   document.documentElement.addEventListener('mouseleave', pointerGone);
+  document.documentElement.addEventListener('mouseenter', function () { pointer.over = true; });
   window.addEventListener('blur', pointerGone);
 
-  // Hover context (desktop): project cards invite a point, skill cards an idea;
-  // text fields make the character step back so it never covers what's typed.
+  // Hover context (desktop): project cards invite a point, code links a coding
+  // pose, skill cards an idea; text fields make the character step back so it
+  // never covers what's typed. Interactive elements light up the hotspot.
   document.addEventListener('pointerover', function (e) {
     var t = e.target;
     if (!t || !t.closest) return;
-    var ctx = t.closest(PROJECT_HOVER) ? 'project' : t.closest(SKILL_HOVER) ? 'skill' : t.closest(TEXT_FIELDS) ? 'text' : null;
+    var ctx = null;
+    for (var i = 0; i < HOVER_CTX.length; i++) if (t.closest(HOVER_CTX[i][1])) { ctx = HOVER_CTX[i][0]; break; }
     if (ctx !== hover.ctx) { hover.ctx = ctx; hover.since = performance.now(); }
-    if (fine.matches) root.classList.toggle('is-quiet', ctx === 'text' || focusedField);
+    if (fine.matches) {
+      root.classList.toggle('is-quiet', ctx === 'text' || focusedField);
+      hot.classList.toggle('is-link', !!t.closest(INTERACTIVE));
+      hot.classList.toggle('is-off', !!t.closest(NATIVE_CURSOR));
+    }
   }, { passive: true });
-  var focusedField = false;
   document.addEventListener('focusin', function (e) {
     focusedField = !!(e.target && e.target.closest && e.target.closest(TEXT_FIELDS));
     root.classList.toggle('is-quiet', focusedField);
@@ -509,9 +547,11 @@
     // height changes and so do the waypoints and the button's position.
     new ResizeObserver(queueMeasure).observe(document.body);
   }
-  function onModeChange() { pointer.active = false; queueMeasure(); }
-  if (fine.addEventListener) fine.addEventListener('change', onModeChange);
-  else if (fine.addListener) fine.addListener(onModeChange);
+  function onModeChange() { pointer.active = false; pointer.over = false; queueMeasure(); }
+  [fine, reduce].forEach(function (mq) {
+    if (mq.addEventListener) mq.addEventListener('change', onModeChange);
+    else if (mq.addListener) mq.addListener(onModeChange);
+  });
 
   // ---------------------------------------------------------------------------
   // Boot: preload, place at the current section, wave once, go.
@@ -525,6 +565,7 @@
   function start() {
     if (started) return;
     started = true;
+    document.documentElement.classList.add('hsm-active'); // makes room above the button
     measure();
     var sy = window.scrollY, now = performance.now();
     var s = sectionAt(sy);
@@ -533,11 +574,10 @@
     if (feet !== null && feet <= vh - DOCK_MARGIN) {
       // Loaded straight onto Contact (hash / restored scroll): already home.
       phase = 'docked'; phaseAt = now;
-      root.setAttribute('data-phase', phase);
       x = tx = gx = dock.cx; y = ty = gy = feet - feetDy('docked');
-      setPose('docked', now);
+      setPose('docked');
     } else {
-      setPose('idle', now);
+      setPose('idle');
       settledAt = now;
       if (play('wave', INTRO_MS, true, false, now)) override.intro = true;
     }
@@ -555,6 +595,8 @@
 
   // Debug handle (read-only) — handy in devtools, harmless otherwise.
   window.HSMMascot = {
-    state: function () { return { phase: phase, pose: pose, state: stateName(), x: x, y: y, flying: flying, size: size }; }
+    state: function () {
+      return { phase: phase, pose: pose, state: stateName(), x: x, y: y, flying: flying, dir: dir, size: size, cursor: cursorMode, over: pointer.over, active: pointer.active, hover: hover.ctx };
+    }
   };
 })();
