@@ -26,63 +26,15 @@ if(document.getElementById('hero-section')){
   setActive('hero-section');
 }
 
-// Settings panel (dark mode + accent color) — shared across every page
+// Theme (light | dark) — shared across every page. The brand colour is fixed
+// HSM Blue in styles.css; there is no accent picker and nothing here (or in
+// localStorage) can change it.
 (function(){
-  var fab = document.getElementById('settings-trigger');
-  var panel = document.getElementById('settings-panel');
-  var darkToggle = document.getElementById('sp-dark-toggle');
-  var navToggle = document.getElementById('theme-toggle');
+  // Older builds saved a user-picked accent here. Drop it so it never lingers.
+  try { localStorage.removeItem('accent'); } catch(e) {}
 
-  var COLORS = {
-    green:  {main:'#1a6b45', light:'#e8f5ef', mid:'#2d9b67', rgb:'26,107,69'},
-    blue:   {main:'#1d4ed8', light:'#eff6ff', mid:'#3b82f6', rgb:'29,78,216'},
-    purple: {main:'#7c3aed', light:'#f5f3ff', mid:'#8b5cf6', rgb:'124,58,237'},
-    rose:   {main:'#e11d48', light:'#fff1f2', mid:'#f43f5e', rgb:'225,29,72'},
-    cyan:   {main:'#0891b2', light:'#ecfeff', mid:'#06b6d4', rgb:'8,145,178'},
-    amber:  {main:'#d97706', light:'#fef3c7', mid:'#f59e0b', rgb:'217,119,6'},
-  };
-
-  function applyColor(name){
-    var c = COLORS[name]; if(!c) return;
-    var r = document.documentElement;
-    r.style.setProperty('--green', c.main);
-    r.style.setProperty('--green-light', c.light);
-    r.style.setProperty('--green-mid', c.mid);
-    r.style.setProperty('--accent-main', c.main);
-    r.style.setProperty('--accent-light', c.light);
-    r.style.setProperty('--accent-rgb', c.rgb);
-    localStorage.setItem('accent', name);
-    document.querySelectorAll('.sp-color').forEach(function(el){
-      el.classList.toggle('active', el.dataset.color === name);
-    });
-  }
-  function isDark(){ return document.documentElement.getAttribute('data-theme') === 'dark'; }
-  function syncDark(d){ if(darkToggle) darkToggle.classList.toggle('on', d); }
-
-  var savedTheme = localStorage.getItem('theme');
-  if(savedTheme === 'dark') document.documentElement.setAttribute('data-theme','dark');
+  if(localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme','dark');
   else document.documentElement.removeAttribute('data-theme');
-
-  syncDark(isDark());
-  applyColor(localStorage.getItem('accent') || 'green');
-
-  if(fab && panel){
-    fab.addEventListener('click', function(e){ e.stopPropagation(); panel.classList.toggle('open'); });
-    document.addEventListener('click', function(e){ if(!panel.contains(e.target) && e.target!==fab) panel.classList.remove('open'); });
-  }
-  if(darkToggle){
-    darkToggle.addEventListener('click', function(){
-      var next = !isDark();
-      if(next) document.documentElement.setAttribute('data-theme','dark');
-      else document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', next?'dark':'light');
-      syncDark(next);
-    });
-  }
-  if(navToggle){ navToggle.addEventListener('click', function(){ syncDark(isDark()); }); }
-  document.querySelectorAll('.sp-color').forEach(function(el){
-    el.addEventListener('click', function(){ applyColor(el.dataset.color); });
-  });
 })();
 
 // Back to top
@@ -98,7 +50,7 @@ if(document.getElementById('hero-section')){
   btn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
 })();
 
-// Theme toggle (nav button - syncs with settings panel)
+// Theme toggle (nav sun/moon button)
 (function(){
   var btn = document.getElementById('theme-toggle');
   if(btn){
@@ -107,8 +59,6 @@ if(document.getElementById('hero-section')){
       if(isDark) document.documentElement.removeAttribute('data-theme');
       else document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('theme', !isDark ? 'dark' : 'light');
-      var spToggle = document.getElementById('sp-dark-toggle');
-      if(spToggle) spToggle.classList.toggle('on', !isDark);
     });
   }
 })();
