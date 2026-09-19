@@ -348,146 +348,172 @@ nav.stuck {
   background: var(--ink2)
 }
 
-/* Cursor companion — the H.Solutions character follows the pointer and docks
-   above the footer. Three layers, each with one job so transforms never fight:
-     #mascot    position        written to transform by script.js (rAF)
-     .m-body    lean / bob      written to transform by script.js (rAF)
-     .m-figure  hover / press   CSS transitions on class toggles
-   Nothing here animates left/top. The native cursor stays visible: the
-   character sits down-right of the hotspot so pointing stays precise. */
-.mascot {
+/* HSM SOFTWARE MASCOT — a companion character that travels with the visitor
+   and lands above the Send Message button. js/hsm-mascot.js builds the layers
+   and owns every transform; this file only sizes, stacks and colours them:
+     #hsm-mascot          fixed 0×size box whose top-left is the character's
+                          visor — the one point the controller moves (one
+                          transform per frame: position, lean, scale, float)
+     .hsm-mascot__glow    accent aura that lags the body a little (JS translate)
+     .hsm-mascot__trail   accent streak behind the body while flying
+     .hsm-mascot__pose    one <img> per pose, crossfaded by .is-active
+   Nothing here animates left/top. Everything accent-coloured reads the live
+   --accent-rgb the settings panel already writes, so a new accent or theme
+   recolours the aura, trail and shadow on the next paint. The PNGs are never
+   hue-shifted: the suit, visor and HSM branding stay as drawn. */
+.hsm-mascot {
+  --hsm-size: clamp(104px, 10vw, 150px);
+  --hsm-glow-a: .26;
+  --hsm-trail-a: .5;
+  --hsm-shadow: drop-shadow(0 6px 10px rgba(var(--accent-rgb), .3)) drop-shadow(0 2px 3px rgba(15, 14, 11, .2));
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--m-w, 48px);
-  height: var(--m-h, 84px);
+  width: 0;
+  height: var(--hsm-size);
+  z-index: 150;
   pointer-events: none;
-  z-index: 9999;
   user-select: none;
   -webkit-user-select: none;
-  will-change: transform, opacity;
-  transition: opacity .25s ease
+  transform-origin: 0 0;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity .4s ease
 }
 
-/* Not on screen yet, pointer left the window, or over a text field */
-.mascot.hidden {
+.hsm-mascot.is-ready {
+  opacity: 1
+}
+
+/* A text field is focused or hovered: step back so it never hides typing */
+.hsm-mascot.is-quiet {
+  opacity: .3
+}
+
+[data-theme="dark"] .hsm-mascot {
+  --hsm-glow-a: .4;
+  --hsm-trail-a: .68;
+  --hsm-shadow: drop-shadow(0 0 1.5px rgba(255, 255, 255, .32)) drop-shadow(0 8px 16px rgba(var(--accent-rgb), .5))
+}
+
+.hsm-mascot__glow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--hsm-size) * 1.6);
+  height: calc(var(--hsm-size) * 1.6);
+  margin: calc(var(--hsm-size) * -.6) 0 0 calc(var(--hsm-size) * -.8);
+  will-change: transform, opacity
+}
+
+.hsm-mascot__glow-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), var(--hsm-glow-a)) 0%, rgba(var(--accent-rgb), calc(var(--hsm-glow-a) * .45)) 32%, rgba(var(--accent-rgb), 0) 68%)
+}
+
+.hsm-mascot[data-phase="docked"] .hsm-mascot__glow-core {
+  animation: hsm-breathe 3.2s ease-in-out infinite
+}
+
+/* One ring pulse the moment the feet touch the button */
+.hsm-mascot__ring {
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  border: 2px solid rgba(var(--accent-rgb), .6);
   opacity: 0
 }
 
-.mascot.quiet:not(.docked) {
-  opacity: .35
+.hsm-mascot__ring.is-pulsing {
+  animation: hsm-ring .9s cubic-bezier(.22, 1, .36, 1) forwards
 }
 
-.m-body,
-.m-figure {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-origin: 50% 45%
+.hsm-mascot__trail {
+  position: absolute;
+  left: 0;
+  top: calc(var(--hsm-size) * .16);
+  width: calc(var(--hsm-size) * 1.35);
+  height: calc(var(--hsm-size) * .46);
+  margin: calc(var(--hsm-size) * -.23) 0 0 calc(var(--hsm-size) * -1.35);
+  transform-origin: 100% 50%;
+  border-radius: 999px;
+  background: linear-gradient(to left, rgba(var(--accent-rgb), var(--hsm-trail-a)), rgba(var(--accent-rgb), calc(var(--hsm-trail-a) * .35)) 45%, rgba(var(--accent-rgb), 0));
+  filter: blur(7px);
+  opacity: 0;
+  will-change: transform, opacity
 }
 
-.m-body {
-  will-change: transform
-}
-
-.m-figure {
-  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1)
-}
-
-.m-figure picture,
-.m-figure img {
-  display: block;
-  width: 100%;
+.hsm-mascot__pose {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
   height: 100%
 }
 
-.m-figure img {
-  object-fit: contain;
-  object-position: center bottom;
-  filter: drop-shadow(0 4px 6px rgba(4, 12, 34, var(--m-shadow-a, .28)))
-}
-
-/* Soft accent light behind the character; opens up over interactive targets */
-.m-glow {
+/* height / translate per pose (and the clip on the img) are inline, from the
+   POSES metadata in js/hsm-mascot.js */
+.hsm-pose {
   position: absolute;
-  inset: -22% -40%;
-  border-radius: 50%;
-  background: radial-gradient(50% 50% at 50% 55%, rgba(var(--accent-rgb), var(--m-glow-a, .22)), rgba(var(--accent-rgb), 0) 72%);
+  left: 0;
+  top: 0;
+  display: block;
   opacity: 0;
-  transform: scale(.85);
-  transition: opacity .3s ease, transform .3s cubic-bezier(.22, 1, .36, 1)
+  transition: opacity .15s ease;
+  filter: var(--hsm-shadow);
+  will-change: opacity
 }
 
-[data-theme="dark"] {
-  --m-glow-a: .38;
-  --m-shadow-a: .5
+.hsm-pose img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  -webkit-user-drag: none
 }
 
-/* Over a link, button or card: a little bigger, glow on */
-.mascot.expand .m-figure {
-  transform: scale(1.08)
+.hsm-pose.is-active {
+  opacity: 1
 }
 
-.mascot.expand .m-glow,
-.mascot.docked .m-glow {
-  opacity: 1;
-  transform: scale(1)
-}
-
-/* Pointer down: squash; the spring curve on .m-figure handles the release */
-.mascot.press .m-figure {
-  transform: scale(1.1, .9);
-  transition-duration: .1s
-}
-
-/* Parked above the footer: the glow breathes while the loop idles */
-.mascot.docked .m-glow {
-  animation: m-breathe 3s ease-in-out infinite
-}
-
-@keyframes m-breathe {
+@keyframes hsm-breathe {
 
   0%,
   100% {
     transform: scale(1);
-    opacity: .55
+    opacity: .7
   }
 
   50% {
-    transform: scale(1.18);
+    transform: scale(1.14);
     opacity: 1
   }
 }
 
-/* Touch devices: no pointer to follow, so the same character becomes a small
-   floating companion above the back-to-top button. script.js only drives
-   .m-body here (scroll lean + idle float); the outer box never moves. */
-@media (hover: none) and (pointer: coarse) {
-  .mascot {
-    --m-w: 38px;
-    --m-h: 66px;
-    top: auto;
-    left: auto;
-    right: calc(1.5rem + env(safe-area-inset-right, 0px));
-    bottom: calc(1.5rem + 42px + 14px + env(safe-area-inset-bottom, 0px));
-    z-index: 180;
-    transform: none !important;
-    transition: opacity .25s ease
+@keyframes hsm-ring {
+  0% {
+    transform: scale(.45);
+    opacity: .85
   }
 
-  .mascot.hidden {
+  100% {
+    transform: scale(1.5);
     opacity: 0
   }
 }
 
 @media (prefers-reduced-motion:reduce) {
 
-  .mascot,
-  .m-body,
-  .m-figure,
-  .m-glow {
-    transition: none !important;
+  .hsm-mascot__glow-core,
+  .hsm-mascot__ring {
     animation: none !important
+  }
+
+  .hsm-mascot__trail {
+    display: none
   }
 }
 
