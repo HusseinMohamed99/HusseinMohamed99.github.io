@@ -15,7 +15,7 @@
 //
 // Motion phases (authoritative):  FREE → APPROACHING → LANDING → DOCKED → TAKEOFF
 // Visual states (derived):        hidden, intro, idle, flying-left/right, wave,
-//                                 pointing, thinking, excited, love, surprised,
+//                                 pointing, thinking, excited, idea, surprised,
 //                                 landing, docked, takeoff
 (function () {
   'use strict';
@@ -30,22 +30,23 @@
   // single k = size / REF_H maps all of them. ax/ay is the visor centre (the
   // point the controller moves), feet is the lowest row of the character, and
   // crop trims sheet artefacts baked into some exports (label pills, slivers of
-  // neighbouring poses) — the files themselves are untouched.
+  // neighbouring poses) and cw is the visible character width where the canvas
+  // is much wider — the files themselves are untouched.
   // ---------------------------------------------------------------------------
-  var REF_H = 320; // idle character height in source px
+  var REF_H = 297; // idle character height in source px
   var POSES = {
-    idle:        { file: 'hsm-mascot-idle.png',         w: 230, h: 340, ax: 133, ay: 122, feet: 336 },
-    flyingRight: { file: 'hsm-mascot-flying-right.png', w: 385, h: 340, ax: 261, ay: 151, feet: 294, crop: [0, 0, 40, 0] },
-    flyingLeft:  { file: 'hsm-mascot-flying-left.png',  w: 380, h: 340, ax: 150, ay: 150, feet: 340, crop: [0, 0, 0, 8] },
-    landing:     { file: 'hsm-mascot-landing.png',      w: 250, h: 340, ax: 137, ay: 196, feet: 338, crop: [0, 0, 0, 12] },
-    docked:      { file: 'hsm-mascot-docked.png',       w: 321, h: 340, ax: 134, ay: 119, feet: 335, crop: [0, 0, 0, 14] },
-    wave:        { file: 'hsm-mascot-wave.png',         w: 260, h: 315, ax: 155, ay: 129, feet: 315, crop: [12, 0, 0, 0] },
-    pointing:    { file: 'hsm-mascot-pointing.png',     w: 345, h: 315, ax: 160, ay: 127, feet: 315, crop: [4, 0, 0, 0] },
-    thinking:    { file: 'hsm-mascot-thinking.png',     w: 270, h: 315, ax: 131, ay: 140, feet: 315 },
-    excited:     { file: 'hsm-mascot-excited.png',      w: 330, h: 315, ax: 180, ay: 125, feet: 313, crop: [12, 0, 0, 0] },
-    love:        { file: 'hsm-mascot-love.png',         w: 331, h: 315, ax: 183, ay: 128, feet: 315, crop: [12, 0, 0, 0] },
-    surprised:   { file: 'hsm-mascot-surprised.png',    w: 305, h: 310, ax: 192, ay: 132, feet: 280, crop: [28, 0, 29, 0] },
-    back:        { file: 'hsm-mascot-back.png',         w: 395, h: 310, ax: 196, ay: 157, feet: 282, crop: [28, 0, 28, 0] }
+    idle:        { file: 'hsm-mascot-idle.png',         w: 408, h: 335, ax: 193, ay: 130, feet: 322, cw: 199, crop: [0, 118, 0, 0] },
+    flyingRight: { file: 'hsm-mascot-flying-right.png', w: 400, h: 334, ax: 210, ay: 134, feet: 303 },
+    flyingLeft:  { file: 'hsm-mascot-flying-left.png',  w: 393, h: 335, ax: 167, ay: 139, feet: 316 },
+    landing:     { file: 'hsm-mascot-landing.png',      w: 396, h: 335, ax: 231, ay: 154, feet: 322 },
+    docked:      { file: 'hsm-mascot-docked.png',       w: 354, h: 336, ax: 125, ay: 135, feet: 310, crop: [26, 0, 24, 0] },
+    wave:        { file: 'hsm-mascot-wave.png',         w: 407, h: 336, ax: 220, ay: 136, feet: 310, crop: [26, 0, 24, 0] },
+    pointing:    { file: 'hsm-mascot-pointing.png',     w: 401, h: 336, ax: 183, ay: 135, feet: 311, crop: [26, 0, 23, 0] },
+    thinking:    { file: 'hsm-mascot-thinking.png',     w: 389, h: 336, ax: 213, ay: 145, feet: 310, crop: [26, 0, 24, 0] },
+    excited:     { file: 'hsm-mascot-excited.png',      w: 383, h: 335, ax: 184, ay: 137, feet: 288, crop: [0, 0, 43, 0] },
+    idea:        { file: 'hsm-mascot-idea.png',         w: 395, h: 335, ax: 206, ay: 150, feet: 294, crop: [0, 0, 39, 0] },
+    surprised:   { file: 'hsm-mascot-surprised.png',    w: 353, h: 335, ax: 139, ay: 150, feet: 290, crop: [0, 0, 41, 0] },
+    back:        { file: 'hsm-mascot-back.png',         w: 389, h: 335, ax: 199, ay: 150, feet: 289, crop: [0, 0, 41, 0] }
   };
   // The experience starts once these five are decoded; the rest load after.
   var ESSENTIAL = ['idle', 'flyingRight', 'flyingLeft', 'landing', 'docked'];
@@ -70,7 +71,7 @@
   var DOCK_SNAP = 2.5;         // px: close enough to count as landed
   var TAKEOFF_MS = 340, TAKEOFF_LIFT = 0.55;
   var INTRO_MS = 1500, CONTEXT_DELAY = 1200, CONTEXT_MS = 2200;
-  var HOVER_DELAY = 260, HOVER_MS = 1800, HOVER_COOLDOWN = 6000;
+  var HOVER_DELAY = 260, HOVER_MS = 1800, HOVER_COOLDOWN = 6000, IDEA_COOLDOWN = 12000;
   var REACT_MS = 2600;
   var NAV_H = 64;
   var TAU = Math.PI * 2;
@@ -83,10 +84,10 @@
   var PLAN = [
     { id: 'hero-section',   side: 'right', y: 0.27, yNarrow: 0.5, pose: null },
     { id: 'about',          side: 'left',  y: 0.50, pose: 'wave' },
-    { id: 'skills',         side: 'right', y: 0.42, pose: 'thinking' },
+    { id: 'skills',         side: 'right', y: 0.42, pose: 'idea' },
     { id: 'experience',     side: 'right', y: 0.58, pose: null },
     { id: 'projects',       side: 'left',  y: 0.40, pose: 'pointing' },
-    { id: 'certifications', side: 'right', y: 0.46, pose: null },
+    { id: 'certifications', side: 'right', y: 0.46, pose: 'thinking' },
     { id: 'contact',        side: 'dock',  y: 0.55, pose: null },
     { id: 'all-projects',   side: 'right', y: 0.30, pose: 'pointing' },
     { id: 'project-root',   side: 'right', y: 0.30, pose: null }
@@ -94,6 +95,7 @@
   var CONTENT_W = 1280; // .sec-wrap / #hero max-width: the margins beside it are safe
   var DOCK_SELECTOR = '#ct-form-submit';
   var PROJECT_HOVER = '.proj-card, .proj-x-card';
+  var SKILL_HOVER = '.skill-card';
   var TEXT_FIELDS = 'input, textarea, select, [contenteditable]';
 
   // ---------------------------------------------------------------------------
@@ -163,7 +165,7 @@
   var liftX = 0, liftY = 0;           // where the takeoff hop aims
 
   var pointer = { x: 0, y: 0, active: false };
-  var hover = { ctx: null, since: 0, lastPointAt: -1e9 };
+  var hover = { ctx: null, since: 0, lastPointAt: -1e9, lastIdeaAt: -1e9 };
   var played = {};                    // contextual poses already shown per section
   var lastTf = '', lastGlowTf = '', lastGlowA = -1, lastTrailTf = '', lastTrailA = -1;
 
@@ -171,7 +173,7 @@
   function decay(ease, kf) { return 1 - Math.pow(1 - ease, kf); }
   function smooth(t) { return t * t * (3 - 2 * t); }
   function feetDy(name) { var p = POSES[name] || POSES.idle; return (p.feet - p.ay) * k; }
-  function charW(name) { var p = POSES[name] || POSES.idle; return p.w * k; }
+  function charW(name) { var p = POSES[name] || POSES.idle; return (p.cw || p.w) * k; }
 
   // ---------------------------------------------------------------------------
   // Measurement — cached; refreshed on resize / orientation / layout changes
@@ -395,6 +397,9 @@
       if (fine.matches && hover.ctx === 'project' && now - hover.since > HOVER_DELAY &&
           now - hover.lastPointAt > HOVER_COOLDOWN) {
         if (play('pointing', HOVER_MS, true, false, now)) hover.lastPointAt = now;
+      } else if (fine.matches && hover.ctx === 'skill' && now - hover.since > HOVER_DELAY &&
+          now - hover.lastIdeaAt > IDEA_COOLDOWN) {
+        if (play('idea', HOVER_MS, true, false, now)) hover.lastIdeaAt = now;
       } else if (sec.pose && !played[sec.id]) {
         played[sec.id] = true;
         play(sec.pose, CONTEXT_MS, true, false, now);
@@ -466,12 +471,12 @@
   document.documentElement.addEventListener('mouseleave', pointerGone);
   window.addEventListener('blur', pointerGone);
 
-  // Hover context (desktop): project cards invite a point; text fields make the
-  // character step back so it never covers what's being typed.
+  // Hover context (desktop): project cards invite a point, skill cards an idea;
+  // text fields make the character step back so it never covers what's typed.
   document.addEventListener('pointerover', function (e) {
     var t = e.target;
     if (!t || !t.closest) return;
-    var ctx = t.closest(PROJECT_HOVER) ? 'project' : t.closest(TEXT_FIELDS) ? 'text' : null;
+    var ctx = t.closest(PROJECT_HOVER) ? 'project' : t.closest(SKILL_HOVER) ? 'skill' : t.closest(TEXT_FIELDS) ? 'text' : null;
     if (ctx !== hover.ctx) { hover.ctx = ctx; hover.since = performance.now(); }
     if (fine.matches) root.classList.toggle('is-quiet', ctx === 'text' || focusedField);
   }, { passive: true });
@@ -490,7 +495,7 @@
   if (status && window.MutationObserver) {
     new MutationObserver(function () {
       var now = performance.now();
-      if (status.classList.contains('ok')) play('love', REACT_MS, false, true, now);
+      if (status.classList.contains('ok')) play('excited', REACT_MS, false, true, now);
       else if (status.classList.contains('err')) play('surprised', REACT_MS, false, true, now);
     }).observe(status, { attributes: true, attributeFilter: ['class'] });
   }
