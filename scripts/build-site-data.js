@@ -106,6 +106,20 @@ function main() {
 
   // ---- sitemap.xml ----
   const newest = projects.map((p) => p.lastmod).sort().pop();
+
+  // Privacy pages are hand-maintained under privacy/, not derived from
+  // data/projects/, so they are listed here. They used to be pasted straight
+  // into sitemap.xml, where the next run of this script silently dropped them.
+  // Redirect stubs (privacy/studyflow-ar/, privacy/*/privacy-policy.html) are
+  // deliberately absent: they carry `noindex`.
+  const privacyPages = [
+    "/privacy/",
+    "/privacy/refqa/",
+    "/privacy/x5-fitness/",
+    "/privacy/x5-fitness/account-deletion.html",
+    "/privacy/studyflow/",
+  ];
+
   const urls = [
     { loc: `${ORIGIN}/`, lastmod: newest, changefreq: "monthly", priority: "1.0" },
     { loc: `${ORIGIN}/projects/all-projects.html`, lastmod: newest, changefreq: "monthly", priority: "0.8" },
@@ -114,6 +128,12 @@ function main() {
       lastmod: p.lastmod,
       changefreq: "yearly",
       priority: "0.7",
+    })),
+    ...privacyPages.map((page) => ({
+      loc: `${ORIGIN}${page}`,
+      lastmod: lastModified(page.replace(/^\//, "").replace(/\/$/, "/index.html")),
+      changefreq: "yearly",
+      priority: "0.3",
     })),
   ];
 
