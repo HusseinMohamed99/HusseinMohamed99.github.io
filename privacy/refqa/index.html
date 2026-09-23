@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-title-en="Privacy Policy — Refqa" data-title-ar="سياسة الخصوصية — رِفقة">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Refqa</title>
+<meta name="description" content="Privacy policy for Refqa (رِفقة), an offline-first Islamic companion app by HSM Software. Available in English and Arabic.">
+<meta name="theme-color" content="#0A6EF5">
+<link rel="canonical" href="https://husseinmohamed99.github.io/privacy/refqa/">
+<link rel="icon" type="image/png" sizes="512x512" href="../../images/brand/hsm-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=Geist+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#faf8f3; --surface:#f4f2eb; --card:#ffffff;
+    --ink:#0f0e0b; --ink2:#2a2926; --muted:#807f76;
+    --border:#e8e5dc; --border2:#cbc8bc;
+    --hsm-blue:#0A6EF5; --hsm-blue-text:#0B63DD; --hsm-blue-soft:#E7F0FE;
+    --hsm-blue-border:rgba(10,110,245,.28);
+    --hero-ink:#ffffff; --hero-ink2:rgba(255,255,255,.80);
+    --hero-a:#04255C; --hero-b:#0A6EF5; --hero-c:#1E8BFF;
+    --bar:rgba(250,248,243,.82); --bar-border:#e3dfd4;
+    --shadow:0 1px 2px rgba(15,14,11,.04), 0 12px 34px rgba(15,14,11,.07);
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Cabinet Grotesk',ui-sans-serif,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --arabic:'Noto Naskh Arabic','Segoe UI',Tahoma,sans-serif;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+      --cream:#101010; --surface:#191917; --card:#1d1c1a;
+      --ink:#f0ede8; --ink2:#d3cfc8; --muted:#94918a;
+      --border:#2c2a26; --border2:#403d36;
+      --hsm-blue:#4D9BFF; --hsm-blue-text:#6FAEFF; --hsm-blue-soft:#0E2348;
+      --hsm-blue-border:rgba(77,155,255,.38);
+      --hero-a:#04142F; --hero-b:#0A4EAE; --hero-c:#1470D8;
+      --bar:rgba(16,16,16,.84); --bar-border:#2c2a26;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream:#101010; --surface:#191917; --card:#1d1c1a;
+    --ink:#f0ede8; --ink2:#d3cfc8; --muted:#94918a;
+    --border:#2c2a26; --border2:#403d36;
+    --hsm-blue:#4D9BFF; --hsm-blue-text:#6FAEFF; --hsm-blue-soft:#0E2348;
+    --hsm-blue-border:rgba(77,155,255,.38);
+    --hero-a:#04142F; --hero-b:#0A4EAE; --hero-c:#1470D8;
+    --bar:rgba(16,16,16,.84); --bar-border:#2c2a26;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+  }
+  *,*::before,*::after { box-sizing:border-box }
+  html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:86px }
+  body {
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-size:16.5px; line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden; overflow-x:clip;
+  }
+  main { max-width:720px; margin:0 auto; padding:0 20px 76px }
+
+  .skip {
+    position:absolute; inset-inline-start:-9999px; top:0; z-index:99;
+    background:var(--hsm-blue); color:#fff; padding:10px 16px;
+    border-radius:0 0 8px 0; font-family:var(--mono); font-size:13px;
+  }
+  .skip:focus { inset-inline-start:0 }
+
+  /* ---------------------------------------------------------------- bar --
+     Sticky, so the language switch is reachable from anywhere in a policy
+     that runs to thirty sections. */
+  .topbar {
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:12px;
+    padding:9px 20px;
+    background:var(--bar); border-bottom:1px solid var(--bar-border);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    backdrop-filter:saturate(180%) blur(14px);
+  }
+  /* The glyph, not the full lockup: the lockup's "HSM SOFTWARE" line is
+     illegible at bar height, so the wordmark is set in type beside it and the
+     full lockup is saved for the footer, where it has room. */
+  .brand { display:inline-flex; align-items:center; gap:9px; flex:none; text-decoration:none }
+  .brand img { display:block; width:auto; height:26px }
+  .brand .wordmark {
+    font-family:var(--sans); font-weight:700; font-size:15px; letter-spacing:-.01em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .brand .wordmark .light { font-weight:400; color:var(--muted) }
+  .brand .on-dark { display:none }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) .brand .on-light { display:none }
+    :root:not([data-theme="light"]) .brand .on-dark { display:block }
+  }
+  :root[data-theme="dark"] .brand .on-light { display:none }
+  :root[data-theme="dark"] .brand .on-dark { display:block }
+  .brand:hover img { opacity:.82 }
+
+  .bar-rule { flex:none; width:1px; height:20px; background:var(--border2); opacity:.9 }
+  .bar-app {
+    flex:1 1 auto; min-width:0;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  [dir="rtl"] .bar-app { font-family:var(--arabic); letter-spacing:0; font-size:13px }
+  @media (max-width:520px) { .bar-rule, .bar-app { display:none } }
+
+  /* --- language switch: a segmented control, not two loose buttons --- */
+  .lang {
+    flex:none; margin-inline-start:auto; display:flex; gap:2px; padding:3px;
+    background:var(--surface); border:1px solid var(--border2); border-radius:999px;
+  }
+  .lang button {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-height:34px;   /* a comfortable tap target, not the 26px the text alone gives */
+    font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.06em;
+    padding:4px 15px; border-radius:999px; cursor:pointer; border:1px solid transparent;
+    background:transparent; color:var(--ink2); line-height:1.2;
+    transition:background .16s,color .16s,box-shadow .16s;
+  }
+  .lang button:hover { color:var(--hsm-blue-text) }
+  .lang button[aria-pressed="true"] {
+    background:var(--hsm-blue); color:#fff;
+    box-shadow:0 1px 2px rgba(10,110,245,.35), 0 2px 8px rgba(10,110,245,.28);
+  }
+  .lang button[lang="ar"] { font-family:var(--arabic); font-size:13.5px; letter-spacing:0; padding-block:4px }
+  /* Phone: tighten the bar rather than drop the wordmark — the brand is the
+     point of the header. Only below 360px is there genuinely no room. */
+  @media (max-width:430px) {
+    .topbar { padding-inline:14px; gap:8px }
+    .brand img { height:23px }
+    .brand .wordmark { font-size:14px }
+    .lang { padding:2px }
+    .lang button { padding:4px 12px; font-size:11.5px }
+    .lang button[lang="ar"] { font-size:12.5px }
+  }
+  @media (max-width:359px) { .brand .wordmark { display:none } }
+
+  /* --------------------------------------------------------------- hero --
+     Full-bleed: the margin trick, not 100vw, so a scrollbar cannot push the
+     band wider than the viewport. body has overflow-x:clip as the guard. */
+  header {
+    position:relative; isolation:isolate; overflow:hidden;
+    margin-inline:calc(50% - 50vw); margin-bottom:44px;
+    /* The padding is the exact inverse of the margin, so the hero's text lands
+       on the same baseline column as the body no matter how wide the
+       scrollbar is — no viewport arithmetic to get wrong. */
+    padding:58px calc(50vw - 50%) 52px;
+    background:
+      radial-gradient(120% 140% at 88% -10%, var(--hero-c) 0%, transparent 55%),
+      radial-gradient(90% 120% at 0% 110%, var(--hero-b) 0%, transparent 60%),
+      linear-gradient(140deg, var(--hero-a) 0%, var(--hero-b) 100%);
+    color:var(--hero-ink);
+  }
+  /* A faint dot field over the gradient — texture, not decoration you notice. */
+  header::before {
+    content:""; position:absolute; inset:0; z-index:-1; opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
+    background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(200deg, #000 0%, transparent 72%);
+    mask-image:linear-gradient(200deg, #000 0%, transparent 72%);
+  }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:9px;
+    margin:0 0 20px; padding:6px 13px 6px 9px;
+    background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; backdrop-filter:blur(4px);
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--hero-ink);
+  }
+  .eyebrow .pip {
+    width:7px; height:7px; border-radius:2px; background:#8FC2FF;
+    box-shadow:0 0 0 3px rgba(143,194,255,.22);
+  }
+  [dir="rtl"] .eyebrow { font-family:var(--arabic); letter-spacing:0; font-size:13px; padding:5px 9px 5px 13px }
+  header h1 {
+    font-family:var(--serif); font-weight:700; font-size:clamp(34px,7.5vw,54px);
+    line-height:1.02; letter-spacing:-.022em; margin:0; color:var(--hero-ink);
+    text-wrap:balance;
+  }
+  header .app-line {
+    margin:14px 0 0; font-size:19px; color:var(--hero-ink2); max-width:46ch;
+  }
+  .updated {
+    display:inline-block; margin:26px 0 0; padding:5px 12px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+    border-radius:6px;
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--hero-ink2);
+  }
+  [dir="rtl"] .updated { font-family:var(--arabic); letter-spacing:0; font-size:13.5px }
+
+  /* --------------------------------------------------------------- body --
+     h2s are numbered by CSS counter: a legal document should look like one,
+     and a reader quoting "section 12" needs the number to be there. */
+  #policy-en, #policy-ar { counter-reset:sec }
+  h2 {
+    counter-increment:sec;
+    display:flex; align-items:baseline; gap:12px;
+    font-family:var(--serif); font-weight:700; font-size:25px; line-height:1.22;
+    margin:52px 0 14px; scroll-margin-top:86px; text-wrap:balance;
+  }
+  h2::before {
+    content:counter(sec,decimal-leading-zero);
+    flex:none; font-family:var(--mono); font-size:12.5px; font-weight:500;
+    letter-spacing:.06em; color:var(--hsm-blue-text);
+    padding-top:.42em;
+  }
+  /* The Arabic panel numbers its sections in Arabic-Indic digits, matching
+     the numerals inside the translated text itself. */
+  [lang="ar"] h2::before { content:counter(sec,arabic-indic); font-family:var(--arabic); padding-top:.3em }
+  h2:first-of-type { margin-top:0 }
+  h3 { font-family:var(--serif); font-weight:700; font-size:18.5px; margin:30px 0 10px; color:var(--ink2) }
+  p { margin:0 0 15px }
+  ul,ol { margin:0 0 15px; padding-inline-start:24px }
+  li { margin-bottom:9px }
+  li::marker { color:var(--hsm-blue) }
+  a { color:var(--hsm-blue-text); text-underline-offset:3px; text-decoration-thickness:1px }
+  a:hover { text-decoration-thickness:2px }
+  strong { font-weight:600; color:var(--ink) }
+  code {
+    font-family:var(--mono); font-size:.84em; background:var(--surface);
+    border:1px solid var(--border); border-radius:5px; padding:1.5px 6px;
+  }
+  hr { border:0; height:1px; margin:40px 0; background:linear-gradient(90deg,var(--border2),transparent) }
+  .table-wrap {
+    overflow-x:auto; margin:0 0 15px;
+    border:1px solid var(--border); border-radius:10px; background:var(--card);
+  }
+  table { border-collapse:collapse; width:100%; font-size:14.5px }
+  th,td { border-bottom:1px solid var(--border); padding:11px 13px; text-align:start; vertical-align:top }
+  tr:last-child td { border-bottom:0 }
+  th { background:var(--surface); font-weight:600; font-size:12px; font-family:var(--mono);
+       letter-spacing:.07em; text-transform:uppercase; color:var(--muted) }
+  [dir="rtl"] th { font-family:var(--arabic); letter-spacing:0; font-size:14px; text-transform:none }
+
+  .note {
+    position:relative; background:var(--hsm-blue-soft);
+    border:1px solid var(--hsm-blue-border);
+    border-radius:12px; padding:18px 20px; margin:0 0 15px;
+  }
+  .note::before {
+    content:""; position:absolute; inset-block:14px; inset-inline-start:0;
+    width:3px; border-radius:999px; background:var(--hsm-blue);
+  }
+  .note p:last-child { margin-bottom:0 }
+
+  /* The lede: the one paragraph a reader who reads nothing else should read. */
+  .intro {
+    font-family:var(--serif); font-weight:400; font-size:21px; line-height:1.5;
+    color:var(--ink2); margin:0 0 42px; text-wrap:pretty;
+  }
+  [lang="ar"] .intro { font-family:var(--arabic); font-size:19px; line-height:1.9 }
+
+  .contact {
+    margin-top:52px; padding:26px 26px 22px;
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  }
+  .contact h2 { margin-top:0 }
+  .contact p:last-child { margin-bottom:0 }
+
+  .siblings {
+    margin:-16px 0 34px; display:flex; flex-wrap:wrap; gap:10px;
+  }
+  /* An explicit display defeats the hidden attribute — restore it. */
+  .siblings[hidden] { display:none }
+  .siblings a {
+    display:inline-block; text-decoration:none;
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.03em;
+    color:var(--hsm-blue-text); background:var(--card);
+    border:1px solid var(--border2); border-radius:999px; padding:7px 15px;
+    transition:border-color .16s, background .16s;
+  }
+  .siblings a:hover { border-color:var(--hsm-blue); background:var(--hsm-blue-soft) }
+  [dir="rtl"] .siblings a { font-family:var(--arabic); letter-spacing:0; font-size:14px }
+
+  .page-foot {
+    margin-top:64px; padding:26px 0 0; border-top:1px solid var(--border);
+    font-size:14px; color:var(--muted);
+  }
+  .page-foot p { margin:0 0 9px }
+  .page-foot a { color:var(--muted); text-decoration:underline }
+  .page-foot a:hover { color:var(--hsm-blue-text) }
+  .foot-mark { display:block; height:52px; width:auto; margin:0 0 16px; opacity:.72 }
+  .foot-mark.on-dark { display:none }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) .foot-mark.on-light { display:none }
+    :root:not([data-theme="light"]) .foot-mark.on-dark { display:block }
+  }
+  :root[data-theme="dark"] .foot-mark.on-light { display:none }
+  :root[data-theme="dark"] .foot-mark.on-dark { display:block }
+
+  /* -------------------------------------------------------------- arabic */
+  [lang="ar"] { font-family:var(--arabic); line-height:2.02 }
+  [lang="ar"] h1,[lang="ar"] h2,[lang="ar"] h3 { font-family:var(--arabic); line-height:1.6 }
+  [lang="ar"] h1 { font-size:clamp(30px,6.5vw,44px); letter-spacing:0 }
+  [lang="ar"] .ltr { unicode-bidi:isolate; direction:ltr; display:inline-block }
+  [lang="ar"] code { unicode-bidi:isolate; direction:ltr }
+
+  :where(a,button):focus-visible { outline:2px solid var(--hsm-blue); outline-offset:3px; border-radius:4px }
+  @media (prefers-reduced-motion:reduce) { *{transition:none!important;animation:none!important;scroll-behavior:auto} }
+  @media print {
+    .topbar,.skip { display:none }
+    header { background:none; color:#000; margin-inline:0; padding-inline:0 }
+    header h1,.eyebrow,.updated { color:#000 }
+    body { overflow:visible }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#policy">Skip to the policy</a>
+  <div class="topbar">
+    <a class="brand" href="../../" aria-label="HSM Software">
+      <img class="on-light" src="../../images/brand/hsm-mark-light.png" alt="" aria-hidden="true" width="381" height="160">
+      <img class="on-dark" src="../../images/brand/hsm-mark-dark.png" alt="" aria-hidden="true" width="417" height="160">
+      <span class="wordmark">HSM<span class="light"> Software</span></span>
+    </a>
+    <span class="bar-rule" aria-hidden="true"></span>
+    <span class="bar-app" id="bar-app" data-en="Refqa" data-ar="رِفقة">Refqa</span>
+    <div class="lang" role="group" aria-label="Language / اللغة">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+
+<main id="policy">
+  <!-- ==================== ENGLISH ==================== -->
+  <div id="policy-en" lang="en" dir="ltr">
+    <header>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>Refqa</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated 20 August 2026</p>
+    </header>
+
+    <h2>The short version</h2>
+    <p>Refqa has no user accounts, no sign-in, and no server of its own. It does not
+    build a profile of you, does not show ads, and contains no advertising or
+    analytics trackers.</p>
+    <p>One thing does leave your device, and you should know about it: <strong>your location</strong>
+    is sent to the prayer-times service (AlAdhan) to calculate accurate times for
+    where you are. You are told this, in the app, before it ever asks for the
+    permission.</p>
+    <p>Your <strong>voice is only ever sent anywhere if you explicitly say yes.</strong> The
+    recitation check runs on your device by default; on phones that cannot do that,
+    the app asks — once, in plain words — whether you want to use Google's speech
+    service instead, and you can change that answer at any time in Settings.</p>
+    <p>If the app <strong>crashes</strong>, a technical report of the failure is sent to our error
+    tracker (Sentry) so it can be fixed. Your location is stripped out of those
+    reports before they leave the device, and they carry no identifier for you.</p>
+    <p>Everything else — your bookmarks, streaks, dhikr counts, and settings — stays on
+    your phone.</p>
+    <hr />
+    <h2>Who we are</h2>
+    <p>Refqa is an Islamic companion app offering prayer times, qibla direction, the
+    Qur'an, Hadith, du'as, dhikr counting, and recitation practice.</p>
+    <p><strong>Contact:</strong> <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#117;&#115;&#115;&#101;&#105;&#110;&#46;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#46;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#104;&#117;&#115;&#115;&#101;&#105;&#110;&#46;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#46;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+    <h2>No accounts, no backend</h2>
+    <p>Refqa has no registration, no login, and no Refqa-operated server. We do not
+    have a database of users, because there are no users to have. Nothing you do in
+    the app is associated with an identity, because the app never establishes one.</p>
+    <h2>Location</h2>
+    <p><strong>What:</strong> Your device's approximate or precise coordinates (latitude and
+    longitude), and altitude where your device reports it.</p>
+    <p><strong>Why:</strong> To calculate prayer times for your position and to point the qibla
+    compass toward the Kaaba. Both are meaningless without knowing where you are.</p>
+    <p><strong>When:</strong> Only while you are using a feature that needs it — the prayer times
+    screen or the qibla compass. Refqa does not track your location in the
+    background, and does not request "always" location access.</p>
+    <p><strong>Stored?</strong> No. Your coordinates are used to make the calculation and then
+    discarded; they are never written to your device's storage. What <em>is</em> saved on
+    your device is the resulting prayer <em>timetable</em> — the times themselves — so the
+    app still works offline. The prayer-times service echoes your coordinates back
+    in its reply, and Refqa removes them before saving that reply, which an
+    automated test enforces. A saved timetable does imply a general area, but your
+    coordinates themselves are not kept.</p>
+    <p><strong>Shared?</strong> <strong>Yes — with one service.</strong> Your latitude and longitude are sent to
+    the AlAdhan prayer-times API (<code>api.aladhan.com</code>) with each request, because that
+    is how the service calculates times for your position. AlAdhan is operated by a
+    third party under its own privacy policy — see
+    <a href="https://aladhan.com/privacy-policy">https://aladhan.com/privacy-policy</a>. Your coordinates are not sent to anyone
+    else.</p>
+    <p>When your device is offline, or the service is unreachable, Refqa calculates
+    prayer times <strong>entirely on your device</strong> and your location is not transmitted at
+    all.</p>
+    <p><strong>Your control:</strong> Location permission is optional and requested only when you
+    first open a feature that needs it. You can decline or revoke it in your device
+    settings at any time. If you do, prayer times and qibla will not work, but the
+    rest of the app is unaffected.</p>
+    <h2>Microphone and speech recognition (تسميع)</h2>
+    <p><strong>What:</strong> Audio from your microphone, while you are actively recording a
+    recitation in the Tasmee (recitation-check) feature.</p>
+    <p><strong>Why:</strong> To transcribe what you recited so it can be compared against the text
+    of the verse and marked correct or incorrect.</p>
+    <p><strong>When:</strong> Only while you have deliberately started listening by tapping the
+    microphone button on that screen. The microphone is not accessed anywhere else
+    in the app, and never in the background.</p>
+    <p><strong>Shared?</strong> <strong>Only if you have explicitly allowed it.</strong> By default, no.</p>
+    <p>Refqa does not perform speech recognition itself; it asks your operating
+    system's built-in recognizer to do it. Every attempt is made in <strong>on-device
+    mode</strong> first, which keeps the audio on your phone.</p>
+    <p>Many phones cannot recognise Arabic on-device — the attempt simply fails. When
+    that happens, Refqa asks you, in a dialog, whether it may instead send that
+    recording to <strong>Google's speech service</strong> to transcribe it. The dialog says so in
+    those words. If you decline, nothing is sent and the feature reports that it is
+    unavailable on your device. If you allow it, the recording is sent — and only
+    then — for that attempt and future ones.</p>
+    <p><strong>Your control:</strong> the answer is remembered and is fully revocable at
+    <strong>Settings › Recitation check mode</strong>, which offers three choices:</p>
+    <ul>
+    <li><strong>Ask me first</strong> (the default) — try on-device, ask before anything is sent.</li>
+    <li><strong>Allow online checking</strong> — try on-device, fall back to Google without asking
+      again.</li>
+    <li><strong>This device only</strong> — never send audio anywhere, accepting that the feature
+      will not work on phones without offline Arabic.</li>
+    </ul>
+    <p>Microphone permission is separate, optional, and requested only when you first
+    use Tasmee. Decline it and every other part of the app works normally.</p>
+    <p><strong>Stored?</strong> No. The audio is never recorded to a file and never saved by Refqa,
+    and only the resulting text is held briefly in memory to grade the verse, then
+    discarded when you leave the screen. Where you have allowed online checking, what
+    Google does with the audio it receives is governed by Google's own privacy
+    policy, not this one.</p>
+    <h2>Notifications</h2>
+    <p>Refqa sends you the adhan at prayer times, optional salawat reminders, and an
+    optional streak reminder.</p>
+    <p>All notifications are <strong>generated locally on your device</strong>. Refqa has no push
+    notification service: there is no Firebase Cloud Messaging, no push token, and
+    no server that can send you anything. Your device schedules them from times it
+    calculated itself, and they work with no internet connection.</p>
+    <p>Refqa uses exact alarms so the adhan sounds at the true prayer time rather than
+    being delayed by battery optimisation. This is a scheduling permission; it
+    collects nothing.</p>
+    <p>Notification permission is optional and revocable in your device settings.</p>
+    <h2>Crash reporting</h2>
+    <p>Refqa uses <strong>Sentry</strong> (<a href="https://sentry.io">https://sentry.io</a>) to report crashes and errors so they
+    can be fixed. What is sent is a technical description of the failure: the error,
+    a stack trace, and device/OS details such as model, OS version, and app version.</p>
+    <p>Deliberately <strong>not</strong> sent:</p>
+    <ul>
+    <li><strong>Your location.</strong> Coordinates are stripped from every report before it
+      leaves the device, including from network URLs and error messages that would
+      otherwise contain them. This is enforced in code and covered by automated
+      tests.</li>
+    <li><strong>Your IP address</strong>, which Sentry is explicitly configured not to collect.</li>
+    <li><strong>Screenshots or screen contents</strong>, which are disabled.</li>
+    <li><strong>Any identifier for you</strong>, since the app has none to send.</li>
+    <li><strong>Your voice or any audio.</strong></li>
+    </ul>
+    <p>Routine network failures (being offline, a timeout) are not reported at all.</p>
+    <p>Sentry processes this data on our behalf under its own privacy policy —
+    <a href="https://sentry.io/privacy/">https://sentry.io/privacy/</a>.</p>
+    <h2>Update and maintenance checks</h2>
+    <p>Refqa asks Google's <strong>Firebase Remote Config</strong> one question when it starts: is
+    this version still supported, and is the app currently available? That is what
+    lets a critical fix be made mandatory, and lets the app be paused if something
+    is seriously wrong with it.</p>
+    <p>The request carries no account, no location, and nothing you have done in the
+    app. Like any internet request it reveals your IP address, and Firebase gives
+    the installation a random identifier so the request can be answered. Three
+    things are worth stating plainly:</p>
+    <ul>
+    <li><strong>No Google Analytics.</strong> The Firebase project is configured without it, and
+      no analytics or measurement SDK ships in the app.</li>
+    <li><strong>Nothing about you is sent.</strong> The app asks a question; it does not report.</li>
+    <li><strong>It is never required.</strong> If the check fails — you are offline, or the
+      service cannot be reached — the app opens normally and withholds nothing.</li>
+    </ul>
+    <p>Firebase processes this under Google's own privacy policy —
+    <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a>.</p>
+    <h2>What is stored on your device</h2>
+    <p>All of this stays on your phone, is never uploaded, and is not visible to us:</p>
+    <ul>
+    <li>Bookmarks and reading position</li>
+    <li>Streaks, daily goals, challenges, and achievement progress</li>
+    <li>Dhikr (tasbih) counts</li>
+    <li>Settings: language, chosen reciter, font size, adhan and reminder preferences</li>
+    <li>Cached content: Qur'an text, hadith, du'as, tafsir, and the prayer timetable,
+      so the app works offline</li>
+    </ul>
+    <p><strong>Deleting it:</strong> Uninstalling Refqa deletes all of it permanently. There is no
+    copy anywhere else, so there is nothing for you to request from us and nothing
+    for us to delete on your behalf.</p>
+    <h2>Third-party services Refqa contacts</h2>
+    <p>Refqa fetches content from these services. As with any internet request, each
+    necessarily sees your <strong>IP address</strong> and the content you requested. Only AlAdhan
+    receives your coordinates.</p>
+    <div class="table-wrap"><table>
+    <thead>
+    <tr>
+    <th>Service</th>
+    <th>Purpose</th>
+    <th>Receives your location?</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>AlAdhan (<code>api.aladhan.com</code>)</td>
+    <td>Prayer times, qibla, hijri dates</td>
+    <td><strong>Yes</strong></td>
+    </tr>
+    <tr>
+    <td>AlQuran.cloud (<code>api.alquran.cloud</code>)</td>
+    <td>Qur'an text and verse audio</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td>MP3Quran (<code>mp3quran.net</code>)</td>
+    <td>Reciter catalogue and audio</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td>Qurango (<code>backup.qurango.net</code>)</td>
+    <td>Live radio station audio</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td>RadioJar (<code>stream.radiojar.com</code>)</td>
+    <td>Live radio station audio</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td>quran.com (<code>api.quran.com</code>)</td>
+    <td>Tafsir and verse text</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td>jsDelivr (<code>cdn.jsdelivr.net</code>)</td>
+    <td>Hadith collections</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td>Sunnah.com (<code>api.sunnah.com</code>)</td>
+    <td>Hadith (when configured)</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td>Google / Apple speech services</td>
+    <td>Recitation transcription — <strong>only</strong> after on-device recognition fails <em>and</em> you allow it</td>
+    <td>No (receives the recording, not your location)</td>
+    </tr>
+    <tr>
+    <td>Sentry (<code>sentry.io</code>)</td>
+    <td>Crash and error reports</td>
+    <td>No (stripped)</td>
+    </tr>
+    <tr>
+    <td>Firebase Remote Config (<code>firebaseremoteconfig.googleapis.com</code>)</td>
+    <td>Update and maintenance checks</td>
+    <td>No</td>
+    </tr>
+    </tbody>
+    </table></div>
+    <h2>Advertising and analytics</h2>
+    <p>Refqa contains <strong>no advertising</strong> and <strong>no analytics or tracking SDKs</strong>. We do
+    not measure your usage, do not build a profile, and do not sell or share data
+    with anyone for advertising. There is no data broker relationship of any kind.</p>
+    <p>Firebase Remote Config, described above, is a configuration service and not
+    an analytics one: the Firebase project is created with Google Analytics
+    switched off, and no measurement SDK is bundled with the app.</p>
+    <h2>Children</h2>
+    <p>Refqa is suitable for all ages and is not directed at children specifically. It
+    does not knowingly collect personal information from anyone, of any age, because
+    it does not collect personal information at all.</p>
+    <h2>Your rights</h2>
+    <p>Because Refqa holds no personal data on any server, most data-protection rights
+    (access, correction, deletion, portability) have nothing to act on. Your data is
+    already, and only, in your hands: it is on your device, and uninstalling the app
+    erases it.</p>
+    <p>For data held by the third parties listed above, contact them directly under
+    their own policies.</p>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes materially, the updated version will be published here
+    with a new "last updated" date, at its permanent home:
+    <a href="https://husseinmohamed99.github.io/privacy/refqa/">https://husseinmohamed99.github.io/privacy/refqa/</a></p>
+    <h2>Contact</h2>
+    <p>Questions about this policy, or about your data, go to
+    <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#117;&#115;&#115;&#101;&#105;&#110;&#46;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#46;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#104;&#117;&#115;&#115;&#101;&#105;&#110;&#46;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#46;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>.</p>
+    <div class="page-foot">
+      <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
+      <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
+<p>This page mirrors the privacy policy bundled inside the app under Settings &rarr; Privacy, which is rendered from the same source text.</p>
+      <p><a href="../">All HSM Software privacy policies</a> · <a href="/">Portfolio</a></p>
+    </div>
+  </div>
+
+  <!-- ==================== ARABIC ==================== -->
+  <div id="policy-ar" lang="ar" dir="rtl" hidden>
+    <header>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>رِفقة</p>
+      <h1>سياسة الخصوصية</h1>
+      <p class="updated">آخر تحديث ٢٠ أغسطس ٢٠٢٦</p>
+    </header>
+
+    <h2>الخلاصة في سطور</h2>
+    <p>رِفقة مفيهاش حسابات، ولا تسجيل دخول، ولا سيرفر خاص بيها. مش بتعمل لك ملف
+    شخصي، ومفيهاش إعلانات ولا أي أدوات تتبّع أو تحليلات.</p>
+    <p>فيه حاجة واحدة بتطلع من جهازك، ومن حقك تعرفها: <strong>مكانك</strong> بيتبعت لخدمة مواقيت
+    الصلاة (AlAdhan) عشان تحسب المواقيت الصح في المكان اللي إنت فيه. والتطبيق
+    بيقول لك كده، جوّه التطبيق، قبل ما يطلب الإذن من الأصل.</p>
+    <p><strong>صوتك مش بيطلع من جهازك غير لو إنت قلت أيوه بنفسك.</strong> التحقّق من التلاوة
+    بيشتغل على جهازك افتراضيًا؛ والتليفونات اللي مش قادرة على كده، التطبيق يسألك —
+    مرة واحدة، وبكلام واضح — تحب تستخدم خدمة الكلام من Google بدالها، وتقدر تغيّر
+    إجابتك في أي وقت من الإعدادات.</p>
+    <p>ولو التطبيق <strong>وقع</strong>، بيتبعت تقرير فني بالمشكلة لأداة تتبّع الأعطال بتاعتنا
+    (Sentry) عشان تتصلّح. موقعك بيتشال من التقارير دي قبل ما تسيب الجهاز، ومفيش
+    فيها أي حاجة تدل عليك.</p>
+    <p>وأي حاجة تانية — محفوظاتك، سلاسلك، عدّاد التسبيح، وإعداداتك — بتفضل على
+    تليفونك.</p>
+    <hr />
+    <h2>إحنا مين</h2>
+    <p>رِفقة تطبيق رفيق للمسلم في يومه: مواقيت الصلاة، اتجاه القبلة، القرآن، الحديث،
+    الأدعية، عدّاد الذِّكر، وتسميع التلاوة.</p>
+    <p><strong>للتواصل:</strong> <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#117;&#115;&#115;&#101;&#105;&#110;&#46;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#46;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#104;&#117;&#115;&#115;&#101;&#105;&#110;&#46;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#46;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+    <h2>لا حسابات ولا سيرفر</h2>
+    <p>مفيش تسجيل، ولا تسجيل دخول، ولا سيرفر بتشغّله رِفقة. مش عندنا قاعدة بيانات
+    مستخدمين، لأن مفيش مستخدمين من الأصل. أي حاجة بتعملها في التطبيق مش مربوطة بأي
+    هوية، لأن التطبيق أصلاً مش بيعمل لك هوية.</p>
+    <h2>الموقع</h2>
+    <p><strong>إيه اللي بياخده:</strong> إحداثيات جهازك التقريبية أو الدقيقة (خط الطول وخط العرض)،
+    والارتفاع لو جهازك بيبلّغ بيه.</p>
+    <p><strong>ليه:</strong> عشان يحسب مواقيت الصلاة في مكانك، ويلفّ بوصلة القبلة ناحية الكعبة.
+    الاتنين مش لهم أي معنى من غير ما نعرف إنت فين.</p>
+    <p><strong>إمتى:</strong> بس وإنت فاتح ميزة محتاجاه — شاشة مواقيت الصلاة أو بوصلة القبلة. رِفقة
+    مش بتتابع مكانك في الخلفية، ومش بتطلب إذن موقع "دايمًا".</p>
+    <p><strong>بيتخزّن؟</strong> لأ. إحداثياتك بتُستخدم في الحساب وبعدها ترمي، وعمرها ما بتتكتب في
+    مساحة التخزين بتاعة جهازك. اللي بيتحفظ فعلاً على جهازك هو <em>جدول</em> المواقيت
+    الناتج — الأوقات نفسها — عشان التطبيق يفضل شغّال بدون نت. خدمة المواقيت بتردّ
+    وهي مرجّعة إحداثياتك في الرد، ورِفقة بتشيلها قبل ما تحفظ الرد ده، وفيه اختبار
+    أوتوماتيكي بيفرض الكلام ده. الجدول المحفوظ فيه دلالة على منطقتك بشكل عام، بس
+    الإحداثيات نفسها مش بتتحفظ.</p>
+    <p><strong>بيتشارك؟</strong> <strong>أيوه — مع خدمة واحدة.</strong> خط الطول وخط العرض بيتبعتوا لواجهة
+    مواقيت الصلاة AlAdhan (<code>api.aladhan.com</code>) مع كل طلب، لأن ده الطريقة اللي بيها
+    الخدمة تحسب مواقيتك. AlAdhan بيشغّلها طرف تالت وليها سياسة خصوصية خاصة بيها —
+    شوف <a href="https://aladhan.com/privacy-policy">https://aladhan.com/privacy-policy</a>. وإحداثياتك مش بتتبعت لأي حد تاني.</p>
+    <p>ولو جهازك مقطوع من النت، أو الخدمة مش شغّالة، رِفقة بتحسب مواقيت الصلاة <strong>على
+    جهازك بالكامل</strong> وموقعك مش بيتبعت خالص.</p>
+    <p><strong>إنت المتحكّم:</strong> إذن الموقع اختياري ومش بيتطلب غير أول مرة تفتح ميزة محتاجاه.
+    تقدر ترفضه أو تسحبه من إعدادات جهازك في أي وقت. لو عملت كده، مواقيت الصلاة
+    والقبلة مش هيشتغلوا، بس باقي التطبيق مش هيتأثر بحاجة.</p>
+    <h2>الميكروفون والتعرّف على الكلام (تسميع)</h2>
+    <p><strong>إيه اللي بياخده:</strong> الصوت من الميكروفون، وإنت بتسجّل تلاوتك فعليًا في ميزة
+    التسميع.</p>
+    <p><strong>ليه:</strong> عشان يحوّل اللي قريته لنص، فيتقارن بنص الآية ويتحدّد صح ولا غلط.</p>
+    <p><strong>إمتى:</strong> بس بعد ما تبدأ الاستماع بنفسك بضغطة على زر الميكروفون في الشاشة دي.
+    الميكروفون مش بيُستخدم في أي مكان تاني في التطبيق، ولا في الخلفية أبدًا.</p>
+    <p><strong>بيتشارك؟</strong> <strong>بس لو إنت سمحت بكده صريح.</strong> افتراضيًا، لأ.</p>
+    <p>رِفقة نفسها مش هي اللي بتتعرّف على الكلام؛ هي بتطلب من أداة التعرّف المدمجة في
+    نظام تشغيل جهازك تعمل كده. وكل محاولة بتبدأ <strong>على الجهاز</strong> الأول، وده اللي
+    بيخلّي الصوت عندك على تليفونك.</p>
+    <p>في تليفونات كتير مش قادرة تتعرّف على العربية على الجهاز — المحاولة بتفشل
+    وخلاص. ولما ده يحصل، رِفقة تسألك في رسالة: تسمح تبعت التسجيل ده <strong>لخدمة الكلام
+    من Google</strong> تحوّله لنص؟ والرسالة بتقول كده بالحرف. لو رفضت، مفيش حاجة بتتبعت
+    والميزة بتقول لك إنها مش متاحة على جهازك. ولو سمحت، التسجيل بيتبعت — ومش قبل
+    كده — للمحاولة دي واللي بعدها.</p>
+    <p><strong>إنت المتحكّم:</strong> إجابتك بتتحفظ، وتقدر تغيّرها بالكامل من <strong>الإعدادات › طريقة
+    التحقّق من التلاوة</strong>، وفيها تلات اختيارات:</p>
+    <ul>
+    <li><strong>اسألني أولاً</strong> (الافتراضي) — جرّب على الجهاز، واسأل قبل ما تبعت أي حاجة.</li>
+    <li><strong>السماح بالتحقّق عبر الإنترنت</strong> — جرّب على الجهاز، ولو فشل روح لـ Google
+      من غير سؤال تاني.</li>
+    <li><strong>على هذا الجهاز فقط</strong> — مش هيتبعت صوت لأي مكان أبدًا، مع إنك عارف إن
+      الميزة مش هتشتغل على التليفونات اللي مفيهاش عربية بدون نت.</li>
+    </ul>
+    <p>إذن الميكروفون منفصل، واختياري، ومش بيتطلب غير أول مرة تستخدم التسميع. ولو
+    رفضته، كل حاجة تانية في التطبيق شغّالة عادي.</p>
+    <p><strong>بيتخزّن؟</strong> لأ. الصوت عمره ما بيتسجّل في ملف ولا بتحفظه رِفقة، والنص الناتج
+    بس هو اللي بيقعد شوية في الذاكرة عشان يصحّح الآية، وبعدها يرمي لما تسيب
+    الشاشة. ولو سمحت بالتحقّق عبر الإنترنت، اللي Google بتعمله بالصوت اللي
+    بيوصلها بيحكمه سياسة الخصوصية بتاعتها، مش السياسة دي.</p>
+    <h2>الإشعارات</h2>
+    <p>رِفقة بتبعت لك الأذان في مواقيت الصلاة، وتذكير اختياري بالصلاة على النبي،
+    وتذكير اختياري بالمواظبة.</p>
+    <p>كل الإشعارات <strong>بتتولّد محليًا على جهازك</strong>. رِفقة مفيهاش خدمة إشعارات دفع
+    خالص: مفيش Firebase Cloud Messaging، ولا رمز دفع، ولا سيرفر يقدر يبعت لك أي
+    حاجة. جهازك هو اللي بيجدولها من مواقيت حسبها بنفسه، وهي شغّالة من غير أي
+    اتصال بالإنترنت.</p>
+    <p>ورِفقة بتستخدم منبّهات مضبوطة بالثانية عشان الأذان يرفع في وقته الحقيقي مش
+    يتأخّر بسبب توفير البطارية. ده إذن جدولة، ومش بياخد أي بيانات.</p>
+    <p>إذن الإشعارات اختياري، وتقدر تسحبه من إعدادات جهازك.</p>
+    <h2>تقارير الأعطال</h2>
+    <p>رِفقة بتستخدم <strong>Sentry</strong> (<a href="https://sentry.io">https://sentry.io</a>) عشان تبلّغ عن الأعطال
+    والأخطاء فتتصلّح. واللي بيتبعت هو وصف فني للمشكلة: الخطأ، وتتبّع المكدّس،
+    وتفاصيل الجهاز والنظام زي الموديل وإصدار النظام وإصدار التطبيق.</p>
+    <p>واللي <strong>مش</strong> بيتبعت بقصد:</p>
+    <ul>
+    <li><strong>موقعك.</strong> الإحداثيات بتتشال من كل تقرير قبل ما يسيب الجهاز، وكمان من
+      روابط الشبكة ورسايل الخطأ اللي كانت هتحتويها. ده مفروض في الكود ومغطّى
+      باختبارات أوتوماتيكية.</li>
+    <li><strong>عنوان الـ IP بتاعك</strong>، وSentry مضبوطة صريح إنها متجمّعوش.</li>
+    <li><strong>صور الشاشة أو محتوى الشاشة</strong>، ودي معطّلة.</li>
+    <li><strong>أي حاجة تدل عليك</strong>، لأن التطبيق مش عنده حاجة زي كده يبعتها من الأصل.</li>
+    <li><strong>صوتك أو أي تسجيل صوتي.</strong></li>
+    </ul>
+    <p>ومشاكل الشبكة العادية (إنك مقطوع من النت، أو انتهاء المهلة) مش بيتبلّغ عنها
+    خالص.</p>
+    <p>Sentry بتعالج البيانات دي بالنيابة عننا تحت سياسة الخصوصية الخاصة بيها —
+    <a href="https://sentry.io/privacy/">https://sentry.io/privacy/</a>.</p>
+    <h2>فحص التحديثات والصيانة</h2>
+    <p>رِفقة بتسأل خدمة <strong>Firebase Remote Config</strong> من Google سؤال واحد أول ما تفتح:
+    النسخة دي لسه مدعومة؟ والتطبيق شغّال دلوقتي؟ ده اللي بيخلّينا نقدر نفرض تحديث
+    مهم، ونقدر نوقف التطبيق مؤقتًا لو فيه حاجة غلط بجد.</p>
+    <p>الطلب ده مش شايل حساب، ولا موقع، ولا أي حاجة إنت عملتها في التطبيق. وزي أي طلب
+    على الإنترنت، بيبان منه عنوان الـ IP بتاعك، وFirebase بتدّي النسخة المثبّتة
+    معرّف عشوائي عشان تقدر ترد على الطلب. وفيه تلات حاجات تستاهل نقولها بوضوح:</p>
+    <ul>
+    <li><strong>مفيش Google Analytics.</strong> مشروع Firebase متظبّط من غيرها، ومفيش أي أداة
+      تحليلات أو قياس شايلها التطبيق.</li>
+    <li><strong>مفيش حاجة عنك بتتبعت.</strong> التطبيق بيسأل سؤال، مش بيبلّغ عنك.</li>
+    <li><strong>مش شرط أبدًا.</strong> لو الفحص فشل — إنت مقطوع من النت، أو الخدمة مش موجودة —
+      التطبيق بيفتح عادي ومش بيمنع عنك أي حاجة.</li>
+    </ul>
+    <p>Firebase بتعالج ده تحت سياسة الخصوصية الخاصة بـ Google —
+    <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a>.</p>
+    <h2>اللي متخزّن على جهازك</h2>
+    <p>كل ده بيفضل على تليفونك، عمره ما بيترفع لحد، وإحنا مش شايفينه:</p>
+    <ul>
+    <li>المحفوظات وموضع القراءة</li>
+    <li>السلاسل، والأهداف اليومية، والتحديات، وتقدّم الإنجازات</li>
+    <li>عدّاد الذِّكر (المِسبحة)</li>
+    <li>الإعدادات: اللغة، القارئ اللي اخترته، حجم الخط، وتفضيلات الأذان والتذكير</li>
+    <li>المحتوى المحفوظ: نص القرآن، والحديث، والأدعية، والتفسير، وجدول المواقيت،
+      عشان التطبيق يشتغل بدون نت</li>
+    </ul>
+    <p><strong>تحب تحذفه؟</strong> لو حذفت رِفقة من جهازك، كل ده يروح نهائي. مفيش نسخة منه في أي
+    مكان تاني، فمفيش حاجة تطلبها مننا ولا حاجة نحذفها لك.</p>
+    <h2>خدمات خارجية رِفقة بتتواصل معاها</h2>
+    <p>رِفقة بتجيب المحتوى من الخدمات دي. وزي أي طلب على الإنترنت، كل واحدة منها
+    بتشوف بالضرورة <strong>عنوان الـ IP بتاعك</strong> والمحتوى اللي طلبته. وAlAdhan بس هي
+    اللي بيوصلها إحداثياتك.</p>
+    <div class="table-wrap"><table>
+    <thead>
+    <tr>
+    <th>الخدمة</th>
+    <th>الغرض</th>
+    <th>بيوصلها موقعك؟</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>AlAdhan (<code>api.aladhan.com</code>)</td>
+    <td>مواقيت الصلاة، والقبلة، والتواريخ الهجرية</td>
+    <td><strong>أيوه</strong></td>
+    </tr>
+    <tr>
+    <td>AlQuran.cloud (<code>api.alquran.cloud</code>)</td>
+    <td>نص القرآن وصوت الآيات</td>
+    <td>لا</td>
+    </tr>
+    <tr>
+    <td>MP3Quran (<code>mp3quran.net</code>)</td>
+    <td>قائمة القُرّاء والتلاوات</td>
+    <td>لا</td>
+    </tr>
+    <tr>
+    <td>Qurango (<code>backup.qurango.net</code>)</td>
+    <td>بث الإذاعات المباشر</td>
+    <td>لا</td>
+    </tr>
+    <tr>
+    <td>RadioJar (<code>stream.radiojar.com</code>)</td>
+    <td>بث الإذاعات المباشر</td>
+    <td>لا</td>
+    </tr>
+    <tr>
+    <td>quran.com (<code>api.quran.com</code>)</td>
+    <td>التفسير ونص الآيات</td>
+    <td>لا</td>
+    </tr>
+    <tr>
+    <td>jsDelivr (<code>cdn.jsdelivr.net</code>)</td>
+    <td>مجموعات الحديث</td>
+    <td>لا</td>
+    </tr>
+    <tr>
+    <td>Sunnah.com (<code>api.sunnah.com</code>)</td>
+    <td>الحديث (لما يكون مضبوط)</td>
+    <td>لا</td>
+    </tr>
+    <tr>
+    <td>خدمات الكلام من Google / Apple</td>
+    <td>تحويل التلاوة لنص — <strong>بس</strong> بعد ما التعرّف على الجهاز يفشل <em>و</em> إنت توافق</td>
+    <td>لا (بيوصلها التسجيل، مش موقعك)</td>
+    </tr>
+    <tr>
+    <td>Sentry (<code>sentry.io</code>)</td>
+    <td>تقارير الأعطال والأخطاء</td>
+    <td>لا (بتتشال)</td>
+    </tr>
+    <tr>
+    <td>Firebase Remote Config (<code>firebaseremoteconfig.googleapis.com</code>)</td>
+    <td>فحص التحديثات والصيانة</td>
+    <td>لا</td>
+    </tr>
+    </tbody>
+    </table></div>
+    <h2>الإعلانات والتحليلات</h2>
+    <p>رِفقة <strong>مفيهاش إعلانات</strong> و<strong>مفيهاش أي أدوات تحليلات أو تتبّع</strong>. إحنا مش
+    بنقيس استخدامك، ومش بنعمل لك ملف شخصي، ومش بنبيع بيانات ولا بنشاركها مع أي
+    حد للإعلانات. ومفيش أي علاقة بأي وسيط بيانات بأي شكل.</p>
+    <p>وFirebase Remote Config اللي فوق دي خدمة إعدادات، مش خدمة تحليلات: مشروع
+    Firebase متعمل وGoogle Analytics مقفولة، ومفيش أي أداة قياس متحطّة في
+    التطبيق.</p>
+    <h2>الأطفال</h2>
+    <p>رِفقة مناسبة لكل الأعمار، ومش موجّهة للأطفال بالتحديد. وهي مش بتجمع بيانات
+    شخصية من أي حد، في أي عمر، لأنها مش بتجمع بيانات شخصية من الأصل.</p>
+    <h2>حقوقك</h2>
+    <p>لأن رِفقة مش ماسكة أي بيانات شخصية على أي سيرفر، أغلب حقوق حماية البيانات
+    (الوصول، والتصحيح، والحذف، ونقل البيانات) مش لاقية حاجة تشتغل عليها. بياناتك
+    أصلاً — وبس — في إيدك: هي على جهازك، ولو حذفت التطبيق تتمسح.</p>
+    <p>وبالنسبة للبيانات اللي عند الأطراف التالتة المذكورة فوق، كلّمهم مباشرة تحت
+    سياساتهم.</p>
+    <h2>تغييرات على السياسة</h2>
+    <p>لو السياسة دي اتغيّرت تغيير جوهري، النسخة المحدّثة هتُنشر هنا بتاريخ "آخر
+    تحديث" جديد، في بيتها الدائم:
+    <a href="https://husseinmohamed99.github.io/privacy/refqa/">https://husseinmohamed99.github.io/privacy/refqa/</a></p>
+    <h2>للتواصل</h2>
+    <p>أي سؤال عن السياسة دي، أو عن بياناتك، ابعته على
+    <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#117;&#115;&#115;&#101;&#105;&#110;&#46;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#46;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#104;&#117;&#115;&#115;&#101;&#105;&#110;&#46;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#46;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>.</p>
+    <div class="page-foot">
+      <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
+      <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
+<p>تعكس هذه الصفحة سياسة الخصوصية المرفقة داخل التطبيق ضمن الإعدادات &larr; الخصوصية، وهي معروضة من نفس النص المصدري.</p>
+      <p><a href="../">كل سياسات الخصوصية</a> · <a href="/">الموقع الشخصي</a></p>
+    </div>
+  </div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.lang button');
+  var panels = { en: document.getElementById('policy-en'),
+                 ar: document.getElementById('policy-ar') };
+  if (!panels.en || !panels.ar) { return; }
+
+  var barApp = document.getElementById('bar-app');
+
+  function show(lang) {
+    panels.en.hidden = lang !== 'en';
+    panels.ar.hidden = lang !== 'ar';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    if (barApp) { barApp.textContent = barApp.dataset[lang] || barApp.textContent; }
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+    var t = document.documentElement.dataset;
+    if (t.titleEn && t.titleAr) {
+      document.title = lang === 'ar' ? t.titleAr : t.titleEn;
+    }
+    // Carry the choice across any link to a sibling page.
+    document.querySelectorAll('.siblings a, .card-links a').forEach(function (a) {
+      var base = a.getAttribute('href').split('?')[0];
+      a.setAttribute('href', base + '?lang=' + lang);
+    });
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.lang); });
+  });
+
+  var requested = new URLSearchParams(location.search).get('lang');
+  if (requested === 'ar' || requested === 'en') {
+    show(requested);
+  } else if ((navigator.language || '').toLowerCase().indexOf('ar') === 0) {
+    show('ar');
+  }
+})();
+</script>
+</main>
+</body>
+</html>
