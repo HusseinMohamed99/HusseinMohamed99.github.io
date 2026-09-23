@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-title-en="Privacy Policy — Splitly" data-title-ar="سياسة الخصوصية — قسمة">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Splitly</title>
+<meta name="description" content="Privacy policy for Splitly (قسمة), a shared-expense splitter by HSM Software. Usable without an account. Available in English and Arabic.">
+<meta name="theme-color" content="#0A6EF5">
+<link rel="canonical" href="https://husseinmohamed99.github.io/privacy/splitly/">
+<link rel="icon" type="image/png" sizes="512x512" href="../../images/brand/hsm-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=Geist+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#faf8f3; --surface:#f4f2eb; --card:#ffffff;
+    --ink:#0f0e0b; --ink2:#2a2926; --muted:#807f76;
+    --border:#e8e5dc; --border2:#cbc8bc;
+    --hsm-blue:#0A6EF5; --hsm-blue-text:#0B63DD; --hsm-blue-soft:#E7F0FE;
+    --hsm-blue-border:rgba(10,110,245,.28);
+    --hero-ink:#ffffff; --hero-ink2:rgba(255,255,255,.80);
+    --hero-a:#04255C; --hero-b:#0A6EF5; --hero-c:#1E8BFF;
+    --bar:rgba(250,248,243,.82); --bar-border:#e3dfd4;
+    --shadow:0 1px 2px rgba(15,14,11,.04), 0 12px 34px rgba(15,14,11,.07);
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Cabinet Grotesk',ui-sans-serif,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --arabic:'Noto Naskh Arabic','Segoe UI',Tahoma,sans-serif;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+      --cream:#101010; --surface:#191917; --card:#1d1c1a;
+      --ink:#f0ede8; --ink2:#d3cfc8; --muted:#94918a;
+      --border:#2c2a26; --border2:#403d36;
+      --hsm-blue:#4D9BFF; --hsm-blue-text:#6FAEFF; --hsm-blue-soft:#0E2348;
+      --hsm-blue-border:rgba(77,155,255,.38);
+      --hero-a:#04142F; --hero-b:#0A4EAE; --hero-c:#1470D8;
+      --bar:rgba(16,16,16,.84); --bar-border:#2c2a26;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream:#101010; --surface:#191917; --card:#1d1c1a;
+    --ink:#f0ede8; --ink2:#d3cfc8; --muted:#94918a;
+    --border:#2c2a26; --border2:#403d36;
+    --hsm-blue:#4D9BFF; --hsm-blue-text:#6FAEFF; --hsm-blue-soft:#0E2348;
+    --hsm-blue-border:rgba(77,155,255,.38);
+    --hero-a:#04142F; --hero-b:#0A4EAE; --hero-c:#1470D8;
+    --bar:rgba(16,16,16,.84); --bar-border:#2c2a26;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+  }
+  *,*::before,*::after { box-sizing:border-box }
+  html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:86px }
+  body {
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-size:16.5px; line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden; overflow-x:clip;
+  }
+  main { max-width:720px; margin:0 auto; padding:0 20px 76px }
+
+  .skip {
+    position:absolute; inset-inline-start:-9999px; top:0; z-index:99;
+    background:var(--hsm-blue); color:#fff; padding:10px 16px;
+    border-radius:0 0 8px 0; font-family:var(--mono); font-size:13px;
+  }
+  .skip:focus { inset-inline-start:0 }
+
+  /* ---------------------------------------------------------------- bar --
+     Sticky, so the language switch is reachable from anywhere in a policy
+     that runs to thirty sections. */
+  .topbar {
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:12px;
+    padding:9px 20px;
+    background:var(--bar); border-bottom:1px solid var(--bar-border);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    backdrop-filter:saturate(180%) blur(14px);
+  }
+  /* The glyph, not the full lockup: the lockup's "HSM SOFTWARE" line is
+     illegible at bar height, so the wordmark is set in type beside it and the
+     full lockup is saved for the footer, where it has room. */
+  .brand { display:inline-flex; align-items:center; gap:9px; flex:none; text-decoration:none }
+  .brand img { display:block; width:auto; height:26px }
+  .brand .wordmark {
+    font-family:var(--sans); font-weight:700; font-size:15px; letter-spacing:-.01em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .brand .wordmark .light { font-weight:400; color:var(--muted) }
+  .brand .on-dark { display:none }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) .brand .on-light { display:none }
+    :root:not([data-theme="light"]) .brand .on-dark { display:block }
+  }
+  :root[data-theme="dark"] .brand .on-light { display:none }
+  :root[data-theme="dark"] .brand .on-dark { display:block }
+  .brand:hover img { opacity:.82 }
+
+  .bar-rule { flex:none; width:1px; height:20px; background:var(--border2); opacity:.9 }
+  .bar-app {
+    flex:1 1 auto; min-width:0;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  [dir="rtl"] .bar-app { font-family:var(--arabic); letter-spacing:0; font-size:13px }
+  @media (max-width:520px) { .bar-rule, .bar-app { display:none } }
+
+  /* --- language switch: a segmented control, not two loose buttons --- */
+  .lang {
+    flex:none; margin-inline-start:auto; display:flex; gap:2px; padding:3px;
+    background:var(--surface); border:1px solid var(--border2); border-radius:999px;
+  }
+  .lang button {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-height:34px;   /* a comfortable tap target, not the 26px the text alone gives */
+    font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.06em;
+    padding:4px 15px; border-radius:999px; cursor:pointer; border:1px solid transparent;
+    background:transparent; color:var(--ink2); line-height:1.2;
+    transition:background .16s,color .16s,box-shadow .16s;
+  }
+  .lang button:hover { color:var(--hsm-blue-text) }
+  .lang button[aria-pressed="true"] {
+    background:var(--hsm-blue); color:#fff;
+    box-shadow:0 1px 2px rgba(10,110,245,.35), 0 2px 8px rgba(10,110,245,.28);
+  }
+  .lang button[lang="ar"] { font-family:var(--arabic); font-size:13.5px; letter-spacing:0; padding-block:4px }
+  /* Phone: tighten the bar rather than drop the wordmark — the brand is the
+     point of the header. Only below 360px is there genuinely no room. */
+  @media (max-width:430px) {
+    .topbar { padding-inline:14px; gap:8px }
+    .brand img { height:23px }
+    .brand .wordmark { font-size:14px }
+    .lang { padding:2px }
+    .lang button { padding:4px 12px; font-size:11.5px }
+    .lang button[lang="ar"] { font-size:12.5px }
+  }
+  @media (max-width:359px) { .brand .wordmark { display:none } }
+
+  /* --------------------------------------------------------------- hero --
+     Full-bleed: the margin trick, not 100vw, so a scrollbar cannot push the
+     band wider than the viewport. body has overflow-x:clip as the guard. */
+  header {
+    position:relative; isolation:isolate; overflow:hidden;
+    margin-inline:calc(50% - 50vw); margin-bottom:44px;
+    /* The padding is the exact inverse of the margin, so the hero's text lands
+       on the same baseline column as the body no matter how wide the
+       scrollbar is — no viewport arithmetic to get wrong. */
+    padding:58px calc(50vw - 50%) 52px;
+    background:
+      radial-gradient(120% 140% at 88% -10%, var(--hero-c) 0%, transparent 55%),
+      radial-gradient(90% 120% at 0% 110%, var(--hero-b) 0%, transparent 60%),
+      linear-gradient(140deg, var(--hero-a) 0%, var(--hero-b) 100%);
+    color:var(--hero-ink);
+  }
+  /* A faint dot field over the gradient — texture, not decoration you notice. */
+  header::before {
+    content:""; position:absolute; inset:0; z-index:-1; opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
+    background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(200deg, #000 0%, transparent 72%);
+    mask-image:linear-gradient(200deg, #000 0%, transparent 72%);
+  }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:9px;
+    margin:0 0 20px; padding:6px 13px 6px 9px;
+    background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; backdrop-filter:blur(4px);
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--hero-ink);
+  }
+  .eyebrow .pip {
+    width:7px; height:7px; border-radius:2px; background:#8FC2FF;
+    box-shadow:0 0 0 3px rgba(143,194,255,.22);
+  }
+  [dir="rtl"] .eyebrow { font-family:var(--arabic); letter-spacing:0; font-size:13px; padding:5px 9px 5px 13px }
+  header h1 {
+    font-family:var(--serif); font-weight:700; font-size:clamp(34px,7.5vw,54px);
+    line-height:1.02; letter-spacing:-.022em; margin:0; color:var(--hero-ink);
+    text-wrap:balance;
+  }
+  header .app-line {
+    margin:14px 0 0; font-size:19px; color:var(--hero-ink2); max-width:46ch;
+  }
+  .updated {
+    display:inline-block; margin:26px 0 0; padding:5px 12px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+    border-radius:6px;
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--hero-ink2);
+  }
+  [dir="rtl"] .updated { font-family:var(--arabic); letter-spacing:0; font-size:13.5px }
+
+  /* --------------------------------------------------------------- body --
+     h2s are numbered by CSS counter: a legal document should look like one,
+     and a reader quoting "section 12" needs the number to be there. */
+  #policy-en, #policy-ar { counter-reset:sec }
+  h2 {
+    counter-increment:sec;
+    display:flex; align-items:baseline; gap:12px;
+    font-family:var(--serif); font-weight:700; font-size:25px; line-height:1.22;
+    margin:52px 0 14px; scroll-margin-top:86px; text-wrap:balance;
+  }
+  h2::before {
+    content:counter(sec,decimal-leading-zero);
+    flex:none; font-family:var(--mono); font-size:12.5px; font-weight:500;
+    letter-spacing:.06em; color:var(--hsm-blue-text);
+    padding-top:.42em;
+  }
+  /* The Arabic panel numbers its sections in Arabic-Indic digits, matching
+     the numerals inside the translated text itself. */
+  [lang="ar"] h2::before { content:counter(sec,arabic-indic); font-family:var(--arabic); padding-top:.3em }
+  h2:first-of-type { margin-top:0 }
+  h3 { font-family:var(--serif); font-weight:700; font-size:18.5px; margin:30px 0 10px; color:var(--ink2) }
+  p { margin:0 0 15px }
+  ul,ol { margin:0 0 15px; padding-inline-start:24px }
+  li { margin-bottom:9px }
+  li::marker { color:var(--hsm-blue) }
+  a { color:var(--hsm-blue-text); text-underline-offset:3px; text-decoration-thickness:1px }
+  a:hover { text-decoration-thickness:2px }
+  strong { font-weight:600; color:var(--ink) }
+  code {
+    font-family:var(--mono); font-size:.84em; background:var(--surface);
+    border:1px solid var(--border); border-radius:5px; padding:1.5px 6px;
+  }
+  hr { border:0; height:1px; margin:40px 0; background:linear-gradient(90deg,var(--border2),transparent) }
+  .table-wrap {
+    overflow-x:auto; margin:0 0 15px;
+    border:1px solid var(--border); border-radius:10px; background:var(--card);
+  }
+  table { border-collapse:collapse; width:100%; font-size:14.5px }
+  th,td { border-bottom:1px solid var(--border); padding:11px 13px; text-align:start; vertical-align:top }
+  tr:last-child td { border-bottom:0 }
+  th { background:var(--surface); font-weight:600; font-size:12px; font-family:var(--mono);
+       letter-spacing:.07em; text-transform:uppercase; color:var(--muted) }
+  [dir="rtl"] th { font-family:var(--arabic); letter-spacing:0; font-size:14px; text-transform:none }
+
+  .note {
+    position:relative; background:var(--hsm-blue-soft);
+    border:1px solid var(--hsm-blue-border);
+    border-radius:12px; padding:18px 20px; margin:0 0 15px;
+  }
+  .note::before {
+    content:""; position:absolute; inset-block:14px; inset-inline-start:0;
+    width:3px; border-radius:999px; background:var(--hsm-blue);
+  }
+  .note p:last-child { margin-bottom:0 }
+
+  /* The lede: the one paragraph a reader who reads nothing else should read. */
+  .intro {
+    font-family:var(--serif); font-weight:400; font-size:21px; line-height:1.5;
+    color:var(--ink2); margin:0 0 42px; text-wrap:pretty;
+  }
+  [lang="ar"] .intro { font-family:var(--arabic); font-size:19px; line-height:1.9 }
+
+  .contact {
+    margin-top:52px; padding:26px 26px 22px;
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  }
+  .contact h2 { margin-top:0 }
+  .contact p:last-child { margin-bottom:0 }
+
+  .siblings {
+    margin:-16px 0 34px; display:flex; flex-wrap:wrap; gap:10px;
+  }
+  /* An explicit display defeats the hidden attribute — restore it. */
+  .siblings[hidden] { display:none }
+  .siblings a {
+    display:inline-block; text-decoration:none;
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.03em;
+    color:var(--hsm-blue-text); background:var(--card);
+    border:1px solid var(--border2); border-radius:999px; padding:7px 15px;
+    transition:border-color .16s, background .16s;
+  }
+  .siblings a:hover { border-color:var(--hsm-blue); background:var(--hsm-blue-soft) }
+  [dir="rtl"] .siblings a { font-family:var(--arabic); letter-spacing:0; font-size:14px }
+
+  .page-foot {
+    margin-top:64px; padding:26px 0 0; border-top:1px solid var(--border);
+    font-size:14px; color:var(--muted);
+  }
+  .page-foot p { margin:0 0 9px }
+  .page-foot a { color:var(--muted); text-decoration:underline }
+  .page-foot a:hover { color:var(--hsm-blue-text) }
+  .foot-mark { display:block; height:52px; width:auto; margin:0 0 16px; opacity:.72 }
+  .foot-mark.on-dark { display:none }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) .foot-mark.on-light { display:none }
+    :root:not([data-theme="light"]) .foot-mark.on-dark { display:block }
+  }
+  :root[data-theme="dark"] .foot-mark.on-light { display:none }
+  :root[data-theme="dark"] .foot-mark.on-dark { display:block }
+
+  /* -------------------------------------------------------------- arabic */
+  [lang="ar"] { font-family:var(--arabic); line-height:2.02 }
+  [lang="ar"] h1,[lang="ar"] h2,[lang="ar"] h3 { font-family:var(--arabic); line-height:1.6 }
+  [lang="ar"] h1 { font-size:clamp(30px,6.5vw,44px); letter-spacing:0 }
+  [lang="ar"] .ltr { unicode-bidi:isolate; direction:ltr; display:inline-block }
+  [lang="ar"] code { unicode-bidi:isolate; direction:ltr }
+
+  :where(a,button):focus-visible { outline:2px solid var(--hsm-blue); outline-offset:3px; border-radius:4px }
+  @media (prefers-reduced-motion:reduce) { *{transition:none!important;animation:none!important;scroll-behavior:auto} }
+  @media print {
+    .topbar,.skip { display:none }
+    header { background:none; color:#000; margin-inline:0; padding-inline:0 }
+    header h1,.eyebrow,.updated { color:#000 }
+    body { overflow:visible }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#policy">Skip to the policy</a>
+  <div class="topbar">
+    <a class="brand" href="../../" aria-label="HSM Software">
+      <img class="on-light" src="../../images/brand/hsm-mark-light.png" alt="" aria-hidden="true" width="381" height="160">
+      <img class="on-dark" src="../../images/brand/hsm-mark-dark.png" alt="" aria-hidden="true" width="417" height="160">
+      <span class="wordmark">HSM<span class="light"> Software</span></span>
+    </a>
+    <span class="bar-rule" aria-hidden="true"></span>
+    <span class="bar-app" id="bar-app" data-en="Splitly" data-ar="قسمة">Splitly</span>
+    <div class="lang" role="group" aria-label="Language / اللغة">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+
+<main id="policy">
+  <!-- ==================== ENGLISH ==================== -->
+  <div id="policy-en" lang="en" dir="ltr">
+    <header>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>Splitly</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated September 2026</p>
+    </header>
+
+    <h2>Overview</h2>
+    <p>Splitly (“the App,” “we,” “us”) helps groups of people track shared expenses
+    and settle up fairly. This Privacy Policy explains what information the App
+    collects, how it is used, who it may be shared with, and the choices you have.
+    By using Splitly, you agree to the practices described here.</p>
+         <h2>Information We Collect</h2>
+         <h3>2.1 Using Splitly without an account</h3>
+    <p>Splitly can be used without an account. In this mode your groups, expenses and
+    settlements are stored only on your device: nothing is uploaded, and none of the
+    data described in this section leaves the phone.</p>
+    <p>Creating an account later is optional. When you do, the groups already on your
+    device are copied to our servers so they can be backed up, synced and shared.
+    Until you create an account, the parts of this policy describing account data,
+    cloud storage and sharing with other group members do not apply to you.</p>
+         <h3>2.2 Account Information</h3>
+    <p>To create and secure your account, we collect:</p>
+    <ul>
+      <li><strong>Email address</strong> — required to sign in, whether you sign in
+      with a password or with Google.</li>
+      <li><strong>Password</strong> — if you sign in by email and password. Your
+      password is never stored by Splitly directly; it is handled and stored securely
+      by our authentication provider (Firebase Authentication), using
+      industry-standard hashing.</li>
+      <li><strong>Name</strong> — either the display name from your Google account
+      (if you use Google Sign-In) or a name you enter yourself. Your name is visible
+      to other members of any group you join, since the App's purpose is to show who
+      owes what within a shared group.</li>
+    </ul>
+         <h3>2.3 Group and Expense Data</h3>
+    <p>To provide the App's core function, we store the data you create inside the App:</p>
+    <ul>
+      <li>Groups you create or join, and their members</li>
+      <li>Expenses you add: description, amount, currency, date, who paid, and how the
+      expense is split among members</li>
+      <li>Itemized bill details (individual items, quantities, prices, fees, and
+      discounts), when you use itemized expense entry — this detail is kept on your
+      own device and is not currently transmitted to our servers</li>
+      <li>Settlement records (who paid whom, to reconcile balances)</li>
+    </ul>
+    <p>This data is visible to other members of groups you share, because showing
+    shared balances accurately to everyone in the group is the App's core purpose.</p>
+         <h3>2.4 Diagnostic and Crash Data</h3>
+    <p>We use <strong>Firebase Crashlytics</strong> to help us detect and fix crashes
+    and technical errors. This may include: device model and operating system version,
+    app version, and technical details about the error (such as a stack trace). This
+    data is used solely to improve app stability and is not used to identify you
+    personally beyond what is necessary to investigate a reported crash.</p>
+         <h3>2.5 Device Integrity Data</h3>
+    <p>To protect your account and data from abuse (such as fraudulent or automated
+    access), the App uses <strong>Firebase App Check</strong>, which relies on
+    <strong>Google Play Integrity</strong> on Android to confirm that requests to our
+    backend come from a genuine, unmodified copy of the App running on a genuine
+    device. This process does not collect personal information beyond a device
+    integrity signal used for this security check.</p>
+         <h3>2.6 Information We Do Not Collect</h3>
+    <ul>
+      <li>We do not collect your phone number.</li>
+      <li>We do not access your photos, contacts, or location.</li>
+      <li>We do not use your data for advertising, and the App does not display
+      third-party ads.</li>
+      <li>We do not sell your personal information to anyone.</li>
+    </ul>
+         <h2>How We Use Your Information</h2>
+    <ul>
+      <li>To create and manage your account</li>
+      <li>To provide the App's core functionality — tracking and splitting shared
+      expenses within groups you choose to join</li>
+      <li>To keep your data synchronized across your devices, where applicable</li>
+      <li>To detect, diagnose, and fix technical problems (crash reporting)</li>
+      <li>To protect the App and its users from fraud, abuse, and unauthorized access</li>
+      <li>To communicate with you about your account if necessary (e.g. security notices)</li>
+    </ul>
+         <h2>Who We Share Information With</h2>
+    <table>
+      <tr><th>Recipient</th><th>Why</th></tr>
+      <tr>
+        <td>Other members of a group you join</td>
+        <td>Your name and the expenses/balances relevant to that group, so the group
+        can see an accurate shared ledger</td>
+      </tr>
+      <tr>
+        <td>Google Firebase (Google LLC)</td>
+        <td>Our backend infrastructure — authentication, database storage (Firestore),
+        crash reporting (Crashlytics), and app integrity checks (App Check). Firebase
+        processes data on our behalf under Google's own data processing terms.</td>
+      </tr>
+      <tr>
+        <td>Google Sign-In</td>
+        <td>If you choose to sign in with Google, Google shares your basic profile
+        information (name, email) with the App, as authorized by you during sign-in.</td>
+      </tr>
+    </table>
+    <p>We do not sell, rent, or trade your personal data to third parties for
+    marketing purposes.</p>
+         <h2>Data Storage and Security</h2>
+    <p>Your data is stored locally on your device (for offline access) and, where
+    applicable, synced to Google Firebase's cloud infrastructure. We take reasonable
+    technical and organizational measures to protect your information, including
+    encrypted connections (HTTPS/TLS) and Firebase's built-in security rules
+    restricting access to your own data and the groups you belong to. However, no
+    method of electronic storage or transmission is 100% secure, and we cannot
+    guarantee absolute security.</p>
+         <h2>Data Retention</h2>
+    <p>We retain your account and group data for as long as your account is active.
+    If you delete your account through the App, your account and associated personal
+    data are removed from our active systems, subject to any residual copies retained
+    briefly for backup, security, or legal compliance purposes before permanent
+    deletion.</p>
+         <h2>Your Rights and Choices</h2>
+    <ul>
+      <li><strong>Access and correction</strong> — you can view and edit your name and
+      account details within the App.</li>
+      <li><strong>Deletion</strong> — you can delete your account at any time from the
+      Account screen within the App. This removes your account and associated data as
+      described in Section 6.</li>
+      <li><strong>Data portability</strong> — you can use the App's built-in sharing
+      feature to export a summary of your group's balances at any time.</li>
+    </ul>
+    <p>If you have questions about your data or wish to make a request regarding it,
+    contact us using the details in Section 11.</p>
+         <h2>Children's Privacy</h2>
+    <p>Splitly is not directed at children under the age of 13 (or the minimum age
+    required by your local law), and we do not knowingly collect personal information
+    from children. If you believe a child has provided us with personal information,
+    please contact us so we can remove it.</p>
+         <h2>International Data Transfers</h2>
+    <p>Your information may be processed and stored on servers located outside your
+    country of residence, including in countries where Google Firebase operates data
+    centers. By using the App, you consent to this transfer, storage, and processing.</p>
+         <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our
+    practices or for legal reasons. We will update the “Last updated” date at the top
+    of this page when we do. Continued use of the App after a change constitutes
+    acceptance of the updated policy.</p>
+         <h2>Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy
+    or your personal data, please contact us at:</p>
+    <p><strong>Email:</strong>
+    <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a></p>
+    
+    <div class="page-foot">
+      <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
+      <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
+<p>Splitly can be used without an account. Until you create one, the sections describing account data, cloud storage and sharing do not apply to you.</p>
+      <p><a href="../">All HSM Software privacy policies</a> · <a href="/">Portfolio</a></p>
+    </div>
+  </div>
+
+  <!-- ==================== ARABIC ==================== -->
+  <div id="policy-ar" lang="ar" dir="rtl" hidden>
+    <header>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>قسمة</p>
+      <h1>سياسة الخصوصية</h1>
+      <p class="updated">آخر تحديث سبتمبر ٢٠٢٦</p>
+    </header>
+
+    <h2>نظرة عامة</h2>
+    <p>«قسمة» (ويُشار إليه بـ«التطبيق» أو «نحن») يساعد مجموعات الأشخاص على تتبّع
+    المصروفات المشتركة وتسويتها بإنصاف. توضّح سياسة الخصوصية هذه ما المعلومات التي
+    يجمعها التطبيق، وكيف تُستخدم، ومع مَن قد تُشارَك، وما الخيارات المتاحة لك.
+    وباستخدامك «قسمة» فإنك توافق على الممارسات الموضّحة هنا.</p>
+         <h2>المعلومات التي نجمعها</h2>
+         <h3>٢.١ استخدام «قسمة» بدون حساب</h3>
+    <p>يمكن استخدام «قسمة» بدون حساب. وفي هذه الحالة تُحفظ مجموعاتك ومصروفاتك
+    وتسوياتك على جهازك وحده: لا يُرفع أي شيء، ولا تغادر الهاتفَ أيٌّ من البيانات
+    الموصوفة في هذا القسم.</p>
+    <p>وإنشاء حساب لاحقاً اختياري. وعند إنشائه تُنسخ المجموعات الموجودة بالفعل على
+    جهازك إلى خوادمنا ليصبح بالإمكان الاحتفاظ بنسخة منها ومزامنتها ومشاركتها. وإلى
+    أن تُنشئ حساباً، فإن أجزاء هذه السياسة التي تتحدّث عن بيانات الحساب والتخزين
+    السحابي والمشاركة مع بقية أعضاء المجموعة لا تنطبق عليك.</p>
+         <h3>٢.٢ معلومات الحساب</h3>
+    <p>لإنشاء حسابك وتأمينه، نجمع ما يلي:</p>
+    <ul>
+      <li><strong>البريد الإلكتروني</strong> — مطلوب لتسجيل الدخول، سواء سجّلت الدخول
+      بكلمة مرور أو عبر <span class="ltr">Google</span>.</li>
+      <li><strong>كلمة المرور</strong> — إذا سجّلت الدخول بالبريد الإلكتروني وكلمة
+      المرور. لا يخزّن «قسمة» كلمة مرورك مباشرةً إطلاقاً؛ بل يتولّى حفظها بأمان
+      مزوّد المصادقة لدينا (<span class="ltr">Firebase Authentication</span>)
+      باستخدام تجزئة وفق معايير الصناعة.</li>
+      <li><strong>الاسم</strong> — إمّا الاسم المعروض من حساب
+      <span class="ltr">Google</span> الخاص بك (إذا استخدمت تسجيل الدخول عبر
+      <span class="ltr">Google</span>) أو اسم تُدخله بنفسك. واسمك ظاهر لبقية أعضاء أي
+      مجموعة تنضمّ إليها، لأن الغرض من التطبيق هو بيان ما على كل شخص وما له داخل
+      المجموعة المشتركة.</li>
+    </ul>
+         <h3>٢.٣ بيانات المجموعات والمصروفات</h3>
+    <p>لتقديم الوظيفة الأساسية للتطبيق، نحفظ البيانات التي تُنشئها داخله:</p>
+    <ul>
+      <li>المجموعات التي تُنشئها أو تنضمّ إليها، وأعضاؤها</li>
+      <li>المصروفات التي تضيفها: الوصف والمبلغ والعملة والتاريخ ومَن دفع وكيفية تقسيم
+      المصروف بين الأعضاء</li>
+      <li>تفاصيل الفاتورة بالبنود (الأصناف المفردة والكميات والأسعار والرسوم
+      والخصومات) عند استخدامك إدخال المصروفات بالبنود — تبقى هذه التفاصيل على جهازك
+      أنت ولا تُرسَل حالياً إلى خوادمنا</li>
+      <li>سجلات التسوية (مَن دفع لمَن، لتسوية الأرصدة)</li>
+    </ul>
+    <p>هذه البيانات ظاهرة لبقية أعضاء المجموعات التي تشاركهم فيها، لأن عرض الأرصدة
+    المشتركة بدقة على جميع أعضاء المجموعة هو الغرض الأساسي من التطبيق.</p>
+         <h3>٢.٤ بيانات التشخيص والأعطال</h3>
+    <p>نستخدم <strong><span class="ltr">Firebase Crashlytics</span></strong> لمساعدتنا
+    في اكتشاف الأعطال والأخطاء التقنية وإصلاحها. وقد يشمل ذلك: طراز الجهاز وإصدار
+    نظام التشغيل وإصدار التطبيق وتفاصيل تقنية عن الخطأ (مثل تتبّع المكدّس). وتُستخدم
+    هذه البيانات حصراً لتحسين استقرار التطبيق، ولا تُستخدم للتعرّف عليك شخصياً بما
+    يتجاوز ما يلزم للتحقيق في عطل مُبلَّغ عنه.</p>
+         <h3>٢.٥ بيانات سلامة الجهاز</h3>
+    <p>لحماية حسابك وبياناتك من إساءة الاستخدام (مثل الوصول الاحتيالي أو الآلي)،
+    يستخدم التطبيق <strong><span class="ltr">Firebase App Check</span></strong>، الذي
+    يعتمد على <strong><span class="ltr">Google Play Integrity</span></strong> على
+    أندرويد للتأكّد من أن الطلبات الواردة إلى خادمنا صادرة عن نسخة أصلية غير معدَّلة
+    من التطبيق تعمل على جهاز أصلي. ولا تجمع هذه العملية أي معلومات شخصية بخلاف إشارة
+    سلامة الجهاز المستخدمة في هذا الفحص الأمني.</p>
+         <h3>٢.٦ معلومات لا نجمعها</h3>
+    <ul>
+      <li>لا نجمع رقم هاتفك.</li>
+      <li>لا نصل إلى صورك أو جهات اتصالك أو موقعك.</li>
+      <li>لا نستخدم بياناتك لأغراض الإعلانات، ولا يعرض التطبيق إعلانات من جهات
+      خارجية.</li>
+      <li>لا نبيع معلوماتك الشخصية لأي جهة.</li>
+    </ul>
+         <h2>كيف نستخدم معلوماتك</h2>
+    <ul>
+      <li>لإنشاء حسابك وإدارته</li>
+      <li>لتقديم الوظيفة الأساسية للتطبيق — تتبّع المصروفات المشتركة وتقسيمها داخل
+      المجموعات التي تختار الانضمام إليها</li>
+      <li>لمزامنة بياناتك بين أجهزتك، حيثما ينطبق ذلك</li>
+      <li>لاكتشاف المشكلات التقنية وتشخيصها وإصلاحها (تقارير الأعطال)</li>
+      <li>لحماية التطبيق ومستخدميه من الاحتيال وإساءة الاستخدام والوصول غير
+      المصرّح به</li>
+      <li>للتواصل معك بشأن حسابك عند الضرورة (مثل الإشعارات الأمنية)</li>
+    </ul>
+         <h2>مع مَن نشارك المعلومات</h2>
+    <table>
+      <tr><th>الجهة المستقبِلة</th><th>السبب</th></tr>
+      <tr>
+        <td>بقية أعضاء المجموعة التي تنضمّ إليها</td>
+        <td>اسمك والمصروفات والأرصدة الخاصة بتلك المجموعة، حتى يرى أعضاؤها سجلاً
+        مشتركاً دقيقاً</td>
+      </tr>
+      <tr>
+        <td><span class="ltr">Google Firebase</span> (شركة <span class="ltr">Google LLC</span>)</td>
+        <td>البنية الخلفية لدينا — المصادقة وتخزين قاعدة البيانات
+        (<span class="ltr">Firestore</span>) وتقارير الأعطال
+        (<span class="ltr">Crashlytics</span>) وفحوص سلامة التطبيق
+        (<span class="ltr">App Check</span>). وتعالج <span class="ltr">Firebase</span>
+        البيانات نيابةً عنّا وفق شروط معالجة البيانات الخاصة بـ
+        <span class="ltr">Google</span>.</td>
+      </tr>
+      <tr>
+        <td>تسجيل الدخول عبر <span class="ltr">Google</span></td>
+        <td>إذا اخترت تسجيل الدخول عبر <span class="ltr">Google</span>، تشارك
+        <span class="ltr">Google</span> معلومات ملفك الأساسية (الاسم والبريد
+        الإلكتروني) مع التطبيق، وفق ما تأذن به أثناء تسجيل الدخول.</td>
+      </tr>
+    </table>
+    <p>لا نبيع بياناتك الشخصية ولا نؤجّرها ولا نتاجر بها مع جهات خارجية لأغراض
+    تسويقية.</p>
+         <h2>تخزين البيانات وأمانها</h2>
+    <p>تُحفظ بياناتك محلياً على جهازك (للوصول دون اتصال)، وتُزامَن حيثما ينطبق ذلك
+    إلى بنية <span class="ltr">Google Firebase</span> السحابية. ونتّخذ تدابير تقنية
+    وتنظيمية معقولة لحماية معلوماتك، منها الاتصالات المشفّرة
+    (<span class="ltr">HTTPS/TLS</span>) وقواعد الأمان المدمجة في
+    <span class="ltr">Firebase</span> التي تقصر الوصول على بياناتك أنت والمجموعات
+    التي تنتمي إليها. ومع ذلك، ليست هناك وسيلة تخزين أو نقل إلكتروني آمنة بنسبة
+    ١٠٠٪، ولا يمكننا ضمان الأمان المطلق.</p>
+         <h2>الاحتفاظ بالبيانات</h2>
+    <p>نحتفظ ببيانات حسابك ومجموعاتك ما دام حسابك نشطاً. وإذا حذفت حسابك من داخل
+    التطبيق، يُزال حسابك والبيانات الشخصية المرتبطة به من أنظمتنا النشطة، مع مراعاة
+    أي نسخ متبقّية يُحتفظ بها لفترة وجيزة لأغراض النسخ الاحتياطي أو الأمان أو
+    الامتثال القانوني قبل الحذف النهائي.</p>
+         <h2>حقوقك وخياراتك</h2>
+    <ul>
+      <li><strong>الاطّلاع والتصحيح</strong> — يمكنك عرض اسمك وتفاصيل حسابك وتعديلها
+      داخل التطبيق.</li>
+      <li><strong>الحذف</strong> — يمكنك حذف حسابك في أي وقت من شاشة «الحساب» داخل
+      التطبيق. ويؤدي ذلك إلى إزالة حسابك والبيانات المرتبطة به على النحو الموضّح في
+      القسم ٦.</li>
+      <li><strong>قابلية نقل البيانات</strong> — يمكنك استخدام خاصية المشاركة
+      المدمجة في التطبيق لتصدير ملخّص لأرصدة مجموعتك في أي وقت.</li>
+    </ul>
+    <p>إذا كانت لديك أسئلة عن بياناتك أو رغبت في تقديم طلب بشأنها، تواصل معنا عبر
+    البيانات الواردة في القسم ١١.</p>
+         <h2>خصوصية الأطفال</h2>
+    <p>«قسمة» غير موجّه إلى الأطفال دون سنّ ١٣ عاماً (أو السنّ الأدنى الذي يقتضيه
+    القانون المحلي لديك)، ونحن لا نجمع عن علم معلومات شخصية من الأطفال. وإذا كنت
+    تعتقد أن طفلاً قد زوّدنا بمعلومات شخصية، فيُرجى التواصل معنا لإزالتها.</p>
+         <h2>نقل البيانات دولياً</h2>
+    <p>قد تُعالَج معلوماتك وتُخزَّن على خوادم تقع خارج بلد إقامتك، بما في ذلك دول
+    تشغّل فيها <span class="ltr">Google Firebase</span> مراكز بيانات. وباستخدامك
+    التطبيق فإنك توافق على هذا النقل والتخزين والمعالجة.</p>
+         <h2>تغييرات على هذه السياسة</h2>
+    <p>قد نحدّث سياسة الخصوصية هذه من حين لآخر لتعكس تغييرات في ممارساتنا أو لأسباب
+    قانونية. وسنحدّث تاريخ «آخر تحديث» أعلى هذه الصفحة عند القيام بذلك. ويُعدّ
+    استمرارك في استخدام التطبيق بعد أي تغيير قبولاً للسياسة المحدَّثة.</p>
+         <h2>للتواصل</h2>
+    <p>إذا كانت لديك أي أسئلة أو مخاوف أو طلبات بخصوص سياسة الخصوصية هذه أو بياناتك
+    الشخصية، يُرجى التواصل معنا على:</p>
+    <p><strong>البريد الإلكتروني:</strong>
+    <a class="ltr" href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a></p>
+    
+    <div class="page-foot">
+      <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
+      <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
+<p>يمكن استخدام «قسمة» بدون حساب. وإلى أن تُنشئ حساباً، فإن الأقسام التي تتحدّث عن بيانات الحساب والتخزين السحابي والمشاركة لا تنطبق عليك.</p>
+      <p><a href="../">كل سياسات الخصوصية</a> · <a href="/">الموقع الشخصي</a></p>
+    </div>
+  </div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.lang button');
+  var panels = { en: document.getElementById('policy-en'),
+                 ar: document.getElementById('policy-ar') };
+  if (!panels.en || !panels.ar) { return; }
+
+  var barApp = document.getElementById('bar-app');
+
+  function show(lang) {
+    panels.en.hidden = lang !== 'en';
+    panels.ar.hidden = lang !== 'ar';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    if (barApp) { barApp.textContent = barApp.dataset[lang] || barApp.textContent; }
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+    var t = document.documentElement.dataset;
+    if (t.titleEn && t.titleAr) {
+      document.title = lang === 'ar' ? t.titleAr : t.titleEn;
+    }
+    // Carry the choice across any link to a sibling page.
+    document.querySelectorAll('.siblings a, .card-links a').forEach(function (a) {
+      var base = a.getAttribute('href').split('?')[0];
+      a.setAttribute('href', base + '?lang=' + lang);
+    });
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.lang); });
+  });
+
+  var requested = new URLSearchParams(location.search).get('lang');
+  if (requested === 'ar' || requested === 'en') {
+    show(requested);
+  } else if ((navigator.language || '').toLowerCase().indexOf('ar') === 0) {
+    show('ar');
+  }
+})();
+</script>
+</main>
+</body>
+</html>
