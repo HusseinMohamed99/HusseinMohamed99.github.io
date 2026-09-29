@@ -301,7 +301,7 @@ async function renderProject() {
     <div class="cs-hero">
       ${p.icon ? `<div class="cs-icon"><img src="../${escapeAttr(p.icon)}" alt="${escapeAttr(p.name)} icon"/></div>` : ""}
       <div>
-        <div class="cs-tag">${escapeHtml(p.badge || "Project")}${p.category ? " · " + escapeHtml(p.category): ""}</div>
+        <div class="cs-tag">${escapeHtml(p.badge || "Project")}${p.category ? " · " + escapeHtml(p.category): ""}${p.period ? " · " + escapeHtml(p.period) : ""}</div>
         <h1 class="cs-title">${escapeHtml(p.name || "")}</h1>
       </div>
       <div class="cs-links">${linkButtons}</div>
