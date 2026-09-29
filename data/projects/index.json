@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T09:19:44.440Z",
+  "generated": "2026-09-29T09:20:13.234Z",
   "count": 10,
   "projects": [
     {
@@ -112,7 +112,7 @@
       "slug": "x_5_fitness",
       "name": "5X Fitness",
       "category": "Fitness & Habit Tracking · Flutter · Firebase",
-      "badge": "In Google Play Review",
+      "badge": "Coming Soon",
       "period": "Aug 2026 – Sep 2026",
       "short_description": "A bilingual (Arabic/English) fitness companion built on Flutter and Firebase — gym attendance streaks, a daily plank habit, workout logging against a 42-exercise reference library, body progress charted against InBody figures, and a plain-language privacy screen that exports everything the app holds about you.",
       "icon": "images/5x-fitness/logo.png",
