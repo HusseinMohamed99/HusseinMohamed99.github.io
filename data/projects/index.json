@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T09:14:11.229Z",
+  "generated": "2026-09-29T09:15:28.138Z",
   "count": 10,
   "projects": [
     {
@@ -52,7 +52,7 @@
         "app_store": "https://apps.apple.com/sa/app/tuwaiq-pay/id6745802564",
         "google_play": "https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay"
       },
-      "lastmod": "2026-07-30"
+      "lastmod": "2026-09-29"
     },
     {
       "slug": "refqa",
@@ -105,7 +105,7 @@
         }
       ],
       "links": {},
-      "lastmod": "2026-09-19"
+      "lastmod": "2026-09-29"
     },
     {
       "slug": "x_5_fitness",
@@ -150,7 +150,7 @@
         }
       ],
       "links": {},
-      "lastmod": "2026-09-05"
+      "lastmod": "2026-09-29"
     },
     {
       "slug": "expense_splitter",
@@ -189,7 +189,7 @@
         }
       ],
       "links": {},
-      "lastmod": "2026-09-15"
+      "lastmod": "2026-09-29"
     },
     {
       "slug": "sportymate",
