@@ -1,7 +1,8 @@
 ---
+period: Jul 2026
 name: Refqa (رِفقة)
 category: Islamic Lifestyle · Offline-First · Arabic/English
-period: Jul 2026
+badge: Coming Soon
 short_description: "A comprehensive Islamic companion app: dual-mode Quran
   reading (browsable index + a full 604-page Madani Mushaf renderer), live
   Qur'an radio and per-reciter profiles, on-device speech-recognition recitation
@@ -88,26 +89,6 @@ capabilities:
     title: Privacy by architecture
     description: Coordinates are scrubbed before any crash report is sent; no
       accounts, no ads, no third-party analytics SDKs.
-banner: images/refqa-رِفقة/refqa_cover.png
-tech_tags:
-  - tag: Flutter
-  - tag: Riverpod
-  - tag: Clean Architecture
-  - tag: Freezed
-  - tag: sqflite
-  - tag: Kotlin (native)
-  - tag: go_router
-  - tag: just_audio
-  - tag: audio_service
-  - tag: speech_to_text
-  - tag: easy_localization
-  - tag: hijri
-  - tag: Sentry
-architecture_flow_2:
-  - step: Exact AlarmManager
-  - step: BroadcastReceiver
-  - step: Kotlin ForegroundService
-  - step: Adhan plays, no UI, no Flutter engine
 architecture_text: >
   The Flutter layer follows a strict feature-first data/domain/presentation
   split, with Riverpod (freezed union states for real async lifecycles) managing
@@ -123,6 +104,7 @@ architecture_flow:
   - step: Repository Interface
   - step: sqflite + REST
   - step: AlQuran.cloud / AlAdhan / Sunnah.com
+banner: images/refqa-رِفقة/refqa_cover.png
 mockups:
   - image: images/refqa-رِفقة/rifqa_01_home.png
     caption: الصفحة الرئيسية
@@ -210,5 +192,24 @@ challenges:
       Fixed by expanding any range into global ayah numbers and building both
       readers' playlists from that, with a regression test specifically covering
       a boundary that crosses two surahs.
+tech_tags:
+  - tag: Flutter
+  - tag: Riverpod
+  - tag: Clean Architecture
+  - tag: Freezed
+  - tag: sqflite
+  - tag: Kotlin (native)
+  - tag: go_router
+  - tag: just_audio
+  - tag: audio_service
+  - tag: speech_to_text
+  - tag: easy_localization
+  - tag: hijri
+  - tag: Sentry
+architecture_flow_2:
+  - step: Exact AlarmManager
+  - step: BroadcastReceiver
+  - step: Kotlin ForegroundService
+  - step: Adhan plays, no UI, no Flutter engine
 links: {}
 ---
