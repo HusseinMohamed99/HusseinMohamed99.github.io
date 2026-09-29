@@ -16,7 +16,11 @@
     "Graduation": "🎓",
     "Company Project": "🏢",
     "Coming Soon": "🕐",
+    "In Google Play Review": "🕐",
   };
+
+  // Unreleased badges: no "Live" chip, dashed neutral pill instead.
+  const UNRELEASED = ["Coming Soon", "In Google Play Review"];
 
   // Cards without their own `accent_color` (the app's own brand colour, set
   // per project in /admin) fall back to HSM Blue — same value as --hsm-blue.
@@ -125,7 +129,7 @@
   function renderCompactCard(p, i, color) {
     const badgeLabel = p.badge || "Personal Project";
     const badgeIcon = badgeIcons[badgeLabel] || "📱";
-    const isComingSoon = p.badge === "Coming Soon";
+    const isComingSoon = UNRELEASED.includes(p.badge);
     const isLive = !isComingSoon && !!(p.links && (p.links.app_store || p.links.google_play));
 
     const iconBox = p.icon
@@ -148,12 +152,12 @@
       <div class="proj-x-visual" style="background:${color};background-image:radial-gradient(circle,rgba(255,255,255,.18) 1px,transparent 1px)">
         <span class="proj-x-idx">${String(i + 1).padStart(2, "0")}</span>
         <div class="proj-x-icon">${iconBox}</div>
-        <span class="proj-x-live">${isComingSoon ? "🕐 Coming Soon" : (isLive ? "🟢 Live" : "✓ Delivered")}</span>
+        <span class="proj-x-live">${isComingSoon ? `🕐 ${escapeHtml(p.badge)}` : (isLive ? "🟢 Live" : "✓ Delivered")}</span>
       </div>
       <div class="proj-x-body">
         <div class="proj-x-badge${isComingSoon ? " is-soon" : ""}">${badgeIcon} ${escapeHtml(badgeLabel)}</div>
         <div class="proj-x-nm">${escapeHtml(p.name || "")}</div>
-        <div class="proj-x-cat">${escapeHtml(p.category || "")}</div>
+        <div class="proj-x-cat">${escapeHtml(p.category || "")}${p.period ? ` · ${escapeHtml(p.period)}` : ""}</div>
         <p class="proj-x-desc">${escapeHtml(p.short_description || "")}</p>
         ${techTags ? `<div class="proj-x-tech">${techTags}</div>` : ""}
         <div class="proj-x-links">

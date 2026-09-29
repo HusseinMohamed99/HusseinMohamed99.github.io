@@ -1,7 +1,8 @@
 ---
 name: 5X Fitness
 category: Fitness & Habit Tracking · Flutter · Firebase
-badge: Coming Soon
+badge: In Google Play Review
+period: Aug 2026 – Sep 2026
 short_description: A bilingual (Arabic/English) fitness companion built on
   Flutter and Firebase — gym attendance streaks, a daily plank habit, workout
   logging against a 42-exercise reference library, body progress charted against

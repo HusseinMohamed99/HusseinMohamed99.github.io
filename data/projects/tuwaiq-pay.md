@@ -12,7 +12,7 @@ order: 1
 overview: >
   Tuwaiq Pay is a production fintech app used by real merchants across Saudi
   Arabia to manage invoicing, accept in-person and card payments, and track
-  transactions. I own the mobile stack end to end — from the Clean Architecture
+  transactions. I owned the mobile stack end to end — from the Clean Architecture
   foundation to the pipeline that ships builds to the App Store and Google Play.
 
 

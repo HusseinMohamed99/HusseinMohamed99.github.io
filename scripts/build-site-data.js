@@ -28,7 +28,7 @@ const jsyaml = require(path.join(ROOT, "js", "js-yaml.min.js"));
 
 /** Fields the project-card renderers actually read (js/render-projects.js). */
 const CARD_FIELDS = [
-  "name", "category", "badge", "short_description",
+  "name", "category", "badge", "period", "short_description",
   "icon", "order", "accent_color", "tech_tags", "links",
 ];
 
@@ -104,6 +104,34 @@ function main() {
   };
   fs.writeFileSync(path.join(DATA_DIR, "index.json"), JSON.stringify(manifest, null, 2) + "\n");
 
+  // ---- static project list in the grid pages ----
+  // Crawlers and link-preview fetchers don't run JS, so without this they saw
+  // only a loading placeholder. render-projects.js replaces it with the cards.
+  const htmlEscape = (v) => String(v ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const withRtl = (v) => htmlEscape(v).replace(/[\u0600-\u06FF][\u0600-\u06FF\s]*[\u0600-\u06FF]|[\u0600-\u06FF]/g,
+    (ar) => `<span dir="rtl" lang="ar">${ar}</span>`);
+  const staticPages = [
+    { file: "index.html", caseBase: "projects/", limit: 4, allHref: "projects/all-projects.html" },
+    { file: path.join("projects", "all-projects.html"), caseBase: "", limit: 0 },
+  ];
+  for (const pg of staticPages) {
+    const full = path.join(ROOT, pg.file);
+    const html = fs.readFileSync(full, "utf8");
+    const re = /(<!-- static-projects:start[^>]*-->)[\s\S]*?(\n[ \t]*<!-- static-projects:end -->)/;
+    if (!re.test(html)) { console.error(`${pg.file}: static-projects markers missing`); process.exit(1); }
+    const shown = pg.limit ? projects.slice(0, pg.limit) : projects;
+    const items = shown.map((p) =>
+      `        <li style="margin-bottom:.9rem"><a href="${pg.caseBase}project.html?slug=${encodeURIComponent(p.slug)}"><strong>${withRtl(p.name)}</strong></a>` +
+      ` <span style="color:var(--muted)">— ${htmlEscape([p.badge, p.category, p.period].filter(Boolean).join(" · "))}</span><br>` +
+      `${htmlEscape(p.short_description)}</li>`
+    ).join("\n");
+    const more = pg.limit && projects.length > pg.limit
+      ? `\n      <p style="margin:0"><a href="${pg.allHref}">See all ${projects.length} projects →</a></p>` : "";
+    const block = `\n      <div class="proj-static" style="grid-column:1/-1;line-height:1.55">\n      <ul style="list-style:none;padding:0;margin:0 0 1rem">\n${items}\n      </ul>${more}\n      </div>`;
+    fs.writeFileSync(full, html.replace(re, (_, start, end) => start + block + end));
+  }
+
   // ---- sitemap.xml ----
   const newest = projects.map((p) => p.lastmod).sort().pop();
 
@@ -154,6 +182,7 @@ function main() {
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), sitemap);
 
   console.log(`✓ data/projects/index.json  (${projects.length} projects)`);
+  console.log(`✓ static project lists in index.html, projects/all-projects.html`);
   console.log(`✓ sitemap.xml               (${urls.length} URLs)`);
   projects.forEach((p) => console.log(`    ${String(p.order ?? 0).padStart(2)}  ${p.slug.padEnd(14)} ${p.lastmod}`));
 }

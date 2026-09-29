@@ -46,7 +46,8 @@ collections:
       - label: "Badge"
         name: "badge"
         widget: "select"
-        options: ["Featured Project", "Personal Project", "Graduation", "Company Project", "Coming Soon"]
+        options: ["Featured Project", "Personal Project", "Graduation", "Company Project", "Coming Soon", "In Google Play Review"]
+      - { label: "Period (e.g. 'Aug 2026' or 'Jul 2026 – Present', optional)", name: "period", widget: "string", required: false }
       - { label: "Short Card Description (shown on homepage grid)", name: "short_description", widget: "text" }
       - label: "App Icon"
         name: "icon"
