@@ -1,8 +1,8 @@
 ---
+period: Aug 2026
 name: Splitly (قسمة)
 category: Shared Expenses · Offline-First · Bilingual Arabic/English
-badge: In Google Play Review
-period: Aug 2026
+badge: Coming Soon
 short_description: An offline-first, guest-first expense-splitting app for
   travel friends, roommates, and work teams — record who paid, split equally or
   custom, and get a deterministic settlement engine that works out the minimum
