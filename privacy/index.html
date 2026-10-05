@@ -358,6 +358,12 @@
   :root[data-theme="dark"] .app-icon {
     box-shadow:0 2px 6px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.1);
   }
+  /* An app without a real icon yet gets its initial on the app's own colour,
+     sized and shaped exactly like the image icons. */
+  .app-mono {
+    display:grid; place-items:center; background:var(--mono-bg, #334F88); color:#fff;
+    font-family:var(--serif); font-size:23px; font-weight:700; line-height:1;
+  }
   .card-name {
     font-family:var(--serif); font-size:22px; font-weight:700; line-height:1.15;
     display:flex; align-items:baseline; gap:9px; flex-wrap:wrap;
@@ -425,9 +431,9 @@
 
 
     <p class="hub-intro">One page per app, each in English and Arabic behind a single
-    switch. Every policy describes the build that is live on the store right now; where
-    an app also shows its policy inside itself, the two are written from the same
-    source.</p>
+    switch. Every policy describes the app as it is built today — the store build for
+    released apps, the first release for the rest; where an app also shows its policy
+    inside itself, the two are written from the same source.</p>
 
     <div class="cards">
       <article class="card">
@@ -483,6 +489,18 @@
           <a href="studyflow/">Read the policy &rarr;</a>
         </p>
       </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="app-icon app-mono" aria-hidden="true">V</span>
+          <h2 class="card-name">Vaulta <span class="alt" lang="ar" dir="rtl">فولتا</span></h2>
+        </div>
+        <p class="card-tag">On-device</p>
+        <p class="card-what">Money and receipt manager — accounts, receipts, warranties, bills and budgets.</p>
+        <p class="card-says">Everything stays on the device in this version — no account, no server. Sign-in and cloud sync are not available yet.</p>
+        <p class="card-links">
+          <a href="vaulta/">Read the policy &rarr;</a>
+        </p>
+      </article>
     </div>
 
     <div class="hub-note">
@@ -508,8 +526,9 @@
 
 
     <p class="hub-intro">صفحة واحدة لكل تطبيق، بالعربية والإنجليزية خلف زرّ واحد. كل
-    سياسة تصف النسخة المنشورة على المتجر الآن؛ وحين يعرض التطبيق سياسته بداخله،
-    فالنصّان مكتوبان من مصدر واحد.</p>
+    سياسة تصف التطبيق كما هو مبنيّ اليوم — النسخة المنشورة على المتجر للتطبيقات
+    المنشورة، والإصدار الأول لغيرها؛ وحين يعرض التطبيق سياسته بداخله، فالنصّان مكتوبان من
+    مصدر واحد.</p>
 
     <div class="cards">
       <article class="card">
@@ -563,6 +582,18 @@
         <p class="card-says">لا يجمع شيئًا على الإطلاق — لا حساب، ولا خادم، والنسخة المنشورة لا تتصل بالإنترنت أبدًا.</p>
         <p class="card-links">
           <a href="studyflow/">اقرأ السياسة &larr;</a>
+        </p>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <span class="app-icon app-mono" aria-hidden="true">V</span>
+          <h2 class="card-name">فولتا <span class="alt" lang="en" dir="ltr">Vaulta</span></h2>
+        </div>
+        <p class="card-tag">على الجهاز فقط</p>
+        <p class="card-what">تطبيق لإدارة الأموال والإيصالات — حسابات وإيصالات وضمانات وفواتير وميزانيات.</p>
+        <p class="card-says">كل شيء يبقى على الجهاز في هذه النسخة — بلا حساب ولا خادم. وتسجيل الدخول والمزامنة السحابية غير متاحين بعد.</p>
+        <p class="card-links">
+          <a href="vaulta/">اقرأ السياسة &larr;</a>
         </p>
       </article>
     </div>
