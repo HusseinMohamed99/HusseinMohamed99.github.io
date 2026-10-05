@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-05T12:06:53.581Z",
-  "count": 11,
+  "generated": "2026-10-05T15:02:31.787Z",
+  "count": 12,
   "projects": [
     {
       "slug": "tuwaiq-pay",
@@ -226,13 +226,45 @@
       "lastmod": "2026-10-05"
     },
     {
+      "slug": "vaulta",
+      "name": "Vaulta (فولتا)",
+      "category": "Personal Finance · Offline-First · Bilingual Arabic/English",
+      "badge": "Coming Soon",
+      "period": "Sep 2026 – Present",
+      "short_description": "A money and receipt manager that works on the phone without an account — accounts and transactions, a receipt vault with on-device Arabic/English scanning you review before saving, warranties, bills, subscriptions, budgets, goals, debts and reports, in Arabic and English.",
+      "order": 6,
+      "accent_color": "#334F88",
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "Riverpod"
+        },
+        {
+          "tag": "GoRouter"
+        },
+        {
+          "tag": "Drift / SQLite"
+        },
+        {
+          "tag": "Tesseract OCR"
+        },
+        {
+          "tag": "gen-l10n"
+        }
+      ],
+      "links": {},
+      "lastmod": "2026-10-05"
+    },
+    {
       "slug": "sportymate",
       "name": "SportyMate",
       "category": "Sports Booking Marketplace · Android & iOS · Arabic/English · Octopus Software Solutions",
       "badge": "Company Project",
       "short_description": "Two-sided sports booking marketplace built at Octopus Software Solutions, connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline.",
       "icon": "images/sportymate/sporty_icon.png",
-      "order": 6,
+      "order": 7,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -305,7 +337,7 @@
       "badge": "Company Project",
       "short_description": "Bilingual (Arabic/English) real estate marketplace built at Valuerythm for the Saudi market — listings for sale, rent and booking, advanced filters, bilingual location search, and direct agent contact via call or WhatsApp.",
       "icon": "images/systempro/systempro_icon.png",
-      "order": 7,
+      "order": 8,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -369,7 +401,7 @@
       "badge": "Personal Project",
       "short_description": "Media browser for movies, series, and anime with 10K+ downloads on Google Play. Smart recommendations, trailers, cast details, and categorized search — built with BLoC, Dio, and shimmer loading UX.",
       "icon": "images/egydead/egydead_icon.png",
-      "order": 8,
+      "order": 9,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -432,7 +464,7 @@
       "badge": "Personal Project",
       "short_description": "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Published on Google Play with bilingual AR/EN support, light & dark themes, and the full Quran and Hadith bundled for offline use.",
       "icon": "images/muslim-app/muslim_icon.png",
-      "order": 9,
+      "order": 10,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -486,7 +518,7 @@
       "badge": "Graduation",
       "short_description": "Tourism app covering Egypt, UAE, France, and Italy with top attractions, ticket pricing, interactive maps, and historical insights. Graduation project built with Cubit state management, Dio REST integration, and Firebase auth.",
       "icon": "images/tripso/tripso_icon.png",
-      "order": 10,
+      "order": 11,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -543,7 +575,7 @@
       "badge": "Personal Project",
       "short_description": "Arabic-first Quran app with full mushaf reading, verse and surah recitation, live radio, audio tafsir, reciters directory, and riwayat browser — published on Google Play.",
       "icon": "images/quran-kareem/logo.svg",
-      "order": 11,
+      "order": 12,
       "tech_tags": [
         {
           "tag": "Flutter"
