@@ -54,6 +54,12 @@
   }
   .cs-phone-mini-inner{width:100%;height:100%;border-radius:26px;overflow:hidden;background:#000;transform:translateZ(0)}
   .cs-phone-mini img{width:100%;height:100%;object-fit:cover;background:#000;display:block;image-rendering:auto;backface-visibility:hidden}
+  /* mockup_frame: none — finished store graphics that already draw their own
+     phone: a plain rounded 9:16 card instead of the CSS phone frame. */
+  .cs-mockup-grid.is-bare .cs-phone-mini{aspect-ratio:9/16;padding:0;border-radius:18px;background:none}
+  .cs-mockup-grid.is-bare .cs-phone-mini::before{display:none}
+  .cs-mockup-grid.is-bare .cs-phone-mini-inner{border-radius:18px;background:var(--surface)}
+  .cs-mockup-grid.is-bare .cs-phone-mini img{background:var(--surface)}
   .cs-mockup-cap{
     font-family:'Geist Mono',monospace;
     font-size:.68rem;
@@ -431,7 +437,7 @@ async function renderProject() {
         </div>
         ${(hasAr || hasDark) ? `<p class="cs-sr" id="cs-shot-status" aria-live="polite"></p>` : ""}
         ${walkNote}
-        ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups">${banner}${mockups}</div>` : ""}
+        ${hasMockups ? `<div class="cs-mockup-grid${p.mockup_frame === "none" ? " is-bare" : ""}" data-walk-panel="mockups">${banner}${mockups}</div>` : ""}
         ${hasVideo ? `
         <div class="cs-phone-wrap" data-walk-panel="video" style="${hasMockups ? "display:none" : ""}">
           <span class="cs-phone-lbl">Emulator</span>

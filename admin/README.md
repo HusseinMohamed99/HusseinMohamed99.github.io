@@ -45,7 +45,21 @@ mockups:
   fill it. Raw phone screenshots fit as they are. Captures without a status bar, or with a
   different ratio, should be padded to 9:19.5 using the screen's own edge colour (a dark
   shot's own dark colour), so the frame's camera dot sits on a plain strip. Store graphics
-  that already contain a phone frame or a headline look wrong in it, so use plain screens.
+  that already contain a phone frame or a headline look wrong in it: either use plain
+  screens, or set the flag below.
+
+## Store graphics: `mockup_frame: none`
+
+```yaml
+mockup_frame: none   # optional, project-level; omit it (or "phone") for the phone frame
+```
+
+With `none`, every screenshot of that project is shown as a plain rounded 9:16 card (the
+Play-store screenshot shape) instead of inside the phone frame. Grid, zoomed view and the
+English | العربية and Light | Dark switches behave exactly the same. Use it only when the
+images are finished store graphics that draw their own phone; mixing raw screenshots and
+store graphics in one project is not supported. In the dashboard it is the "Screenshot
+frame" field.
 
 ## Where dashboard uploads land
 
