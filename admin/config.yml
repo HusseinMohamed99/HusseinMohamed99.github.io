@@ -103,6 +103,22 @@ collections:
         fields:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Screenshot — Arabic"
+            name: "image_ar"
+            widget: "image"
+            required: false
+            hint: >-
+              The same screen in Arabic. Leave empty to reuse the English
+              screenshot. The English | العربية switch appears on the case study
+              automatically as soon as any screen has an Arabic image.
+            # Lands in images/<slug>/ar/, next to the English uploads.
+            media_folder: "{{media_folder}}/ar"
+            public_folder: "{{public_folder}}/ar"
+          - label: "Caption — Arabic"
+            name: "caption_ar"
+            widget: "string"
+            required: false
+            hint: "Shown when the Arabic screenshots are selected. Leave empty to reuse the English caption."
       - label: "Demo Video (MP4, keep under 20MB)"
         name: "video"
         widget: "file"

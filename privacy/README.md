@@ -44,3 +44,11 @@ to link from a store listing and a single place to check when something changes.
   `[...document.fonts].filter(f => f.status === 'loaded').map(f => f.family)`
 - Never delete a published URL. `studyflow-ar/` and `x5-fitness/privacy-policy.html`
   are redirect stubs for exactly this reason — both were live and indexed.
+- **`privacy/studyflow/index.html` and `privacy/studyflow-ar/index.html` are
+  StudyFlow's policy URLs. Do not rename, move or remove either.**
+  `https://husseinmohamed99.github.io/privacy/studyflow/` is the privacy-policy
+  URL declared in StudyFlow's Play Console, and a published listing points at it
+  permanently. `…/privacy/studyflow-ar/` is the Arabic URL that StudyFlow's
+  Data-safety record cross-links (`docs/legal/play_data_safety.md`), and it is
+  indexed. Renaming or removing either breaks the listing's policy link. Change
+  the content in place.
