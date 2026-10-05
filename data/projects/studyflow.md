@@ -72,39 +72,27 @@ architecture_flow:
   - step: Domain Use-Cases
   - step: Repositories
   - step: Drift / SQLite
-banner: images/study-flow/studyflow_feature_graphic.png
+mockup_frame: none
 mockups:
-  - image: images/study-flow/en/studyflow_01_home.png
-    caption: Home
-    image_ar: images/study-flow/ar/studyflow_01_home.png
-    caption_ar: الرئيسية
-  - image: images/study-flow/en/studyflow_02_pomodoro.png
+  - image: images/study-flow/en/studyflow_play_en_01.png
     caption: Pomodoro
-    image_ar: images/study-flow/ar/studyflow_02_pomodoro.png
+    image_ar: images/study-flow/ar/studyflow_play_ar_01.png
     caption_ar: بومودورو
-  - image: images/study-flow/en/studyflow_03_subject.png
-    caption: Subject
-    image_ar: images/study-flow/ar/studyflow_03_subject.png
-    caption_ar: المادة
-  - image: images/study-flow/en/studyflow_04_tasks.png
+  - image: images/study-flow/en/studyflow_play_en_02.png
+    caption: Subjects
+    image_ar: images/study-flow/ar/studyflow_play_ar_02.png
+    caption_ar: المواد
+  - image: images/study-flow/en/studyflow_play_en_03.png
     caption: Tasks
-    image_ar: images/study-flow/ar/studyflow_04_tasks.png
+    image_ar: images/study-flow/ar/studyflow_play_ar_03.png
     caption_ar: المهام
-  - image: images/study-flow/en/studyflow_05_exams.png
+  - image: images/study-flow/en/studyflow_play_en_04.png
     caption: Exams
-    image_ar: images/study-flow/ar/studyflow_05_exams.png
+    image_ar: images/study-flow/ar/studyflow_play_ar_04.png
     caption_ar: الاختبارات
-  - image: images/study-flow/en/studyflow_06_review.png
-    caption: Review
-    image_ar: images/study-flow/ar/studyflow_06_review.png
-    caption_ar: المراجعة
-  - image: images/study-flow/en/studyflow_07_stats.png
-    caption: Statistics
-    image_ar: images/study-flow/ar/studyflow_07_stats.png
-    caption_ar: الإحصائيات
-  - image: images/study-flow/en/studyflow_08_settings.png
+  - image: images/study-flow/en/studyflow_play_en_05.png
     caption: Settings
-    image_ar: images/study-flow/ar/studyflow_08_settings.png
+    image_ar: images/study-flow/ar/studyflow_play_ar_05.png
     caption_ar: الإعدادات
 challenges:
   - label: Release Manifest
