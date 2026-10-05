@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#0A6EF5"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Cabinet+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Cabinet+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../styles.css"/>
 <script defer data-domain="husseinmohamed99.github.io" src="https://plausible.io/js/script.js"></script>
 <style>
@@ -65,6 +65,31 @@
     border-radius:100px;
   }
   .cs-walk-tab{cursor:pointer}
+
+  /* Screenshot language switch — same pill as the privacy pages' switch */
+  .cs-walk-title{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem}
+  .cs-shot-lang{
+    display:inline-flex;gap:2px;padding:3px;
+    background:var(--surface);border:1px solid var(--border2);border-radius:999px;
+  }
+  .cs-shot-lang button{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:34px;padding:4px 15px;border-radius:999px;
+    font-family:'Geist Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.06em;line-height:1.2;
+    background:transparent;color:var(--muted);border:1px solid transparent;cursor:pointer;
+    transition:background .16s,color .16s,box-shadow .16s;
+  }
+  .cs-shot-lang button:hover{color:var(--hsm-blue-text)}
+  .cs-shot-lang button[aria-pressed="true"]{
+    background:var(--hsm-blue);color:#fff;
+    box-shadow:0 1px 2px rgba(var(--hsm-blue-rgb),.35),0 2px 8px rgba(var(--hsm-blue-rgb),.28);
+  }
+  .cs-shot-lang button:focus-visible{outline:2px solid var(--hsm-blue);outline-offset:2px}
+  .cs-shot-lang button[lang="ar"],
+  .cs-mockup-cap[lang="ar"]{font-family:'Noto Naskh Arabic',serif;letter-spacing:0}
+  .cs-shot-lang button[lang="ar"]{font-size:13.5px}
+  .cs-mockup-cap[lang="ar"]{font-size:.8rem}
+  .cs-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
   .cs-lightbox{
     position:fixed;inset:0;z-index:999;
@@ -218,6 +243,8 @@
 <script src="../js/js-yaml.min.js"></script>
 <script src="../js/site-data.js"></script>
 <script>
+const SHOT_LANG_KEY = "cs-shot-lang";
+
 async function renderProject() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
@@ -265,14 +292,39 @@ async function renderProject() {
       <img src="../${escapeAttr(p.banner)}" alt="${escapeAttr(p.name)} Screenshots Banner" style="width:100%;border-radius:18px;display:block;">
     </div>` : "";
 
-  const mockups = (p.mockups || []).map(m => `
-    <div class="cs-mockup">
-      <div class="cs-phone-mini" data-lightbox-src="../${escapeAttr(m.image)}">
-        <div class="cs-phone-mini-inner"><img src="../${escapeAttr(m.image)}" alt="${escapeAttr(m.caption ||"")}"/></div>
+  // Bilingual screenshots: an item may add image_ar / caption_ar. Either one
+  // missing falls back to the English value, and the EN | العربية switch only
+  // renders when at least one item has image_ar.
+  const shots = (p.mockups || []).map(m => ({
+    en: { src: m.image, cap: m.caption || "", ar: false },
+    ar: { src: m.image_ar || m.image, cap: m.caption_ar || m.caption || "", ar: !!m.caption_ar },
+  }));
+  const hasAr = (p.mockups || []).some(m => m.image_ar);
+  let shotLang = "en";
+  if (hasAr) {
+    const asked = params.get("lang");
+    let saved = null;
+    try { saved = localStorage.getItem(SHOT_LANG_KEY); } catch (_) { /* storage blocked */ }
+    shotLang = (asked === "ar" || asked === "en") ? asked : (saved === "ar" ? "ar" : "en");
+  }
+  const arAttrs = (v) => v.ar ? ` lang="ar" dir="rtl"` : "";
+
+  const mockups = shots.map((s, i) => {
+    const v = s[shotLang];
+    return `
+    <div class="cs-mockup" data-shot="${i}">
+      <div class="cs-phone-mini" data-lightbox-src="../${escapeAttr(v.src)}">
+        <div class="cs-phone-mini-inner"><img src="../${escapeAttr(v.src)}" alt="${escapeAttr(v.cap)}"${arAttrs(v)} loading="lazy" decoding="async"/></div>
       </div>
-      <span class="cs-mockup-cap">${escapeHtml(m.caption || "")}</span>
-    </div>
-  `).join("");
+      <span class="cs-mockup-cap"${arAttrs(v)}>${escapeHtml(v.cap)}</span>
+    </div>`;
+  }).join("");
+
+  const shotSwitch = hasAr ? `
+    <div class="cs-shot-lang" role="group" aria-label="Screenshot language">
+      <button type="button" data-shot-lang="en" aria-pressed="${shotLang === "en"}">English</button>
+      <button type="button" data-shot-lang="ar" aria-pressed="${shotLang === "ar"}" lang="ar">العربية</button>
+    </div>` : "";
 
   const hasVideo = !!p.video;
   const hasMockups = (p.mockups || []).length > 0;
@@ -342,10 +394,14 @@ async function renderProject() {
         <div class="cs-walk-head">
           <div>
             <div class="sec-tag">Walkthrough</div>
-            <h2 class="cs-h2" style="font-size:1.75rem">See it in action</h2>
+            <div class="cs-walk-title">
+              <h2 class="cs-h2" style="font-size:1.75rem">See it in action</h2>
+              ${shotSwitch}
+            </div>
           </div>
           ${walkTabs}
         </div>
+        ${hasAr ? `<p class="cs-sr" id="cs-shot-status" aria-live="polite"></p>` : ""}
         ${walkNote}
         ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups">${banner}${mockups}</div>` : ""}
         ${hasVideo ? `
@@ -400,10 +456,52 @@ async function renderProject() {
   document.querySelectorAll("[data-lightbox-src]").forEach(el => {
     el.addEventListener("click", () => {
       lightboxImg.src = el.getAttribute("data-lightbox-src");
+      lightbox.dataset.openShot = el.closest("[data-shot]")?.dataset.shot ?? "";
       lightbox.classList.add("open");
     });
   });
-  function closeLightbox() { lightbox.classList.remove("open"); lightboxImg.src = ""; }
+  function closeLightbox() { lightbox.classList.remove("open"); lightboxImg.src = ""; lightbox.dataset.openShot = ""; }
+
+  // Screenshot language: swap every item in place. The frames keep their
+  // aspect-ratio, so nothing reflows. An open lightbox follows the switch.
+  function showShot(i) {
+    const item = root.querySelector(`[data-shot="${i}"]`);
+    const v = shots[i][shotLang];
+    const src = "../" + v.src;
+    const frame = item.querySelector(".cs-phone-mini");
+    const img = item.querySelector("img");
+    const cap = item.querySelector(".cs-mockup-cap");
+    frame.setAttribute("data-lightbox-src", src);
+    if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+    img.alt = v.cap;
+    cap.textContent = v.cap;
+    for (const el of [img, cap]) {
+      if (v.ar) { el.lang = "ar"; el.dir = "rtl"; } else { el.removeAttribute("lang"); el.removeAttribute("dir"); }
+    }
+    if (lightbox.classList.contains("open") && lightbox.dataset.openShot === String(i)) lightboxImg.src = src;
+  }
+  // A missing Arabic file falls back to its English screenshot, for good.
+  root.querySelectorAll("[data-shot] img").forEach(img => {
+    img.addEventListener("error", () => {
+      const i = img.closest("[data-shot]").dataset.shot;
+      const s = shots[i];
+      if (s.ar.src === s.en.src) return;
+      s.ar.src = s.en.src;
+      if (shotLang === "ar") showShot(i);
+    });
+  });
+  const shotStatus = document.getElementById("cs-shot-status");
+  root.querySelectorAll("[data-shot-lang]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.shotLang;
+      if (lang === shotLang) return;
+      shotLang = lang;
+      try { localStorage.setItem(SHOT_LANG_KEY, lang); } catch (_) { /* storage blocked */ }
+      root.querySelectorAll("[data-shot-lang]").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+      shots.forEach((_, i) => showShot(i));
+      shotStatus.textContent = lang === "ar" ? "Showing Arabic screenshots." : "Showing English screenshots.";
+    });
+  });
   document.getElementById("cs-lightbox-close").addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
