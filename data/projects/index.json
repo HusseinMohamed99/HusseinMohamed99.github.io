@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-29T09:20:13.234Z",
-  "count": 10,
+  "generated": "2026-10-05T11:36:48.108Z",
+  "count": 11,
   "projects": [
     {
       "slug": "tuwaiq-pay",
@@ -193,13 +193,46 @@
       "lastmod": "2026-09-29"
     },
     {
+      "slug": "studyflow",
+      "name": "StudyFlow (مذاكرتي)",
+      "category": "Education & Productivity · Offline-First · Bilingual Arabic/English",
+      "badge": "Coming Soon",
+      "period": "Sep 2026 – Oct 2026",
+      "short_description": "An offline study planner and focus timer for students — subjects with weekly targets, focus sessions, tasks and exam countdowns, flashcards with spaced review, and weekly statistics. No account, no ads, and no internet permission at all.",
+      "icon": "images/study-flow/logo.png",
+      "order": 5,
+      "accent_color": "#155E75",
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "Riverpod"
+        },
+        {
+          "tag": "GoRouter"
+        },
+        {
+          "tag": "Drift / SQLite"
+        },
+        {
+          "tag": "Freezed"
+        },
+        {
+          "tag": "gen-l10n"
+        }
+      ],
+      "links": {},
+      "lastmod": "2026-10-05"
+    },
+    {
       "slug": "sportymate",
       "name": "SportyMate",
       "category": "Sports Booking Marketplace · Android & iOS · Arabic/English · Octopus Software Solutions",
       "badge": "Company Project",
       "short_description": "Two-sided sports booking marketplace built at Octopus Software Solutions, connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline.",
       "icon": "images/sportymate/sporty_icon.png",
-      "order": 5,
+      "order": 6,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -263,7 +296,7 @@
         }
       ],
       "links": {},
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-10-05"
     },
     {
       "slug": "systempro",
@@ -272,7 +305,7 @@
       "badge": "Company Project",
       "short_description": "Bilingual (Arabic/English) real estate marketplace built at Valuerythm for the Saudi market — listings for sale, rent and booking, advanced filters, bilingual location search, and direct agent contact via call or WhatsApp.",
       "icon": "images/systempro/systempro_icon.png",
-      "order": 6,
+      "order": 7,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -327,7 +360,7 @@
         }
       ],
       "links": {},
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-10-05"
     },
     {
       "slug": "egydead",
@@ -336,7 +369,7 @@
       "badge": "Personal Project",
       "short_description": "Media browser for movies, series, and anime with 10K+ downloads on Google Play. Smart recommendations, trailers, cast details, and categorized search — built with BLoC, Dio, and shimmer loading UX.",
       "icon": "images/egydead/egydead_icon.png",
-      "order": 7,
+      "order": 8,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -390,7 +423,7 @@
       "links": {
         "github": "https://github.com/HusseinMohamed99/EGY_DEAD"
       },
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-10-05"
     },
     {
       "slug": "muslim-app",
@@ -399,7 +432,7 @@
       "badge": "Personal Project",
       "short_description": "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Published on Google Play with bilingual AR/EN support, light & dark themes, and the full Quran and Hadith bundled for offline use.",
       "icon": "images/muslim-app/muslim_icon.png",
-      "order": 8,
+      "order": 9,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -444,7 +477,7 @@
       "links": {
         "github": "https://github.com/HusseinMohamed99/Muslim"
       },
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-10-05"
     },
     {
       "slug": "tripso",
@@ -453,7 +486,7 @@
       "badge": "Graduation",
       "short_description": "Tourism app covering Egypt, UAE, France, and Italy with top attractions, ticket pricing, interactive maps, and historical insights. Graduation project built with Cubit state management, Dio REST integration, and Firebase auth.",
       "icon": "images/tripso/tripso_icon.png",
-      "order": 9,
+      "order": 10,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -501,7 +534,7 @@
       "links": {
         "github": "https://github.com/HusseinMohamed99/Tripso"
       },
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-10-05"
     },
     {
       "slug": "quran-kareem",
@@ -510,7 +543,7 @@
       "badge": "Personal Project",
       "short_description": "Arabic-first Quran app with full mushaf reading, verse and surah recitation, live radio, audio tafsir, reciters directory, and riwayat browser — published on Google Play.",
       "icon": "images/quran-kareem/logo.svg",
-      "order": 10,
+      "order": 11,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -558,7 +591,7 @@
       "links": {
         "github": "https://github.com/HusseinMohamed99/Quran_Kareem"
       },
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-10-05"
     }
   ]
 }
