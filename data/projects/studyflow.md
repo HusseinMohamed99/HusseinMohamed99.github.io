@@ -77,27 +77,35 @@ mockups:
   - image: images/study-flow/en/studyflow_01_home.png
     caption: Home
     image_ar: images/study-flow/ar/studyflow_01_home.png
+    caption_ar: الرئيسية
   - image: images/study-flow/en/studyflow_02_pomodoro.png
     caption: Pomodoro
     image_ar: images/study-flow/ar/studyflow_02_pomodoro.png
+    caption_ar: بومودورو
   - image: images/study-flow/en/studyflow_03_subject.png
     caption: Subject
     image_ar: images/study-flow/ar/studyflow_03_subject.png
+    caption_ar: المادة
   - image: images/study-flow/en/studyflow_04_tasks.png
     caption: Tasks
     image_ar: images/study-flow/ar/studyflow_04_tasks.png
+    caption_ar: المهام
   - image: images/study-flow/en/studyflow_05_exams.png
     caption: Exams
     image_ar: images/study-flow/ar/studyflow_05_exams.png
+    caption_ar: الاختبارات
   - image: images/study-flow/en/studyflow_06_review.png
     caption: Review
     image_ar: images/study-flow/ar/studyflow_06_review.png
+    caption_ar: المراجعة
   - image: images/study-flow/en/studyflow_07_stats.png
     caption: Statistics
     image_ar: images/study-flow/ar/studyflow_07_stats.png
+    caption_ar: الإحصائيات
   - image: images/study-flow/en/studyflow_08_settings.png
     caption: Settings
     image_ar: images/study-flow/ar/studyflow_08_settings.png
+    caption_ar: الإعدادات
 challenges:
   - label: Release Manifest
     title: The internet permission came back, and the source looked fine
