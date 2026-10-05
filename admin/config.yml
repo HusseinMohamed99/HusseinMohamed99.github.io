@@ -95,6 +95,17 @@ collections:
         name: "banner"
         widget: "image"
         required: false
+      - label: "Screenshot frame"
+        name: "mockup_frame"
+        widget: "select"
+        required: false
+        options:
+          - { label: "Phone frame (raw screenshots)", value: "phone" }
+          - { label: "None (store graphics that already show a phone)", value: "none" }
+        hint: >-
+          Leave empty for raw screenshots: they are drawn inside a phone frame.
+          Choose None when the images are finished store graphics (9:16, with
+          their own drawn phone and headline): they are shown as plain rounded cards.
       - label: "Screenshots / Mockups"
         name: "mockups"
         widget: "list"
