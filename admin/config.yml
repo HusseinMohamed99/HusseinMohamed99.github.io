@@ -103,6 +103,17 @@ collections:
         fields:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Screenshot — Dark"
+            name: "image_dark"
+            widget: "image"
+            required: false
+            hint: >-
+              The same English screen in dark mode. Leave empty to reuse the light
+              screenshot. The Light | Dark switch appears on the case study
+              automatically as soon as any screen has a dark image.
+            # Lands in images/<slug>/dark/, next to the English uploads.
+            media_folder: "{{media_folder}}/dark"
+            public_folder: "{{public_folder}}/dark"
           - label: "Screenshot — Arabic"
             name: "image_ar"
             widget: "image"
@@ -114,6 +125,16 @@ collections:
             # Lands in images/<slug>/ar/, next to the English uploads.
             media_folder: "{{media_folder}}/ar"
             public_folder: "{{public_folder}}/ar"
+          - label: "Screenshot — Arabic, dark"
+            name: "image_ar_dark"
+            widget: "image"
+            required: false
+            hint: >-
+              The Arabic screen in dark mode. Leave empty to fall back to the Arabic
+              light screenshot, then the English dark one, then the English light one.
+            # Lands in images/<slug>/ar/dark/.
+            media_folder: "{{media_folder}}/ar/dark"
+            public_folder: "{{public_folder}}/ar/dark"
           - label: "Caption — Arabic"
             name: "caption_ar"
             widget: "string"

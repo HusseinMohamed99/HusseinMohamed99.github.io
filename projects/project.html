@@ -88,6 +88,8 @@
   .cs-shot-lang button[lang="ar"],
   .cs-mockup-cap[lang="ar"]{font-family:'Noto Naskh Arabic',serif;letter-spacing:0}
   .cs-shot-lang button[lang="ar"]{font-size:13.5px}
+  .cs-shot-theme button{padding:4px 11px;min-width:40px}
+  .cs-shot-theme svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .cs-mockup-cap[lang="ar"]{font-size:.8rem}
   .cs-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -244,6 +246,7 @@
 <script src="../js/site-data.js"></script>
 <script>
 const SHOT_LANG_KEY = "cs-shot-lang";
+const SHOT_THEME_KEY = "cs-shot-theme";
 
 async function renderProject() {
   const params = new URLSearchParams(window.location.search);
@@ -292,25 +295,46 @@ async function renderProject() {
       <img src="../${escapeAttr(p.banner)}" alt="${escapeAttr(p.name)} Screenshots Banner" style="width:100%;border-radius:18px;display:block;">
     </div>` : "";
 
-  // Bilingual screenshots: an item may add image_ar / caption_ar. Either one
-  // missing falls back to the English value, and the EN | العربية switch only
-  // renders when at least one item has image_ar.
-  const shots = (p.mockups || []).map(m => ({
-    en: { src: m.image, cap: m.caption || "", ar: false },
-    ar: { src: m.image_ar || m.image, cap: m.caption_ar || m.caption || "", ar: !!m.caption_ar },
-  }));
-  const hasAr = (p.mockups || []).some(m => m.image_ar);
+  // Screenshot variants: an item may add image_dark, image_ar, image_ar_dark and
+  // caption_ar. The requested (lang, theme) falls back through
+  // (lang, light) → (en, theme) → (en, light); a file that fails to load is
+  // skipped the same way. Each switch only renders when some item needs it.
+  const SHOT_FIELD = { en: { light: "image", dark: "image_dark" }, ar: { light: "image_ar", dark: "image_ar_dark" } };
+  const items = p.mockups || [];
+  const shots = items.map(m => ({ m, dead: new Set() }));
+  const hasAr = items.some(m => m.image_ar || m.image_ar_dark);
+  const hasDark = items.some(m => m.image_dark || m.image_ar_dark);
+  const readSaved = (key) => { try { return localStorage.getItem(key); } catch (_) { return null; } };
   let shotLang = "en";
   if (hasAr) {
     const asked = params.get("lang");
-    let saved = null;
-    try { saved = localStorage.getItem(SHOT_LANG_KEY); } catch (_) { /* storage blocked */ }
-    shotLang = (asked === "ar" || asked === "en") ? asked : (saved === "ar" ? "ar" : "en");
+    shotLang = (asked === "ar" || asked === "en") ? asked : (readSaved(SHOT_LANG_KEY) === "ar" ? "ar" : "en");
+  }
+  // Theme: ?theme= wins, then the visitor's own gallery choice, otherwise the
+  // site theme — followed live until the gallery switch is used.
+  const siteTheme = () => document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  let shotTheme = "light", followSite = false;
+  if (hasDark) {
+    const asked = params.get("theme"), saved = readSaved(SHOT_THEME_KEY);
+    if (asked === "dark" || asked === "light") shotTheme = asked;
+    else if (saved === "dark" || saved === "light") shotTheme = saved;
+    else { shotTheme = siteTheme(); followSite = true; }
+  }
+  function shotView(i) {
+    const { m, dead } = shots[i];
+    const chain = [[shotLang, shotTheme], [shotLang, "light"], ["en", shotTheme], ["en", "light"]]
+      .map(([l, t]) => m[SHOT_FIELD[l][t]]).filter(Boolean);
+    const ar = shotLang === "ar" && !!m.caption_ar;
+    return {
+      src: chain.find(s => !dead.has(s)) || m.image,
+      cap: (ar ? m.caption_ar : m.caption) || "",
+      ar,
+    };
   }
   const arAttrs = (v) => v.ar ? ` lang="ar" dir="rtl"` : "";
 
-  const mockups = shots.map((s, i) => {
-    const v = s[shotLang];
+  const mockups = shots.map((_, i) => {
+    const v = shotView(i);
     return `
     <div class="cs-mockup" data-shot="${i}">
       <div class="cs-phone-mini" data-lightbox-src="../${escapeAttr(v.src)}">
@@ -320,11 +344,15 @@ async function renderProject() {
     </div>`;
   }).join("");
 
-  const shotSwitch = hasAr ? `
+  const shotSwitch = (hasAr ? `
     <div class="cs-shot-lang" role="group" aria-label="Screenshot language">
       <button type="button" data-shot-lang="en" aria-pressed="${shotLang === "en"}">English</button>
       <button type="button" data-shot-lang="ar" aria-pressed="${shotLang === "ar"}" lang="ar">العربية</button>
-    </div>` : "";
+    </div>` : "") + (hasDark ? `
+    <div class="cs-shot-lang cs-shot-theme" role="group" aria-label="Screenshot theme">
+      <button type="button" data-shot-theme="light" aria-pressed="${shotTheme === "light"}" aria-label="Light screenshots" title="Light"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></button>
+      <button type="button" data-shot-theme="dark" aria-pressed="${shotTheme === "dark"}" aria-label="Dark screenshots" title="Dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    </div>` : "");
 
   const hasVideo = !!p.video;
   const hasMockups = (p.mockups || []).length > 0;
@@ -401,7 +429,7 @@ async function renderProject() {
           </div>
           ${walkTabs}
         </div>
-        ${hasAr ? `<p class="cs-sr" id="cs-shot-status" aria-live="polite"></p>` : ""}
+        ${(hasAr || hasDark) ? `<p class="cs-sr" id="cs-shot-status" aria-live="polite"></p>` : ""}
         ${walkNote}
         ${hasMockups ? `<div class="cs-mockup-grid" data-walk-panel="mockups">${banner}${mockups}</div>` : ""}
         ${hasVideo ? `
@@ -462,11 +490,11 @@ async function renderProject() {
   });
   function closeLightbox() { lightbox.classList.remove("open"); lightboxImg.src = ""; lightbox.dataset.openShot = ""; }
 
-  // Screenshot language: swap every item in place. The frames keep their
+  // Screenshot language/theme: swap every item in place. The frames keep their
   // aspect-ratio, so nothing reflows. An open lightbox follows the switch.
   function showShot(i) {
     const item = root.querySelector(`[data-shot="${i}"]`);
-    const v = shots[i][shotLang];
+    const v = shotView(i);
     const src = "../" + v.src;
     const frame = item.querySelector(".cs-phone-mini");
     const img = item.querySelector("img");
@@ -480,28 +508,51 @@ async function renderProject() {
     }
     if (lightbox.classList.contains("open") && lightbox.dataset.openShot === String(i)) lightboxImg.src = src;
   }
-  // A missing Arabic file falls back to its English screenshot, for good.
+  // A file that fails to load is skipped for good; the next one in the
+  // fallback chain takes its place. The English light image is the floor.
   root.querySelectorAll("[data-shot] img").forEach(img => {
     img.addEventListener("error", () => {
       const i = img.closest("[data-shot]").dataset.shot;
-      const s = shots[i];
-      if (s.ar.src === s.en.src) return;
-      s.ar.src = s.en.src;
-      if (shotLang === "ar") showShot(i);
+      const failed = img.getAttribute("src").replace(/^\.\.\//, "");
+      if (failed === shots[i].m.image) return;
+      shots[i].dead.add(failed);
+      showShot(i);
     });
   });
   const shotStatus = document.getElementById("cs-shot-status");
+  const LANG_NAME = { en: "English", ar: "Arabic" };
+  function applyShots(changed) {
+    root.querySelectorAll("[data-shot-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.shotLang === shotLang)));
+    root.querySelectorAll("[data-shot-theme]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.shotTheme === shotTheme)));
+    shots.forEach((_, i) => showShot(i));
+    shotStatus.textContent = changed === "theme"
+      ? `Showing ${shotTheme} screenshots.`
+      : `Showing ${LANG_NAME[shotLang]} screenshots.`;
+  }
   root.querySelectorAll("[data-shot-lang]").forEach(btn => {
     btn.addEventListener("click", () => {
-      const lang = btn.dataset.shotLang;
-      if (lang === shotLang) return;
-      shotLang = lang;
-      try { localStorage.setItem(SHOT_LANG_KEY, lang); } catch (_) { /* storage blocked */ }
-      root.querySelectorAll("[data-shot-lang]").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-      shots.forEach((_, i) => showShot(i));
-      shotStatus.textContent = lang === "ar" ? "Showing Arabic screenshots." : "Showing English screenshots.";
+      if (btn.dataset.shotLang === shotLang) return;
+      shotLang = btn.dataset.shotLang;
+      try { localStorage.setItem(SHOT_LANG_KEY, shotLang); } catch (_) { /* storage blocked */ }
+      applyShots("lang");
     });
   });
+  root.querySelectorAll("[data-shot-theme]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      followSite = false;
+      try { localStorage.setItem(SHOT_THEME_KEY, btn.dataset.shotTheme); } catch (_) { /* storage blocked */ }
+      if (btn.dataset.shotTheme === shotTheme) return;
+      shotTheme = btn.dataset.shotTheme;
+      applyShots("theme");
+    });
+  });
+  if (followSite) {
+    new MutationObserver(() => {
+      if (!followSite || siteTheme() === shotTheme) return;
+      shotTheme = siteTheme();
+      applyShots("theme");
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  }
   document.getElementById("cs-lightbox-close").addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });

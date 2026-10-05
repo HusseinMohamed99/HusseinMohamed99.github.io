@@ -147,6 +147,7 @@ function main() {
     "/privacy/x5-fitness/",
     "/privacy/x5-fitness/account-deletion.html",
     "/privacy/studyflow/",
+    "/privacy/vaulta/",
   ];
 
   const urls = [
