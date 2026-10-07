@@ -1,7 +1,7 @@
 ---
 name: Refqa (رِفقة)
 category: Islamic Lifestyle · Offline-First · Arabic/English
-badge: Featured Project
+badge: Personal Project
 period: Jul 2026
 short_description: "A comprehensive Islamic companion app: dual-mode Quran
   reading (browsable index + a full 604-page Madani Mushaf renderer), live
