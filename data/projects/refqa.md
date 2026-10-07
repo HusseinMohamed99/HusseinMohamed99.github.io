@@ -1,8 +1,8 @@
 ---
-period: Jul 2026
 name: Refqa (رِفقة)
 category: Islamic Lifestyle · Offline-First · Arabic/English
-badge: Coming Soon
+badge: Personal Project
+period: Jul 2026
 short_description: "A comprehensive Islamic companion app: dual-mode Quran
   reading (browsable index + a full 604-page Madani Mushaf renderer), live
   Qur'an radio and per-reciter profiles, on-device speech-recognition recitation
@@ -211,5 +211,6 @@ architecture_flow_2:
   - step: BroadcastReceiver
   - step: Kotlin ForegroundService
   - step: Adhan plays, no UI, no Flutter engine
-links: {}
+links:
+  google_play: https://play.google.com/store/apps/details?id=com.hsmsoftware.refqa&hl=ar
 ---
