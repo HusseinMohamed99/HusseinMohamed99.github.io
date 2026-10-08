@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T15:45:58.281Z",
+  "generated": "2026-10-08T14:49:14.828Z",
   "count": 12,
   "projects": [
     {
@@ -114,7 +114,7 @@
       "slug": "x_5_fitness",
       "name": "5X Fitness",
       "category": "Fitness & Habit Tracking · Flutter · Firebase",
-      "badge": "Coming Soon",
+      "badge": "Personal Project",
       "period": "Aug 2026 – Sep 2026",
       "short_description": "A bilingual (Arabic/English) fitness companion built on Flutter and Firebase — gym attendance streaks, a daily plank habit, workout logging against a 42-exercise reference library, body progress charted against InBody figures, and a plain-language privacy screen that exports everything the app holds about you.",
       "icon": "images/5x-fitness/logo.png",
@@ -152,14 +152,16 @@
           "tag": "App Check"
         }
       ],
-      "links": {},
-      "lastmod": "2026-09-29"
+      "links": {
+        "google_play": "https://play.google.com/store/apps/details?id=com.hsmsoftware.fivexfitness"
+      },
+      "lastmod": "2026-10-08"
     },
     {
       "slug": "expense_splitter",
       "name": "Splitly (قسمة)",
       "category": "Shared Expenses · Offline-First · Bilingual Arabic/English",
-      "badge": "Coming Soon",
+      "badge": "Personal Project",
       "period": "Aug 2026",
       "short_description": "An offline-first, guest-first expense-splitting app for travel friends, roommates, and work teams — record who paid, split equally or custom, and get a deterministic settlement engine that works out the minimum number of payments needed to settle the whole group.",
       "icon": "images/splitly-قسمة/logo.svg",
@@ -191,8 +193,10 @@
           "tag": "gen-l10n"
         }
       ],
-      "links": {},
-      "lastmod": "2026-09-29"
+      "links": {
+        "google_play": "https://play.google.com/store/apps/details?id=com.hsmsoftware.splitly"
+      },
+      "lastmod": "2026-10-08"
     },
     {
       "slug": "studyflow",
