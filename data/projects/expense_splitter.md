@@ -1,8 +1,8 @@
 ---
-period: Aug 2026
 name: Splitly (قسمة)
 category: Shared Expenses · Offline-First · Bilingual Arabic/English
-badge: Coming Soon
+badge: Personal Project
+period: Aug 2026
 short_description: An offline-first, guest-first expense-splitting app for
   travel friends, roommates, and work teams — record who paid, split equally or
   custom, and get a deterministic settlement engine that works out the minimum
@@ -96,5 +96,6 @@ tech_tags:
   - tag: Cloud Firestore
   - tag: Cloud Functions
   - tag: gen-l10n
-links: {}
+links:
+  google_play: https://play.google.com/store/apps/details?id=com.hsmsoftware.splitly
 ---
