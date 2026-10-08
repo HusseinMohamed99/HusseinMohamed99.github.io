@@ -52,17 +52,16 @@ capabilities:
     title: Arabic / English
     description: Fully bilingual with intentional RTL layout, built on Flutter's
       gen-l10n rather than any hard-coded UI strings.
-architecture_text: >
-  Splitly follows a feature-first Flutter architecture with strict layer
-  boundaries: domain services own the financial rules (splitting, balance
-  calculation, settlement matching) and stay independent of Flutter, Firebase,
-  and the storage layer entirely, so the same rules are testable in isolation
-  from the UI. Drift/SQLite is the offline-first local store, with stable IDs
-  and versioned, tested migrations. A later V1 layer adds Firebase
+architecture_text: "Splitly follows a feature-first Flutter architecture with
+  strict layer boundaries: domain services own the financial rules (splitting,
+  balance calculation, settlement matching) and stay independent of Flutter,
+  Firebase, and the storage layer entirely, so the same rules are testable in
+  isolation from the UI. Drift/SQLite is the offline-first local store, with
+  stable IDs and versioned, tested migrations. A later V1 layer adds Firebase
   Authentication, idempotent guest-to-account migration, and cloud
   synchronization behind a trusted backend — accepted mutations get a
   server-assigned financial sequence and idempotency key, so a retried sync can
-  never double-apply a settlement.
+  never double-apply a settlement."
 banner: images/splitly-قسمة/splitly_00_cover.png
 mockups:
   - image: images/splitly-قسمة/splitly_13_splash.png
