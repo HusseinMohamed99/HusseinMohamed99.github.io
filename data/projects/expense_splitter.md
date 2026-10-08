@@ -1,5 +1,5 @@
 ---
-name: Splitly (قسمة)
+name: Splitly (قِسمة)
 category: Shared Expenses · Offline-First · Bilingual Arabic/English
 badge: Personal Project
 period: Aug 2026
