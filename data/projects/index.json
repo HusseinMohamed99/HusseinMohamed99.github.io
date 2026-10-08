@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T15:00:31.046Z",
+  "generated": "2026-10-08T18:34:08.888Z",
   "count": 12,
   "projects": [
     {
@@ -202,7 +202,7 @@
       "slug": "studyflow",
       "name": "StudyFlow (مذاكرتي)",
       "category": "Education & Productivity · Offline-First · Bilingual Arabic/English",
-      "badge": "Coming Soon",
+      "badge": "Personal Project",
       "period": "Sep 2026 – Oct 2026",
       "short_description": "An offline study planner and focus timer for students — subjects with weekly targets, focus sessions, tasks and exam countdowns, flashcards with spaced review, and weekly statistics. No account, no ads, and no internet permission at all.",
       "icon": "images/study-flow/logo.png",
@@ -228,8 +228,10 @@
           "tag": "gen-l10n"
         }
       ],
-      "links": {},
-      "lastmod": "2026-10-05"
+      "links": {
+        "google_play": "https://play.google.com/store/apps/details?id=com.hsmsoftware.studyflow"
+      },
+      "lastmod": "2026-10-08"
     },
     {
       "slug": "vaulta",
