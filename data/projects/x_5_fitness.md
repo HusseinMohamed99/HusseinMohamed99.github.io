@@ -1,8 +1,8 @@
 ---
-period: Aug 2026 – Sep 2026
 name: 5X Fitness
 category: Fitness & Habit Tracking · Flutter · Firebase
-badge: Coming Soon
+badge: Personal Project
+period: Aug 2026 – Sep 2026
 short_description: A bilingual (Arabic/English) fitness companion built on
   Flutter and Firebase — gym attendance streaks, a daily plank habit, workout
   logging against a 42-exercise reference library, body progress charted against
@@ -96,5 +96,6 @@ tech_tags:
   - tag: Firebase Analytics
   - tag: Crashlytics
   - tag: App Check
-links: {}
+links:
+  google_play: https://play.google.com/store/apps/details?id=com.hsmsoftware.fivexfitness
 ---
