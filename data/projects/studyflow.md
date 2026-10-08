@@ -1,8 +1,8 @@
 ---
-period: Sep 2026 – Oct 2026
 name: StudyFlow (مذاكرتي)
 category: Education & Productivity · Offline-First · Bilingual Arabic/English
-badge: Coming Soon
+badge: Personal Project
+period: Sep 2026 – Oct 2026
 short_description: An offline study planner and focus timer for students —
   subjects with weekly targets, focus sessions, tasks and exam countdowns,
   flashcards with spaced review, and weekly statistics. No account, no ads, and
@@ -21,7 +21,8 @@ overview: >
   Privacy is a property of the build, not a promise in a policy. The release app has no internet permission, no account, no analytics and no advertising ID, and that is checked in the compiled manifest of every release build rather than in the source. Study data lives in a local database; the only ways it leaves the device are a backup file the user saves themselves, or an event they choose to save in their own calendar app.
 stats:
   - number: "0"
-    label: Network permissions in the release build, checked in the compiled manifest by CI
+    label: Network permissions in the release build, checked in the compiled
+      manifest by CI
   - number: "5"
     label: Spaced-review boxes, due again after 1, 3, 7, 16 and 35 days
   - number: AR / EN
@@ -39,8 +40,8 @@ capabilities:
       app is closed or the phone restarts.
   - icon: 🗓️
     title: Tasks and exams
-    description: Assignments and exam dates tied to their subject, with what is
-      due today on Home. An exam, or a task with a due date, can be sent to the
+    description: Assignments and exam dates tied to their subject, with what is due
+      today on Home. An exam, or a task with a due date, can be sent to the
       phone's calendar app.
   - icon: 🃏
     title: Flashcards and spaced review
@@ -102,21 +103,21 @@ challenges:
       and a library can merge in a permission no source file mentions. The fix
       reads the compiled manifest inside every built AAB and APK and fails on
       any network or advertising-ID permission. It also fails if it cannot find
-      the package name, so a broken read can never pass silently, and CI runs
-      a self-test against fake bundles before trusting it.
+      the package name, so a broken read can never pass silently, and CI runs a
+      self-test against fake bundles before trusting it.
   - label: Calendar Without Permission
     title: Adding an exam to the calendar without ever reading the calendar
-    body: Calendar plugins ask for calendar access the app doesn't need. Instead,
-      a small platform channel opens the calendar app's own pre-filled new-event
-      screen — an insert intent on Android, the system event editor on iOS 17+
-      — so nothing is added unless the user saves it there, and StudyFlow
-      requests no calendar permission at all.
+    body: Calendar plugins ask for calendar access the app doesn't need. Instead, a
+      small platform channel opens the calendar app's own pre-filled new-event
+      screen — an insert intent on Android, the system event editor on iOS 17+ —
+      so nothing is added unless the user saves it there, and StudyFlow requests
+      no calendar permission at all.
   - label: Spaced Review
     title: '"Due in 3 days" has to mean a date, not 72 hours'
-    body: Most review happens in the evening, so a card graded at 21:00 and due
-      "in three days" would only reappear at 21:00. Due dates are midnight of
-      the target calendar day instead, which also keeps daylight-saving changes
-      from ever shifting a card.
+    body: Most review happens in the evening, so a card graded at 21:00 and due "in
+      three days" would only reappear at 21:00. Due dates are midnight of the
+      target calendar day instead, which also keeps daylight-saving changes from
+      ever shifting a card.
 tech_tags:
   - tag: Flutter
   - tag: Riverpod
@@ -124,5 +125,6 @@ tech_tags:
   - tag: Drift / SQLite
   - tag: Freezed
   - tag: gen-l10n
-links: {}
+links:
+  google_play: https://play.google.com/store/apps/details?id=com.hsmsoftware.studyflow
 ---
