@@ -1,5 +1,5 @@
 ---
-name: Splitly (قِسمة)
+name: Qisma (قِسمة)
 category: Shared Expenses · Offline-First · Bilingual Arabic/English
 badge: Personal Project
 period: Aug 2026
@@ -11,7 +11,7 @@ icon: images/splitly-قسمة/logo.svg
 order: 4
 accent_color: "#10b981"
 overview: >
-  Splitly starts from a simple promise: every person should know exactly how
+  Qisma starts from a simple promise: every person should know exactly how
   much they paid, how much they owe, and who they need to pay — without
   spreadsheets and without an account wall. A user can create a group, add
   members and expenses, and see balances and settlement suggestions as a guest,
@@ -52,7 +52,7 @@ capabilities:
     title: Arabic / English
     description: Fully bilingual with intentional RTL layout, built on Flutter's
       gen-l10n rather than any hard-coded UI strings.
-architecture_text: "Splitly follows a feature-first Flutter architecture with
+architecture_text: "Qisma follows a feature-first Flutter architecture with
   strict layer boundaries: domain services own the financial rules (splitting,
   balance calculation, settlement matching) and stay independent of Flutter,
   Firebase, and the storage layer entirely, so the same rules are testable in
@@ -62,6 +62,21 @@ architecture_text: "Splitly follows a feature-first Flutter architecture with
   synchronization behind a trusted backend — accepted mutations get a
   server-assigned financial sequence and idempotency key, so a retried sync can
   never double-apply a settlement."
+architecture_flow:
+  - step: Guest UI (Drift / SQLite local store)
+  - step: Financial Domain Rules (Minor Units Math)
+  - step: Deterministic Settlement Engine
+  - step: Optional Cloud Sync (Firebase Auth + Firestore)
+challenges:
+  - label: Financial Precision
+    title: Zero Floating-Point Money Math
+    body: Floating-point arithmetic introduces IEEE-754 rounding artifacts that accumulate over split ledgers. All monetary transactions and line items are modeled strictly as integer minor units (e.g. cents/piastres) from the database schema up to calculation, eliminating penny-drop discrepancies.
+  - label: Settlement Algorithm
+    title: Deterministic Debt Minimization
+    body: Built a greedy bipartite matching settlement algorithm that balances creditors and debtors to calculate the absolute minimum number of peer-to-peer payments required to reconcile an entire group ledger.
+  - label: Offline-First Ledger
+    title: Append-Only Revisions & Guest State
+    body: Designed an append-only expense revision ledger stored locally in Drift/SQLite. Users can manage complex group ledgers completely offline without account friction, with seamless idempotent migration when connecting an optional cloud account.
 banner: images/splitly-قسمة/splitly_00_cover.png
 mockups:
   - image: images/splitly-قسمة/splitly_13_splash.png

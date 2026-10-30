@@ -143,7 +143,7 @@ function main() {
   const privacyPages = [
     "/privacy/",
     "/privacy/refqa/",
-    "/privacy/splitly/",
+    "/privacy/qisma/",
     "/privacy/x5-fitness/",
     "/privacy/x5-fitness/account-deletion.html",
     "/privacy/studyflow/",

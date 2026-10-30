@@ -64,17 +64,17 @@ architecture_flow:
   - step: "The Cubit pattern-matches on that union and emits a typed success or error state; the marketplace cubit also writes its listings to hydrated storage"
   - step: "BlocBuilder/BlocConsumer widgets rebuild against the state union, rendering loading, error, empty, and success cases explicitly"
 mockups:
-  - image: /images/uploads/real-estate-home.png
+  - image: images/uploads/real-estate-home.png
     caption: RealEstate Home
-  - image: /images/uploads/favorites.png
+  - image: images/uploads/favorites.png
     caption: Favorites
-  - image: /images/uploads/filter.png
+  - image: images/uploads/filter.png
     caption: Filter
-  - image: /images/uploads/details.png
+  - image: images/uploads/details.png
     caption: RealEstate Details
-  - image: /images/uploads/company-profile.png
+  - image: images/uploads/company-profile.png
     caption: Company Profile
-  - image: /images/uploads/profile.png
+  - image: images/uploads/profile.png
     caption: User Profile
 challenges:
   - label: "Pagination"

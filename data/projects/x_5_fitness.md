@@ -53,6 +53,29 @@ capabilities:
     title: Privacy-first by design
     description: A plain-language privacy screen that also exports everything the
       app holds about you as a file you can share out — not just a policy link.
+architecture_text: "5X Fitness is structured with Clean Architecture using Riverpod
+  for declarative, reactive state management and GoRouter for deep-linkable
+  navigation. The persistence layer integrates Firebase Authentication with Cloud
+  Firestore for real-time habit tracking and user metrics, alongside Firebase
+  Storage for progress media. The client enforces robust offline caching so gym
+  logging continues seamlessly without internet connectivity, automatically syncing
+  when connection is restored. Security is enforced through Firebase App Check
+  with Google Play Integrity attestation."
+architecture_flow:
+  - step: Riverpod State & UI Layer
+  - step: Domain Habit & Workout Logic
+  - step: Local Cache & Offline Queue
+  - step: Cloud Firestore & Firebase Auth (App Check Protected)
+challenges:
+  - label: Environment Isolation
+    title: Multi-Tenant Firebase Environments
+    body: Maintained three isolated Firebase projects (dev, staging, production) with distinct application IDs, environment-specific configurations, and automated App Check token management, ensuring development experiments never impact production data.
+  - label: Offline Logging
+    title: Resilient Offline Gym Tracking
+    body: Gym basements often have zero cellular connectivity. Built an offline-first caching mechanism for workout sets, plank timers, and attendance checks, queuing mutations locally and synchronizing seamlessly upon reconnection.
+  - label: Plain-Language Privacy
+    title: In-App Data Transparency & Export
+    body: Designed an in-app privacy center empowering users to review, export their complete workout history and InBody metrics as a portable file, or execute full account deletion compliant with Google Play guidelines.
 banner: images/5x-fitness/fitness_00_cover.png
 mockups:
   - image: images/5x-fitness/fitness_01_signin.png
