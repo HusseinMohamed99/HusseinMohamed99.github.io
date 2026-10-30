@@ -65,37 +65,37 @@ architecture_flow:
   - step: "Repository returns a Freezed ApiResult the cubit maps to state"
   - step: "HydratedCubits rehydrate last-good data, then revalidate silently"
 mockups:
-  - image: /images/uploads/splash-5.png
+  - image: images/uploads/splash-5.png
     caption: Splash Screen
-  - image: /images/uploads/onboarding-1.png
+  - image: images/uploads/onboarding-1.png
     caption: OnBoarding 1
-  - image: /images/uploads/onboarding-2.png
+  - image: images/uploads/onboarding-2.png
     caption: OnBoarding 2
-  - image: /images/uploads/onboarding-3.png
+  - image: images/uploads/onboarding-3.png
     caption: OnBoarding 3
-  - image: /images/uploads/onboarding-4.png
+  - image: images/uploads/onboarding-4.png
     caption: OnBoarding 4
-  - image: /images/uploads/choose-role.png
+  - image: images/uploads/choose-role.png
     caption: Choose Role
-  - image: /images/uploads/sporty-mate-home.png
+  - image: images/uploads/sporty-mate-home.png
     caption: Sporty Mate Home
-  - image: /images/uploads/all-categories.png
+  - image: images/uploads/all-categories.png
     caption: All Categories
-  - image: /images/uploads/club-when-selected.png
+  - image: images/uploads/club-when-selected.png
     caption: Club Details
-  - image: /images/uploads/request-details.png
+  - image: images/uploads/request-details.png
     caption: Request Details
-  - image: /images/uploads/home-coach.png
+  - image: images/uploads/home-coach.png
     caption: Home Coach
-  - image: /images/uploads/all-clubs.png
+  - image: images/uploads/all-clubs.png
     caption: All Clubs
-  - image: /images/uploads/create-session.png
+  - image: images/uploads/create-session.png
     caption: Create Session
-  - image: /images/uploads/request-details-for-coach.png
+  - image: images/uploads/request-details-for-coach.png
     caption: Request Details For Coach
-  - image: /images/uploads/requests-screen-coach.png
+  - image: images/uploads/requests-screen-coach.png
     caption: Requests Screen Coach
-  - image: /images/uploads/coach-profile.png
+  - image: images/uploads/coach-profile.png
     caption: Coach Profile
 challenges:
   - label: "Network Reliability"

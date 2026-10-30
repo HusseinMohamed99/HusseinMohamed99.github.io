@@ -60,17 +60,17 @@ architecture_flow:
   - step: "Home shell waits on both weather and city data before rendering"
   - step: "Wishlist and itinerary actions write straight to per-user Firestore data and stream back live"
 mockups:
-  - image: /images/uploads/tripso-splash-screen.png
+  - image: images/uploads/tripso-splash-screen.png
     caption: Splash Screen
-  - image: /images/uploads/onboard.png
+  - image: images/uploads/onboard.png
     caption: OnBoarding
-  - image: /images/uploads/tripso-home.png
+  - image: images/uploads/tripso-home.png
     caption: Tripso Home
-  - image: /images/uploads/explore.png
+  - image: images/uploads/explore.png
     caption: Explore
-  - image: /images/uploads/historical.png
+  - image: images/uploads/historical.png
     caption: Historical
-  - image: /images/uploads/profile-v2.png
+  - image: images/uploads/profile-v2.png
     caption: Tripso Profile
 challenges:
   - label: "Dependency Migration"

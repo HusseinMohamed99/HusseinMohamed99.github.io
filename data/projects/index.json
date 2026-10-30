@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T18:34:08.888Z",
+  "generated": "2026-10-30T17:08:27.163Z",
   "count": 12,
   "projects": [
     {
@@ -159,7 +159,7 @@
     },
     {
       "slug": "expense_splitter",
-      "name": "Splitly (قِسمة)",
+      "name": "Qisma (قِسمة)",
       "category": "Shared Expenses · Offline-First · Bilingual Arabic/English",
       "badge": "Personal Project",
       "period": "Aug 2026",

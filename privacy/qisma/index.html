@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-title-en="Privacy Policy — Qisma" data-title-ar="سياسة الخصوصية — قسمة">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Qisma</title>
+<meta name="description" content="Privacy policy for Qisma (قسمة), an offline-first shared expense splitter by HSM Software. Usable without an account. Available in English and Arabic.">
+<meta name="theme-color" content="#0A6EF5">
+<link rel="canonical" href="https://husseinmohamed99.github.io/privacy/qisma/">
+<link rel="icon" type="image/png" sizes="512x512" href="../../images/brand/hsm-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=Geist+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#faf8f3; --surface:#f4f2eb; --card:#ffffff;
+    --ink:#0f0e0b; --ink2:#2a2926; --muted:#807f76;
+    --border:#e8e5dc; --border2:#cbc8bc;
+    --hsm-blue:#0A6EF5; --hsm-blue-text:#0B63DD; --hsm-blue-soft:#E7F0FE;
+    --hsm-blue-border:rgba(10,110,245,.28);
+    --hero-ink:#ffffff; --hero-ink2:rgba(255,255,255,.80);
+    --hero-a:#04255C; --hero-b:#0A6EF5; --hero-c:#1E8BFF;
+    --bar:rgba(250,248,243,.82); --bar-border:#e3dfd4;
+    --shadow:0 1px 2px rgba(15,14,11,.04), 0 12px 34px rgba(15,14,11,.07);
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Cabinet Grotesk',ui-sans-serif,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --arabic:'Noto Naskh Arabic','Segoe UI',Tahoma,sans-serif;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+      --cream:#101010; --surface:#191917; --card:#1d1c1a;
+      --ink:#f0ede8; --ink2:#d3cfc8; --muted:#94918a;
+      --border:#2c2a26; --border2:#403d36;
+      --hsm-blue:#4D9BFF; --hsm-blue-text:#6FAEFF; --hsm-blue-soft:#0E2348;
+      --hsm-blue-border:rgba(77,155,255,.38);
+      --hero-a:#04142F; --hero-b:#0A4EAE; --hero-c:#1470D8;
+      --bar:rgba(16,16,16,.84); --bar-border:#2c2a26;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream:#101010; --surface:#191917; --card:#1d1c1a;
+    --ink:#f0ede8; --ink2:#d3cfc8; --muted:#94918a;
+    --border:#2c2a26; --border2:#403d36;
+    --hsm-blue:#4D9BFF; --hsm-blue-text:#6FAEFF; --hsm-blue-soft:#0E2348;
+    --hsm-blue-border:rgba(77,155,255,.38);
+    --hero-a:#04142F; --hero-b:#0A4EAE; --hero-c:#1470D8;
+    --bar:rgba(16,16,16,.84); --bar-border:#2c2a26;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+  }
+  *,*::before,*::after { box-sizing:border-box }
+  html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:86px }
+  body {
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-size:16.5px; line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden; overflow-x:clip;
+  }
+  main { max-width:720px; margin:0 auto; padding:0 20px 76px }
+
+  .skip {
+    position:absolute; inset-inline-start:-9999px; top:0; z-index:99;
+    background:var(--hsm-blue); color:#fff; padding:10px 16px;
+    border-radius:0 0 8px 0; font-family:var(--mono); font-size:13px;
+  }
+  .skip:focus { inset-inline-start:0 }
+
+  .topbar {
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:12px;
+    padding:9px 20px;
+    background:var(--bar); border-bottom:1px solid var(--bar-border);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    backdrop-filter:saturate(180%) blur(14px);
+  }
+  .brand { display:inline-flex; align-items:center; gap:9px; flex:none; text-decoration:none }
+  .brand img { display:block; width:auto; height:26px }
+  .brand .wordmark {
+    font-family:var(--sans); font-weight:700; font-size:15px; letter-spacing:-.01em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .brand .wordmark .light { font-weight:400; color:var(--muted) }
+  .brand .on-dark { display:none }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) .brand .on-light { display:none }
+    :root:not([data-theme="light"]) .brand .on-dark { display:block }
+  }
+  :root[data-theme="dark"] .brand .on-light { display:none }
+  :root[data-theme="dark"] .brand .on-dark { display:block }
+  .brand:hover img { opacity:.82 }
+
+  .bar-rule { flex:none; width:1px; height:20px; background:var(--border2); opacity:.9 }
+  .bar-app {
+    flex:1 1 auto; min-width:0;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  [dir="rtl"] .bar-app { font-family:var(--arabic); letter-spacing:0; font-size:13px }
+  @media (max-width:520px) { .bar-rule, .bar-app { display:none } }
+
+  .lang {
+    flex:none; margin-inline-start:auto; display:flex; gap:2px; padding:3px;
+    background:var(--surface); border:1px solid var(--border2); border-radius:999px;
+  }
+  .lang button {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-height:34px;
+    font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.06em;
+    padding:4px 15px; border-radius:999px; cursor:pointer; border:1px solid transparent;
+    background:transparent; color:var(--ink2); line-height:1.2;
+    transition:background .16s,color .16s,box-shadow .16s;
+  }
+  .lang button:hover { color:var(--hsm-blue-text) }
+  .lang button[aria-pressed="true"] {
+    background:var(--hsm-blue); color:#fff;
+    box-shadow:0 1px 2px rgba(10,110,245,.35), 0 2px 8px rgba(10,110,245,.28);
+  }
+  .lang button[lang="ar"] { font-family:var(--arabic); font-size:13.5px; letter-spacing:0; padding-block:4px }
+  @media (max-width:430px) {
+    .topbar { padding-inline:14px; gap:8px }
+    .brand img { height:23px }
+    .brand .wordmark { font-size:14px }
+    .lang { padding:2px }
+    .lang button { padding:4px 12px; font-size:11.5px }
+    .lang button[lang="ar"] { font-size:12.5px }
+  }
+  @media (max-width:359px) { .brand .wordmark { display:none } }
+
+  header {
+    position:relative; isolation:isolate; overflow:hidden;
+    margin-inline:calc(50% - 50vw); margin-bottom:44px;
+    padding:58px calc(50vw - 50%) 52px;
+    background:
+      radial-gradient(120% 140% at 88% -10%, var(--hero-c) 0%, transparent 55%),
+      radial-gradient(90% 120% at 0% 110%, var(--hero-b) 0%, transparent 60%),
+      linear-gradient(140deg, var(--hero-a) 0%, var(--hero-b) 100%);
+    color:var(--hero-ink);
+  }
+  header::before {
+    content:""; position:absolute; inset:0; z-index:-1; opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
+    background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(200deg, #000 0%, transparent 72%);
+    mask-image:linear-gradient(200deg, #000 0%, transparent 72%);
+  }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:9px;
+    margin:0 0 20px; padding:6px 13px 6px 9px;
+    background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; backdrop-filter:blur(4px);
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--hero-ink);
+  }
+  .eyebrow .pip {
+    width:7px; height:7px; border-radius:2px; background:#8FC2FF;
+    box-shadow:0 0 0 3px rgba(143,194,255,.22);
+  }
+  [dir="rtl"] .eyebrow { font-family:var(--arabic); letter-spacing:0; font-size:13px; padding:5px 9px 5px 13px }
+  header h1 {
+    font-family:var(--serif); font-weight:700; font-size:clamp(34px,7.5vw,54px);
+    line-height:1.02; letter-spacing:-.022em; margin:0; color:var(--hero-ink);
+    text-wrap:balance;
+  }
+  header .app-line {
+    margin:14px 0 0; font-size:19px; color:var(--hero-ink2); max-width:46ch;
+  }
+  .updated {
+    display:inline-block; margin:26px 0 0; padding:5px 12px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+    border-radius:6px;
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--hero-ink2);
+  }
+  [dir="rtl"] .updated { font-family:var(--arabic); letter-spacing:0; font-size:13.5px }
+
+  #policy-en, #policy-ar { counter-reset:sec }
+  h2 {
+    counter-increment:sec;
+    display:flex; align-items:baseline; gap:12px;
+    font-family:var(--serif); font-weight:700; font-size:25px; line-height:1.22;
+    margin:52px 0 14px; scroll-margin-top:86px; text-wrap:balance;
+  }
+  h2::before {
+    content:counter(sec,decimal-leading-zero);
+    flex:none; font-family:var(--mono); font-size:12.5px; font-weight:500;
+    letter-spacing:.06em; color:var(--hsm-blue-text);
+    padding-top:.42em;
+  }
+  [lang="ar"] h2::before { content:counter(sec,arabic-indic); font-family:var(--arabic); padding-top:.3em }
+  h2:first-of-type { margin-top:0 }
+  h3 { font-family:var(--serif); font-weight:700; font-size:18.5px; margin:30px 0 10px; color:var(--ink2) }
+  p { margin:0 0 15px }
+  ul,ol { margin:0 0 15px; padding-inline-start:24px }
+  li { margin-bottom:9px }
+  li::marker { color:var(--hsm-blue) }
+  a { color:var(--hsm-blue-text); text-underline-offset:3px; text-decoration-thickness:1px }
+  a:hover { text-decoration-thickness:2px }
+  strong { font-weight:600; color:var(--ink) }
+  code {
+    font-family:var(--mono); font-size:.84em; background:var(--surface);
+    border:1px solid var(--border); border-radius:5px; padding:1.5px 6px;
+  }
+  hr { border:0; height:1px; margin:40px 0; background:linear-gradient(90deg,var(--border2),transparent) }
+  .table-wrap {
+    overflow-x:auto; margin:0 0 15px;
+    border:1px solid var(--border); border-radius:10px; background:var(--card);
+  }
+  table { border-collapse:collapse; width:100%; font-size:14.5px }
+  th,td { border-bottom:1px solid var(--border); padding:11px 13px; text-align:start; vertical-align:top }
+  tr:last-child td { border-bottom:0 }
+  th { background:var(--surface); font-weight:600; font-size:12px; font-family:var(--mono);
+       letter-spacing:.07em; text-transform:uppercase; color:var(--muted) }
+  [dir="rtl"] th { font-family:var(--arabic); letter-spacing:0; font-size:14px; text-transform:none }
+
+  .page-foot {
+    margin-top:64px; padding:26px 0 0; border-top:1px solid var(--border);
+    font-size:14px; color:var(--muted);
+  }
+  .page-foot p { margin:0 0 9px }
+  .page-foot a { color:var(--muted); text-decoration:underline }
+  .page-foot a:hover { color:var(--hsm-blue-text) }
+  .foot-mark { display:block; height:52px; width:auto; margin:0 0 16px; opacity:.72 }
+  .foot-mark.on-dark { display:none }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) .foot-mark.on-light { display:none }
+    :root:not([data-theme="light"]) .foot-mark.on-dark { display:block }
+  }
+  :root[data-theme="dark"] .foot-mark.on-light { display:none }
+  :root[data-theme="dark"] .foot-mark.on-dark { display:block }
+
+  [lang="ar"] { font-family:var(--arabic); line-height:2.02 }
+  [lang="ar"] h1,[lang="ar"] h2,[lang="ar"] h3 { font-family:var(--arabic); line-height:1.6 }
+  [lang="ar"] h1 { font-size:clamp(30px,6.5vw,44px); letter-spacing:0 }
+  [lang="ar"] .ltr { unicode-bidi:isolate; direction:ltr; display:inline-block }
+  [lang="ar"] code { unicode-bidi:isolate; direction:ltr }
+
+  :where(a,button):focus-visible { outline:2px solid var(--hsm-blue); outline-offset:3px; border-radius:4px }
+  @media (prefers-reduced-motion:reduce) { *{transition:none!important;animation:none!important;scroll-behavior:auto} }
+  @media print {
+    .topbar,.skip { display:none }
+    header { background:none; color:#000; margin-inline:0; padding-inline:0 }
+    header h1,.eyebrow,.updated { color:#000 }
+    body { overflow:visible }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#policy">Skip to the policy</a>
+  <div class="topbar">
+    <a class="brand" href="../../" aria-label="HSM Software">
+      <img class="on-light" src="../../images/brand/hsm-mark-light.png" alt="" aria-hidden="true" width="381" height="160">
+      <img class="on-dark" src="../../images/brand/hsm-mark-dark.png" alt="" aria-hidden="true" width="417" height="160">
+      <span class="wordmark">HSM<span class="light"> Software</span></span>
+    </a>
+    <span class="bar-rule" aria-hidden="true"></span>
+    <span class="bar-app" id="bar-app" data-en="Qisma" data-ar="قسمة">Qisma</span>
+    <div class="lang" role="group" aria-label="Language / اللغة">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+
+<main id="policy">
+  <!-- ==================== ENGLISH ==================== -->
+  <div id="policy-en" lang="en" dir="ltr">
+    <header>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>Qisma</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated October 2026</p>
+    </header>
+
+    <h2>Overview</h2>
+    <p>Qisma (“the App,” “we,” “us”) helps groups of people track shared expenses
+    and settle up fairly. This Privacy Policy explains what information the App
+    collects, how it is used, who it may be shared with, and the choices you have.
+    By using Qisma, you agree to the practices described here.</p>
+
+    <h2>Information We Collect</h2>
+    <h3>2.1 Using Qisma without an account</h3>
+    <p>Qisma is designed to be usable without an account. In this offline-first guest mode,
+    your groups, expenses, and settlements are stored locally on your device (using Drift / SQLite):
+    no personal information is uploaded, and your data does not leave your phone.</p>
+    <p>Creating an account is optional. If you choose to enable cloud synchronization,
+    data can be synchronized to secure cloud infrastructure so it can be accessed across devices.
+    Until you sign up for an account, sections describing account data and remote cloud storage do not apply to you.</p>
+
+    <h3>2.2 Account Information</h3>
+    <p>If you create an optional account, we collect:</p>
+    <ul>
+      <li><strong>Email address</strong> — required for account identification and sign-in.</li>
+      <li><strong>Password</strong> — handled securely via encrypted industry-standard authentication mechanisms (such as Firebase Authentication). We never store your raw password.</li>
+      <li><strong>Display Name</strong> — provided by you or your sign-in provider. Visible to members of groups you join so other members recognize who added or shares an expense.</li>
+    </ul>
+
+    <h3>2.3 Group and Expense Data</h3>
+    <p>When using group expense features:</p>
+    <ul>
+      <li>Group titles and member names you enter</li>
+      <li>Expense records: description, amount, currency, date, payer, and split shares</li>
+      <li>Itemized bill details: kept locally on your device for calculation purposes</li>
+      <li>Settlement records: payment confirmations between members to reconcile balances</li>
+    </ul>
+
+    <h3>2.4 Diagnostic and Crash Data</h3>
+    <p>To ensure application stability across Android and iOS devices, error telemetry and crash reports (e.g. Firebase Crashlytics) may collect technical diagnostic data, including device model, operating system version, and stack traces. This data is used solely for debugging and performance improvements.</p>
+
+    <h3>2.5 Information We Do Not Collect</h3>
+    <ul>
+      <li>We do not collect phone numbers.</li>
+      <li>We do not access contacts, photos, or location data.</li>
+      <li>We do not sell personal data or use information for behavioral advertising.</li>
+    </ul>
+
+    <h2>How We Use Your Information</h2>
+    <ul>
+      <li>To provide shared expense tracking and debt calculation features</li>
+      <li>To synchronize data across devices for registered accounts</li>
+      <li>To identify and resolve software errors and crashes</li>
+      <li>To protect user accounts from unauthorized access and abuse</li>
+    </ul>
+
+    <h2>Who We Share Information With</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Recipient</th><th>Why</th></tr>
+        <tr>
+          <td>Group Members</td>
+          <td>Members of your shared groups can see group titles, expenses, and balances to maintain an accurate shared ledger.</td>
+        </tr>
+        <tr>
+          <td>Cloud Infrastructure Providers</td>
+          <td>Backend services (e.g., Google Firebase / Cloud Firestore) provide secure database hosting and authentication for registered accounts under strict data processing agreements.</td>
+        </tr>
+      </table>
+    </div>
+    <p>We do not sell, rent, or trade personal data to third parties for commercial advertising.</p>
+
+    <h2>Data Storage and Security</h2>
+    <p>Data stored locally is maintained within your device's private app sandbox. When cloud sync is utilized, data is transmitted over encrypted channels (HTTPS/TLS) and protected by backend security rules. While we implement industry-standard safeguards, no electronic system is 100% impenetrable.</p>
+
+    <h2>Data Retention</h2>
+    <p>Account data and cloud-synced ledgers are retained for as long as your account remains active. Upon receiving an account deletion request, associated cloud records are purged from active systems.</p>
+
+    <h2>Your Rights and Data Deletion</h2>
+    <ul>
+      <li><strong>In-App Account Deletion:</strong> If you created an account, you can initiate account deletion within the App settings (where available) or request deletion directly. Deleting your account removes your credentials and personal data from our active systems.</li>
+      <li><strong>Deletion Request (Email):</strong> You can request permanent deletion of your account and associated personal data at any time by emailing us at
+      <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a> with the subject line
+      <em>"Qisma Account Deletion Request"</em> from your registered email address. Requests are processed without undue delay upon identity verification.</li>
+      <li><strong>Guest Mode Data:</strong> If you use Qisma without an account, no personal data is stored on our servers.
+      You can erase all locally stored data at any time by clearing the App's storage in your device settings or by uninstalling the App.</li>
+      <li><strong>Access and Export:</strong> You can view your data within the App or export a summary of your group balances and ledgers using the built-in share feature.</li>
+    </ul>
+
+    <h2>Children's Privacy</h2>
+    <p>Qisma is not directed at children under the age of 13 (or the minimum legal age in your jurisdiction), and we do not knowingly collect personal information from children.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy periodically. Any updates will be reflected with a revised "Last updated" date on this page.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have questions, feedback, or data requests regarding this Privacy Policy, please contact us at:</p>
+    <p><strong>Email:</strong> <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a></p>
+
+    <div class="page-foot">
+      <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
+      <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
+      <p>Qisma can be used without an account. Until you create one, sections describing account data and cloud storage do not apply to you.</p>
+      <p><a href="../">All HSM Software privacy policies</a> · <a href="/">Portfolio</a></p>
+    </div>
+  </div>
+
+  <!-- ==================== ARABIC ==================== -->
+  <div id="policy-ar" lang="ar" dir="rtl" hidden>
+    <header>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>قسمة</p>
+      <h1>سياسة الخصوصية</h1>
+      <p class="updated">آخر تحديث أكتوبر ٢٠٢٦</p>
+    </header>
+
+    <h2>نظرة عامة</h2>
+    <p>«قسمة» (ويُشار إليه بـ«التطبيق» أو «نحن») يساعد مجموعات الأشخاص على تتبّع
+    المصروفات المشتركة وتسويتها بإنصاف. توضّح سياسة الخصوصية هذه ما المعلومات التي
+    يجمعها التطبيق، وكيف تُستخدم، ومع مَن قد تُشارَك، وما الخيارات المتاحة لك.
+    وباستخدامك «قسمة» فإنك توافق على الممارسات الموضّحة هنا.</p>
+
+    <h2>المعلومات التي نجمعها</h2>
+    <h3>٢.١ استخدام «قسمة» بدون حساب</h3>
+    <p>صُمّم تطبيق «قسمة» ليكون قابلاً للاستخدام دون الحاجة إلى إنشاء حساب. وفي هذا الوضع المحلي كضيف،
+    تُحفظ مجموعاتك ومصروفاتك وتسوياتك محلياً على جهازك وحده (باستخدام Drift / SQLite):
+    ولا يتم رفع أي معلومات شخصية، ولا تغادر بياناتك هاتفك إطلاقاً.</p>
+    <p>ويُعدّ إنشاء حساب خياراً إضافياً؛ فإذا اخترت تفعيل المزامنة السحابية،
+    يتم مزامنة البيانات عبر بنية سحابية آمنة للوصول إليها عبر أجهزتك.
+    وإلى أن تُنشئ حساباً، لا تنطبق عليك الأقسام التي تتناول بيانات الحساب والتخزين السحابي.</p>
+
+    <h3>٢.٢ معلومات الحساب</h3>
+    <p>إذا اخترت إنشاء حساب اختياري، نجمع ما يلي:</p>
+    <ul>
+      <li><strong>البريد الإلكتروني</strong> — مطلوب للتعرّف على الحساب وتسجيل الدخول.</li>
+      <li><strong>كلمة المرور</strong> — تُعالج بأمان عبر آليات مصادقة مشفّرة وفق المعايير القياسية (مثل Firebase Authentication)، ولا نحتفظ بكلمة المرور المجردة نهائياً.</li>
+      <li><strong>الاسم المعروض</strong> — اسم تدخله أنت أو مزوّد تسجيل الدخول، ويكون مرئياً لأعضاء مجموعاتك المشتركة لتمييز المشاركين في المصروفات.</li>
+    </ul>
+
+    <h3>٢.٣ بيانات المجموعات والمصروفات</h3>
+    <p>عند استخدام مزايا المصروفات المشتركة:</p>
+    <ul>
+      <li>عناوين المجموعات وأسماء الأعضاء التي تسجّلها</li>
+      <li>سجلات المصروفات: الوصف والمبلغ والعملة والتاريخ والدافع وحصص التقسيم</li>
+      <li>تفاصيل الفاتورة المقسّمة بالبنود: تُحفظ محلياً على جهازك لأغراض الحساب</li>
+      <li>سجلات التسوية: تأكيدات الدفع بين الأعضاء لتسوية الأرصدة</li>
+    </ul>
+
+    <h3>٢.٤ بيانات التشخيص وتقارير الأعطال</h3>
+    <p>لضمان استقرار التطبيق عبر مختلف أجهزة أندرويد و iOS، قد تجمع خدمات التشخيص والأعطال (مثل Firebase Crashlytics) بيانات تقنية تشمل طراز الجهاز وإصدار نظام التشغيل وتتبّع المكدّس عند حدوث خطأ، وتُستخدم هذه البيانات حصراً لاكتشاف المشكلات وإصلاحها.</p>
+
+    <h3>٢.٥ معلومات لا نجمعها</h3>
+    <ul>
+      <li>لا نجمع أرقام الهواتف.</li>
+      <li>لا نصل إلى جهات الاتصال أو الصور أو الموقع الجغرافي.</li>
+      <li>لا نبيع البيانات الشخصية ولا نستخدمها لأغراض الإعلانات الموجهة.</li>
+    </ul>
+
+    <h2>كيف نستخدم معلوماتك</h2>
+    <ul>
+      <li>لتقديم وظائف تتبّع المصروفات المشتركة وحساب التسويات</li>
+      <li>لمزامنة البيانات بين الأجهزة للحسابات المسجّلة</li>
+      <li>لتشخيص الأخطاء البرمجية وإصلاح الأعطال</li>
+      <li>لحماية الحسابات من الوصول غير المصرّح به وإساءة الاستخدام</li>
+    </ul>
+
+    <h2>مع مَن نشارك المعلومات</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>الجهة المستقبِلة</th><th>السبب</th></tr>
+        <tr>
+          <td>أعضاء المجموعة</td>
+          <td>يمكن لأعضاء المجموعات المشتركة الاطّلاع على عناوين المجموعات والمصروفات والأرصدة لضمان شفافية السجل المشترك.</td>
+        </tr>
+        <tr>
+          <td>مزوّدو البنية السحابية</td>
+          <td>خدمات البنية التحتية (مثل Google Firebase / Cloud Firestore) توفر استضافة آمنة لقواعد البيانات والمصادقة للحسابات المسجّلة بموجب اتفاقيات معالجة بيانات صارمة.</td>
+        </tr>
+      </table>
+    </div>
+    <p>نحن لا نبيع بياناتك الشخصية ولا نؤجرها لأي جهات خارجية لأغراض تجارية.</p>
+
+    <h2>تخزين البيانات وأمانها</h2>
+    <p>تُحفظ البيانات محلياً داخل المساحة الآمنة للتطبيق على جهازك. وعند استخدام المزامنة السحابية، تُنقل البيانات عبر قنوات اتصال مشفّرة (HTTPS/TLS) ومحمية بقواعد أمان صارمة. ومع ذلك، لا يوجد نظام إلكتروني آمن بنسبة ١٠٠٪ تماماً.</p>
+
+    <h2>الاحتفاظ بالبيانات</h2>
+    <p>يتم الاحتفاظ ببيانات الحساب والسجلات السحابية ما دام حسابك نشطاً. وعند تلقي طلب حذف الحساب، تُحذف السجلات السحابية المرتبطة به من أنظمتنا النشطة.</p>
+
+    <h2>حقوقك وحذف البيانات</h2>
+    <ul>
+      <li><strong>حذف الحساب من داخل التطبيق:</strong> إذا أنشأت حساباً، يمكنك بدء حذف الحساب من إعدادات التطبيق (حيثما تتوفر) أو طلب حذفه مباشرة، مما يؤدي إلى إزالة بيانات تسجيل الدخول والبيانات الشخصية من أنظمتنا النشطة.</li>
+      <li><strong>طلب الحذف عبر البريد الإلكتروني:</strong> يمكنك طلب حذف حسابك وبياناتك الشخصية نهائياً في أي وقت عبر مراسلتنا من بريدك المسجّل إلى
+      <a class="ltr" href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a>
+      بعنوان <em>"Qisma Account Deletion Request"</em>. وتتم معالجة الطلبات دون تأخير غير مبرر بعد التحقق من الهوية.</li>
+      <li><strong>بيانات وضع الضيف (دون حساب):</strong> إذا كنت تستخدم التطبيق دون حساب، فلا تُحفظ أي بيانات على خوادمنا أصلاً، ويمكنك مسح جميع البيانات المخزنة محلياً في أي وقت بحذف بيانات التطبيق من إعدادات جهازك أو بإلغاء تثبيت التطبيق.</li>
+      <li><strong>الاطّلاع والتصدير:</strong> يمكنك استعراض بياناتك داخل التطبيق وتصدير ملخص أرصدة المجموعات وسجلاتها باستخدام خاصية المشاركة المدمجة.</li>
+    </ul>
+
+    <h2>خصوصية الأطفال</h2>
+    <p>تطبيق «قسمة» غير موجّه للأطفال دون سن ١٣ عاماً (أو السن القانوني في بلدك)، ولا نجمع عن علم أي بيانات شخصية من الأطفال.</p>
+
+    <h2>تغييرات على هذه السياسة</h2>
+    <p>قد نحدّث سياسة الخصوصية من حين لآخر، وسيتم توضيح أي تحديث عبر تعديل تاريخ "آخر تحديث" في هذه الصفحة.</p>
+
+    <h2>للتواصل معنا</h2>
+    <p>إذا كانت لديك أي استفسارات أو طلبات بخصوص سياسة الخصوصية هذه، يُرجى مراسلتنا على:</p>
+    <p><strong>البريد الإلكتروني:</strong> <a class="ltr" href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a></p>
+
+    <div class="page-foot">
+      <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
+      <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
+      <p>يمكن استخدام «قسمة» دون حساب. وإلى أن تُنشئ حساباً، لا تنطبق عليك الأقسام المتعلقة ببيانات الحساب والتخزين السحابي.</p>
+      <p><a href="../">كل سياسات الخصوصية</a> · <a href="/">الموقع الشخصي</a></p>
+    </div>
+  </div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.lang button');
+  var panels = { en: document.getElementById('policy-en'),
+                 ar: document.getElementById('policy-ar') };
+  if (!panels.en || !panels.ar) { return; }
+
+  var barApp = document.getElementById('bar-app');
+
+  function show(lang) {
+    panels.en.hidden = lang !== 'en';
+    panels.ar.hidden = lang !== 'ar';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    if (barApp) { barApp.textContent = barApp.dataset[lang] || barApp.textContent; }
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+    var t = document.documentElement.dataset;
+    if (t.titleEn && t.titleAr) {
+      document.title = lang === 'ar' ? t.titleAr : t.titleEn;
+    }
+    document.querySelectorAll('.siblings a, .card-links a').forEach(function (a) {
+      var base = a.getAttribute('href').split('?')[0];
+      a.setAttribute('href', base + '?lang=' + lang);
+    });
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.lang); });
+  });
+
+  var requested = new URLSearchParams(location.search).get('lang');
+  if (requested === 'ar' || requested === 'en') {
+    show(requested);
+  } else if ((navigator.language || '').toLowerCase().indexOf('ar') === 0) {
+    show('ar');
+  }
+})();
+</script>
+</main>
+</body>
+</html>
