@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-title-en="Account & Data Deletion — Qisma" data-title-ar="حذف الحساب والبيانات — قسمة">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Account &amp; Data Deletion — Qisma</title>
+<meta name="description" content="How to delete your Qisma (قسمة) account and personal data, what is erased immediately, what is retained for accounting integrity, and how to submit a request. Available in English and Arabic.">
+<meta name="theme-color" content="#0A6EF5">
+<link rel="canonical" href="https://husseinmohamed99.github.io/privacy/qisma/account-deletion.html">
+<link rel="icon" type="image/png" sizes="512x512" href="../../images/brand/hsm-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=Geist+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#faf8f3; --surface:#f4f2eb; --card:#ffffff;
+    --ink:#0f0e0b; --ink2:#2a2926; --muted:#807f76;
+    --border:#e8e5dc; --border2:#cbc8bc;
+    --hsm-blue:#0A6EF5; --hsm-blue-text:#0B63DD; --hsm-blue-soft:#E7F0FE;
+    --hsm-blue-border:rgba(10,110,245,.28);
+    --hero-ink:#ffffff; --hero-ink2:rgba(255,255,255,.80);
+    --hero-a:#04255C; --hero-b:#0A6EF5; --hero-c:#1E8BFF;
+    --bar:rgba(250,248,243,.82); --bar-border:#e3dfd4;
+    --shadow:0 1px 2px rgba(15,14,11,.04), 0 12px 34px rgba(15,14,11,.07);
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Cabinet Grotesk',ui-sans-serif,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --arabic:'Noto Naskh Arabic','Segoe UI',Tahoma,sans-serif;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+      --cream:#101010; --surface:#191917; --card:#1d1c1a;
+      --ink:#f0ede8; --ink2:#d3cfc8; --muted:#94918a;
+      --border:#2c2a26; --border2:#403d36;
+      --hsm-blue:#4D9BFF; --hsm-blue-text:#6FAEFF; --hsm-blue-soft:#0E2348;
+      --hsm-blue-border:rgba(77,155,255,.38);
+      --hero-a:#04142F; --hero-b:#0A4EAE; --hero-c:#1470D8;
+      --bar:rgba(16,16,16,.84); --bar-border:#2c2a26;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream:#101010; --surface:#191917; --card:#1d1c1a;
+    --ink:#f0ede8; --ink2:#d3cfc8; --muted:#94918a;
+    --border:#2c2a26; --border2:#403d36;
+    --hsm-blue:#4D9BFF; --hsm-blue-text:#6FAEFF; --hsm-blue-soft:#0E2348;
+    --hsm-blue-border:rgba(77,155,255,.38);
+    --hero-a:#04142F; --hero-b:#0A4EAE; --hero-c:#1470D8;
+    --bar:rgba(16,16,16,.84); --bar-border:#2c2a26;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+  }
+  *,*::before,*::after { box-sizing:border-box }
+  html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:86px }
+  body {
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-size:16.5px; line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden; overflow-x:clip;
+  }
+  main { max-width:720px; margin:0 auto; padding:0 20px 76px }
+
+  .skip {
+    position:absolute; inset-inline-start:-9999px; top:0; z-index:99;
+    background:var(--hsm-blue); color:#fff; padding:10px 16px;
+    border-radius:0 0 8px 0; font-family:var(--mono); font-size:13px;
+  }
+  .skip:focus { inset-inline-start:0 }
+
+  .topbar {
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:12px;
+    padding:9px 20px;
+    background:var(--bar); border-bottom:1px solid var(--bar-border);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    backdrop-filter:saturate(180%) blur(14px);
+  }
+  .brand { display:inline-flex; align-items:center; gap:9px; flex:none; text-decoration:none }
+  .brand img { display:block; width:auto; height:26px }
+  .brand .wordmark {
+    font-family:var(--sans); font-weight:700; font-size:15px; letter-spacing:-.01em;
+    color:var(--ink); white-space:nowrap;
+  }
+  .brand .wordmark .light { font-weight:400; color:var(--muted) }
+  .brand .on-dark { display:none }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) .brand .on-light { display:none }
+    :root:not([data-theme="light"]) .brand .on-dark { display:block }
+  }
+  :root[data-theme="dark"] .brand .on-light { display:none }
+  :root[data-theme="dark"] .brand .on-dark { display:block }
+  .brand:hover img { opacity:.82 }
+
+  .bar-rule { flex:none; width:1px; height:20px; background:var(--border2); opacity:.9 }
+  .bar-app {
+    flex:1 1 auto; min-width:0;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  [dir="rtl"] .bar-app { font-family:var(--arabic); letter-spacing:0; font-size:13px }
+  @media (max-width:520px) { .bar-rule, .bar-app { display:none } }
+
+  .lang {
+    flex:none; margin-inline-start:auto; display:flex; gap:2px; padding:3px;
+    background:var(--surface); border:1px solid var(--border2); border-radius:999px;
+  }
+  .lang button {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-height:34px;
+    font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.06em;
+    padding:4px 15px; border-radius:999px; cursor:pointer; border:1px solid transparent;
+    background:transparent; color:var(--ink2); line-height:1.2;
+    transition:background .16s,color .16s,box-shadow .16s;
+  }
+  .lang button:hover { color:var(--hsm-blue-text) }
+  .lang button[aria-pressed="true"] {
+    background:var(--hsm-blue); color:#fff;
+    box-shadow:0 1px 2px rgba(10,110,245,.35), 0 2px 8px rgba(10,110,245,.28);
+  }
+  .lang button[lang="ar"] { font-family:var(--arabic); font-size:13.5px; letter-spacing:0; padding-block:4px }
+  @media (max-width:430px) {
+    .topbar { padding-inline:14px; gap:8px }
+    .brand img { height:23px }
+    .brand .wordmark { font-size:14px }
+    .lang { padding:2px }
+    .lang button { padding:4px 12px; font-size:11.5px }
+    .lang button[lang="ar"] { font-size:12.5px }
+  }
+  @media (max-width:359px) { .brand .wordmark { display:none } }
+
+  header {
+    position:relative; isolation:isolate; overflow:hidden;
+    margin-inline:calc(50% - 50vw); margin-bottom:44px;
+    padding:58px calc(50vw - 50%) 52px;
+    background:
+      radial-gradient(120% 140% at 88% -10%, var(--hero-c) 0%, transparent 55%),
+      radial-gradient(90% 120% at 0% 110%, var(--hero-b) 0%, transparent 60%),
+      linear-gradient(140deg, var(--hero-a) 0%, var(--hero-b) 100%);
+    color:var(--hero-ink);
+  }
+  header::before {
+    content:""; position:absolute; inset:0; z-index:-1; opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
+    background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(200deg, #000 0%, transparent 72%);
+    mask-image:linear-gradient(200deg, #000 0%, transparent 72%);
+  }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:9px;
+    margin:0 0 20px; padding:6px 13px 6px 9px;
+    background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; backdrop-filter:blur(4px);
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--hero-ink);
+  }
+  .eyebrow .pip {
+    width:7px; height:7px; border-radius:2px; background:#8FC2FF;
+    box-shadow:0 0 0 3px rgba(143,194,255,.22);
+  }
+  [dir="rtl"] .eyebrow { font-family:var(--arabic); letter-spacing:0; font-size:13px; padding:5px 9px 5px 13px }
+  header h1 {
+    font-family:var(--serif); font-weight:700; font-size:clamp(34px,7.5vw,54px);
+    line-height:1.02; letter-spacing:-.022em; margin:0; color:var(--hero-ink);
+    text-wrap:balance;
+  }
+  header .app-line {
+    margin:14px 0 0; font-size:19px; color:var(--hero-ink2); max-width:46ch;
+  }
+  .updated {
+    display:inline-block; margin:26px 0 0; padding:5px 12px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+    border-radius:6px;
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--hero-ink2);
+  }
+  [dir="rtl"] .updated { font-family:var(--arabic); letter-spacing:0; font-size:13.5px }
+
+  .siblings {
+    margin:-16px 0 34px; display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .siblings[hidden] { display:none }
+  .siblings a {
+    display:inline-block; text-decoration:none;
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.03em;
+    color:var(--hsm-blue-text); background:var(--card);
+    border:1px solid var(--border2); border-radius:999px; padding:7px 15px;
+    transition:border-color .16s, background .16s;
+  }
+  .siblings a:hover { border-color:var(--hsm-blue); background:var(--hsm-blue-soft) }
+  [dir="rtl"] .siblings a { font-family:var(--arabic); letter-spacing:0; font-size:14px }
+
+  #policy-en, #policy-ar { counter-reset:sec }
+  h2 {
+    counter-increment:sec;
+    display:flex; align-items:baseline; gap:12px;
+    font-family:var(--serif); font-weight:700; font-size:25px; line-height:1.22;
+    margin:52px 0 14px; scroll-margin-top:86px; text-wrap:balance;
+  }
+  h2::before {
+    content:counter(sec,decimal-leading-zero);
+    flex:none; font-family:var(--mono); font-size:12.5px; font-weight:500;
+    letter-spacing:.06em; color:var(--hsm-blue-text);
+    padding-top:.42em;
+  }
+  [lang="ar"] h2::before { content:counter(sec,arabic-indic); font-family:var(--arabic); padding-top:.3em }
+  h2:first-of-type { margin-top:0 }
+  h3 { font-family:var(--serif); font-weight:700; font-size:18.5px; margin:30px 0 10px; color:var(--ink2) }
+  p { margin:0 0 15px }
+  ul,ol { margin:0 0 15px; padding-inline-start:24px }
+  li { margin-bottom:9px }
+  li::marker { color:var(--hsm-blue) }
+  a { color:var(--hsm-blue-text); text-underline-offset:3px; text-decoration-thickness:1px }
+  a:hover { text-decoration-thickness:2px }
+  strong { font-weight:600; color:var(--ink) }
+  code {
+    font-family:var(--mono); font-size:.84em; background:var(--surface);
+    border:1px solid var(--border); border-radius:5px; padding:1.5px 6px;
+  }
+  hr { border:0; height:1px; margin:40px 0; background:linear-gradient(90deg,var(--border2),transparent) }
+  .table-wrap {
+    overflow-x:auto; margin:0 0 15px;
+    border:1px solid var(--border); border-radius:10px; background:var(--card);
+  }
+  table { border-collapse:collapse; width:100%; font-size:14.5px }
+  th,td { border-bottom:1px solid var(--border); padding:11px 13px; text-align:start; vertical-align:top }
+  tr:last-child td { border-bottom:0 }
+  th { background:var(--surface); font-weight:600; font-size:12px; font-family:var(--mono);
+       letter-spacing:.07em; text-transform:uppercase; color:var(--muted) }
+  [dir="rtl"] th { font-family:var(--arabic); letter-spacing:0; font-size:14px; text-transform:none }
+
+  .note {
+    position:relative; background:var(--hsm-blue-soft);
+    border:1px solid var(--hsm-blue-border);
+    border-radius:12px; padding:18px 20px; margin:0 0 24px;
+  }
+  .note::before {
+    content:""; position:absolute; inset-block:14px; inset-inline-start:0;
+    width:3px; border-radius:999px; background:var(--hsm-blue);
+  }
+  .note p:last-child { margin-bottom:0 }
+
+  .placeholder {
+    font-family:var(--mono); font-size:.88em; font-weight:600;
+    color:#b45309; background:rgba(217,119,6,.12);
+    border:1px dashed rgba(217,119,6,.45); border-radius:4px;
+    padding:2px 7px; display:inline-block;
+  }
+  [dir="rtl"] .placeholder { font-family:var(--arabic); font-size:.92em }
+
+  .intro {
+    font-family:var(--serif); font-weight:400; font-size:21px; line-height:1.5;
+    color:var(--ink2); margin:0 0 42px; text-wrap:pretty;
+  }
+  [lang="ar"] .intro { font-family:var(--arabic); font-size:19px; line-height:1.9 }
+
+  .contact {
+    margin-top:52px; padding:26px 26px 22px;
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  }
+  .contact h2 { margin-top:0 }
+  .contact p:last-child { margin-bottom:0 }
+
+  .page-foot {
+    margin-top:64px; padding:26px 0 0; border-top:1px solid var(--border);
+    font-size:14px; color:var(--muted);
+  }
+  .page-foot p { margin:0 0 9px }
+  .page-foot a { color:var(--muted); text-decoration:underline }
+  .page-foot a:hover { color:var(--hsm-blue-text) }
+  .foot-mark { display:block; height:52px; width:auto; margin:0 0 16px; opacity:.72 }
+  .foot-mark.on-dark { display:none }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) .foot-mark.on-light { display:none }
+    :root:not([data-theme="light"]) .foot-mark.on-dark { display:block }
+  }
+  :root[data-theme="dark"] .foot-mark.on-light { display:none }
+  :root[data-theme="dark"] .foot-mark.on-dark { display:block }
+
+  [lang="ar"] { font-family:var(--arabic); line-height:2.02 }
+  [lang="ar"] h1,[lang="ar"] h2,[lang="ar"] h3 { font-family:var(--arabic); line-height:1.6 }
+  [lang="ar"] h1 { font-size:clamp(30px,6.5vw,44px); letter-spacing:0 }
+  [lang="ar"] .ltr { unicode-bidi:isolate; direction:ltr; display:inline-block }
+  [lang="ar"] code { unicode-bidi:isolate; direction:ltr }
+
+  :where(a,button):focus-visible { outline:2px solid var(--hsm-blue); outline-offset:3px; border-radius:4px }
+  @media (prefers-reduced-motion:reduce) { *{transition:none!important;animation:none!important;scroll-behavior:auto} }
+  @media print {
+    .topbar,.skip { display:none }
+    header { background:none; color:#000; margin-inline:0; padding-inline:0 }
+    header h1,.eyebrow,.updated { color:#000 }
+    body { overflow:visible }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#policy">Skip to content</a>
+  <div class="topbar">
+    <a class="brand" href="../../" aria-label="HSM Software">
+      <img class="on-light" src="../../images/brand/hsm-mark-light.png" alt="" aria-hidden="true" width="381" height="160">
+      <img class="on-dark" src="../../images/brand/hsm-mark-dark.png" alt="" aria-hidden="true" width="417" height="160">
+      <span class="wordmark">HSM<span class="light"> Software</span></span>
+    </a>
+    <span class="bar-rule" aria-hidden="true"></span>
+    <span class="bar-app" id="bar-app" data-en="Qisma" data-ar="قسمة">Qisma</span>
+    <div class="lang" role="group" aria-label="Language / اللغة">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+
+<main id="policy">
+  <!-- ==================== ENGLISH ==================== -->
+  <div id="policy-en" lang="en" dir="ltr">
+    <header>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>Qisma</p>
+      <h1>Account &amp; Data Deletion</h1>
+      <p class="updated">Last updated October 2026</p>
+    </header>
+    <p class="siblings"><a href="./">&larr; Privacy policy</a></p>
+
+    <div class="note">
+      <p><strong>Publication Notice:</strong> This account deletion policy reflects the technical deletion architecture, security tombstones, and shared ledger retention rules in the Qisma application. It is not legal advice and must not be published live until all bracketed placeholders are replaced and approved.</p>
+    </div>
+
+    <p class="intro">Qisma gives you complete control over your account. If you created an account for cloud synchronization, you can permanently delete it directly from within the application at any time without waiting for manual approval.</p>
+
+    <h2>Scope &amp; Operating Modes</h2>
+    <p>How data deletion works depends on how you use Qisma:</p>
+    <ul>
+      <li><strong>Guest Mode (Unauthenticated):</strong> If you use Qisma without an account, your groups, expenses, and settlements exist solely in a local SQLite database (<code>splitly.sqlite</code>) inside your phone's sandbox. <strong>No personal or financial data exists on our servers.</strong> You can erase all data at any moment by clearing the application storage in your device settings or by uninstalling the application.</li>
+      <li><strong>Authenticated Mode (Signed-In):</strong> If you registered an account (via email/password or Google Sign-In) to synchronize groups across devices, your authentication credentials and synchronized ledgers are stored in Firebase. You can permanently erase your account using the in-app deletion process below.</li>
+    </ul>
+
+    <h2>How to Request Deletion From Inside the App</h2>
+    <ol>
+      <li>Open <strong>Qisma</strong> on your device.</li>
+      <li>Sign in to the account you want to delete, if you are not already signed in.</li>
+      <li>Open the <strong>Settings</strong> tab and navigate to the <strong>Account</strong> section.</li>
+      <li>Tap <strong>Delete account</strong> at the bottom of the screen.</li>
+      <li>Review the deletion summary and warnings.</li>
+      <li><strong>Authenticate again:</strong> For your security, the app requires recent authentication (within the last 5 minutes / <code>auth_time &le; 300s</code>) by re-entering your password or confirming your Google account. (Sign in with Apple is unsupported in version 1.0.2; accounts created with Email/Password or Google Sign-In are supported).</li>
+      <li>Confirm permanent deletion. The deletion pipeline executes immediately.</li>
+    </ol>
+
+    <h2>The Technical Deletion Pipeline</h2>
+    <p>When you confirm deletion, Qisma executes an authoritative 6-stage deletion workflow:</p>
+    <ol>
+      <li><strong>Ownership Verification:</strong> The app checks whether you are the sole owner of any active shared group. If you are, deletion is rejected until you transfer ownership or delete the group.</li>
+      <li><strong>Server Preparation:</strong> The application invokes a secure Cloud Function (<code>prepareAccountDeletion</code>), marking your server account state as <code>status: "deletionPrepared"</code>.</li>
+      <li><strong>Permission Revocation:</strong> Your cloud permissions across all shared groups (<code>groups/{groupId}/access/{accountId}</code>) are revoked.</li>
+      <li><strong>Authentication Erasure:</strong> Your user identity record (<code>users/{uid}</code>) is permanently deleted from Firebase Authentication servers.</li>
+      <li><strong>Local Cleanup:</strong> Local SQLite records associated with your cloud account are marked <code>status: "deleted"</code>, and local cached tokens are purged.</li>
+      <li><strong>Session Reset:</strong> The application signs out immediately, returning to unauthenticated Guest Mode.</li>
+    </ol>
+
+    <h2>What is Deleted Immediately</h2>
+    <ul>
+      <li><strong>Login Identity:</strong> Your user record in Firebase Authentication (email, password hash, provider linkages, and session tokens) is permanently erased. You can never authenticate as that user again.</li>
+      <li><strong>Cloud Access Permissions:</strong> Your authorization to read, write, or synchronize all shared groups is revoked.</li>
+      <li><strong>Local Credentials:</strong> All in-memory and on-device session state, cached tokens, and account profile metadata are removed from the active device.</li>
+    </ul>
+
+    <h2>What is Intentionally Retained</h2>
+    <p>To preserve legal and operational integrity, specific categories of records are retained:</p>
+    <ul>
+      <li><strong>Shared Group Financial History:</strong> Accepted historical expenses, split shares, settlements, and member display names in shared groups remain in Cloud Firestore and in the local databases of other group members.
+        <br><em>Accounting Integrity Rationale:</em> In shared group ledgers, participant balances, running debts, and settlement obligations depend directly on the collective transaction history. Unilaterally erasing past transactions upon one member's account deletion would distort running balances and deprive surviving group members of their verifiable financial ledger and settlement records.</li>
+      <li><strong>Local Device Offline Records:</strong> Deleting your cloud account removes your credentials and signs you out to Guest Mode. Because Qisma uses an offline-first architecture, local copies of records on your physical device remain stored locally in your device's private sandbox until you manually clear application storage in your device settings or uninstall the app.</li>
+      <li><strong>Security Tombstones:</strong> Server-side records (<code>accounts/{accountId}</code> and <code>authPrincipals/{uid}</code>) are retained with <code>status: "deletionPrepared"</code> to prevent identity resurrection, replay attacks, or synchronization hijacking. These tombstones contain no profile names, emails, or phone numbers.</li>
+      <li><strong>Residual Provider Logs &amp; Backups:</strong> The implementation erases records immediately from active operational databases. Deletion from backend provider server logs, encrypted off-site backups, and point-in-time recovery archives occurs according to provider retention windows: <span class="placeholder">[APPROVED POLICY REQUIRED]</span>.</li>
+    </ul>
+
+    <h2>The Sole-Owner Guard</h2>
+    <p>If you are the <strong>sole owner</strong> of an active shared group, you cannot delete your account while that group remains active. This guard ensures that shared groups are not orphaned without an administrator to manage membership or approve settlements.</p>
+    <p>Before deleting your account, you must either:</p>
+    <ul>
+      <li>Transfer group ownership to another member using <strong>Group Settings &rarr; Transfer Ownership</strong>, or</li>
+      <li>Delete the group if all balances have been settled.</li>
+    </ul>
+
+    <h2>Assisted Support Deletion (Unable to Access the App)</h2>
+    <p>The primary and immediate pathway for account deletion is directly inside the application (<strong>Settings &rarr; Account &rarr; Delete account</strong>), where recent re-authentication via Email/Password or Google Sign-In is verified automatically on the server (Sign in with Apple is unsupported in version 1.0.2). If you cannot sign in to the app (for example, if your device is lost or inaccessible), you may submit an assisted deletion request to customer support. The operational workflow proceeds as follows:</p>
+    <ol>
+      <li><strong>Request Submission:</strong> Send an email from the exact email address associated with your Qisma account to <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a> with the subject <code>Qisma Account Deletion Request</code>. <em>Sending this email initiates a support inquiry; it does not automatically or immediately delete your account.</em></li>
+      <li><strong>Support Intake:</strong> An operations representative logs the inquiry into our internal support registry with a <code>PENDING_REVIEW</code> status. Anti-enumeration protections ensure that inquiries from unregistered email addresses never disclose account absence to third parties.</li>
+      <li><strong>Identity &amp; Ownership Verification:</strong> To protect users against unauthorized deletion by impostors, support verifies inbound email authenticity (asserting SPF/DKIM validation from the registered domain) and records the unique inbound Message-ID in the operational registry. The reviewing operator documents the confirmed verification outcome in the operational audit log.</li>
+      <li><strong>Sole-Owner Preflight Check:</strong> The operator verifies in Cloud Firestore whether your account is the sole owner of any active shared groups. If you hold sole ownership of an active group with other members, deletion is blocked until ownership is transferred to another member or the group is settled.</li>
+      <li><strong>Authorized Execution:</strong> Once ownership verification is confirmed and sole-ownership checks clear, an authorized operator executes cloud deletion. Your cloud group permissions are revoked, security tombstones are recorded, and your Firebase Authentication user identity is permanently deleted.</li>
+      <li><strong>Confirmation &amp; Local Data Notice:</strong> A confirmation email is delivered to you. Deletion from operational cloud databases is completed within 30 days of ownership verification. Shared historical transactions remain available to surviving group participants to preserve group ledger balances. Local copies of records stored in SQLite on your physical device remain in your device's sandbox until you manually clear application data or uninstall the app.</li>
+    </ol>
+    <div class="note">
+      <p><strong>Security Invariants:</strong> Never send passwords, payment details, or sensitive credentials over email. Qisma customer support will never ask you for your account password. Sending an email does not instantly wipe data; verified identity confirmation and sole-owner safety checks must be satisfied before any deletion is executed.</p>
+    </div>
+
+    <h2>Unresolved Operational Placeholders</h2>
+    <p>The following parameters require final business and legal determination prior to public launch:</p>
+    <ul>
+      <li><span class="placeholder">[APPROVED POLICY REQUIRED]</span>: Verified retention duration for immutable system logs and disaster recovery backups.</li>
+      <li><span class="placeholder">[RETENTION PERIODS REQUIRED]</span>: Retention schedule for security tombstones and audit logs.</li>
+    </ul>
+
+    <div class="contact">
+      <h2>Contact</h2>
+      <p>Questions or requests regarding account or data deletion:</p>
+      <p><strong>Email:</strong> <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a></p>
+    </div>
+
+    <div class="page-foot">
+      <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
+      <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
+      <p>Learn more about how Qisma handles your information in our <a href="./">Privacy Policy</a>.</p>
+      <p><a href="../">All HSM Software privacy policies</a> · <a href="/">Portfolio</a></p>
+    </div>
+  </div>
+
+  <!-- ==================== ARABIC ==================== -->
+  <div id="policy-ar" lang="ar" dir="rtl" hidden>
+    <header>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>قسمة</p>
+      <h1>حذف الحساب والبيانات</h1>
+      <p class="updated">آخر تحديث أكتوبر ٢٠٢٦</p>
+    </header>
+    <p class="siblings"><a href="./">&rarr; سياسة الخصوصية</a></p>
+
+    <div class="note">
+      <p><strong>إشعار النشر:</strong> توثق هذه السياسة البنية التقنية لحذف الحساب وسجلات الأمان وقواعد الحفاظ على السجلات المشتركة في تطبيق «قِسمة». وهي ليست استشارة قانونية ويجب عدم نشرها للجمهور قبل استبدال كافة النصوص بين الأقواس واعتمادها قانونيًا.</p>
+    </div>
+
+    <p class="intro">يمنحك تطبيق «قِسمة» تحكمًا كاملًا في حسابك وبياناتك. إذا كنت قد أنشأت حسابًا للمزامنة السحابية، يمكنك حذفه نهائيًا ومباشرة من داخل التطبيق في أي وقت دون الحاجة لانتظار موافقة يدوية.</p>
+
+    <h2>نطاق التطبيق وأوضاع التشغيل</h2>
+    <p>تختلف آلية حذف البيانات باختلاف طريقة استخدامك لتطبيق «قِسمة»:</p>
+    <ul>
+      <li><strong>وضع الضيف (دون حساب):</strong> إذا كنت تستخدم التطبيق دون إنشاء حساب، فإن مجموعاتك ومصروفاتك وتسوياتك محفوظة حصريًا في قاعدة بيانات <span class="ltr">SQLite</span> محلية (<code class="ltr">splitly.sqlite</code>) داخل بيئة هاتفك المعزولة. <strong>ولا توجد أي بيانات شخصية أو مالية لك على خوادمنا أصلاً.</strong> ويمكنك مسح كافة البيانات في أي وقت بمسح بيانات التطبيق من إعدادات جهازك أو بإلغاء تثبيت التطبيق.</li>
+      <li><strong>الوضع الموثق (بحساب مسجل):</strong> إذا أنشأت حسابًا (بالبريد وكلمة المرور أو عبر حساب <span class="ltr">Google</span>) لمزامنة المجموعات، فإن بيانات اعتمادك وسجلاتك المتزامنة تُحفظ في سحابة <span class="ltr">Firebase</span>. ويمكنك حذف حسابك نهائيًا باتباع خطوات الحذف من داخل التطبيق أدناه.</li>
+    </ul>
+
+    <h2>كيفية طلب الحذف من داخل التطبيق</h2>
+    <ol>
+      <li>افتح تطبيق <strong>«قِسمة»</strong> على جهازك.</li>
+      <li>تأكد من تسجيل الدخول إلى الحساب الذي ترغب في حذفه.</li>
+      <li>افتح تبويب <strong>الإعدادات</strong> وانتقل إلى قسم <strong>الحساب</strong>.</li>
+      <li>اضغط على <strong>حذف الحساب</strong> في أسفل الشاشة.</li>
+      <li>راجع تفاصيل الحذف والتحذيرات المعروضة.</li>
+      <li><strong>إعادة تأكيد الهوية:</strong> كإجراء أمان إلزامي، يتطلب التطبيق مصادقة حديثة (خلال آخر ٥ دقائق / <code class="ltr">auth_time &le; 300s</code>) بإعادة إدخال كلمة المرور أو تأكيد حساب <span class="ltr">Google</span> الخاص بك قبل تنفيذ الحذف. (تسجيل الدخول بحساب <span class="ltr">Apple</span> غير مدعوم في الإصدار ١.٠.٢؛ والحسابات المنشأة بالبريد وكلمة المرور أو حساب <span class="ltr">Google</span> هي المدعومة حاليًا).</li>
+      <li>أكّد الحذف النهائي. وسيتم تنفيذ عملية الحذف فورًا.</li>
+    </ol>
+
+    <h2>مسار الحذف التقني (ما يحدث في الخلفية)</h2>
+    <p>عند تأكيد الحذف، ينفّذ تطبيق «قِسمة» مسار حذف آلي مكون من ٦ مراحل معتمدة:</p>
+    <ol>
+      <li><strong>التحقق من الملكية:</strong> يتأكد التطبيق مما إذا كنت المالك الوحيد لأي مجموعة مشتركة نشطة. وإذا كنت كذلك، يُرفض الحذف حتى تنقل الملكية أو تحذف المجموعة.</li>
+      <li><strong>الإعداد في الخادم:</strong> يستدعي التطبيق دالة سحابية آمنة (<code class="ltr">prepareAccountDeletion</code>)، وتُحدد حالة حسابك في الخادم كـ <code class="ltr">deletionPrepared</code>.</li>
+      <li><strong>إلغاء الصلاحيات:</strong> تُلغى كافة صلاحيات الوصول السحابية لحسابك في جميع المجموعات المشتركة (<code class="ltr">status: "revoked"</code>).</li>
+      <li><strong>محو الهوية من السحابة:</strong> يُحذف سجل هويتك نهائيًا من خوادم <span class="ltr">Firebase Authentication</span> (<code class="ltr">users/{uid}</code>).</li>
+      <li><strong>التنظيف المحلي:</strong> تُحدد السجلات المحلية المرتبطة بحسابك في قاعدة بيانات <span class="ltr">SQLite</span> كـ <code class="ltr">status: "deleted"</code> وتُمسح الرموز المؤقتة.</li>
+      <li><strong>إعادة ضبط الجلسة:</strong> يسجل التطبيق الخروج فورًا ويعود إلى وضع الضيف دون حساب.</li>
+    </ol>
+
+    <h2>ما يُحذف فورًا</h2>
+    <ul>
+      <li><strong>هوية تسجيل الدخول:</strong> يُمسح سجلك بالكامل من خوادم <span class="ltr">Firebase Authentication</span> (البريد، وتجزئة كلمة المرور، وارتباطات تسجيل الدخول، ورموز الجلسات)، ولا يمكن تسجيل الدخول بهذه الهوية مجددًا.</li>
+      <li><strong>صلاحيات الوصول السحابي:</strong> تُلغى كافة صلاحياتك في قراءة أو كتابة أو مزامنة المجموعات المشتركة.</li>
+      <li><strong>بيانات الاعتماد المحلية:</strong> تُمسح كافة بيانات الجلسة المخزنة في الذاكرة والجهاز ورموز التحقق المؤقتة من جهازك.</li>
+    </ul>
+
+    <h2>ما يُحتفظ به عمدًا ولماذا</h2>
+    <p>لضمان النزاهة القانونية والمحاسبية والتشغيلية، يتم الاحتفاظ بفئات محددة من السجلات:</p>
+    <ul>
+      <li><strong>سجل المعاملات المالية للمجموعات المشتركة:</strong> تبقى المصروفات المشتركة السابقة المعتمدة وحصص التقسيم والتسويات وأسماء الأعضاء المعروضة محفوظة في سحابة <span class="ltr">Firestore</span> ولدى بقية أعضاء المجموعة.
+        <br><em>سبب النزاهة المحاسبية:</em> في الدفاتر المالية للمجموعات المشتركة، ترتبط أرصدة الأعضاء والتزامات التسوية والديون الجارية ارتباطًا مباشرًا بالسجل التاريخي للمعاملات المعتمدة. ويؤدي الحذف الأحادي للمعاملات السابقة عند حذف حساب أحد الأعضاء إلى تشويه الأرصدة الجارية وحرمان بقية أعضاء المجموعة من سجلاتهم المالية وقسائم التسوية القابلة للتحقق.</li>
+      <li><strong>السجلات المحلية غير المتصلة على الجهاز:</strong> يؤدي حذف حسابك السحابي إلى محو بيانات اعتمادك وتسجيل خروجك إلى وضع الضيف. ونظرًا لأن «قِسمة» يعتمد بنية برمجية تعمل محليًا أولًا، فإن النسخ المحلية للسجلات المحفوظة على جهازك الفعلي تبقى مخزنة في بيئة هاتفك المعزولة حتى تمسح بيانات التطبيق يدويًا من إعدادات جهازك أو تلغي تثبيت التطبيق.</li>
+      <li><strong>سجلات الأمان الإجرائية (Security Tombstones):</strong> تُحفظ سجلات تقنية في الخادم (<code class="ltr">accounts/{accountId}</code> و <code class="ltr">authPrincipals/{uid}</code>) محددة بحالة <code class="ltr">deletionPrepared</code> لمنع إعادة استخدام المعرف أو هجمات إعادة الإرسال أو اختطاف المزامنة. ولا تحتوي هذه السجلات على أي أسماء أو بريد إلكتروني أو أرقام هواتف.</li>
+      <li><strong>النسخ الاحتياطية وسجلات الخوادم:</strong> يتم الحذف فورًا من قواعد البيانات النشطة. ويتم حذف السجلات من النسخ الاحتياطية وسجلات تشغيل الخوادم المشفرة وفقًا للجداول الزمنية المعتمدة لمزوّد الخدمة: <span class="placeholder">[يلزم اعتماد السياسة]</span>.</li>
+    </ul>
+
+    <h2>قيد المالك الوحيد للمجموعة</h2>
+    <p>إذا كنت <strong>المالك الوحيد</strong> لمجموعة مشتركة نشطة، فلن تتمكن من حذف حسابك ما دامت المجموعة قائمة. وهذا القيد يمنع بقاء المجموعات المشتركة دون مسؤول يدير عضوياتها أو يعتمد تسوياتها.</p>
+    <p>قبل حذف حسابك، يجب عليك القيام بأحد الأمرين:</p>
+    <ul>
+      <li>نقل ملكية المجموعة إلى عضو آخر عبر <strong>إعدادات المجموعة &larr; نقل الملكية</strong>، أو</li>
+      <li>حذف المجموعة بعد تسوية كافة الأرصدة المعلقة فيها.</li>
+    </ul>
+
+    <h2>طلب الحذف بمساعدة الدعم الفني (في حال تعذر الوصول إلى التطبيق)</h2>
+    <p>المسار الأساسي والفوري لحذف الحساب يتم مباشرة من داخل تطبيق «قِسمة» (<strong>الإعدادات &larr; الحساب &larr; حذف الحساب</strong>)، حيث يتم التحقق من هويتك ومصادقتك الحديثة آليًا عبر الخادم بواسطة البريد وكلمة المرور أو حساب Google (تسجيل الدخول بحساب Apple غير مدعوم في الإصدار ١.٠.٢). وإذا تعذر عليك تسجيل الدخول في التطبيق (بسبب فقدان جهازك مثلًا)، يمكنك تقديم طلب حذف استثنائي عبر الدعم الفني وفق المراحل التشغيلية التالية:</p>
+    <ol>
+      <li><strong>إرسال الطلب:</strong> أرسل رسالة من نفس عنوان البريد الإلكتروني المسجل به حسابك إلى <a href="mailto:hussein.mohamed.software@gmail.com" class="ltr">hussein.mohamed.software@gmail.com</a> بعنوان <code class="ltr">Qisma Account Deletion Request</code>. <em>علماً بأن إرسال البريد بمفرده يفتح تذكرة دعم فني ولا يحذف الحساب آليًا أو فورًا.</em></li>
+      <li><strong>تسجيل الطلب لدى الدعم:</strong> يُدرج مسؤول العمليات الطلب في سجل المراجعة بحالة <code>PENDING_REVIEW</code>. وتمنع دفاعات مكافحة استكشاف الحسابات تأكيد وجود الحساب في حال كان البريد المرسل غير مسجل لدينا.</li>
+      <li><strong>التحقق من ملكية الحساب:</strong> لحماية الحسابات من محاولات الحذف غير المصرح بها من أطراف أخرى، يتحقق فريق الدعم من أصالة البريد الوارد (بالتأكد من اجتياز فحص SPF و DKIM للنطاق المسجل) ويسجل معرف الرسالة الفريد (Message-ID) في السجل التشغيلي. ويوثق مسؤول المراجعة نتيجة التحقق رسميًا في سجل المراجعة التشغيلي.</li>
+      <li><strong>فحص قيود ملكية المجموعات:</strong> يفحص النظام في خوادم <span class="ltr">Firestore</span> ما إذا كان الحساب يملك بمفرده أي مجموعات نشطة مشتركة. وإذا كنت المالك الوحيد لمجموعة نشطة، يتعذر تنفيذ الحذف حتى يتم نقل الملكية إلى مشارك آخر أو تسوية المجموعة.</li>
+      <li><strong>التنفيذ المصرح به:</strong> بعد توثيق التحقق من الملكية واجتياز فحص المجموعات، ينفذ مسؤول تشغيل معتمد ومصرح له عملية الحذف؛ فتُلغى صلاحيات الوصول السحابية للمجموعات، وتُسجل شواهد الأمان التقنية، ويُحذف سجل المستخدم نهائيًا من خوادم المصادقة.</li>
+      <li><strong>تأكيد الحذف وملاحظة البيانات المحلية:</strong> يُرسل تأكيد للمستخدم باكتمال العملية خلال ٣٠ يومًا من تأكيد التحقق من الملكية. وتبقى السجلات التاريخية المشتركة محفوظة للأعضاء المتبقين لضمان صحة الأرصدة الحسابية. أما النسخ المحلية المخزنة في قاعدة بيانات <span class="ltr">SQLite</span> على جهازك الفعلي، فيلزم مسحها يدويًا من إعدادات التطبيق في هاتفك أو بإلغاء تثبيت التطبيق.</li>
+    </ol>
+    <div class="note">
+      <p><strong>تنبيه أمني هام:</strong> لا ترسل أبدًا كلمات المرور أو بيانات الدفع أو أي رموز مؤقتة عبر البريد الإلكتروني. لن يطلب منك فريق دعم «قِسمة» كلمة مرور حسابك مطلقًا. إن إرسال بريد إلكتروني لا يمسح البيانات فورًا؛ بل يجب استيفاء التحقق من الملكية وفحص قيود ملكية المجموعات قبل تنفيذ أي حذف.</p>
+    </div>
+
+    <h2>القرارات والمدد التشغيلية المعلقة</h2>
+    <p>تتطلب البنود التالية تحديدًا واعتمادًا رسميًا قبل النشر للجمهور:</p>
+    <ul>
+      <li><span class="placeholder">[يلزم اعتماد السياسة]</span>: المدة المعتمدة لحذف السجلات من النسخ الاحتياطية وسجلات التشغيل.</li>
+      <li><span class="placeholder">[يلزم تحديد مدد الاحتفاظ]</span>: المدة القانونية للاحتفاظ بسجلات الأمان الإجرائية.</li>
+    </ul>
+
+    <div class="contact">
+      <h2>للتواصل</h2>
+      <p>لأي استفسارات أو طلبات تتعلق بحذف الحساب أو البيانات الشخصية:</p>
+      <p><strong>البريد الإلكتروني:</strong> <a href="mailto:hussein.mohamed.software@gmail.com" class="ltr">hussein.mohamed.software@gmail.com</a></p>
+    </div>
+
+    <div class="page-foot">
+      <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
+      <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
+      <p>تعرّف على المزيد حول كيفية تعامل «قِسمة» مع بياناتك في <a href="./">سياسة الخصوصية</a>.</p>
+      <p><a href="../">كل سياسات الخصوصية</a> · <a href="/">الموقع الشخصي</a></p>
+    </div>
+  </div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.lang button');
+  var panels = { en: document.getElementById('policy-en'),
+                 ar: document.getElementById('policy-ar') };
+  if (!panels.en || !panels.ar) { return; }
+
+  var barApp = document.getElementById('bar-app');
+
+  function show(lang) {
+    panels.en.hidden = lang !== 'en';
+    panels.ar.hidden = lang !== 'ar';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    if (barApp) { barApp.textContent = barApp.dataset[lang] || barApp.textContent; }
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+    var t = document.documentElement.dataset;
+    if (t.titleEn && t.titleAr) {
+      document.title = lang === 'ar' ? t.titleAr : t.titleEn;
+    }
+    // Carry the choice across any link to a sibling page.
+    document.querySelectorAll('.siblings a, .card-links a').forEach(function (a) {
+      var base = a.getAttribute('href').split('?')[0];
+      a.setAttribute('href', base + '?lang=' + lang);
+    });
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.lang); });
+  });
+
+  var requested = new URLSearchParams(location.search).get('lang');
+  if (requested === 'ar' || requested === 'en') {
+    show(requested);
+  } else if ((navigator.language || '').toLowerCase().indexOf('ar') === 0) {
+    show('ar');
+  }
+})();
+</script>
+</main>
+</body>
+</html>
+
