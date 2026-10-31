@@ -144,6 +144,7 @@ function main() {
     "/privacy/",
     "/privacy/refqa/",
     "/privacy/qisma/",
+    "/privacy/qisma/account-deletion.html",
     "/privacy/x5-fitness/",
     "/privacy/x5-fitness/account-deletion.html",
     "/privacy/studyflow/",
