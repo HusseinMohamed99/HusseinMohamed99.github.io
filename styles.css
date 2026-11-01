@@ -416,10 +416,10 @@ nav.stuck {
   transition: opacity .4s ease
 }
 
-/* js adds html.hsm-active once the mascot runs: leave room above the Send
-   Message button so the docked character never covers the textarea */
-html.hsm-active .ct-form-submit {
-  margin-top: calc(var(--hsm-size) * .92)
+/* Reserve room above the Send Message button so the docked character
+   never covers the textarea and zero layout shift occurs when mascot arrives */
+.ct-form-submit {
+  margin-top: calc(var(--hsm-size) * .92);
 }
 
 .hsm-mascot.is-ready {
@@ -556,17 +556,9 @@ html.hsm-cursor .hsm-hotspot.is-link {
   background: rgba(var(--hsm-blue-rgb), .35)
 }
 
-html.hsm-cursor,
-html.hsm-cursor :where(*) {
-  cursor: none
-}
-
-html.hsm-cursor :where(input, textarea, select, [contenteditable], iframe, embed, object, video, .cs-lightbox, .cs-lightbox *) {
-  cursor: auto
-}
-
-html.hsm-cursor :where(textarea) {
-  cursor: text
+/* Native cursor is preserved by default everywhere */
+.hsm-hotspot {
+  display: none !important;
 }
 
 @keyframes hsm-breathe {
