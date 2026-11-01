@@ -2,6 +2,7 @@
 name: EGY DEAD
 category: Entertainment · Personal Project
 badge: Personal Project
+period: Feb 2025 – Aug 2026
 short_description: Media browser for movies, series, and anime built on the TMDB
   API. Smart recommendations, trailers, cast details, and categorized search —
   built with BLoC, Dio, and shimmer loading UX.

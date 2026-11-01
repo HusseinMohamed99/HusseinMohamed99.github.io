@@ -2,6 +2,7 @@
 name: Muslim App
 category: Islamic Lifestyle · Personal Project
 badge: Personal Project
+period: Sep 2024 – Aug 2025
 short_description: All-in-one Islamic app with Quran, Hadith, Azkar, Zakat
   calculator, and prayer tools. Built with bilingual AR/EN support, light & dark
   themes, and the full Quran and Hadith bundled for offline use.

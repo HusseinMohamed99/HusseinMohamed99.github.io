@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01T20:59:55.817Z",
+  "generated": "2026-11-01T21:01:02.277Z",
   "count": 12,
   "projects": [
     {
@@ -7,6 +7,7 @@
       "name": "Tuwaiq Pay",
       "category": "Fintech · iOS & Android · Saudi Market",
       "badge": "Featured Project",
+      "period": "Sep 2025 – Sep 2026",
       "short_description": "Production fintech app used by real merchants across Saudi Arabia for invoicing, payment processing, and transaction management. Features biometric login, NearPay SDK tap-to-pay, HyperPay card payments, sub-account management, Firebase Remote Config feature flags, and full Arabic/English localization.",
       "icon": "images/tuwaiq-pay/tuwaiq_icon.png",
       "order": 1,
@@ -270,6 +271,7 @@
       "name": "SportyMate",
       "category": "Sports Booking Marketplace · Android & iOS · Arabic/English · Octopus Software Solutions",
       "badge": "Company Project",
+      "period": "Jun 2025 – Aug 2025",
       "short_description": "Two-sided sports booking marketplace built at Octopus Software Solutions, connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline.",
       "icon": "images/sportymate/sporty_icon.png",
       "order": 7,
@@ -343,6 +345,7 @@
       "name": "SystemPro",
       "category": "Real Estate Marketplace · Valuerythm",
       "badge": "Company Project",
+      "period": "Nov 2023 – May 2025",
       "short_description": "Bilingual (Arabic/English) real estate marketplace built at Valuerythm for the Saudi market — listings for sale, rent and booking, advanced filters, bilingual location search, and direct agent contact via call or WhatsApp.",
       "icon": "images/systempro/systempro_icon.png",
       "order": 8,
@@ -407,6 +410,7 @@
       "name": "EGY DEAD",
       "category": "Entertainment · Personal Project",
       "badge": "Personal Project",
+      "period": "Feb 2025 – Aug 2026",
       "short_description": "Media browser for movies, series, and anime built on the TMDB API. Smart recommendations, trailers, cast details, and categorized search — built with BLoC, Dio, and shimmer loading UX.",
       "icon": "images/egydead/egydead_icon.png",
       "order": 9,
@@ -463,13 +467,14 @@
       "links": {
         "github": "https://github.com/HusseinMohamed99/EGY_DEAD"
       },
-      "lastmod": "2026-10-30"
+      "lastmod": "2026-11-01"
     },
     {
       "slug": "muslim-app",
       "name": "Muslim App",
       "category": "Islamic Lifestyle · Personal Project",
       "badge": "Personal Project",
+      "period": "Sep 2024 – Aug 2025",
       "short_description": "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Built with bilingual AR/EN support, light & dark themes, and the full Quran and Hadith bundled for offline use.",
       "icon": "images/muslim-app/muslim_icon.png",
       "order": 10,
@@ -517,13 +522,14 @@
       "links": {
         "github": "https://github.com/HusseinMohamed99/Muslim"
       },
-      "lastmod": "2026-10-05"
+      "lastmod": "2026-11-01"
     },
     {
       "slug": "tripso",
       "name": "Tripso",
       "category": "Travel Planning · Graduation Project",
       "badge": "Graduation",
+      "period": "Nov 2024 – Aug 2025",
       "short_description": "Tourism app covering Egypt, UAE, France, and Italy with top attractions, ticket pricing, interactive maps, and historical insights. Graduation project built with Cubit state management, Dio REST integration, and Firebase auth.",
       "icon": "images/tripso/tripso_icon.png",
       "order": 11,
@@ -581,6 +587,7 @@
       "name": "Quran Kareem",
       "category": "Islamic Education · Personal Project",
       "badge": "Personal Project",
+      "period": "Oct 2023 – Aug 2025",
       "short_description": "Arabic-first Quran app with full mushaf reading, verse and surah recitation, live radio, audio tafsir, reciters directory, and riwayat browser.",
       "icon": "images/quran-kareem/logo.svg",
       "order": 12,
@@ -631,7 +638,7 @@
       "links": {
         "github": "https://github.com/HusseinMohamed99/Quran_Kareem"
       },
-      "lastmod": "2026-10-05"
+      "lastmod": "2026-11-01"
     }
   ]
 }
