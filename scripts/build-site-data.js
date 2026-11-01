@@ -55,6 +55,35 @@ const xmlEscape = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
            .replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 
+/** Warn-only check for frontmatter keys not registered in admin/config.yml. */
+function checkSchemaDrift(rawProjects) {
+  const configPath = path.join(ROOT, "admin", "config.yml");
+  if (!fs.existsSync(configPath)) return;
+  try {
+    const config = jsyaml.load(fs.readFileSync(configPath, "utf8"));
+    const fields = config?.collections?.[0]?.fields || [];
+    const cmsKeys = new Set(fields.map((f) => f.name));
+    const unknown = new Map();
+    for (const { file, data } of rawProjects) {
+      for (const k of Object.keys(data)) {
+        if (!cmsKeys.has(k)) {
+          if (!unknown.has(k)) unknown.set(k, []);
+          unknown.get(k).push(file);
+        }
+      }
+    }
+    if (unknown.size) {
+      console.warn("\n⚠️  [WARN] Frontmatter keys missing from admin/config.yml (data-loss risk on CMS save):");
+      for (const [k, flist] of unknown.entries()) {
+        console.warn(`    • ${k} in: ${flist.join(", ")}`);
+      }
+      console.warn("   Register them in admin/config.yml to preserve them across dashboard saves.\n");
+    }
+  } catch (e) {
+    console.warn("⚠️  Could not check schema drift:", e.message);
+  }
+}
+
 function main() {
   if (!fs.existsSync(DATA_DIR)) {
     console.error("No data/projects directory — nothing to build.");
@@ -68,6 +97,7 @@ function main() {
   }
 
   const projects = [];
+  const rawProjects = [];
   const problems = [];
 
   for (const file of files) {
@@ -86,7 +116,10 @@ function main() {
     for (const k of CARD_FIELDS) if (data[k] !== undefined) card[k] = data[k];
     card.lastmod = lastModified(path.join("data", "projects", file));
     projects.push(card);
+    rawProjects.push({ file, data });
   }
+
+  checkSchemaDrift(rawProjects);
 
   if (problems.length) {
     console.error("Refusing to write — fix these first:");
