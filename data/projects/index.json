@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01T06:40:46.396Z",
+  "generated": "2026-11-01T21:05:48.793Z",
   "count": 12,
   "projects": [
     {
@@ -7,6 +7,7 @@
       "name": "Tuwaiq Pay",
       "category": "Fintech · iOS & Android · Saudi Market",
       "badge": "Featured Project",
+      "period": "Sep 2025 – Sep 2026",
       "short_description": "Production fintech app used by real merchants across Saudi Arabia for invoicing, payment processing, and transaction management. Features biometric login, NearPay SDK tap-to-pay, HyperPay card payments, sub-account management, Firebase Remote Config feature flags, and full Arabic/English localization.",
       "icon": "images/tuwaiq-pay/tuwaiq_icon.png",
       "order": 1,
@@ -52,7 +53,7 @@
         "app_store": "https://apps.apple.com/sa/app/tuwaiq-pay/id6745802564",
         "google_play": "https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay"
       },
-      "lastmod": "2026-09-29"
+      "lastmod": "2026-11-01"
     },
     {
       "slug": "refqa",
@@ -234,45 +235,14 @@
       "lastmod": "2026-10-08"
     },
     {
-      "slug": "vaulta",
-      "name": "Vaulta (فولتا)",
-      "category": "Personal Finance · Offline-First · Bilingual Arabic/English",
-      "badge": "Coming Soon",
-      "period": "Sep 2026 – Present",
-      "short_description": "A money and receipt manager that works on the phone without an account — accounts and transactions, a receipt vault with on-device Arabic/English scanning you review before saving, warranties, bills, subscriptions, budgets, goals, debts and reports, in Arabic and English.",
-      "order": 6,
-      "accent_color": "#334F88",
-      "tech_tags": [
-        {
-          "tag": "Flutter"
-        },
-        {
-          "tag": "Riverpod"
-        },
-        {
-          "tag": "GoRouter"
-        },
-        {
-          "tag": "Drift / SQLite"
-        },
-        {
-          "tag": "Tesseract OCR"
-        },
-        {
-          "tag": "gen-l10n"
-        }
-      ],
-      "links": {},
-      "lastmod": "2026-10-05"
-    },
-    {
       "slug": "sportymate",
       "name": "SportyMate",
       "category": "Sports Booking Marketplace · Android & iOS · Arabic/English · Octopus Software Solutions",
       "badge": "Company Project",
+      "period": "Jun 2025 – Aug 2025",
       "short_description": "Two-sided sports booking marketplace built at Octopus Software Solutions, connecting players with trainers and clubs. Players book sessions and pay through Paymob; trainers publish their own schedule, approve requests, verify attendance by QR scan, and track earnings — one Flutter binary serving both roles, bilingual Arabic/English, built on Cubit + HydratedBloc over a Retrofit/Dio layer and shipped by an automated Fastlane pipeline.",
       "icon": "images/sportymate/sporty_icon.png",
-      "order": 7,
+      "order": 6,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -336,16 +306,17 @@
         }
       ],
       "links": {},
-      "lastmod": "2026-10-30"
+      "lastmod": "2026-11-01"
     },
     {
       "slug": "systempro",
       "name": "SystemPro",
       "category": "Real Estate Marketplace · Valuerythm",
       "badge": "Company Project",
+      "period": "Nov 2023 – May 2025",
       "short_description": "Bilingual (Arabic/English) real estate marketplace built at Valuerythm for the Saudi market — listings for sale, rent and booking, advanced filters, bilingual location search, and direct agent contact via call or WhatsApp.",
       "icon": "images/systempro/systempro_icon.png",
-      "order": 8,
+      "order": 7,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -400,16 +371,188 @@
         }
       ],
       "links": {},
-      "lastmod": "2026-10-30"
+      "lastmod": "2026-11-01"
+    },
+    {
+      "slug": "quran-kareem",
+      "name": "Quran Kareem",
+      "category": "Islamic Education · Personal Project",
+      "badge": "Personal Project",
+      "period": "Oct 2023 – Aug 2025",
+      "short_description": "Arabic-first Quran app with full mushaf reading, verse and surah recitation, live radio, audio tafsir, reciters directory, and riwayat browser.",
+      "icon": "images/quran-kareem/logo.svg",
+      "order": 8,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "flutter_bloc / Cubit"
+        },
+        {
+          "tag": "Dio"
+        },
+        {
+          "tag": "audioplayers"
+        },
+        {
+          "tag": "video_player"
+        },
+        {
+          "tag": "connectivity_plus"
+        },
+        {
+          "tag": "Firebase Core"
+        },
+        {
+          "tag": "Firebase Crashlytics"
+        },
+        {
+          "tag": "Firebase Remote Config"
+        },
+        {
+          "tag": "flutter_screenutil"
+        },
+        {
+          "tag": "share_plus"
+        },
+        {
+          "tag": "url_launcher"
+        },
+        {
+          "tag": "mp3quran API"
+        },
+        {
+          "tag": "alquran.cloud API"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/HusseinMohamed99/Quran_Kareem"
+      },
+      "lastmod": "2026-11-01"
+    },
+    {
+      "slug": "muslim-app",
+      "name": "Muslim App",
+      "category": "Islamic Lifestyle · Personal Project",
+      "badge": "Personal Project",
+      "period": "Sep 2024 – Aug 2025",
+      "short_description": "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Built with bilingual AR/EN support, light & dark themes, and the full Quran and Hadith bundled for offline use.",
+      "icon": "images/muslim-app/muslim_icon.png",
+      "order": 9,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "Provider"
+        },
+        {
+          "tag": "ChangeNotifier"
+        },
+        {
+          "tag": "SharedPreferences"
+        },
+        {
+          "tag": "Dio"
+        },
+        {
+          "tag": "audioplayers"
+        },
+        {
+          "tag": "Firebase Core"
+        },
+        {
+          "tag": "Firebase Remote Config"
+        },
+        {
+          "tag": "flutter_screenutil"
+        },
+        {
+          "tag": "flutter_localizations / intl"
+        },
+        {
+          "tag": "url_launcher"
+        },
+        {
+          "tag": "package_info_plus"
+        },
+        {
+          "tag": "Shorebird code push"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/HusseinMohamed99/Muslim"
+      },
+      "lastmod": "2026-11-01"
+    },
+    {
+      "slug": "tripso",
+      "name": "Tripso",
+      "category": "Travel Planning · Graduation Project",
+      "badge": "Graduation",
+      "period": "Nov 2024 – Aug 2025",
+      "short_description": "Tourism app covering Egypt, UAE, France, and Italy with top attractions, ticket pricing, interactive maps, and historical insights. Graduation project built with Cubit state management, Dio REST integration, and Firebase auth.",
+      "icon": "images/tripso/tripso_icon.png",
+      "order": 10,
+      "tech_tags": [
+        {
+          "tag": "Flutter"
+        },
+        {
+          "tag": "flutter_bloc / Cubit"
+        },
+        {
+          "tag": "Provider (ChangeNotifier)"
+        },
+        {
+          "tag": "Firebase Auth"
+        },
+        {
+          "tag": "Cloud Firestore"
+        },
+        {
+          "tag": "Firebase Storage"
+        },
+        {
+          "tag": "shared_preferences"
+        },
+        {
+          "tag": "REST (WeatherAPI)"
+        },
+        {
+          "tag": "flutter_screenutil"
+        },
+        {
+          "tag": "cached_network_image"
+        },
+        {
+          "tag": "flutter_tts"
+        },
+        {
+          "tag": "image_picker / image_cropper"
+        },
+        {
+          "tag": "connectivity_plus"
+        },
+        {
+          "tag": "url_launcher"
+        }
+      ],
+      "links": {
+        "github": "https://github.com/HusseinMohamed99/Tripso"
+      },
+      "lastmod": "2026-11-01"
     },
     {
       "slug": "egydead",
       "name": "EGY DEAD",
-      "category": "Entertainment · Google Play",
+      "category": "Entertainment · Personal Project",
       "badge": "Personal Project",
-      "short_description": "Media browser for movies, series, and anime with 10K+ downloads on Google Play. Smart recommendations, trailers, cast details, and categorized search — built with BLoC, Dio, and shimmer loading UX.",
+      "period": "Feb 2025 – Aug 2026",
+      "short_description": "Media browser for movies, series, and anime built on the TMDB API. Smart recommendations, trailers, cast details, and categorized search — built with BLoC, Dio, and shimmer loading UX.",
       "icon": "images/egydead/egydead_icon.png",
-      "order": 9,
+      "order": 11,
       "tech_tags": [
         {
           "tag": "Flutter"
@@ -463,175 +606,39 @@
       "links": {
         "github": "https://github.com/HusseinMohamed99/EGY_DEAD"
       },
-      "lastmod": "2026-10-30"
+      "lastmod": "2026-11-01"
     },
     {
-      "slug": "muslim-app",
-      "name": "Muslim App",
-      "category": "Islamic Lifestyle · Google Play",
-      "badge": "Personal Project",
-      "short_description": "All-in-one Islamic app with Quran, Hadith, Azkar, Zakat calculator, and prayer tools. Published on Google Play with bilingual AR/EN support, light & dark themes, and the full Quran and Hadith bundled for offline use.",
-      "icon": "images/muslim-app/muslim_icon.png",
-      "order": 10,
-      "tech_tags": [
-        {
-          "tag": "Flutter"
-        },
-        {
-          "tag": "Provider"
-        },
-        {
-          "tag": "ChangeNotifier"
-        },
-        {
-          "tag": "SharedPreferences"
-        },
-        {
-          "tag": "Dio"
-        },
-        {
-          "tag": "audioplayers"
-        },
-        {
-          "tag": "Firebase Core"
-        },
-        {
-          "tag": "Firebase Remote Config"
-        },
-        {
-          "tag": "flutter_screenutil"
-        },
-        {
-          "tag": "flutter_localizations / intl"
-        },
-        {
-          "tag": "url_launcher"
-        },
-        {
-          "tag": "package_info_plus"
-        },
-        {
-          "tag": "Shorebird code push"
-        }
-      ],
-      "links": {
-        "github": "https://github.com/HusseinMohamed99/Muslim"
-      },
-      "lastmod": "2026-10-05"
-    },
-    {
-      "slug": "tripso",
-      "name": "Tripso",
-      "category": "Travel Planning · Graduation Project",
-      "badge": "Graduation",
-      "short_description": "Tourism app covering Egypt, UAE, France, and Italy with top attractions, ticket pricing, interactive maps, and historical insights. Graduation project built with Cubit state management, Dio REST integration, and Firebase auth.",
-      "icon": "images/tripso/tripso_icon.png",
-      "order": 11,
-      "tech_tags": [
-        {
-          "tag": "Flutter"
-        },
-        {
-          "tag": "flutter_bloc / Cubit"
-        },
-        {
-          "tag": "Provider (ChangeNotifier)"
-        },
-        {
-          "tag": "Firebase Auth"
-        },
-        {
-          "tag": "Cloud Firestore"
-        },
-        {
-          "tag": "Firebase Storage"
-        },
-        {
-          "tag": "shared_preferences"
-        },
-        {
-          "tag": "REST (WeatherAPI)"
-        },
-        {
-          "tag": "flutter_screenutil"
-        },
-        {
-          "tag": "cached_network_image"
-        },
-        {
-          "tag": "flutter_tts"
-        },
-        {
-          "tag": "image_picker / image_cropper"
-        },
-        {
-          "tag": "connectivity_plus"
-        },
-        {
-          "tag": "url_launcher"
-        }
-      ],
-      "links": {
-        "github": "https://github.com/HusseinMohamed99/Tripso"
-      },
-      "lastmod": "2026-10-30"
-    },
-    {
-      "slug": "quran-kareem",
-      "name": "Quran Kareem",
-      "category": "Islamic Education · Personal Project",
-      "badge": "Personal Project",
-      "short_description": "Arabic-first Quran app with full mushaf reading, verse and surah recitation, live radio, audio tafsir, reciters directory, and riwayat browser — published on Google Play.",
-      "icon": "images/quran-kareem/logo.svg",
+      "slug": "vaulta",
+      "name": "Vaulta (فولتا)",
+      "category": "Personal Finance · Offline-First · Bilingual Arabic/English",
+      "badge": "Coming Soon",
+      "period": "Sep 2026 – Present",
+      "short_description": "A money and receipt manager that works on the phone without an account — accounts and transactions, a receipt vault with on-device Arabic/English scanning you review before saving, warranties, bills, subscriptions, budgets, goals, debts and reports, in Arabic and English.",
       "order": 12,
+      "accent_color": "#334F88",
       "tech_tags": [
         {
           "tag": "Flutter"
         },
         {
-          "tag": "flutter_bloc / Cubit"
+          "tag": "Riverpod"
         },
         {
-          "tag": "Dio"
+          "tag": "GoRouter"
         },
         {
-          "tag": "audioplayers"
+          "tag": "Drift / SQLite"
         },
         {
-          "tag": "video_player"
+          "tag": "Tesseract OCR"
         },
         {
-          "tag": "connectivity_plus"
-        },
-        {
-          "tag": "Firebase Core"
-        },
-        {
-          "tag": "Firebase Crashlytics"
-        },
-        {
-          "tag": "Firebase Remote Config"
-        },
-        {
-          "tag": "flutter_screenutil"
-        },
-        {
-          "tag": "share_plus"
-        },
-        {
-          "tag": "url_launcher"
-        },
-        {
-          "tag": "mp3quran API"
-        },
-        {
-          "tag": "alquran.cloud API"
+          "tag": "gen-l10n"
         }
       ],
-      "links": {
-        "github": "https://github.com/HusseinMohamed99/Quran_Kareem"
-      },
-      "lastmod": "2026-10-05"
+      "links": {},
+      "lastmod": "2026-11-01"
     }
   ]
 }

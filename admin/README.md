@@ -68,3 +68,9 @@ filename: a project named `StudyFlow (مذاكرتي)` uploads to `images/studyf
 Files added by hand can live anywhere under `images/`, because each `.md` stores the full
 path. A project's hand-added and dashboard-added images can therefore end up in two different
 folders. Both work.
+
+## Published slugs and URL permanence
+
+The slug of a project file (e.g. `data/projects/expense_splitter.md`) determines its permanent URL (`/projects/project.html?slug=expense_splitter` and `/projects/expense_splitter/`).
+
+Never rename a project slug or Markdown filename once published, even if the public product name or app store branding evolves. For example, `expense_splitter` is publicly named **Qisma (قِسمة)** with package `com.hsmsoftware.splitly` and assets in `images/splitly-قسمة/`. The file remains `expense_splitter.md` so that existing links, bookmarks, sitemaps, and search engine indices never break.
