@@ -1,0 +1,6 @@
+# Operating System files
+.DS_Store
+**/.DS_Store
+
+# Local Agent / IDE configuration
+.claude/
