@@ -2,8 +2,20 @@
 
 Case studies live in `data/projects/<slug>.md`. Edit them in the dashboard (`/admin/`) or by
 hand. Dashboard saves commit straight to `main`, and `.github/workflows/build-site-data.yml`
-then regenerates `data/projects/index.json` and `sitemap.xml`. After a hand edit, run
-`node scripts/build-site-data.js` yourself. Never edit those two generated files directly.
+then regenerates `data/projects/index.json`, `sitemap.xml`, and the static crawlable case-study
+pages under `projects/<slug>/index.html`. After a hand edit, run `node scripts/build-site-data.js`
+yourself. Never edit those generated files directly.
+
+## Static case-study pages (`projects/<slug>/index.html`)
+
+Each project has a static, crawlable case-study page at `projects/<slug>/index.html` with unique
+meta tags, Open Graph cards, JSON-LD structured data, and server-rendered HTML for search crawlers
+and social scrapers.
+
+These pages are build artifacts generated directly from `data/projects/<slug>.md`. Because GitHub
+Pages serves static files directly from git branches, they are committed to the repository and
+marked at the very top with:
+`<!-- GENERATED FILE: Do not edit directly. Regenerate with node scripts/build-site-data.js. Source: data/projects/<slug>.md -->`.
 
 ## Screenshot variants: Arabic and dark
 
