@@ -124,21 +124,16 @@ if(document.getElementById('hero-section')){
   });
 })();
 
-// Email obfuscation (works on any page containing these ids)
+// Email link initialization & footer year
 (function(){
-  var u='hussein.mohamed.software';
-  var d='gmail.com';
-  var e=u+'@'+d;
-  var m='mailto:'+e;
-  function openMail(ev){ ev.preventDefault(); window.location.href=m; }
-  var btn=document.getElementById('em-link-btn');
-  if(btn){ btn.href=m; btn.addEventListener('click', openMail); }
-  var ct=document.getElementById('em-link-ct');
-  if(ct){ ct.href=m; ct.addEventListener('click', openMail); }
-  var ft=document.getElementById('em-link-footer');
-  if(ft){ ft.href=m; ft.addEventListener('click', openMail); }
-  var disp=document.getElementById('em-display-ct');
-  if(disp){ disp.textContent=e; }
-  var yr=document.getElementById('copy-year');
-  if(yr){ yr.textContent=new Date().getFullYear(); }
+  var e = 'hussein.mohamed.software@gmail.com';
+  var m = 'mailto:' + e + '?subject=' + encodeURIComponent("Let's talk — from your portfolio");
+  var ct = document.getElementById('em-link-ct');
+  if(ct && (!ct.getAttribute('href') || ct.getAttribute('href') === '#')){ ct.href = m; }
+  var ft = document.getElementById('em-link-footer');
+  if(ft && (!ft.getAttribute('href') || ft.getAttribute('href') === 'javascript:void(0)')){ ft.href = m; }
+  var disp = document.getElementById('em-display-ct');
+  if(disp){ disp.textContent = e; }
+  var yr = document.getElementById('copy-year');
+  if(yr){ yr.textContent = new Date().getFullYear(); }
 })();
