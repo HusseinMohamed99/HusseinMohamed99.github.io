@@ -2,7 +2,7 @@
   --cream: #faf8f3;
   --ink: #0f0e0b;
   --ink2: #2a2926;
-  --muted: #8a897f;
+  --muted: #68675f;
   --border: #e8e5dc;
   --border2: #cbc8bc;
   --surface: #f4f2eb;
@@ -34,7 +34,7 @@
   --contact-text: rgba(250, 248, 243, .55);
   --contact-strong: #faf8f3;
   --contact-border: rgba(250, 248, 243, .1);
-  --contact-label: rgba(250, 248, 243, .28);
+  --contact-label: rgba(250, 248, 243, .6);
   --about-text: rgba(250, 248, 243, .55);
   --about-strong: #faf8f3;
   --stat-dark-bg: #0f0e0b;
@@ -51,7 +51,7 @@
   --cream: #0d0d0f;
   --ink: #f0ede8;
   --ink2: #d4d0c8;
-  --muted: #7a7870;
+  --muted: #949289;
   --border: #2a2926;
   --border2: #3a3834;
   --surface: #161614;
@@ -72,7 +72,7 @@
   --contact-text: rgba(240, 237, 232, .5);
   --contact-strong: #f0ede8;
   --contact-border: rgba(240, 237, 232, .1);
-  --contact-label: rgba(240, 237, 232, .25);
+  --contact-label: rgba(240, 237, 232, .6);
   --about-text: rgba(240, 237, 232, .5);
   --about-strong: #f0ede8;
   --stat-dark-bg: #1e1e1e;
@@ -1437,10 +1437,42 @@ footer a:hover {
   color: var(--contact-label)
 }
 
-/* Keyboard focus in the brand blue, on every theme */
-:focus-visible {
-  outline: 2px solid var(--hsm-blue);
-  outline-offset: 3px
+/* Accessible skip-to-content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1.5rem;
+  z-index: 10000;
+  padding: .75rem 1.25rem;
+  background: var(--hsm-blue);
+  color: #fff;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: .9rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+  transition: top .2s ease;
+}
+
+/* Keyboard focus in the brand blue (2px, offset), on every theme */
+:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.theme-toggle:focus-visible,
+.nav-hamburger:focus-visible,
+.wa-fab:focus-visible,
+.btt:focus-visible,
+.skip-link:focus-visible {
+  outline: 2px solid var(--hsm-blue) !important;
+  outline-offset: 2px !important;
+}
+
+.skip-link:focus-visible {
+  top: 1rem;
 }
 
 /* MOBILE STATS STRIP */
