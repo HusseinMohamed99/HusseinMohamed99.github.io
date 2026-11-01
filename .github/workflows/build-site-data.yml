@@ -14,6 +14,7 @@ on:
     paths:
       - "data/projects/**.md"
       - "scripts/build-site-data.js"
+      - "admin/**"
   workflow_dispatch:
 
 permissions:

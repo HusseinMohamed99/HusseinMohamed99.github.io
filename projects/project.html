@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title id="page-title">Project — Hussein Mohamed</title>
-<meta name="description" content="Detailed mobile application case study and software architecture breakdown by Hussein Mohamed (HSM Software)."/>
-<link rel="canonical" id="canonical-link" href="https://husseinmohamed99.github.io/projects/all-projects.html"/>
+<title>Projects — Hussein Mohamed</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="canonical" href="https://husseinmohamed99.github.io/projects/all-projects.html"/>
 <script>
 (function() {
   const p = new URLSearchParams(window.location.search);
@@ -13,579 +13,70 @@
   if (s) {
     p.delete("slug");
     const q = p.toString();
-    window.location.replace(encodeURIComponent(s) + "/" + (q ? ("?" + q) : ""));
+    const hash = window.location.hash || "";
+    const target = encodeURIComponent(s) + "/" + (q ? ("?" + q) : "") + hash;
+    window.location.replace(target);
+  } else {
+    window.location.replace("all-projects.html");
   }
 })();
 </script>
+<noscript>
+  <meta http-equiv="refresh" content="0; url=all-projects.html"/>
+</noscript>
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png"/>
 <link rel="icon" type="image/png" sizes="512x512" href="../images/brand/hsm-icon-512.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"/>
 <meta name="theme-color" content="#0A6EF5"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Geist+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet"/>
-<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,600,700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../styles.css"/>
-<script defer data-domain="husseinmohamed99.github.io" src="https://plausible.io/js/script.js"></script>
 <style>
-  .cs-mockup-grid{
-    grid-column: 1 / -1;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-    gap:1.75rem;
-    padding:2.5rem 0;
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+    background: var(--bg, #f8fafc);
+    color: var(--text, #0f172a);
   }
-  .cs-walk-in{ max-width: 1400px !important; }
-  .cs-mockup{display:flex;flex-direction:column;align-items:center;gap:1rem}
-  .cs-phone-mini{
-    position:relative;
-    width:100%;
-    max-width:230px;
-    aspect-ratio:9/19.5;
-    border-radius:32px;
-    padding:6px;
-    background:linear-gradient(160deg,#2a2a2a,#0a0a0a);
-    box-shadow:0 4px 10px rgba(0,0,0,.08), 0 20px 45px -12px rgba(0,0,0,.35);
-    cursor:zoom-in;
-    transition:transform .25s ease, box-shadow .25s ease;
+  .redirect-box {
+    max-width: 480px;
+    padding: 2.5rem 2rem;
+    background: var(--surface, #ffffff);
+    border: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   }
-  .cs-phone-mini:hover{
-    transform:translateY(-6px);
-    box-shadow:0 8px 16px rgba(0,0,0,.12), 0 28px 55px -12px rgba(0,0,0,.45);
+  .redirect-box h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
   }
-  .cs-phone-mini::before{
-    content:"";
-    position:absolute;
-    top:14px;
-    left:50%;
-    transform:translateX(-50%);
-    width:10px;
-    height:10px;
-    background:#0a0a0a;
-    border-radius:50%;
-    z-index:2;
-    box-shadow:0 0 0 2px rgba(255,255,255,.06);
+  .redirect-box p {
+    color: var(--muted, #64748b);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
   }
-  .cs-phone-mini-inner{width:100%;height:100%;border-radius:26px;overflow:hidden;background:#000;transform:translateZ(0)}
-  .cs-phone-mini img{width:100%;height:100%;object-fit:cover;background:#000;display:block;image-rendering:auto;backface-visibility:hidden}
-  /* mockup_frame: none — finished store graphics that already draw their own
-     phone: a plain rounded 9:16 card instead of the CSS phone frame. */
-  .cs-mockup-grid.is-bare .cs-phone-mini{aspect-ratio:9/16;padding:0;border-radius:18px;background:none}
-  .cs-mockup-grid.is-bare .cs-phone-mini::before{display:none}
-  .cs-mockup-grid.is-bare .cs-phone-mini-inner{border-radius:18px;background:var(--surface)}
-  .cs-mockup-grid.is-bare .cs-phone-mini img{background:var(--surface)}
-  .cs-mockup-cap{
-    font-family:'Geist Mono',monospace;
-    font-size:.68rem;
-    letter-spacing:.04em;
-    color:var(--muted);
-    text-align:center;
-    padding:.3rem .8rem;
-    border:1px solid var(--border,rgba(0,0,0,.08));
-    border-radius:100px;
-  }
-  .cs-walk-tab{cursor:pointer}
-
-  /* Screenshot language switch — same pill as the privacy pages' switch */
-  .cs-walk-title{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem}
-  .cs-shot-lang{
-    display:inline-flex;gap:2px;padding:3px;
-    background:var(--surface);border:1px solid var(--border2);border-radius:999px;
-  }
-  .cs-shot-lang button{
-    display:inline-flex;align-items:center;justify-content:center;
-    min-height:34px;padding:4px 15px;border-radius:999px;
-    font-family:'Geist Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.06em;line-height:1.2;
-    background:transparent;color:var(--muted);border:1px solid transparent;cursor:pointer;
-    transition:background .16s,color .16s,box-shadow .16s;
-  }
-  .cs-shot-lang button:hover{color:var(--hsm-blue-text)}
-  .cs-shot-lang button[aria-pressed="true"]{
-    background:var(--hsm-blue);color:#fff;
-    box-shadow:0 1px 2px rgba(var(--hsm-blue-rgb),.35),0 2px 8px rgba(var(--hsm-blue-rgb),.28);
-  }
-  .cs-shot-lang button:focus-visible{outline:2px solid var(--hsm-blue);outline-offset:2px}
-  .cs-shot-lang button[lang="ar"],
-  .cs-mockup-cap[lang="ar"]{font-family:'Noto Naskh Arabic',serif;letter-spacing:0}
-  .cs-shot-lang button[lang="ar"]{font-size:13.5px}
-  .cs-shot-theme button{padding:4px 11px;min-width:40px}
-  .cs-shot-theme svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .cs-mockup-cap[lang="ar"]{font-size:.8rem}
-  .cs-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-  .cs-lightbox{
-    position:fixed;inset:0;z-index:999;
-    background:rgba(10,10,10,.88);
-    display:none;
-    align-items:center;justify-content:center;
-    padding:3rem 1.5rem;
-    cursor:zoom-out;
-  }
-  .cs-lightbox.open{display:flex}
-  .cs-lightbox img{
-    max-width:min(420px,90vw);
-    max-height:85vh;
-    border-radius:28px;
-    box-shadow:0 30px 80px rgba(0,0,0,.5);
-  }
-  .cs-lightbox-close{
-    position:absolute;top:1.5rem;right:1.5rem;
-    width:42px;height:42px;border-radius:50%;
-    background:rgba(255,255,255,.1);
-    color:#fff;border:1px solid rgba(255,255,255,.25);
-    font-size:1.3rem;line-height:1;cursor:pointer;
-  }
-
-  #skeleton{padding:4rem 2rem;text-align:center;font-family:'Geist Mono',monospace;color:var(--muted)}
-
-  /* Compact walkthrough tabs (hard override — base site CSS stacks these full-width) */
-  .cs-walk-tabs{
-    display:flex !important;
-    flex-direction:row !important;
-    flex-wrap:nowrap !important;
-    align-items:center !important;
-    justify-content:flex-start !important;
-    width:fit-content !important;
-    max-width:100% !important;
-    gap:.35rem !important;
-    background:rgba(0,0,0,.045);
-    padding:.3rem !important;
-    border-radius:100px !important;
-    margin:0 !important;
-  }
-  .cs-walk-tab{
-    display:flex !important;
-    flex-direction:row !important;
-    flex:0 0 auto !important;
-    align-items:center !important;
-    justify-content:center !important;
-    width:auto !important;
-    height:auto !important;
-    padding:.45rem 1rem !important;
-    margin:0 !important;
-    font-size:.78rem !important;
-    line-height:1.2 !important;
-    border-radius:100px !important;
-    border:none !important;
-    background:transparent !important;
-    color:var(--muted);
-    font-weight:600;
-    white-space:nowrap;
-    gap:.4rem;
-  }
-  .cs-walk-tab .cs-walk-tab-dot{
-    width:6px;height:6px;border-radius:50%;
-    background:currentColor;
-    opacity:.5;
-    flex:0 0 auto;
-  }
-  .cs-walk-tab.active{
-    background:#fff !important;
-    color:var(--text,#111);
-    box-shadow:0 2px 6px rgba(0,0,0,.1);
-  }
-  .cs-walk-tab.active .cs-walk-tab-dot{
-    background:var(--hsm-blue);
-    opacity:1;
+  .redirect-box a {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    background: var(--hsm-blue, #0A6EF5);
+    color: #ffffff;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
   }
 </style>
 </head>
 <body>
-
-<!-- HSM Software mascot: the visual cursor on desktop, a scroll-driven flyer on
-     touch, and it lands above the Send Message button. Decorative only;
-     js/hsm-mascot.js builds its layers and drives it from one rAF loop.
-     pointer-events stay off so it never blocks a click. -->
-<div class="hsm-mascot" id="hsm-mascot" data-assets="../images/mascot/" aria-hidden="true"></div>
-<a href="https://wa.me/201034442174" target="_blank" rel="noopener noreferrer" class="wa-fab" id="wa-fab" aria-label="Contact on WhatsApp">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
-
-<nav id="nav">
-  <a class="nav-logo" href="../index.html" aria-label="Hussein Mohamed — HSM Software, home">
-    <img class="brand-mark brand-mark--light" src="../images/brand/hsm-mark-light.png" alt="HSM Software" width="381" height="160"/>
-    <img class="brand-mark brand-mark--dark" src="../images/brand/hsm-mark-dark.png" alt="" aria-hidden="true" width="417" height="160"/>
-    Hussein Mohamed
-  </a>
-  <div class="nav-right">
-    <ul class="nav-links" id="nav-links">
-      <li><a href="../index.html#hero-section">Home</a></li>
-      <li><a href="../index.html#about">About</a></li>
-      <li><a href="../index.html#skills">Skills</a></li>
-      <li><a href="../index.html#experience">Experience</a></li>
-      <li><a href="../index.html#projects" class="active">Projects</a></li>
-      <li><a href="../index.html#certifications">Certifications</a></li>
-      <li><a href="https://github.com/HusseinMohamed99" target="_blank">GitHub</a></li>
-      <li><a href="../index.html#contact" class="nav-hire">Hire me</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" class="icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg viewBox="0 0 24 24" class="icon-sun"><circle cx="12" cy="12" r="5"/></svg></button>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</nav>
-
-<div class="mobile-menu" id="mobile-menu">
-  <a href="../index.html#hero-section">Home</a>
-  <a href="../index.html#about">About</a>
-  <a href="../index.html#skills">Skills</a>
-  <a href="../index.html#experience">Experience</a>
-  <a href="../index.html#projects" class="active">Projects</a>
-  <a href="../index.html#certifications">Certifications</a>
-  <a href="https://github.com/HusseinMohamed99" target="_blank">GitHub ↗</a>
-  <a href="../index.html#contact" class="m-hire">Hire me</a>
+<div class="redirect-box">
+  <h1>Redirecting…</h1>
+  <p>Our project case studies have moved to permanent clean URLs. If you are not redirected automatically, please visit our projects directory.</p>
+  <a href="all-projects.html">View All Projects →</a>
 </div>
-
-<div class="cs-back">
-  <a href="../index.html#projects">← Back to Portfolio</a>
-</div>
-
-<div id="skeleton">Loading project…</div>
-<div id="project-root" style="display:none"></div>
-<div class="cs-lightbox" id="cs-lightbox">
-  <button class="cs-lightbox-close" id="cs-lightbox-close" aria-label="Close">✕</button>
-  <img id="cs-lightbox-img" src="" alt="Screenshot preview"/>
-</div>
-
-<footer>
-  <div class="footer-brand">
-    <img src="../images/brand/hsm-logo-dark.png" alt="HSM Software" width="443" height="240"/>
-    <div class="footer-brand-tx">
-      <span>© <span id="copy-year"></span> Hussein Mohamed</span>
-      <small>An HSM Software portfolio</small>
-    </div>
-  </div>
-  <a href="mailto:hussein.mohamed.software@gmail.com?subject=Let's%20talk%20%E2%80%94%20from%20your%20portfolio" id="em-link-footer" style="font-family:'Geist Mono',monospace;font-size:.73rem;color:var(--contact-label);text-decoration:none">hussein.mohamed.software@gmail.com</a>
-  <span style="font-family:'Geist Mono',monospace">Flutter Developer · Cairo, Egypt</span>
-</footer>
-
-<script src="../script.js"></script>
-<script src="../js/hsm-mascot.js"></script>
-<script src="../js/js-yaml.min.js"></script>
-<script src="../js/site-data.js"></script>
-<script>
-const SHOT_LANG_KEY = "cs-shot-lang";
-const SHOT_THEME_KEY = "cs-shot-theme";
-
-async function renderProject() {
-  const params = new URLSearchParams(window.location.search);
-  const slug = params.get("slug");
-  const skeleton = document.getElementById("skeleton");
-  const root = document.getElementById("project-root");
-
-  if (!slug) {
-    skeleton.textContent = "No project specified. Use project.html?slug=your-project-slug";
-    return;
-  }
-
-  let p;
-  try {
-    p = await SiteData.fetchProject(slug);
-  } catch (e) {
-    skeleton.textContent = "Couldn't load project '" + slug + "': " + (e.message || e);
-    return;
-  }
-
-  document.title = (p.name || "Project") + " — Case Study | Hussein Mohamed";
-  document.getElementById("page-title").textContent = document.title;
-
-  const stats = (p.stats || []).map(s => `
-    <div class="cs-stat"><span class="cs-stat-n">${escapeHtml(s.number)}</span><span class="cs-stat-l">${escapeHtml(s.label)}</span></div>
-  `).join("");
-
-  const caps = (p.capabilities || []).map(c => `
-    <div class="cs-cap"><div class="cs-cap-ico">${escapeHtml(c.icon || "")}</div><div class="cs-cap-tx"><b>${escapeHtml(c.title)}</b><p>${escapeHtml(c.description)}</p></div></div>
-  `).join("");
-
-  const flow = (p.architecture_flow || []).map((step, i, arr) => {
-    const label = (step && typeof step === "object") ? (step.step || "") : step;
-    const arrow = i < arr.length - 1 ? `<span class="cs-flow-arrow">→</span>` : "";
-    return `<span class="cs-flow-step">${escapeHtml(label)}</span>${arrow}`;
-  }).join("");
-
-  const flow2 = (p.architecture_flow_2 || []).map((step, i, arr) => {
-    const label = (step && typeof step === "object") ? (step.step || "") : step;
-    const arrow = i < arr.length - 1 ? `<span class="cs-flow-arrow">→</span>` : "";
-    return `<span class="cs-flow-step">${escapeHtml(label)}</span>${arrow}`;
-  }).join("");
-
-  const banner = p.banner ? `
-    <div style="grid-column:1/-1">
-      <img src="../${escapeAttr(p.banner)}" alt="${escapeAttr(p.name)} Screenshots Banner" style="width:100%;border-radius:18px;display:block;">
-    </div>` : "";
-
-  // Screenshot variants: an item may add image_dark, image_ar, image_ar_dark and
-  // caption_ar. The requested (lang, theme) falls back through
-  // (lang, light) → (en, theme) → (en, light); a file that fails to load is
-  // skipped the same way. Each switch only renders when some item needs it.
-  const SHOT_FIELD = { en: { light: "image", dark: "image_dark" }, ar: { light: "image_ar", dark: "image_ar_dark" } };
-  const items = p.mockups || [];
-  const shots = items.map(m => ({ m, dead: new Set() }));
-  const hasAr = items.some(m => m.image_ar || m.image_ar_dark);
-  const hasDark = items.some(m => m.image_dark || m.image_ar_dark);
-  const readSaved = (key) => { try { return localStorage.getItem(key); } catch (_) { return null; } };
-  let shotLang = "en";
-  if (hasAr) {
-    const asked = params.get("lang");
-    shotLang = (asked === "ar" || asked === "en") ? asked : (readSaved(SHOT_LANG_KEY) === "ar" ? "ar" : "en");
-  }
-  // Theme: ?theme= wins, then the visitor's own gallery choice, otherwise the
-  // site theme — followed live until the gallery switch is used.
-  const siteTheme = () => document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-  let shotTheme = "light", followSite = false;
-  if (hasDark) {
-    const asked = params.get("theme"), saved = readSaved(SHOT_THEME_KEY);
-    if (asked === "dark" || asked === "light") shotTheme = asked;
-    else if (saved === "dark" || saved === "light") shotTheme = saved;
-    else { shotTheme = siteTheme(); followSite = true; }
-  }
-  function shotView(i) {
-    const { m, dead } = shots[i];
-    const chain = [[shotLang, shotTheme], [shotLang, "light"], ["en", shotTheme], ["en", "light"]]
-      .map(([l, t]) => m[SHOT_FIELD[l][t]]).filter(Boolean);
-    const ar = shotLang === "ar" && !!m.caption_ar;
-    return {
-      src: chain.find(s => !dead.has(s)) || m.image,
-      cap: (ar ? m.caption_ar : m.caption) || "",
-      ar,
-    };
-  }
-  const arAttrs = (v) => v.ar ? ` lang="ar" dir="rtl"` : "";
-
-  const mockups = shots.map((_, i) => {
-    const v = shotView(i);
-    return `
-    <div class="cs-mockup" data-shot="${i}">
-      <div class="cs-phone-mini" data-lightbox-src="../${escapeAttr(v.src)}">
-        <div class="cs-phone-mini-inner"><img src="../${escapeAttr(v.src)}" alt="${escapeAttr(v.cap)}"${arAttrs(v)} loading="lazy" decoding="async"/></div>
-      </div>
-      <span class="cs-mockup-cap"${arAttrs(v)}>${escapeHtml(v.cap)}</span>
-    </div>`;
-  }).join("");
-
-  const shotSwitch = (hasAr ? `
-    <div class="cs-shot-lang" role="group" aria-label="Screenshot language">
-      <button type="button" data-shot-lang="en" aria-pressed="${shotLang === "en"}">English</button>
-      <button type="button" data-shot-lang="ar" aria-pressed="${shotLang === "ar"}" lang="ar">العربية</button>
-    </div>` : "") + (hasDark ? `
-    <div class="cs-shot-lang cs-shot-theme" role="group" aria-label="Screenshot theme">
-      <button type="button" data-shot-theme="light" aria-pressed="${shotTheme === "light"}" aria-label="Light screenshots" title="Light"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></button>
-      <button type="button" data-shot-theme="dark" aria-pressed="${shotTheme === "dark"}" aria-label="Dark screenshots" title="Dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
-    </div>` : "");
-
-  const hasVideo = !!p.video;
-  const hasMockups = (p.mockups || []).length > 0;
-
-  const walkTabs = hasVideo && hasMockups ? `
-    <div class="cs-walk-tabs">
-      <div class="cs-walk-tab active" data-walk="mockups"><span class="cs-walk-tab-dot"></span><span class="cs-walk-tab-nm">Screenshots</span></div>
-      <div class="cs-walk-tab" data-walk="video"><span class="cs-walk-tab-dot"></span><span class="cs-walk-tab-nm">Video Demo</span></div>
-    </div>` : "";
-  const walkNote = hasVideo && hasMockups ? `<p class="cs-walk-note">Static mockups shown by default — no live merchant data. Toggle to Video Demo for the full emulator walkthrough.</p>` : "";
-
-  const challenges = (p.challenges || []).map(c => `
-    <div class="cs-challenge"><div class="cs-ch-label">${escapeHtml(c.label)}</div><div class="cs-ch-body"><b>${escapeHtml(c.title)}</b><p>${escapeHtml(c.body)}</p></div></div>
-  `).join("");
-
-  const techTags = (p.tech_tags || []).map(t => `<span class="tag hi">${escapeHtml(t.tag || t)}</span>`).join("");
-
-  const links = p.links || {};
-  const linkButtons = [
-    links.github ? `<a href="${escapeAttr(links.github)}" target="_blank" class="pl pl-store">GitHub ↗</a>` : "",
-    links.app_store ? `<a href="${escapeAttr(links.app_store)}" target="_blank" class="pl pl-store">App Store ↗</a>` : "",
-    links.google_play ? `<a href="${escapeAttr(links.google_play)}" target="_blank" class="pl pl-store">Google Play ↗</a>` : "",
-  ].join("");
-
-  root.innerHTML = `
-    <div class="cs-hero">
-      ${p.icon ? `<div class="cs-icon"><img src="../${escapeAttr(p.icon)}" alt="${escapeAttr(p.name)} icon"/></div>` : ""}
-      <div>
-        <div class="cs-tag">${escapeHtml(p.badge || "Project")}${p.category ? " · " + escapeHtml(p.category): ""}${p.period ? " · " + escapeHtml(p.period) : ""}</div>
-        <h1 class="cs-title">${escapeHtml(p.name || "")}</h1>
-      </div>
-      <div class="cs-links">${linkButtons}</div>
-    </div>
-
-    ${p.overview || stats ? `
-    <div class="cs-band">
-      <div class="cs-overview">
-        <div>
-          <div class="cs-h2">Overview</div>
-          <p>${(p.overview || "").replace(/\n\n/g, "<br><br>")}</p>
-        </div>
-        ${stats ? `<div class="cs-stats">${stats}</div>` : ""}
-      </div>
-    </div>` : ""}
-
-    ${caps ? `
-    <section class="cs-caps">
-      <div class="sec-tag">Core Capabilities</div>
-      <h2 class="cs-h2" style="font-size:1.75rem;margin-bottom:2rem">What the app does</h2>
-      <div class="cs-cap-grid">${caps}</div>
-    </section>` : ""}
-
-    ${p.architecture_text || flow ? `
-    <div class="cs-arch">
-      <div class="cs-arch-in">
-        <div class="sec-tag">Architecture</div>
-        <h2 class="cs-h2" style="font-size:1.75rem">How it's built</h2>
-        <p>${(p.architecture_text || "").replace(/\n\n/g, "<br><br>")}</p>
-        ${flow ? `<div class="cs-flow">${flow}</div>` : ""}
-        ${flow2 ? `<div class="cs-flow" style="margin-top:1rem">${flow2}</div>` : ""}
-      </div>
-    </div>` : ""}
-
-    ${(hasMockups || hasVideo) ? `
-    <div class="cs-walk">
-      <div class="cs-walk-in">
-        <div class="cs-walk-head">
-          <div>
-            <div class="sec-tag">Walkthrough</div>
-            <div class="cs-walk-title">
-              <h2 class="cs-h2" style="font-size:1.75rem">See it in action</h2>
-              ${shotSwitch}
-            </div>
-          </div>
-          ${walkTabs}
-        </div>
-        ${(hasAr || hasDark) ? `<p class="cs-sr" id="cs-shot-status" aria-live="polite"></p>` : ""}
-        ${walkNote}
-        ${hasMockups ? `<div class="cs-mockup-grid${p.mockup_frame === "none" ? " is-bare" : ""}" data-walk-panel="mockups">${banner}${mockups}</div>` : ""}
-        ${hasVideo ? `
-        <div class="cs-phone-wrap" data-walk-panel="video" style="${hasMockups ? "display:none" : ""}">
-          <span class="cs-phone-lbl">Emulator</span>
-          <div class="cs-phone">
-            <div class="cs-phone-screen">
-              <video controls playsinline preload="metadata">
-                <source src="../${escapeAttr(p.video)}" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>` : ""}
-      </div>
-    </div>` : ""}
-
-    ${challenges ? `
-    <section class="cs-challenges">
-      <div class="sec-tag">Problems Solved</div>
-      <h2 class="cs-h2" style="font-size:1.75rem;margin-bottom:2rem">Real engineering challenges</h2>
-      ${challenges}
-    </section>` : ""}
-
-    ${techTags ? `
-    <div class="cs-tech-band">
-      <div class="cs-tech-in">
-        <div class="sec-tag" style="justify-content:center">Technologies Employed</div>
-        <h2 class="cs-h2" style="font-size:1.5rem">Built with</h2>
-        <div class="cs-tech-tags">${techTags}</div>
-      </div>
-    </div>` : ""}
-  `;
-
-  skeleton.style.display = "none";
-  root.style.display = "";
-
-  // Walkthrough tab toggle
-  document.querySelectorAll(".cs-walk-tab").forEach(tab => {
-    tab.addEventListener("click", () => {
-      document.querySelectorAll(".cs-walk-tab").forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      const target = tab.getAttribute("data-walk");
-      document.querySelectorAll("[data-walk-panel]").forEach(panel => {
-        panel.style.display = panel.getAttribute("data-walk-panel") === target ? "" : "none";
-      });
-    });
-  });
-
-  // Lightbox
-  const lightbox = document.getElementById("cs-lightbox");
-  const lightboxImg = document.getElementById("cs-lightbox-img");
-  document.querySelectorAll("[data-lightbox-src]").forEach(el => {
-    el.addEventListener("click", () => {
-      lightboxImg.src = el.getAttribute("data-lightbox-src");
-      lightbox.dataset.openShot = el.closest("[data-shot]")?.dataset.shot ?? "";
-      lightbox.classList.add("open");
-    });
-  });
-  function closeLightbox() { lightbox.classList.remove("open"); lightboxImg.src = ""; lightbox.dataset.openShot = ""; }
-
-  // Screenshot language/theme: swap every item in place. The frames keep their
-  // aspect-ratio, so nothing reflows. An open lightbox follows the switch.
-  function showShot(i) {
-    const item = root.querySelector(`[data-shot="${i}"]`);
-    const v = shotView(i);
-    const src = "../" + v.src;
-    const frame = item.querySelector(".cs-phone-mini");
-    const img = item.querySelector("img");
-    const cap = item.querySelector(".cs-mockup-cap");
-    frame.setAttribute("data-lightbox-src", src);
-    if (img.getAttribute("src") !== src) img.setAttribute("src", src);
-    img.alt = v.cap;
-    cap.textContent = v.cap;
-    for (const el of [img, cap]) {
-      if (v.ar) { el.lang = "ar"; el.dir = "rtl"; } else { el.removeAttribute("lang"); el.removeAttribute("dir"); }
-    }
-    if (lightbox.classList.contains("open") && lightbox.dataset.openShot === String(i)) lightboxImg.src = src;
-  }
-  // A file that fails to load is skipped for good; the next one in the
-  // fallback chain takes its place. The English light image is the floor.
-  root.querySelectorAll("[data-shot] img").forEach(img => {
-    img.addEventListener("error", () => {
-      const i = img.closest("[data-shot]").dataset.shot;
-      const failed = img.getAttribute("src").replace(/^\.\.\//, "");
-      if (failed === shots[i].m.image) return;
-      shots[i].dead.add(failed);
-      showShot(i);
-    });
-  });
-  const shotStatus = document.getElementById("cs-shot-status");
-  const LANG_NAME = { en: "English", ar: "Arabic" };
-  function applyShots(changed) {
-    root.querySelectorAll("[data-shot-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.shotLang === shotLang)));
-    root.querySelectorAll("[data-shot-theme]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.shotTheme === shotTheme)));
-    shots.forEach((_, i) => showShot(i));
-    shotStatus.textContent = changed === "theme"
-      ? `Showing ${shotTheme} screenshots.`
-      : `Showing ${LANG_NAME[shotLang]} screenshots.`;
-  }
-  root.querySelectorAll("[data-shot-lang]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (btn.dataset.shotLang === shotLang) return;
-      shotLang = btn.dataset.shotLang;
-      try { localStorage.setItem(SHOT_LANG_KEY, shotLang); } catch (_) { /* storage blocked */ }
-      applyShots("lang");
-    });
-  });
-  root.querySelectorAll("[data-shot-theme]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      followSite = false;
-      try { localStorage.setItem(SHOT_THEME_KEY, btn.dataset.shotTheme); } catch (_) { /* storage blocked */ }
-      if (btn.dataset.shotTheme === shotTheme) return;
-      shotTheme = btn.dataset.shotTheme;
-      applyShots("theme");
-    });
-  });
-  if (followSite) {
-    new MutationObserver(() => {
-      if (!followSite || siteTheme() === shotTheme) return;
-      shotTheme = siteTheme();
-      applyShots("theme");
-    }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-  }
-  document.getElementById("cs-lightbox-close").addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
-}
-
-function escapeHtml(str) {
-  if (str == null) return "";
-  return String(str).replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
-}
-function escapeAttr(str) { return escapeHtml(str); }
-
-renderProject();
-</script>
 </body>
 </html>

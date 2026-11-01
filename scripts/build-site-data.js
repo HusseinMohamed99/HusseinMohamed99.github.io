@@ -85,6 +85,19 @@ function checkSchemaDrift(rawProjects) {
   }
 }
 
+function normalizeApplicationCategory(category) {
+  const cat = (category || "").toLowerCase();
+  if (cat.includes("fintech") || cat.includes("finance") || cat.includes("expense")) return "FinanceApplication";
+  if (cat.includes("fitness") || cat.includes("health")) return "HealthApplication";
+  if (cat.includes("sport")) return "SportsApplication";
+  if (cat.includes("education") || cat.includes("study")) return "EducationalApplication";
+  if (cat.includes("travel")) return "TravelApplication";
+  if (cat.includes("entertainment") || cat.includes("media") || cat.includes("movie")) return "EntertainmentApplication";
+  if (cat.includes("lifestyle") || cat.includes("islamic")) return "LifestyleApplication";
+  if (cat.includes("real estate") || cat.includes("business")) return "BusinessApplication";
+  return "MobileApplication";
+}
+
 /** Generates the static HTML page for a single project (projects/<slug>/index.html) */
 function renderStaticProjectPage(slug, p) {
   const stats = (p.stats || []).map(s => `
@@ -118,7 +131,7 @@ function renderStaticProjectPage(slug, p) {
 
   const mockups = items.map((m, i) => `
     <div class="cs-mockup" data-shot="${i}">
-      <div class="cs-phone-mini" data-lightbox-src="../../${htmlEscape(m.image)}">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="${htmlEscape(m.caption || 'Enlarge screenshot')}" data-lightbox-src="../../${htmlEscape(m.image)}">
         <div class="cs-phone-mini-inner"><img src="../../${htmlEscape(m.image)}" alt="${htmlEscape(m.caption || '')}" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">${htmlEscape(m.caption || '')}</span>
@@ -167,7 +180,7 @@ function renderStaticProjectPage(slug, p) {
     "@type": "SoftwareApplication",
     "name": p.name,
     "description": pageDesc,
-    "applicationCategory": p.category || "Mobile Application",
+    "applicationCategory": normalizeApplicationCategory(p.category),
     "operatingSystem": "iOS, Android",
     "author": {
       "@type": "Person",
@@ -177,6 +190,10 @@ function renderStaticProjectPage(slug, p) {
     "url": canonicalUrl,
     "image": ogImageUrl
   };
+
+  if (p.links && (p.links.google_play || p.links.app_store)) {
+    jsonLd.installUrl = p.links.google_play || p.links.app_store;
+  }
 
   return `<!DOCTYPE html>
 <!-- GENERATED FILE: Do not edit directly. Regenerate with node scripts/build-site-data.js. Source: data/projects/${slug}.md -->
@@ -243,6 +260,10 @@ ${JSON.stringify(jsonLd, null, 2)}
   .cs-phone-mini:hover{
     transform:translateY(-6px);
     box-shadow:0 8px 16px rgba(0,0,0,.12), 0 28px 55px -12px rgba(0,0,0,.45);
+  }
+  .cs-phone-mini:focus-visible{
+    outline:2px solid var(--hsm-blue);
+    outline-offset:4px;
   }
   .cs-phone-mini::before{
     content:"";
@@ -374,11 +395,9 @@ ${JSON.stringify(jsonLd, null, 2)}
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <div class="hsm-mascot" id="hsm-mascot" data-assets="../../images/mascot/" aria-hidden="true"></div>
-<a href="https://wa.me/201034442174" target="_blank" rel="noopener noreferrer" class="wa-fab" id="wa-fab" aria-label="Contact on WhatsApp">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
 <nav id="nav">
   <a class="nav-logo" href="../../index.html" aria-label="Hussein Mohamed — HSM Software, home">
@@ -415,6 +434,7 @@ ${JSON.stringify(jsonLd, null, 2)}
   <a href="../../index.html#contact" class="m-hire">Hire me</a>
 </div>
 
+<main id="main">
 <div class="cs-back">
   <a href="../../index.html#projects">← Back to Portfolio</a>
 </div>
@@ -504,6 +524,7 @@ ${JSON.stringify(jsonLd, null, 2)}
     </div>
   </div>` : ""}
 </div>
+</main>
 
 <div class="cs-lightbox" id="cs-lightbox">
   <button class="cs-lightbox-close" id="cs-lightbox-close" aria-label="Close">✕</button>
@@ -521,6 +542,11 @@ ${JSON.stringify(jsonLd, null, 2)}
   <a href="mailto:hussein.mohamed.software@gmail.com?subject=Let's%20talk%20%E2%80%94%20from%20your%20portfolio" id="em-link-footer" style="font-family:'Geist Mono',monospace;font-size:.73rem;color:var(--contact-label);text-decoration:none">hussein.mohamed.software@gmail.com</a>
   <span style="font-family:'Geist Mono',monospace">Flutter Developer · Cairo, Egypt</span>
 </footer>
+
+<a href="https://wa.me/201034442174" target="_blank" rel="noopener noreferrer" class="wa-fab" id="wa-fab" aria-label="Contact on WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
 <script src="../../script.js"></script>
 <script src="../../js/hsm-mascot.js"></script>

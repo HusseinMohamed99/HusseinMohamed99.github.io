@@ -32,7 +32,7 @@
   "@type": "SoftwareApplication",
   "name": "Refqa (رِفقة)",
   "description": "A comprehensive Islamic companion app: dual-mode Quran reading (browsable index + a full 604-page Madani Mushaf renderer), live Qur'an radio and per-reciter profiles, on-device speech-recognition recitation checking with zero audio leaving the device, per-prayer adhan and alert styles via a custom Kotlin AlarmManager + ForegroundService pipeline with a tilt-free Qibla light beam, the Prophet's ﷺ Seerah and lineage, the Ten Promised Paradise, the 99 Names of Allah, Hadith, Tafsir, Duas, khatm tracking, streaks, and a full stats dashboard with time-spent-per-category tracking — all privacy-first, with location and PII scrubbed before any crash report.",
-  "applicationCategory": "Islamic Lifestyle · Offline-First · Arabic/English",
+  "applicationCategory": "LifestyleApplication",
   "operatingSystem": "iOS, Android",
   "author": {
     "@type": "Person",
@@ -40,7 +40,8 @@
     "url": "https://husseinmohamed99.github.io/"
   },
   "url": "https://husseinmohamed99.github.io/projects/refqa/",
-  "image": "https://husseinmohamed99.github.io/images/og/refqa.png"
+  "image": "https://husseinmohamed99.github.io/images/og/refqa.png",
+  "installUrl": "https://play.google.com/store/apps/details?id=com.hsmsoftware.refqa&hl=ar"
 }
 </script>
 
@@ -77,6 +78,10 @@
   .cs-phone-mini:hover{
     transform:translateY(-6px);
     box-shadow:0 8px 16px rgba(0,0,0,.12), 0 28px 55px -12px rgba(0,0,0,.45);
+  }
+  .cs-phone-mini:focus-visible{
+    outline:2px solid var(--hsm-blue);
+    outline-offset:4px;
   }
   .cs-phone-mini::before{
     content:"";
@@ -208,11 +213,9 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <div class="hsm-mascot" id="hsm-mascot" data-assets="../../images/mascot/" aria-hidden="true"></div>
-<a href="https://wa.me/201034442174" target="_blank" rel="noopener noreferrer" class="wa-fab" id="wa-fab" aria-label="Contact on WhatsApp">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
 <nav id="nav">
   <a class="nav-logo" href="../../index.html" aria-label="Hussein Mohamed — HSM Software, home">
@@ -249,6 +252,7 @@
   <a href="../../index.html#contact" class="m-hire">Hire me</a>
 </div>
 
+<main id="main">
 <div class="cs-back">
   <a href="../../index.html#projects">← Back to Portfolio</a>
 </div>
@@ -342,91 +346,91 @@
       <img src="../../images/refqa-رِفقة/refqa_cover.png" alt="Refqa (رِفقة) Screenshots Banner" style="width:100%;border-radius:18px;display:block;">
     </div>
     <div class="cs-mockup" data-shot="0">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_01_home.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="الصفحة الرئيسية" data-lightbox-src="../../images/refqa-رِفقة/rifqa_01_home.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_01_home.png" alt="الصفحة الرئيسية" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">الصفحة الرئيسية</span>
     </div>
     <div class="cs-mockup" data-shot="1">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_02_tasmee.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="تسميع" data-lightbox-src="../../images/refqa-رِفقة/rifqa_02_tasmee.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_02_tasmee.png" alt="تسميع" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">تسميع</span>
     </div>
     <div class="cs-mockup" data-shot="2">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_05_qibla_times.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="القبلة" data-lightbox-src="../../images/refqa-رِفقة/rifqa_05_qibla_times.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_05_qibla_times.png" alt="القبلة" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">القبلة</span>
     </div>
     <div class="cs-mockup" data-shot="3">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_10_tasbih.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="تسبيح" data-lightbox-src="../../images/refqa-رِفقة/rifqa_10_tasbih.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_10_tasbih.png" alt="تسبيح" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">تسبيح</span>
     </div>
     <div class="cs-mockup" data-shot="4">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_15_achievements.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="الإنجازات" data-lightbox-src="../../images/refqa-رِفقة/rifqa_15_achievements.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_15_achievements.png" alt="الإنجازات" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">الإنجازات</span>
     </div>
     <div class="cs-mockup" data-shot="5">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_07_tafsir.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="تفسير القرآن" data-lightbox-src="../../images/refqa-رِفقة/rifqa_07_tafsir.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_07_tafsir.png" alt="تفسير القرآن" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">تفسير القرآن</span>
     </div>
     <div class="cs-mockup" data-shot="6">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_11_hadith.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="الأحاديث النبوية" data-lightbox-src="../../images/refqa-رِفقة/rifqa_11_hadith.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_11_hadith.png" alt="الأحاديث النبوية" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">الأحاديث النبوية</span>
     </div>
     <div class="cs-mockup" data-shot="7">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_06_quran.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="القرآن الكريم" data-lightbox-src="../../images/refqa-رِفقة/rifqa_06_quran.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_06_quran.png" alt="القرآن الكريم" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">القرآن الكريم</span>
     </div>
     <div class="cs-mockup" data-shot="8">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_09_radio.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="الراديو" data-lightbox-src="../../images/refqa-رِفقة/rifqa_09_radio.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_09_radio.png" alt="الراديو" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">الراديو</span>
     </div>
     <div class="cs-mockup" data-shot="9">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_04_azkar.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="الأذكار" data-lightbox-src="../../images/refqa-رِفقة/rifqa_04_azkar.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_04_azkar.png" alt="الأذكار" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">الأذكار</span>
     </div>
     <div class="cs-mockup" data-shot="10">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_03_more.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="المزيد" data-lightbox-src="../../images/refqa-رِفقة/rifqa_03_more.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_03_more.png" alt="المزيد" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">المزيد</span>
     </div>
     <div class="cs-mockup" data-shot="11">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_12_seerah.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="السيرة النبوية" data-lightbox-src="../../images/refqa-رِفقة/rifqa_12_seerah.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_12_seerah.png" alt="السيرة النبوية" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">السيرة النبوية</span>
     </div>
     <div class="cs-mockup" data-shot="12">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_08_qurra.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="القرأ" data-lightbox-src="../../images/refqa-رِفقة/rifqa_08_qurra.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_08_qurra.png" alt="القرأ" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">القرأ</span>
     </div>
     <div class="cs-mockup" data-shot="13">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_13_asharah.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="العشرة المبشرون بالجنة" data-lightbox-src="../../images/refqa-رِفقة/rifqa_13_asharah.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_13_asharah.png" alt="العشرة المبشرون بالجنة" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">العشرة المبشرون بالجنة</span>
     </div>
     <div class="cs-mockup" data-shot="14">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/refqa-رِفقة/rifqa_14_asmaa.png">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="أسماء الله الحسني" data-lightbox-src="../../images/refqa-رِفقة/rifqa_14_asmaa.png">
         <div class="cs-phone-mini-inner"><img src="../../images/refqa-رِفقة/rifqa_14_asmaa.png" alt="أسماء الله الحسني" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">أسماء الله الحسني</span>
@@ -463,6 +467,7 @@
     </div>
   </div>
 </div>
+</main>
 
 <div class="cs-lightbox" id="cs-lightbox">
   <button class="cs-lightbox-close" id="cs-lightbox-close" aria-label="Close">✕</button>
@@ -480,6 +485,11 @@
   <a href="mailto:hussein.mohamed.software@gmail.com?subject=Let's%20talk%20%E2%80%94%20from%20your%20portfolio" id="em-link-footer" style="font-family:'Geist Mono',monospace;font-size:.73rem;color:var(--contact-label);text-decoration:none">hussein.mohamed.software@gmail.com</a>
   <span style="font-family:'Geist Mono',monospace">Flutter Developer · Cairo, Egypt</span>
 </footer>
+
+<a href="https://wa.me/201034442174" target="_blank" rel="noopener noreferrer" class="wa-fab" id="wa-fab" aria-label="Contact on WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
 <script src="../../script.js"></script>
 <script src="../../js/hsm-mascot.js"></script>
