@@ -124,21 +124,83 @@ if(document.getElementById('hero-section')){
   });
 })();
 
-// Email obfuscation (works on any page containing these ids)
+// Email link initialization & footer year
 (function(){
-  var u='hussein.mohamed.software';
-  var d='gmail.com';
-  var e=u+'@'+d;
-  var m='mailto:'+e;
-  function openMail(ev){ ev.preventDefault(); window.location.href=m; }
-  var btn=document.getElementById('em-link-btn');
-  if(btn){ btn.href=m; btn.addEventListener('click', openMail); }
-  var ct=document.getElementById('em-link-ct');
-  if(ct){ ct.href=m; ct.addEventListener('click', openMail); }
-  var ft=document.getElementById('em-link-footer');
-  if(ft){ ft.href=m; ft.addEventListener('click', openMail); }
-  var disp=document.getElementById('em-display-ct');
-  if(disp){ disp.textContent=e; }
-  var yr=document.getElementById('copy-year');
-  if(yr){ yr.textContent=new Date().getFullYear(); }
+  var e = 'hussein.mohamed.software@gmail.com';
+  var m = 'mailto:' + e + '?subject=' + encodeURIComponent("Let's talk — from your portfolio");
+  var ct = document.getElementById('em-link-ct');
+  if(ct && (!ct.getAttribute('href') || ct.getAttribute('href') === '#')){ ct.href = m; }
+  var ft = document.getElementById('em-link-footer');
+  if(ft && (!ft.getAttribute('href') || ft.getAttribute('href') === 'javascript:void(0)')){ ft.href = m; }
+  var disp = document.getElementById('em-display-ct');
+  if(disp){ disp.textContent = e; }
+  var yr = document.getElementById('copy-year');
+  if(yr){ yr.textContent = new Date().getFullYear(); }
+})();
+
+// Plausible custom event tracking (safe no-op fallback, no cookies, privacy-first)
+window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments); };
+(function () {
+  function trackEvent(name, props) {
+    try {
+      if (typeof window.plausible === 'function') {
+        window.plausible(name, props ? { props: props } : undefined);
+      }
+    } catch (_) {}
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+
+    // 1. CV Download
+    if (a.id === 'cv-btn' || a.id === 'cv-btn-mob' || a.hasAttribute('download') || href.indexOf('Hussein_Mohamed_CV.pdf') !== -1 || href.indexOf('CV.pdf') !== -1) {
+      var loc = a.id === 'cv-btn' ? 'hero' : (a.id === 'cv-btn-mob' ? 'mobile_menu' : (a.closest('#contact') ? 'contact_section' : 'direct'));
+      trackEvent('CV Download', { location: loc });
+      return;
+    }
+
+    // 2. WhatsApp
+    if (href.indexOf('wa.me') !== -1) {
+      var waLoc = a.classList.contains('wa-fab') ? 'floating_fab' : (a.closest('#contact') ? 'contact_section' : (a.closest('.mobile-menu') ? 'mobile_menu' : 'link'));
+      trackEvent('WhatsApp Click', { location: waLoc });
+      return;
+    }
+
+    // 3. Email
+    if (href.indexOf('mailto:') === 0 || a.id === 'em-link-ct' || a.id === 'em-link-footer') {
+      var emLoc = a.id === 'em-link-footer' ? 'footer' : (a.closest('#contact') ? 'contact_section' : 'link');
+      trackEvent('Email Click', { location: emLoc });
+      return;
+    }
+
+    // 4. LinkedIn
+    if (href.indexOf('linkedin.com') !== -1) {
+      trackEvent('LinkedIn Click', { location: a.closest('#contact') ? 'contact_section' : 'link' });
+      return;
+    }
+
+    // 5. GitHub
+    if (href.indexOf('github.com') !== -1) {
+      var ghLoc = a.closest('nav') ? 'nav' : (a.closest('#hero') ? 'hero' : (a.closest('#contact') ? 'contact_section' : (a.closest('.mobile-menu') ? 'mobile_menu' : 'link')));
+      trackEvent('GitHub Click', { location: ghLoc });
+      return;
+    }
+
+    // 6. Project Card / Case Study / Store Links
+    var isProjectPage = href.indexOf('project.html?slug=') !== -1;
+    var card = a.closest('.proj-x-card, .proj-card');
+    if (isProjectPage || card) {
+      var slugMatch = href.match(/slug=([a-zA-Z0-9_-]+)/);
+      var slug = slugMatch ? slugMatch[1] : (a.getAttribute('data-slug') || (card && card.getAttribute('data-slug')) || 'unknown');
+      var isStore = a.classList.contains('pl-store') || href.indexOf('play.google.com') !== -1 || href.indexOf('apple.com') !== -1;
+      if (isStore) {
+        var storeType = href.indexOf('apple.com') !== -1 ? 'app_store' : (href.indexOf('play.google.com') !== -1 ? 'google_play' : 'github');
+        trackEvent('Store Link Click', { slug: slug, store: storeType });
+      } else {
+        trackEvent('Project Click', { slug: slug });
+      }
+    }
+  }, { passive: true });
 })();
