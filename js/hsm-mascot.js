@@ -156,6 +156,9 @@
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // Never load mascot assets or start loops when user prefers reduced motion
+  if (reduce.matches) return;
+
   var size = 120;                     // --hsm-size in px (rendered idle height)
   var vw = window.innerWidth, vh = window.innerHeight, maxScroll = 0;
   var waypoints = [];                 // [{id, key, x, y, pose}] sorted by key
@@ -187,7 +190,8 @@
   function kOf(name) { var p = POSES[name] || POSES.idle; return size / p.unit; }
   function feetDy(name) { var p = POSES[name] || POSES.idle; return (p.feet - p.ay) * kOf(name); }
   function charW(name) { var p = POSES[name] || POSES.idle; return p.w * kOf(name); }
-  function cursorFollow() { return fine.matches && pointer.active && !reduce.matches; }
+  // Native cursor stays usable by default on desktop; mascot floats and docks via waypoints
+  function cursorFollow() { return false; }
 
   // ---------------------------------------------------------------------------
   // Measurement — cached; refreshed on resize / orientation / layout changes
@@ -554,10 +558,8 @@
   });
 
   // ---------------------------------------------------------------------------
-  // Boot: preload, place at the current section, wave once, go.
+  // Boot: idle load poses after page is interactive, never on reduced motion
   // ---------------------------------------------------------------------------
-  Object.keys(POSES).forEach(addPose);
-
   function essentialsReady() {
     for (var i = 0; i < ESSENTIAL.length; i++) if (!loaded[ESSENTIAL[i]]) return false;
     return true;
@@ -584,14 +586,36 @@
     root.setAttribute('data-phase', phase);
     requestAnimationFrame(function () { root.classList.add('is-ready'); });
   }
-  var waited = 0;
-  (function poll() {
-    if (essentialsReady() || (loaded.idle && waited > 3000)) return start();
-    if (loaded.idle === false) return; // asset missing: stay hidden, never error
-    waited += 100;
-    setTimeout(poll, 100);
-  })();
-  requestAnimationFrame(frame);
+
+  function bootMascot() {
+    if (reduce.matches) return;
+    Object.keys(POSES).forEach(addPose);
+
+    var waited = 0;
+    (function poll() {
+      if (essentialsReady() || (loaded.idle && waited > 3000)) return start();
+      if (loaded.idle === false) return; // asset missing: stay hidden, never error
+      waited += 100;
+      setTimeout(poll, 100);
+    })();
+    requestAnimationFrame(frame);
+  }
+
+  if (document.readyState === 'complete') {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(bootMascot, { timeout: 2000 });
+    } else {
+      setTimeout(bootMascot, 500);
+    }
+  } else {
+    window.addEventListener('load', function () {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(bootMascot, { timeout: 2000 });
+      } else {
+        setTimeout(bootMascot, 800);
+      }
+    });
+  }
 
   // Debug handle (read-only) — handy in devtools, harmless otherwise.
   window.HSMMascot = {
