@@ -48,7 +48,7 @@
       links.google_play ? `<a href="${escapeHtml(links.google_play)}" target="_blank" class="pl pl-store">Google Play ↗</a>` : "",
     ].join("");
 
-    const href = `${CASE_BASE}project.html?slug=${encodeURIComponent(p.slug)}`;
+    const href = `${CASE_BASE}${encodeURIComponent(p.slug)}/`;
 
     return `
     <div class="proj-x-card" style="--dot:${color};animation-delay:${i * 0.05}s">
@@ -91,7 +91,7 @@
       links.google_play ? `<a href="${escapeHtml(links.google_play)}" target="_blank" class="pl pl-store">Google Play ↗</a>` : "",
     ].join("");
 
-    const href = `${CASE_BASE}project.html?slug=${encodeURIComponent(p.slug)}`;
+    const href = `${CASE_BASE}${encodeURIComponent(p.slug)}/`;
 
     return `
     <div class="proj-card proj-feat proj-feat-hero">
