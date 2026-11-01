@@ -2,6 +2,7 @@
 name: Tripso
 category: Travel Planning · Graduation Project
 badge: Graduation
+period: Nov 2024 – Aug 2025
 short_description: Tourism app covering Egypt, UAE, France, and Italy with top
   attractions, ticket pricing, interactive maps, and historical insights.
   Graduation project built with Cubit state management, Dio REST integration,

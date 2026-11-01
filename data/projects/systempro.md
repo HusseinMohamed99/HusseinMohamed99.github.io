@@ -2,6 +2,7 @@
 name: SystemPro
 category: "Real Estate Marketplace · Valuerythm"
 badge: Company Project
+period: Nov 2023 – May 2025
 short_description: "Bilingual (Arabic/English) real estate marketplace built at Valuerythm for the Saudi market — listings for sale, rent and booking, advanced filters, bilingual location search, and direct agent contact via call or WhatsApp."
 icon: images/systempro/systempro_icon.png
 order: 8

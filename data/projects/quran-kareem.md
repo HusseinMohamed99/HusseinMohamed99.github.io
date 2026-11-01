@@ -2,6 +2,7 @@
 name: Quran Kareem
 category: Islamic Education · Personal Project
 badge: Personal Project
+period: Oct 2023 – Aug 2025
 short_description: Arabic-first Quran app with full mushaf reading, verse and
   surah recitation, live radio, audio tafsir, reciters directory, and riwayat
   browser.
