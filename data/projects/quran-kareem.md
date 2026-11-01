@@ -7,7 +7,7 @@ short_description: Arabic-first Quran app with full mushaf reading, verse and
   surah recitation, live radio, audio tafsir, reciters directory, and riwayat
   browser.
 icon: images/quran-kareem/logo.svg
-order: 12
+order: 8
 overview: >
   Quran Kareem (moshaf_app) is an Arabic-first Flutter application for Android
   and iOS that bundles a complete Quran reader with a set of Islamic audio and
