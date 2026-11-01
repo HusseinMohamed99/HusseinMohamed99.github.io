@@ -89,6 +89,14 @@ collections:
         widget: "list"
         required: false
         field: { label: "Step", name: "step", widget: "string" }
+      - label: "Architecture Flow 2 Steps (optional second pipeline, in order)"
+        name: "architecture_flow_2"
+        widget: "list"
+        required: false
+        field: { label: "Step", name: "step", widget: "string" }
+        hint: >-
+          Optional second pipeline (e.g. background service or alarm flow).
+          Rendered directly below the primary flow.
 
       # ===== Case Study: Walkthrough =====
       - label: "Screenshots Banner (optional, full-width image)"
