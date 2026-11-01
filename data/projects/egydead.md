@@ -1,10 +1,10 @@
 ---
 name: EGY DEAD
-category: Entertainment · Google Play
+category: Entertainment · Personal Project
 badge: Personal Project
-short_description: Media browser for movies, series, and anime with 10K+
-  downloads on Google Play. Smart recommendations, trailers, cast details, and
-  categorized search — built with BLoC, Dio, and shimmer loading UX.
+short_description: Media browser for movies, series, and anime built on the TMDB
+  API. Smart recommendations, trailers, cast details, and categorized search —
+  built with BLoC, Dio, and shimmer loading UX.
 icon: images/egydead/egydead_icon.png
 order: 9
 overview: >
@@ -12,15 +12,14 @@ overview: >
   built on the TMDB API. It lets viewers browse curated rails (now playing,
   popular, top rated, upcoming, on-the-air, airing today), open a full details
   page for any title — cast, reviews, ratings, genres, runtime, seasons, trailer
-  — and search across movies, series and people from one field. It ships to the
-  Play Store as a real published app, with a dark-only Arabic/English UI,
-  offline detection, and a Firebase Remote Config-driven "new version available"
-  prompt.
+  — and search across movies, series and people from one field. Features a
+  dark-only Arabic/English UI, offline detection, and a Firebase Remote
+  Config-driven "new version available" prompt.
 stats:
-  - number: 10K+
-    label: Downloads on Google Play
+  - number: TMDB
+    label: Powered by TMDB discovery API
   - number: Solo
-    label: Designed, built, and published independently
+    label: Designed and built independently
   - number: BLoC
     label: State management with Dio-powered search
 capabilities:
@@ -60,16 +59,15 @@ capabilities:
   - icon: 🔄
     title: Remote Update Prompt
     description: Firebase Remote Config publishes the latest version string; the app
-      compares it against its own package version and offers an update dialog
-      linking to the Play Store.
+      compares it against its own package version and offers an update dialog.
   - icon: 🖼️
     title: Cached Imagery
     description: A shared CachedImage wrapper handles TMDB poster/backdrop/avatar
       loading with cached_network_image, spinkit placeholders and fallback art.
   - icon: ⚙️
     title: Settings & Support
-    description: In-app policy link, support screen and Play Store rating shortcut,
-      with the live app version read from package_info_plus.
+    description: In-app policy link, support screen, and version info read from
+      package_info_plus.
 architecture_text: >
   The app follows Clean Architecture, split by feature rather than by layer:
   movies/, tv/ and search/ each contain their own data (models, remote data

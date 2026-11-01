@@ -1,11 +1,10 @@
 ---
 name: Muslim App
-category: Islamic Lifestyle · Google Play
+category: Islamic Lifestyle · Personal Project
 badge: Personal Project
 short_description: All-in-one Islamic app with Quran, Hadith, Azkar, Zakat
-  calculator, and prayer tools. Published on Google Play with bilingual AR/EN
-  support, light & dark themes, and the full Quran and Hadith bundled for
-  offline use.
+  calculator, and prayer tools. Built with bilingual AR/EN support, light & dark
+  themes, and the full Quran and Hadith bundled for offline use.
 icon: images/muslim-app/muslim_icon.png
 order: 10
 overview: >
@@ -62,7 +61,7 @@ capabilities:
   - icon: 🚀
     title: Remote Update Prompt
     description: Firebase Remote Config compares the latest published version
-      against the installed one and prompts users to update via the Play Store.
+      against the installed one and prompts users to update.
   - icon: 📱
     title: Responsive Layout Engine
     description: A custom clamped font-scaling helper keeps typography and spacing
@@ -125,8 +124,7 @@ challenges:
       version number against the installed one — comparing version segments
       individually rather than as plain strings, so 1.2.10 correctly compares
       above 1.2.9. The whole check is wrapped so a failed fetch can never block
-      startup, and the update prompt deep-links straight to the Play Store
-      listing.
+      startup, and the update prompt notifies users to download the update.
   - label: Desktop Build
     title: Sandboxed macOS release build couldn't reach the network
     body: The macOS release build ships sandboxed, which blocked outbound network

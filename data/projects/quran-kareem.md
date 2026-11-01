@@ -4,7 +4,7 @@ category: Islamic Education · Personal Project
 badge: Personal Project
 short_description: Arabic-first Quran app with full mushaf reading, verse and
   surah recitation, live radio, audio tafsir, reciters directory, and riwayat
-  browser — published on Google Play.
+  browser.
 icon: images/quran-kareem/logo.svg
 order: 12
 overview: >
@@ -15,14 +15,14 @@ overview: >
   Quran radio stations, browse audio tafsir, explore a directory of reciters and
   their available riwayat, and watch curated video content. It targets
   Arabic-speaking Muslim users who want reading, listening, and study material
-  in one offline-aware, RTL-native app, and is shipped on the Play Store.
+  in one offline-aware, RTL-native app.
 stats:
   - number: 6-in-1
     label: Quran, radio, tafsir, reciters, riwayat & video
   - number: Cubit
     label: Scoped per-screen state, not global
-  - number: Live
-    label: Published on Google Play
+  - number: OSS
+    label: Open source on GitHub
 capabilities:
   - icon: 📖
     title: Full Quran Reader
@@ -62,7 +62,7 @@ capabilities:
   - icon: ⬆️
     title: Remote Update Prompt
     description: Compares the installed build against a version published remotely
-      and prompts the user toward the Play Store listing when an update exists.
+      and prompts the user when an update exists.
 architecture_text: >
   The app uses a feature-per-screen layout — Home, Layout, Onboarding,
   Moshaf/Ayat reading, Radio, Tafasir, Reciters, Riwayat, Video — each with its
@@ -121,7 +121,7 @@ challenges:
     body: "The project originally depended on a third-party upgrader package, later
       removed as unused. The replacement is a hand-rolled check built on
       Firebase Remote Config that compares the installed version against a
-      remotely published one and deep-links to the Play Store. Getting it stable
+      remotely published one and notifies the user. Getting it stable
       took several follow-up fixes: the version comparison originally threw on
       non-numeric segments and was made to fail gracefully instead, the config
       fetch was wrapped so a failed check can't block app start, and the update
