@@ -7,7 +7,7 @@ short_description: A money and receipt manager that works on the phone without
   an account — accounts and transactions, a receipt vault with on-device
   Arabic/English scanning you review before saving, warranties, bills,
   subscriptions, budgets, goals, debts and reports, in Arabic and English.
-order: 6
+order: 12
 accent_color: "#334F88"
 overview: >
   Vaulta is built around one idea: your financial memory, not just your
