@@ -32,7 +32,7 @@
   "@type": "SoftwareApplication",
   "name": "Tuwaiq Pay",
   "description": "Production fintech app used by real merchants across Saudi Arabia for invoicing, payment processing, and transaction management. Features biometric login, NearPay SDK tap-to-pay, HyperPay card payments, sub-account management, Firebase Remote Config feature flags, and full Arabic/English localization.",
-  "applicationCategory": "Fintech · iOS & Android · Saudi Market",
+  "applicationCategory": "FinanceApplication",
   "operatingSystem": "iOS, Android",
   "author": {
     "@type": "Person",
@@ -40,7 +40,8 @@
     "url": "https://husseinmohamed99.github.io/"
   },
   "url": "https://husseinmohamed99.github.io/projects/tuwaiq-pay/",
-  "image": "https://husseinmohamed99.github.io/images/og/tuwaiq-pay.png"
+  "image": "https://husseinmohamed99.github.io/images/og/tuwaiq-pay.png",
+  "installUrl": "https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay"
 }
 </script>
 
@@ -77,6 +78,10 @@
   .cs-phone-mini:hover{
     transform:translateY(-6px);
     box-shadow:0 8px 16px rgba(0,0,0,.12), 0 28px 55px -12px rgba(0,0,0,.45);
+  }
+  .cs-phone-mini:focus-visible{
+    outline:2px solid var(--hsm-blue);
+    outline-offset:4px;
   }
   .cs-phone-mini::before{
     content:"";
@@ -208,11 +213,9 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <div class="hsm-mascot" id="hsm-mascot" data-assets="../../images/mascot/" aria-hidden="true"></div>
-<a href="https://wa.me/201034442174" target="_blank" rel="noopener noreferrer" class="wa-fab" id="wa-fab" aria-label="Contact on WhatsApp">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
 <nav id="nav">
   <a class="nav-logo" href="../../index.html" aria-label="Hussein Mohamed — HSM Software, home">
@@ -249,6 +252,7 @@
   <a href="../../index.html#contact" class="m-hire">Hire me</a>
 </div>
 
+<main id="main">
 <div class="cs-back">
   <a href="../../index.html#projects">← Back to Portfolio</a>
 </div>
@@ -332,43 +336,43 @@
       <img src="../../images/tuwaiq-pay/Tuwaiq G ScreenshotsBanner.jpg" alt="Tuwaiq Pay Screenshots Banner" style="width:100%;border-radius:18px;display:block;">
     </div>
     <div class="cs-mockup" data-shot="0">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/tuwaiq-pay/18.jpg">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="Select Payment Methods" data-lightbox-src="../../images/tuwaiq-pay/18.jpg">
         <div class="cs-phone-mini-inner"><img src="../../images/tuwaiq-pay/18.jpg" alt="Select Payment Methods" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">Select Payment Methods</span>
     </div>
     <div class="cs-mockup" data-shot="1">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/tuwaiq-pay/19.jpg">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="Payment Links &amp; Invoices" data-lightbox-src="../../images/tuwaiq-pay/19.jpg">
         <div class="cs-phone-mini-inner"><img src="../../images/tuwaiq-pay/19.jpg" alt="Payment Links &amp; Invoices" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">Payment Links &amp; Invoices</span>
     </div>
     <div class="cs-mockup" data-shot="2">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/tuwaiq-pay/20.jpg">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="Manage Sub-Accounts" data-lightbox-src="../../images/tuwaiq-pay/20.jpg">
         <div class="cs-phone-mini-inner"><img src="../../images/tuwaiq-pay/20.jpg" alt="Manage Sub-Accounts" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">Manage Sub-Accounts</span>
     </div>
     <div class="cs-mockup" data-shot="3">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/tuwaiq-pay/21.jpg">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="Manage Bank Accounts" data-lightbox-src="../../images/tuwaiq-pay/21.jpg">
         <div class="cs-phone-mini-inner"><img src="../../images/tuwaiq-pay/21.jpg" alt="Manage Bank Accounts" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">Manage Bank Accounts</span>
     </div>
     <div class="cs-mockup" data-shot="4">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/tuwaiq-pay/22.jpg">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="Refunds" data-lightbox-src="../../images/tuwaiq-pay/22.jpg">
         <div class="cs-phone-mini-inner"><img src="../../images/tuwaiq-pay/22.jpg" alt="Refunds" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">Refunds</span>
     </div>
     <div class="cs-mockup" data-shot="5">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/tuwaiq-pay/23.jpg">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="Transactions" data-lightbox-src="../../images/tuwaiq-pay/23.jpg">
         <div class="cs-phone-mini-inner"><img src="../../images/tuwaiq-pay/23.jpg" alt="Transactions" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">Transactions</span>
     </div>
     <div class="cs-mockup" data-shot="6">
-      <div class="cs-phone-mini" data-lightbox-src="../../images/tuwaiq-pay/24.jpg">
+      <div class="cs-phone-mini" role="button" tabindex="0" aria-label="Business Registration" data-lightbox-src="../../images/tuwaiq-pay/24.jpg">
         <div class="cs-phone-mini-inner"><img src="../../images/tuwaiq-pay/24.jpg" alt="Business Registration" loading="lazy" decoding="async"/></div>
       </div>
       <span class="cs-mockup-cap">Business Registration</span>
@@ -403,6 +407,7 @@
     </div>
   </div>
 </div>
+</main>
 
 <div class="cs-lightbox" id="cs-lightbox">
   <button class="cs-lightbox-close" id="cs-lightbox-close" aria-label="Close">✕</button>
@@ -420,6 +425,11 @@
   <a href="mailto:hussein.mohamed.software@gmail.com?subject=Let's%20talk%20%E2%80%94%20from%20your%20portfolio" id="em-link-footer" style="font-family:'Geist Mono',monospace;font-size:.73rem;color:var(--contact-label);text-decoration:none">hussein.mohamed.software@gmail.com</a>
   <span style="font-family:'Geist Mono',monospace">Flutter Developer · Cairo, Egypt</span>
 </footer>
+
+<a href="https://wa.me/201034442174" target="_blank" rel="noopener noreferrer" class="wa-fab" id="wa-fab" aria-label="Contact on WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="btt" id="btt" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
 <script src="../../script.js"></script>
 <script src="../../js/hsm-mascot.js"></script>

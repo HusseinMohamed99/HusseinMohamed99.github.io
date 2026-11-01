@@ -42,7 +42,7 @@ function generateHtml({ title, subtitle, desc, tags, imagePath, isPhoto = false 
     height: 630px;
     background: #0B132B;
     color: #F8FAFC;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Noto Naskh Arabic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -71,7 +71,7 @@ function generateHtml({ title, subtitle, desc, tags, imagePath, isPhoto = false 
     pointer-events: none;
   }
   .content {
-    max-width: 680px;
+    max-width: 720px;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -81,9 +81,9 @@ function generateHtml({ title, subtitle, desc, tags, imagePath, isPhoto = false 
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #38BDF8;
   }
@@ -102,13 +102,14 @@ function generateHtml({ title, subtitle, desc, tags, imagePath, isPhoto = false 
     letter-spacing: -0.02em;
   }
   .subtitle {
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 600;
+    line-height: 1.35;
     color: #94A3B8;
   }
   .desc {
-    font-size: 18px;
-    line-height: 1.55;
+    font-size: 19px;
+    line-height: 1.5;
     color: #CBD5E1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -130,9 +131,9 @@ function generateHtml({ title, subtitle, desc, tags, imagePath, isPhoto = false 
   .tag {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 6px 14px;
+    padding: 7px 16px;
     border-radius: 8px;
-    font-size: 13.5px;
+    font-size: 15px;
     font-weight: 600;
     color: #E2E8F0;
   }
@@ -163,7 +164,7 @@ function generateHtml({ title, subtitle, desc, tags, imagePath, isPhoto = false 
   }
   .watermark {
     margin-top: 18px;
-    font-size: 13px;
+    font-size: 14.5px;
     font-weight: 600;
     letter-spacing: 0.06em;
     color: #64748B;
