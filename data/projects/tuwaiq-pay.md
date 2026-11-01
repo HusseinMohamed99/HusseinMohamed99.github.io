@@ -2,6 +2,7 @@
 name: Tuwaiq Pay
 category: Fintech · iOS & Android · Saudi Market
 badge: Featured Project
+period: Sep 2025 – Sep 2026
 short_description: Production fintech app used by real merchants across Saudi
   Arabia for invoicing, payment processing, and transaction management. Features
   biometric login, NearPay SDK tap-to-pay, HyperPay card payments, sub-account
