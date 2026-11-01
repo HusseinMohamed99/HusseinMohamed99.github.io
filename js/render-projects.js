@@ -36,7 +36,7 @@
     const isLive = !isComingSoon && !!(p.links && (p.links.app_store || p.links.google_play));
 
     const iconBox = p.icon
-      ? `<img src="${ICON_BASE}${escapeHtml(p.icon)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:12px"/>`
+      ? `<img src="${ICON_BASE}${escapeHtml(p.icon)}" alt="${escapeHtml(p.name || '')} icon" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:12px"/>`
       : `<span style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:${color}">${escapeHtml((p.name || "?").charAt(0))}</span>`;
 
     const techTags = (p.tech_tags || []).slice(0, 5).map(t => `<span>${escapeHtml(t.tag || t)}</span>`).join("");
@@ -75,7 +75,7 @@
     const links = p.links || {};
     const isLive = !!(links.app_store || links.google_play);
     const iconBox = p.icon
-      ? `<img src="${ICON_BASE}${escapeHtml(p.icon)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:18px"/>`
+      ? `<img src="${ICON_BASE}${escapeHtml(p.icon)}" alt="${escapeHtml(p.name || '')} icon" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:18px"/>`
       : `<span style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;color:${color}">${escapeHtml((p.name || "?").charAt(0))}</span>`;
 
     const topBadges = (p.tech_tags || []).slice(0, 4).map(t => {
