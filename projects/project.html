@@ -5,7 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title id="page-title">Project — Hussein Mohamed</title>
 <meta name="description" content="Detailed mobile application case study and software architecture breakdown by Hussein Mohamed (HSM Software)."/>
-<link rel="canonical" href="https://husseinmohamed99.github.io/projects/project.html"/>
+<link rel="canonical" id="canonical-link" href="https://husseinmohamed99.github.io/projects/all-projects.html"/>
+<script>
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  const s = p.get("slug");
+  if (s) {
+    p.delete("slug");
+    const q = p.toString();
+    window.location.replace(encodeURIComponent(s) + "/" + (q ? ("?" + q) : ""));
+  }
+})();
+</script>
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png"/>
 <link rel="icon" type="image/png" sizes="512x512" href="../images/brand/hsm-icon-512.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"/>
