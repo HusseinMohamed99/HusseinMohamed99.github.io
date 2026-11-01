@@ -543,6 +543,11 @@
             form.reset();
             status.textContent = "Message sent — I'll get back to you soon.";
             status.className = "ct-form-status ok";
+            try {
+              if (typeof window.plausible === "function") {
+                window.plausible("Form Submit", { props: { form: "contact" } });
+              }
+            } catch (_) {}
           } else {
             status.textContent = "Something went wrong. Please try emailing me directly.";
             status.className = "ct-form-status err";
