@@ -355,6 +355,25 @@ nav.stuck {
   background: var(--hsm-blue-soft)
 }
 
+.mobile-menu .m-cv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border2);
+  color: var(--ink);
+  font-weight: 600;
+  text-align: center;
+  margin-top: .35rem;
+  border-radius: 100px;
+  padding: .7rem;
+}
+
+.mobile-menu .m-cv:hover {
+  border-color: var(--hsm-blue);
+  color: var(--hsm-blue-text);
+  background: var(--hsm-blue-soft);
+}
+
 .mobile-menu .m-hire {
   background: var(--ink);
   color: var(--cream) !important;
@@ -1562,8 +1581,12 @@ select:focus-visible,
 
   #hero {
     grid-template-columns: 1fr;
-    padding: 6.5rem 1.5rem 3rem;
+    padding: 4.75rem 1.5rem 2.5rem;
     gap: 0
+  }
+
+  .hero-lead {
+    margin-bottom: 1.5rem;
   }
 
   /* Photo shows above the hero text on mobile, centered and scaled down */
@@ -1571,7 +1594,7 @@ select:focus-visible,
     display: flex;
     justify-content: center;
     order: -1;
-    margin-bottom: 1.75rem
+    margin-bottom: 1.25rem
   }
 
   .hero-right .photo-wrap {
