@@ -319,7 +319,7 @@
             <span class="ct-qval">+201034442174</span>
           </span>
         </a>
-        <a href="#" id="em-link-ct" target="_blank" rel="noopener" class="ct-qcard">
+        <a href="mailto:hussein.mohamed.software@gmail.com?subject=Let's%20talk%20%E2%80%94%20from%20your%20portfolio" id="em-link-ct" class="ct-qcard">
           <span class="ct-qicon" style="background:var(--hsm-blue)">✉️</span>
           <span class="ct-qtext">
             <span class="ct-qlbl">Email</span>
@@ -509,28 +509,7 @@
 <script src="js/render-projects.js"></script>
 <script>
 (function () {
-  const EMAIL = "hussein.mohamed.software@gmail.com";
-  const SUBJECT = "Let's talk — from your portfolio";
-
-  function toGmailCompose(el) {
-    if (!el) return;
-    const clone = el.cloneNode(true);
-    el.replaceWith(clone);
-    clone.setAttribute(
-      "href",
-      "https://mail.google.com/mail/?view=cm&fs=1&to=" +
-        encodeURIComponent(EMAIL) +
-        "&su=" +
-        encodeURIComponent(SUBJECT)
-    );
-    clone.setAttribute("target", "_blank");
-    clone.setAttribute("rel", "noopener");
-  }
-
   document.addEventListener("DOMContentLoaded", function () {
-    toGmailCompose(document.getElementById("em-link-btn"));
-    toGmailCompose(document.getElementById("em-link-ct"));
-
     const form = document.getElementById("ct-form");
     const status = document.getElementById("ct-form-status");
     const submitBtn = document.getElementById("ct-form-submit");
