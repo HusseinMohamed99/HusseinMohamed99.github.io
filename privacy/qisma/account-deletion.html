@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" dir="ltr" data-title-en="Account & Data Deletion — Qisma" data-title-ar="حذف الحساب والبيانات — قسمة">
+<html lang="en" dir="ltr" data-title-en="Account & Data Deletion — Qisma" data-title-ar="حذف الحساب والبيانات — قِسمة">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Account &amp; Data Deletion — Qisma</title>
-<meta name="description" content="How to delete your Qisma (قسمة) account and personal data, what is erased immediately, what is retained for accounting integrity, and how to submit a request. Available in English and Arabic.">
+<meta name="description" content="How to delete your Qisma (قِسمة) account and personal data, what is erased immediately, what is retained for accounting integrity, and how to submit an assisted request. Available in English and Arabic.">
 <meta name="theme-color" content="#0A6EF5">
 <link rel="canonical" href="https://husseinmohamed99.github.io/privacy/qisma/account-deletion.html">
 <link rel="icon" type="image/png" sizes="512x512" href="../../images/brand/hsm-icon-512.png">
@@ -165,9 +165,6 @@
     line-height:1.02; letter-spacing:-.022em; margin:0; color:var(--hero-ink);
     text-wrap:balance;
   }
-  header .app-line {
-    margin:14px 0 0; font-size:19px; color:var(--hero-ink2); max-width:46ch;
-  }
   .updated {
     display:inline-block; margin:26px 0 0; padding:5px 12px;
     background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
@@ -179,7 +176,6 @@
   .siblings {
     margin:-16px 0 34px; display:flex; flex-wrap:wrap; gap:10px;
   }
-  .siblings[hidden] { display:none }
   .siblings a {
     display:inline-block; text-decoration:none;
     font-family:var(--mono); font-size:12.5px; letter-spacing:.03em;
@@ -217,18 +213,6 @@
     font-family:var(--mono); font-size:.84em; background:var(--surface);
     border:1px solid var(--border); border-radius:5px; padding:1.5px 6px;
   }
-  hr { border:0; height:1px; margin:40px 0; background:linear-gradient(90deg,var(--border2),transparent) }
-  .table-wrap {
-    overflow-x:auto; margin:0 0 15px;
-    border:1px solid var(--border); border-radius:10px; background:var(--card);
-  }
-  table { border-collapse:collapse; width:100%; font-size:14.5px }
-  th,td { border-bottom:1px solid var(--border); padding:11px 13px; text-align:start; vertical-align:top }
-  tr:last-child td { border-bottom:0 }
-  th { background:var(--surface); font-weight:600; font-size:12px; font-family:var(--mono);
-       letter-spacing:.07em; text-transform:uppercase; color:var(--muted) }
-  [dir="rtl"] th { font-family:var(--arabic); letter-spacing:0; font-size:14px; text-transform:none }
-
   .note {
     position:relative; background:var(--hsm-blue-soft);
     border:1px solid var(--hsm-blue-border);
@@ -239,14 +223,6 @@
     width:3px; border-radius:999px; background:var(--hsm-blue);
   }
   .note p:last-child { margin-bottom:0 }
-
-  .placeholder {
-    font-family:var(--mono); font-size:.88em; font-weight:600;
-    color:#b45309; background:rgba(217,119,6,.12);
-    border:1px dashed rgba(217,119,6,.45); border-radius:4px;
-    padding:2px 7px; display:inline-block;
-  }
-  [dir="rtl"] .placeholder { font-family:var(--arabic); font-size:.92em }
 
   .intro {
     font-family:var(--serif); font-weight:400; font-size:21px; line-height:1.5;
@@ -302,7 +278,7 @@
       <span class="wordmark">HSM<span class="light"> Software</span></span>
     </a>
     <span class="bar-rule" aria-hidden="true"></span>
-    <span class="bar-app" id="bar-app" data-en="Qisma" data-ar="قسمة">Qisma</span>
+    <span class="bar-app" id="bar-app" data-en="Qisma" data-ar="قِسمة">Qisma</span>
     <div class="lang" role="group" aria-label="Language / اللغة">
       <button type="button" data-lang="en" aria-pressed="true">English</button>
       <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
@@ -315,21 +291,17 @@
     <header>
       <p class="eyebrow"><span class="pip" aria-hidden="true"></span>Qisma</p>
       <h1>Account &amp; Data Deletion</h1>
-      <p class="updated">Last updated October 2026</p>
+      <p class="updated">Last updated November 2026</p>
     </header>
     <p class="siblings"><a href="./">&larr; Privacy policy</a></p>
 
-    <div class="note">
-      <p><strong>Publication Notice:</strong> This account deletion policy reflects the technical deletion architecture, security tombstones, and shared ledger retention rules in the Qisma application. It is not legal advice and must not be published live until all bracketed placeholders are replaced and approved.</p>
-    </div>
-
-    <p class="intro">Qisma gives you complete control over your account. If you created an account for cloud synchronization, you can permanently delete it directly from within the application at any time without waiting for manual approval.</p>
+    <p class="intro">Qisma gives you complete control over your account. If you created an account to synchronize shared groups across devices, you can permanently delete it directly from within the application at any time without manual review. If you cannot access the application, an assisted deletion procedure is available through customer support.</p>
 
     <h2>Scope &amp; Operating Modes</h2>
-    <p>How data deletion works depends on how you use Qisma:</p>
+    <p>How data deletion operates depends on how you use Qisma:</p>
     <ul>
-      <li><strong>Guest Mode (Unauthenticated):</strong> If you use Qisma without an account, your groups, expenses, and settlements exist solely in a local SQLite database (<code>splitly.sqlite</code>) inside your phone's sandbox. <strong>No personal or financial data exists on our servers.</strong> You can erase all data at any moment by clearing the application storage in your device settings or by uninstalling the application.</li>
-      <li><strong>Authenticated Mode (Signed-In):</strong> If you registered an account (via email/password or Google Sign-In) to synchronize groups across devices, your authentication credentials and synchronized ledgers are stored in Firebase. You can permanently erase your account using the in-app deletion process below.</li>
+      <li><strong>Guest Mode (Unauthenticated):</strong> If you use Qisma without creating an account, your groups, expenses, and settlements exist solely in a local SQLite database (<code>splitly.sqlite</code>) inside your device's private sandbox. No personal cloud account or financial profile is created on our servers. You can erase all locally stored data at any moment by clearing application storage in your device settings or by uninstalling the application. (Note: Integrated platform SDKs may generate technical operational requests as described in our Privacy Policy, but your financial ledger records and personal identities are not stored on our servers).</li>
+      <li><strong>Authenticated Mode (Signed-In):</strong> If you registered an account (via email/password or Google Sign-In) to synchronize groups across devices, your authentication credentials and synchronized shared group ledgers are stored in Google Firebase. You can permanently erase your account using the in-app deletion process or through assisted support.</li>
     </ul>
 
     <h2>How to Request Deletion From Inside the App</h2>
@@ -339,70 +311,63 @@
       <li>Open the <strong>Settings</strong> tab and navigate to the <strong>Account</strong> section.</li>
       <li>Tap <strong>Delete account</strong> at the bottom of the screen.</li>
       <li>Review the deletion summary and warnings.</li>
-      <li><strong>Authenticate again:</strong> For your security, the app requires recent authentication (within the last 5 minutes / <code>auth_time &le; 300s</code>) by re-entering your password or confirming your Google account. (Sign in with Apple is unsupported in version 1.0.2; accounts created with Email/Password or Google Sign-In are supported).</li>
+      <li><strong>Authenticate again:</strong> For your security, the app requires recent re-authentication by re-entering your password or confirming your Google account.</li>
       <li>Confirm permanent deletion. The deletion pipeline executes immediately.</li>
     </ol>
 
     <h2>The Technical Deletion Pipeline</h2>
-    <p>When you confirm deletion, Qisma executes an authoritative 6-stage deletion workflow:</p>
+    <p>When you confirm deletion in the app, Qisma executes an automated deletion workflow:</p>
     <ol>
-      <li><strong>Ownership Verification:</strong> The app checks whether you are the sole owner of any active shared group. If you are, deletion is rejected until you transfer ownership or delete the group.</li>
-      <li><strong>Server Preparation:</strong> The application invokes a secure Cloud Function (<code>prepareAccountDeletion</code>), marking your server account state as <code>status: "deletionPrepared"</code>.</li>
-      <li><strong>Permission Revocation:</strong> Your cloud permissions across all shared groups (<code>groups/{groupId}/access/{accountId}</code>) are revoked.</li>
-      <li><strong>Authentication Erasure:</strong> Your user identity record (<code>users/{uid}</code>) is permanently deleted from Firebase Authentication servers.</li>
-      <li><strong>Local Cleanup:</strong> Local SQLite records associated with your cloud account are marked <code>status: "deleted"</code>, and local cached tokens are purged.</li>
+      <li><strong>Ownership Verification:</strong> The application verifies whether you are the sole owner of any active shared group. If you are, deletion is rejected until you transfer ownership or delete the group.</li>
+      <li><strong>Server Preparation:</strong> The application invokes a secure Cloud Function (<code>prepareAccountDeletion</code>), preparing your account record for deletion.</li>
+      <li><strong>Permission Revocation:</strong> Your cloud access permissions across all shared groups (<code>groups/{groupId}/access/{accountId}</code>) are revoked.</li>
+      <li><strong>Authentication Erasure:</strong> Your user identity record is permanently deleted from Firebase Authentication servers.</li>
+      <li><strong>Local Cleanup:</strong> Local SQLite records associated with your cloud account are marked as deleted, and cached authentication tokens are purged.</li>
       <li><strong>Session Reset:</strong> The application signs out immediately, returning to unauthenticated Guest Mode.</li>
     </ol>
 
     <h2>What is Deleted Immediately</h2>
     <ul>
-      <li><strong>Login Identity:</strong> Your user record in Firebase Authentication (email, password hash, provider linkages, and session tokens) is permanently erased. You can never authenticate as that user again.</li>
-      <li><strong>Cloud Access Permissions:</strong> Your authorization to read, write, or synchronize all shared groups is revoked.</li>
-      <li><strong>Local Credentials:</strong> All in-memory and on-device session state, cached tokens, and account profile metadata are removed from the active device.</li>
+      <li><strong>Login Identity:</strong> Your user record in Firebase Authentication (email address, password hash, provider linkages, and session tokens) is permanently erased. You can no longer authenticate using that account.</li>
+      <li><strong>Cloud Access Permissions:</strong> Your authorization to read, write, or synchronize shared groups is revoked.</li>
+      <li><strong>Local Credentials:</strong> In-memory and on-device session state, cached authentication tokens, and account profile metadata are removed from the active device.</li>
     </ul>
 
-    <h2>What is Intentionally Retained</h2>
-    <p>To preserve legal and operational integrity, specific categories of records are retained:</p>
+    <h2>What is Retained and Accounting Integrity</h2>
+    <p>To preserve operational and financial integrity, specific categories of records are retained:</p>
     <ul>
-      <li><strong>Shared Group Financial History:</strong> Accepted historical expenses, split shares, settlements, and member display names in shared groups remain in Cloud Firestore and in the local databases of other group members.
+      <li><strong>Shared Group Financial History:</strong> Accepted historical expenses, split shares, settlements, and member display names in shared groups remain preserved in Cloud Firestore and in the local databases of surviving group members.
         <br><em>Accounting Integrity Rationale:</em> In shared group ledgers, participant balances, running debts, and settlement obligations depend directly on the collective transaction history. Unilaterally erasing past transactions upon one member's account deletion would distort running balances and deprive surviving group members of their verifiable financial ledger and settlement records.</li>
-      <li><strong>Local Device Offline Records:</strong> Deleting your cloud account removes your credentials and signs you out to Guest Mode. Because Qisma uses an offline-first architecture, local copies of records on your physical device remain stored locally in your device's private sandbox until you manually clear application storage in your device settings or uninstall the app.</li>
-      <li><strong>Security Tombstones:</strong> Server-side records (<code>accounts/{accountId}</code> and <code>authPrincipals/{uid}</code>) are retained with <code>status: "deletionPrepared"</code> to prevent identity resurrection, replay attacks, or synchronization hijacking. These tombstones contain no profile names, emails, or phone numbers.</li>
-      <li><strong>Residual Provider Logs &amp; Backups:</strong> The implementation erases records immediately from active operational databases. Deletion from backend provider server logs, encrypted off-site backups, and point-in-time recovery archives occurs according to provider retention windows: <span class="placeholder">[APPROVED POLICY REQUIRED]</span>.</li>
+      <li><strong>Local Device Records:</strong> Deleting your cloud account removes your credentials and signs you out to Guest Mode. Because Qisma uses an offline-first architecture, local copies of records on your physical device remain stored in your device's sandbox until you manually clear application storage in device settings or uninstall the app.</li>
+      <li><strong>Security Tombstones:</strong> Administrative tombstone records (retaining technical IDs without personal names or emails) may be maintained server-side to prevent identity resurrection, replay attacks, or synchronization conflicts.</li>
+      <li><strong>Operational Logs &amp; Backups:</strong> Account deletion executes immediately on active operational databases. Deletion from backend provider server logs, encrypted off-site backups, and disaster-recovery archives occurs according to service provider operational retention cycles and security requirements.</li>
     </ul>
 
     <h2>The Sole-Owner Guard</h2>
-    <p>If you are the <strong>sole owner</strong> of an active shared group, you cannot delete your account while that group remains active. This guard ensures that shared groups are not orphaned without an administrator to manage membership or approve settlements.</p>
+    <p>If you are the <strong>sole owner</strong> of an active shared group, you cannot delete your account while that group remains active. This guard ensures that shared groups are not left orphaned without an administrator to manage membership or approve settlements.</p>
     <p>Before deleting your account, you must either:</p>
     <ul>
-      <li>Transfer group ownership to another member using <strong>Group Settings &rarr; Transfer Ownership</strong>, or</li>
-      <li>Delete the group if all balances have been settled.</li>
+      <li>Transfer group ownership to another active member using <strong>Group Settings &rarr; Transfer Ownership</strong>, or</li>
+      <li>Settle all outstanding balances and delete the group.</li>
     </ul>
 
     <h2>Assisted Support Deletion (Unable to Access the App)</h2>
-    <p>The primary and immediate pathway for account deletion is directly inside the application (<strong>Settings &rarr; Account &rarr; Delete account</strong>), where recent re-authentication via Email/Password or Google Sign-In is verified automatically on the server (Sign in with Apple is unsupported in version 1.0.2). If you cannot sign in to the app (for example, if your device is lost or inaccessible), you may submit an assisted deletion request to customer support. The operational workflow proceeds as follows:</p>
+    <p>The primary and immediate pathway for account deletion is directly inside the application (<strong>Settings &rarr; Account &rarr; Delete account</strong>), where identity verification is performed automatically via your sign-in provider. If you cannot sign in to the application (for example, if your device is lost or inaccessible), you may submit an assisted deletion request to customer support. The operational workflow proceeds as follows:</p>
     <ol>
-      <li><strong>Request Submission:</strong> Send an email from the exact email address associated with your Qisma account to <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a> with the subject <code>Qisma Account Deletion Request</code>. <em>Sending this email initiates a support inquiry; it does not automatically or immediately delete your account.</em></li>
-      <li><strong>Support Intake:</strong> An operations representative logs the inquiry into our internal support registry with a <code>PENDING_REVIEW</code> status. Anti-enumeration protections ensure that inquiries from unregistered email addresses never disclose account absence to third parties.</li>
-      <li><strong>Identity &amp; Ownership Verification:</strong> To protect users against unauthorized deletion by impostors, support verifies inbound email authenticity (asserting SPF/DKIM validation from the registered domain) and records the unique inbound Message-ID in the operational registry. The reviewing operator documents the confirmed verification outcome in the operational audit log.</li>
-      <li><strong>Sole-Owner Preflight Check:</strong> The operator verifies in Cloud Firestore whether your account is the sole owner of any active shared groups. If you hold sole ownership of an active group with other members, deletion is blocked until ownership is transferred to another member or the group is settled.</li>
+      <li><strong>Request Submission:</strong> Send an email from the exact email address registered with your Qisma account to <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a> with the subject line <code>Qisma Account Deletion Request</code>. <em>Sending this email opens a support request; it does not automatically or immediately delete your account.</em></li>
+      <li><strong>Support Intake:</strong> An operator logs the request into our internal review registry. Anti-enumeration safeguards ensure that inquiries from unregistered email addresses do not disclose account status to third parties.</li>
+      <li><strong>Identity &amp; Ownership Verification:</strong> To protect accounts against unauthorized or fraudulent deletion, customer support verifies that the request originates from the registered email account holder through email correspondence and standard domain validation.</li>
+      <li><strong>Sole-Owner Preflight Check:</strong> The operator verifies in Cloud Firestore whether your account is the sole owner of any active shared groups. If you hold sole ownership of an active group with other members, deletion is blocked until ownership is reassigned or the group is settled.</li>
       <li><strong>Authorized Execution:</strong> Once ownership verification is confirmed and sole-ownership checks clear, an authorized operator executes cloud deletion. Your cloud group permissions are revoked, security tombstones are recorded, and your Firebase Authentication user identity is permanently deleted.</li>
-      <li><strong>Confirmation &amp; Local Data Notice:</strong> A confirmation email is delivered to you. Deletion from operational cloud databases is completed within 30 days of ownership verification. Shared historical transactions remain available to surviving group participants to preserve group ledger balances. Local copies of records stored in SQLite on your physical device remain in your device's sandbox until you manually clear application data or uninstall the app.</li>
+      <li><strong>Confirmation &amp; Processing Timeline:</strong> A confirmation email is delivered to you upon completion. The manual review and deletion workflow is typically completed within 30 days of verified account ownership confirmation, subject to any necessary clarification or exceptional circumstances. Shared historical transactions remain available to surviving group participants to preserve group ledger balances. Local copies of records stored in SQLite on your physical device remain in your device's sandbox until you manually clear application data or uninstall the app.</li>
     </ol>
     <div class="note">
-      <p><strong>Security Invariants:</strong> Never send passwords, payment details, or sensitive credentials over email. Qisma customer support will never ask you for your account password. Sending an email does not instantly wipe data; verified identity confirmation and sole-owner safety checks must be satisfied before any deletion is executed.</p>
+      <p><strong>Security Notice:</strong> Never send passwords, payment card details, or sensitive credentials over email. Qisma customer support will never ask you for your account password. Sending an email does not instantly wipe data; verified identity confirmation and sole-owner safety checks must be completed before deletion is executed.</p>
     </div>
-
-    <h2>Unresolved Operational Placeholders</h2>
-    <p>The following parameters require final business and legal determination prior to public launch:</p>
-    <ul>
-      <li><span class="placeholder">[APPROVED POLICY REQUIRED]</span>: Verified retention duration for immutable system logs and disaster recovery backups.</li>
-      <li><span class="placeholder">[RETENTION PERIODS REQUIRED]</span>: Retention schedule for security tombstones and audit logs.</li>
-    </ul>
 
     <div class="contact">
       <h2>Contact</h2>
-      <p>Questions or requests regarding account or data deletion:</p>
+      <p>If you have questions or requests regarding account or data deletion, please contact:</p>
       <p><strong>Email:</strong> <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a></p>
     </div>
 
@@ -417,23 +382,19 @@
   <!-- ==================== ARABIC ==================== -->
   <div id="policy-ar" lang="ar" dir="rtl" hidden>
     <header>
-      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>قسمة</p>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>قِسمة</p>
       <h1>حذف الحساب والبيانات</h1>
-      <p class="updated">آخر تحديث أكتوبر ٢٠٢٦</p>
+      <p class="updated">آخر تحديث نوفمبر ٢٠٢٦</p>
     </header>
     <p class="siblings"><a href="./">&rarr; سياسة الخصوصية</a></p>
 
-    <div class="note">
-      <p><strong>إشعار النشر:</strong> توثق هذه السياسة البنية التقنية لحذف الحساب وسجلات الأمان وقواعد الحفاظ على السجلات المشتركة في تطبيق «قِسمة». وهي ليست استشارة قانونية ويجب عدم نشرها للجمهور قبل استبدال كافة النصوص بين الأقواس واعتمادها قانونيًا.</p>
-    </div>
+    <p class="intro">يمنحك تطبيق «قِسمة» تحكمًا كاملًا في حسابك وبياناتك. إذا كنت قد أنشأت حسابًا للمزامنة السحابية عبر الأجهزة، يمكنك حذفه نهائيًا ومباشرة من داخل التطبيق في أي وقت دون انتظار مراجعة يدوية. وإذا تعذر عليك الوصول إلى التطبيق، يتوفر إجراء حذف استثنائي بمساعدة فريق الدعم.</p>
 
-    <p class="intro">يمنحك تطبيق «قِسمة» تحكمًا كاملًا في حسابك وبياناتك. إذا كنت قد أنشأت حسابًا للمزامنة السحابية، يمكنك حذفه نهائيًا ومباشرة من داخل التطبيق في أي وقت دون الحاجة لانتظار موافقة يدوية.</p>
-
-    <h2>نطاق التطبيق وأوضاع التشغيل</h2>
+    <h2>نطاق الحذف حسب وضع التشغيل</h2>
     <p>تختلف آلية حذف البيانات باختلاف طريقة استخدامك لتطبيق «قِسمة»:</p>
     <ul>
-      <li><strong>وضع الضيف (دون حساب):</strong> إذا كنت تستخدم التطبيق دون إنشاء حساب، فإن مجموعاتك ومصروفاتك وتسوياتك محفوظة حصريًا في قاعدة بيانات <span class="ltr">SQLite</span> محلية (<code class="ltr">splitly.sqlite</code>) داخل بيئة هاتفك المعزولة. <strong>ولا توجد أي بيانات شخصية أو مالية لك على خوادمنا أصلاً.</strong> ويمكنك مسح كافة البيانات في أي وقت بمسح بيانات التطبيق من إعدادات جهازك أو بإلغاء تثبيت التطبيق.</li>
-      <li><strong>الوضع الموثق (بحساب مسجل):</strong> إذا أنشأت حسابًا (بالبريد وكلمة المرور أو عبر حساب <span class="ltr">Google</span>) لمزامنة المجموعات، فإن بيانات اعتمادك وسجلاتك المتزامنة تُحفظ في سحابة <span class="ltr">Firebase</span>. ويمكنك حذف حسابك نهائيًا باتباع خطوات الحذف من داخل التطبيق أدناه.</li>
+      <li><strong>وضع الضيف (دون حساب):</strong> إذا كنت تستخدم التطبيق دون إنشاء حساب، فإن مجموعاتك ومصروفاتك وتسوياتك محفوظة حصريًا في قاعدة بيانات <span class="ltr">SQLite</span> محلية (<code class="ltr">splitly.sqlite</code>) داخل بيئة هاتفك المعزولة. ولا يتم إنشاء حساب سحابي أو ملف مالي شخصي لك على خوادمنا أصلاً. ويمكنك مسح كافة البيانات في أي وقت بمسح بيانات التطبيق من إعدادات جهازك أو بإلغاء تثبيت التطبيق. (ملاحظة: قد ترسل حزم المنصة البرمجية طلبات تشغيلية تقنية كما هو موضح في سياسة الخصوصية، لكن لا تُخزن سجلات دفاتر مالية أو هويات شخصية لك على خوادمنا).</li>
+      <li><strong>الوضع الموثق (بحساب مسجل):</strong> إذا أنشأت حسابًا (بالبريد وكلمة المرور أو عبر حساب <span class="ltr">Google</span>) لمزامنة المجموعات، فإن بيانات اعتمادك وسجلاتك المتزامنة تُحفظ في سحابة <span class="ltr">Google Firebase</span>. ويمكنك حذف حسابك نهائيًا باتباع خطوات الحذف من داخل التطبيق أو بمساعدة الدعم الفني.</li>
     </ul>
 
     <h2>كيفية طلب الحذف من داخل التطبيق</h2>
@@ -443,18 +404,18 @@
       <li>افتح تبويب <strong>الإعدادات</strong> وانتقل إلى قسم <strong>الحساب</strong>.</li>
       <li>اضغط على <strong>حذف الحساب</strong> في أسفل الشاشة.</li>
       <li>راجع تفاصيل الحذف والتحذيرات المعروضة.</li>
-      <li><strong>إعادة تأكيد الهوية:</strong> كإجراء أمان إلزامي، يتطلب التطبيق مصادقة حديثة (خلال آخر ٥ دقائق / <code class="ltr">auth_time &le; 300s</code>) بإعادة إدخال كلمة المرور أو تأكيد حساب <span class="ltr">Google</span> الخاص بك قبل تنفيذ الحذف. (تسجيل الدخول بحساب <span class="ltr">Apple</span> غير مدعوم في الإصدار ١.٠.٢؛ والحسابات المنشأة بالبريد وكلمة المرور أو حساب <span class="ltr">Google</span> هي المدعومة حاليًا).</li>
-      <li>أكّد الحذف النهائي. وسيتم تنفيذ عملية الحذف فورًا.</li>
+      <li><strong>إعادة تأكيد الهوية:</strong> كإجراء أمان إلزامي، يتطلب التطبيق مصادقة حديثة بإعادة إدخال كلمة المرور أو تأكيد حساب <span class="ltr">Google</span> الخاص بك قبل تنفيذ الحذف.</li>
+      <li>أكّد الحذف النهائي. وسيتم تنفيذ مسار الحذف فورًا.</li>
     </ol>
 
     <h2>مسار الحذف التقني (ما يحدث في الخلفية)</h2>
-    <p>عند تأكيد الحذف، ينفّذ تطبيق «قِسمة» مسار حذف آلي مكون من ٦ مراحل معتمدة:</p>
+    <p>عند تأكيد الحذف في التطبيق، ينفّذ تطبيق «قِسمة» مسار حذف آلي معتمد:</p>
     <ol>
       <li><strong>التحقق من الملكية:</strong> يتأكد التطبيق مما إذا كنت المالك الوحيد لأي مجموعة مشتركة نشطة. وإذا كنت كذلك، يُرفض الحذف حتى تنقل الملكية أو تحذف المجموعة.</li>
-      <li><strong>الإعداد في الخادم:</strong> يستدعي التطبيق دالة سحابية آمنة (<code class="ltr">prepareAccountDeletion</code>)، وتُحدد حالة حسابك في الخادم كـ <code class="ltr">deletionPrepared</code>.</li>
-      <li><strong>إلغاء الصلاحيات:</strong> تُلغى كافة صلاحيات الوصول السحابية لحسابك في جميع المجموعات المشتركة (<code class="ltr">status: "revoked"</code>).</li>
-      <li><strong>محو الهوية من السحابة:</strong> يُحذف سجل هويتك نهائيًا من خوادم <span class="ltr">Firebase Authentication</span> (<code class="ltr">users/{uid}</code>).</li>
-      <li><strong>التنظيف المحلي:</strong> تُحدد السجلات المحلية المرتبطة بحسابك في قاعدة بيانات <span class="ltr">SQLite</span> كـ <code class="ltr">status: "deleted"</code> وتُمسح الرموز المؤقتة.</li>
+      <li><strong>الإعداد في الخادم:</strong> يستدعي التطبيق دالة سحابية آمنة (<code class="ltr">prepareAccountDeletion</code>)، لإعداد الحساب لعملية الحذف.</li>
+      <li><strong>إلغاء الصلاحيات:</strong> تُلغى كافة صلاحيات الوصول السحابية لحسابك في جميع المجموعات المشتركة (<code class="ltr">groups/{groupId}/access/{accountId}</code>).</li>
+      <li><strong>محو الهوية من السحابة:</strong> يُحذف سجل هويتك نهائيًا من خوادم <span class="ltr">Firebase Authentication</span>.</li>
+      <li><strong>التنظيف المحلي:</strong> تُحدد السجلات المحلية المرتبطة بحسابك في قاعدة بيانات <span class="ltr">SQLite</span> كحساب محذوف، وتُمسح رموز الجلسات والتحقق المؤقتة.</li>
       <li><strong>إعادة ضبط الجلسة:</strong> يسجل التطبيق الخروج فورًا ويعود إلى وضع الضيف دون حساب.</li>
     </ol>
 
@@ -462,17 +423,17 @@
     <ul>
       <li><strong>هوية تسجيل الدخول:</strong> يُمسح سجلك بالكامل من خوادم <span class="ltr">Firebase Authentication</span> (البريد، وتجزئة كلمة المرور، وارتباطات تسجيل الدخول، ورموز الجلسات)، ولا يمكن تسجيل الدخول بهذه الهوية مجددًا.</li>
       <li><strong>صلاحيات الوصول السحابي:</strong> تُلغى كافة صلاحياتك في قراءة أو كتابة أو مزامنة المجموعات المشتركة.</li>
-      <li><strong>بيانات الاعتماد المحلية:</strong> تُمسح كافة بيانات الجلسة المخزنة في الذاكرة والجهاز ورموز التحقق المؤقتة من جهازك.</li>
+      <li><strong>بيانات الاعتماد المحلية:</strong> تُمسح كافة بيانات الجلسة المخزنة في الذاكرة والجهاز ورموز التحقق المؤقتة من جهازك النشط.</li>
     </ul>
 
-    <h2>ما يُحتفظ به عمدًا ولماذا</h2>
-    <p>لضمان النزاهة القانونية والمحاسبية والتشغيلية، يتم الاحتفاظ بفئات محددة من السجلات:</p>
+    <h2>ما يُحتفظ به وأسباب النزاهة المحاسبية</h2>
+    <p>لضمان النزاهة التشغيلية والمالية، يتم الاحتفاظ بفئات محددة من السجلات:</p>
     <ul>
-      <li><strong>سجل المعاملات المالية للمجموعات المشتركة:</strong> تبقى المصروفات المشتركة السابقة المعتمدة وحصص التقسيم والتسويات وأسماء الأعضاء المعروضة محفوظة في سحابة <span class="ltr">Firestore</span> ولدى بقية أعضاء المجموعة.
-        <br><em>سبب النزاهة المحاسبية:</em> في الدفاتر المالية للمجموعات المشتركة، ترتبط أرصدة الأعضاء والتزامات التسوية والديون الجارية ارتباطًا مباشرًا بالسجل التاريخي للمعاملات المعتمدة. ويؤدي الحذف الأحادي للمعاملات السابقة عند حذف حساب أحد الأعضاء إلى تشويه الأرصدة الجارية وحرمان بقية أعضاء المجموعة من سجلاتهم المالية وقسائم التسوية القابلة للتحقق.</li>
-      <li><strong>السجلات المحلية غير المتصلة على الجهاز:</strong> يؤدي حذف حسابك السحابي إلى محو بيانات اعتمادك وتسجيل خروجك إلى وضع الضيف. ونظرًا لأن «قِسمة» يعتمد بنية برمجية تعمل محليًا أولًا، فإن النسخ المحلية للسجلات المحفوظة على جهازك الفعلي تبقى مخزنة في بيئة هاتفك المعزولة حتى تمسح بيانات التطبيق يدويًا من إعدادات جهازك أو تلغي تثبيت التطبيق.</li>
-      <li><strong>سجلات الأمان الإجرائية (Security Tombstones):</strong> تُحفظ سجلات تقنية في الخادم (<code class="ltr">accounts/{accountId}</code> و <code class="ltr">authPrincipals/{uid}</code>) محددة بحالة <code class="ltr">deletionPrepared</code> لمنع إعادة استخدام المعرف أو هجمات إعادة الإرسال أو اختطاف المزامنة. ولا تحتوي هذه السجلات على أي أسماء أو بريد إلكتروني أو أرقام هواتف.</li>
-      <li><strong>النسخ الاحتياطية وسجلات الخوادم:</strong> يتم الحذف فورًا من قواعد البيانات النشطة. ويتم حذف السجلات من النسخ الاحتياطية وسجلات تشغيل الخوادم المشفرة وفقًا للجداول الزمنية المعتمدة لمزوّد الخدمة: <span class="placeholder">[يلزم اعتماد السياسة]</span>.</li>
+      <li><strong>السجل المالي للمجموعات المشتركة:</strong> تبقى المصروفات المشتركة السابقة المعتمدة وحصص التقسيم والتسويات وأسماء الأعضاء المعروضة محفوظة في سحابة <span class="ltr">Firestore</span> ولدى بقية أعضاء المجموعة المتبقين.
+        <br><em>سبب النزاهة المحاسبية:</em> في الدفاتر المالية للمجموعات المشتركة، ترتبط أرصدة الأعضاء والتزامات التسوية والديون الجارية ارتباطًا مباشرًا بالسجل التاريخي التراكمي للمعاملات المعتمدة. ويؤدي الحذف الأحادي للمعاملات عند حذف حساب أحد الأعضاء إلى تشويه الأرصدة الجارية وحرمان بقية أعضاء المجموعة من سجلاتهم المالية وقسائم التسوية القابلة للإثبات.</li>
+      <li><strong>السجلات المحلية على الجهاز:</strong> يؤدي حذف حسابك السحابي إلى محو بيانات اعتمادك وتسجيل خروجك إلى وضع الضيف. ونظرًا لأن «قِسمة» يعتمد بنية تعمل محليًا أولًا، فإن النسخ المحلية للسجلات المحفوظة على جهازك الفعلي تبقى مخزنة في بيئة هاتفك حتى تمسح بيانات التطبيق يدويًا من إعدادات جهازك أو تلغي تثبيت التطبيق.</li>
+      <li><strong>سجلات الأمان الإجرائية:</strong> قد تُحفظ سجلات تقنية إجرائية في الخادم تحتوي على معرّفات تقنية دون أسماء أو بريد إلكتروني لمنع إعادة استخدام المعرّفات أو هجمات إعادة الإرسال أو تعارض المزامنة.</li>
+      <li><strong>سجلات التشغيل والنسخ الاحتياطية:</strong> يتم الحذف فورًا من قواعد البيانات التشغيلية النشطة. ويتم حذف السجلات من النسخ الاحتياطية وسجلات تشغيل الخوادم وفقًا للدورات التشغيلية والمتطلبات الأمنية لمزوّدي الخدمة.</li>
     </ul>
 
     <h2>قيد المالك الوحيد للمجموعة</h2>
@@ -480,29 +441,22 @@
     <p>قبل حذف حسابك، يجب عليك القيام بأحد الأمرين:</p>
     <ul>
       <li>نقل ملكية المجموعة إلى عضو آخر عبر <strong>إعدادات المجموعة &larr; نقل الملكية</strong>، أو</li>
-      <li>حذف المجموعة بعد تسوية كافة الأرصدة المعلقة فيها.</li>
+      <li>تسوية كافة الأرصدة المعلقة في المجموعة وحذفها.</li>
     </ul>
 
     <h2>طلب الحذف بمساعدة الدعم الفني (في حال تعذر الوصول إلى التطبيق)</h2>
-    <p>المسار الأساسي والفوري لحذف الحساب يتم مباشرة من داخل تطبيق «قِسمة» (<strong>الإعدادات &larr; الحساب &larr; حذف الحساب</strong>)، حيث يتم التحقق من هويتك ومصادقتك الحديثة آليًا عبر الخادم بواسطة البريد وكلمة المرور أو حساب Google (تسجيل الدخول بحساب Apple غير مدعوم في الإصدار ١.٠.٢). وإذا تعذر عليك تسجيل الدخول في التطبيق (بسبب فقدان جهازك مثلًا)، يمكنك تقديم طلب حذف استثنائي عبر الدعم الفني وفق المراحل التشغيلية التالية:</p>
+    <p>المسار الأساسي والفوري لحذف الحساب يتم مباشرة من داخل تطبيق «قِسمة» (<strong>الإعدادات &larr; الحساب &larr; حذف الحساب</strong>)، حيث يتم التحقق من هويتك آليًا عبر مزود تسجيل الدخول. وإذا تعذر عليك تسجيل الدخول في التطبيق (بسبب فقدان جهازك أو تعطل الوصول إليه)، يمكنك تقديم طلب حذف استثنائي عبر الدعم الفني وفق المراحل التشغيلية التالية:</p>
     <ol>
-      <li><strong>إرسال الطلب:</strong> أرسل رسالة من نفس عنوان البريد الإلكتروني المسجل به حسابك إلى <a href="mailto:hussein.mohamed.software@gmail.com" class="ltr">hussein.mohamed.software@gmail.com</a> بعنوان <code class="ltr">Qisma Account Deletion Request</code>. <em>علماً بأن إرسال البريد بمفرده يفتح تذكرة دعم فني ولا يحذف الحساب آليًا أو فورًا.</em></li>
-      <li><strong>تسجيل الطلب لدى الدعم:</strong> يُدرج مسؤول العمليات الطلب في سجل المراجعة بحالة <code>PENDING_REVIEW</code>. وتمنع دفاعات مكافحة استكشاف الحسابات تأكيد وجود الحساب في حال كان البريد المرسل غير مسجل لدينا.</li>
-      <li><strong>التحقق من ملكية الحساب:</strong> لحماية الحسابات من محاولات الحذف غير المصرح بها من أطراف أخرى، يتحقق فريق الدعم من أصالة البريد الوارد (بالتأكد من اجتياز فحص SPF و DKIM للنطاق المسجل) ويسجل معرف الرسالة الفريد (Message-ID) في السجل التشغيلي. ويوثق مسؤول المراجعة نتيجة التحقق رسميًا في سجل المراجعة التشغيلي.</li>
-      <li><strong>فحص قيود ملكية المجموعات:</strong> يفحص النظام في خوادم <span class="ltr">Firestore</span> ما إذا كان الحساب يملك بمفرده أي مجموعات نشطة مشتركة. وإذا كنت المالك الوحيد لمجموعة نشطة، يتعذر تنفيذ الحذف حتى يتم نقل الملكية إلى مشارك آخر أو تسوية المجموعة.</li>
-      <li><strong>التنفيذ المصرح به:</strong> بعد توثيق التحقق من الملكية واجتياز فحص المجموعات، ينفذ مسؤول تشغيل معتمد ومصرح له عملية الحذف؛ فتُلغى صلاحيات الوصول السحابية للمجموعات، وتُسجل شواهد الأمان التقنية، ويُحذف سجل المستخدم نهائيًا من خوادم المصادقة.</li>
-      <li><strong>تأكيد الحذف وملاحظة البيانات المحلية:</strong> يُرسل تأكيد للمستخدم باكتمال العملية خلال ٣٠ يومًا من تأكيد التحقق من الملكية. وتبقى السجلات التاريخية المشتركة محفوظة للأعضاء المتبقين لضمان صحة الأرصدة الحسابية. أما النسخ المحلية المخزنة في قاعدة بيانات <span class="ltr">SQLite</span> على جهازك الفعلي، فيلزم مسحها يدويًا من إعدادات التطبيق في هاتفك أو بإلغاء تثبيت التطبيق.</li>
+      <li><strong>إرسال الطلب:</strong> أرسل رسالة من نفس عنوان البريد الإلكتروني المسجل به حسابك إلى <a href="mailto:hussein.mohamed.software@gmail.com" class="ltr">hussein.mohamed.software@gmail.com</a> بعنوان <code class="ltr">Qisma Account Deletion Request</code>. <em>علماً بأن إرسال البريد يفتح تذكرة دعم فني ولا يحذف الحساب آليًا أو فورًا بمجرّد الإرسال.</em></li>
+      <li><strong>تسجيل الطلب لدى الدعم:</strong> يُدرج مسؤول العمليات الطلب في سجل المراجعة الداخلي. وتمنع معايير الخصوصية تأكيد وجود الحساب في حال كان البريد المرسل غير مسجل لدينا.</li>
+      <li><strong>التحقق من ملكية الحساب:</strong> لحماية الحسابات من محاولات الحذف غير المصرح بها أو الاحتيالية، يتحقق فريق الدعم من أن الطلب وارد بالفعل من صاحب البريد الإلكتروني المسجل عبر المراسلة وفحوصات النطاق القياسية.</li>
+      <li><strong>فحص قيود ملكية المجموعات:</strong> يفحص النظام في خوادم <span class="ltr">Firestore</span> ما إذا كان الحساب يملك بمفرده أي مجموعات مشتركة نشطة. وإذا كنت المالك الوحيد لمجموعة نشطة، يتعذر تنفيذ الحذف حتى يتم نقل الملكية إلى مشارك آخر أو تسوية المجموعة.</li>
+      <li><strong>التنفيذ المصرح به:</strong> بعد توثيق التحقق من الملكية واجتياز فحص المجموعات، ينفذ مسؤول تشغيل معتمد عملية الحذف؛ فتُلغى صلاحيات الوصول السحابية للمجموعات، وتُسجل شواهد الأمان التقنية، ويُحذف سجل المستخدم نهائيًا من خوادم المصادقة.</li>
+      <li><strong>تأكيد الحذف والمهلة الزمنية:</strong> يُرسل تأكيد للمستخدم باكتمال العملية. وعادة ما يكتمل مسار المراجعة اليدوية والحذف خلال مدة أقصاها ٣٠ يومًا من تأكيد التحقق من ملكية الحساب، مع مراعاة أي ظروف استثنائية أو استفسارات مطلوبة. وتبقى السجلات التاريخية المشتركة محفوظة للأعضاء المتبقين لضمان صحة الأرصدة الحسابية، بينما يلزم مسح النسخ المحلية في هاتفك يدويًا من إعدادات الجهاز أو بإلغاء تثبيت التطبيق.</li>
     </ol>
     <div class="note">
-      <p><strong>تنبيه أمني هام:</strong> لا ترسل أبدًا كلمات المرور أو بيانات الدفع أو أي رموز مؤقتة عبر البريد الإلكتروني. لن يطلب منك فريق دعم «قِسمة» كلمة مرور حسابك مطلقًا. إن إرسال بريد إلكتروني لا يمسح البيانات فورًا؛ بل يجب استيفاء التحقق من الملكية وفحص قيود ملكية المجموعات قبل تنفيذ أي حذف.</p>
+      <p><strong>تنبيه أمني هام:</strong> لا ترسل أبدًا كلمات المرور أو بيانات بطاقات الدفع أو أي رموز اعتماد حساسة عبر البريد الإلكتروني. لن يطلب منك فريق دعم «قِسمة» كلمة مرور حسابك مطلقًا. إن إرسال بريد إلكتروني لا يمسح البيانات فورًا؛ بل يجب استيفاء التحقق من الملكية وفحص قيود ملكية المجموعات قبل تنفيذ الحذف.</p>
     </div>
-
-    <h2>القرارات والمدد التشغيلية المعلقة</h2>
-    <p>تتطلب البنود التالية تحديدًا واعتمادًا رسميًا قبل النشر للجمهور:</p>
-    <ul>
-      <li><span class="placeholder">[يلزم اعتماد السياسة]</span>: المدة المعتمدة لحذف السجلات من النسخ الاحتياطية وسجلات التشغيل.</li>
-      <li><span class="placeholder">[يلزم تحديد مدد الاحتفاظ]</span>: المدة القانونية للاحتفاظ بسجلات الأمان الإجرائية.</li>
-    </ul>
 
     <div class="contact">
       <h2>للتواصل</h2>
@@ -562,4 +516,3 @@
 </main>
 </body>
 </html>
-
