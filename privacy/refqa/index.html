@@ -331,7 +331,7 @@
     <header>
       <p class="eyebrow"><span class="pip" aria-hidden="true"></span>Refqa</p>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated 20 August 2026</p>
+      <p class="updated">Last updated 2 November 2026 &middot; Applies to Refqa 1.0.3</p>
     </header>
 
     <h2>The short version</h2>
@@ -425,24 +425,24 @@
     <h2>Notifications</h2>
     <p>Refqa sends you the adhan at prayer times, optional salawat reminders, and an
     optional streak reminder.</p>
-    <p>All notifications are <strong>generated locally on your device</strong>. Refqa has no push
-    notification service: there is no Firebase Cloud Messaging, no push token, and
-    no server that can send you anything. Your device schedules them from times it
-    calculated itself, and they work with no internet connection.</p>
+    <p>All core prayer times, adhan, and devotional reminders are <strong>generated locally on your device</strong>. Your device schedules them from times it calculated itself, and they work completely offline with no internet connection.</p>
+    <p>Refqa also includes a remote push notification service for Islamic occasion reminders (such as Ramadan, Eid, Hajj, and the Hijri new year) powered by Google's <strong>Firebase Cloud Messaging (FCM)</strong>:</p>
+    <ul>
+    <li><strong>Sent through a single topic:</strong> On launch, the device subscribes to a single public topic (<code>islamic_occasions</code>). Messages are sent manually by the developer for these occasions.</li>
+    <li><strong>No personal data or accounts:</strong> Firebase assigns the device a registration token that stays until it is refreshed. Refqa does not create user accounts, does not send the token to any server of its own, and does not link it to an account, name, or location.</li>
+    <li><strong>Your control:</strong> Occasion reminders are enabled by default and do not have an in-app toggle. You can turn them off at any time in Android's system notification settings for the app, without affecting offline adhan or other local alerts.</li>
+    </ul>
     <p>Refqa uses exact alarms so the adhan sounds at the true prayer time rather than
     being delayed by battery optimisation. This is a scheduling permission; it
     collects nothing.</p>
-    <p>Notification permission is optional and revocable in your device settings.</p>
+    <p>Notification permission is optional and revocable in your device settings at any time.</p>
     <h2>Crash reporting</h2>
     <p>Refqa uses <strong>Sentry</strong> (<a href="https://sentry.io">https://sentry.io</a>) to report crashes and errors so they
     can be fixed. What is sent is a technical description of the failure: the error,
     a stack trace, and device/OS details such as model, OS version, and app version.</p>
     <p>Deliberately <strong>not</strong> sent:</p>
     <ul>
-    <li><strong>Your location.</strong> Coordinates are stripped from every report before it
-      leaves the device, including from network URLs and error messages that would
-      otherwise contain them. This is enforced in code and covered by automated
-      tests.</li>
+    <li><strong>Your location.</strong> Crash reports do not intentionally include your location. Coordinates are scrubbed using pattern matching before reports leave the device, including from network URLs and error messages that might otherwise contain them.</li>
     <li><strong>Your IP address</strong>, which Sentry is explicitly configured not to collect.</li>
     <li><strong>Screenshots or screen contents</strong>, which are disabled.</li>
     <li><strong>Any identifier for you</strong>, since the app has none to send.</li>
@@ -550,6 +550,11 @@
     <td>Update and maintenance checks</td>
     <td>No</td>
     </tr>
+    <tr>
+    <td>Firebase Cloud Messaging (<code>fcm.googleapis.com</code>)</td>
+    <td>Islamic occasion notifications</td>
+    <td>No</td>
+    </tr>
     </tbody>
     </table></div>
     <h2>Advertising and analytics</h2>
@@ -590,7 +595,7 @@
     <header>
       <p class="eyebrow"><span class="pip" aria-hidden="true"></span>رِفقة</p>
       <h1>سياسة الخصوصية</h1>
-      <p class="updated">آخر تحديث ٢٠ أغسطس ٢٠٢٦</p>
+      <p class="updated">آخر تحديث ٢ نوفمبر ٢٠٢٦ &middot; ينطبق على إصدار رِفقة 1.0.3</p>
     </header>
 
     <h2>الخلاصة في سطور</h2>
@@ -670,24 +675,23 @@
     الشاشة. ولو سمحت بالتحقّق عبر الإنترنت، اللي Google بتعمله بالصوت اللي
     بيوصلها بيحكمه سياسة الخصوصية بتاعتها، مش السياسة دي.</p>
     <h2>الإشعارات</h2>
-    <p>رِفقة بتبعت لك الأذان في مواقيت الصلاة، وتذكير اختياري بالصلاة على النبي،
-    وتذكير اختياري بالمواظبة.</p>
-    <p>كل الإشعارات <strong>بتتولّد محليًا على جهازك</strong>. رِفقة مفيهاش خدمة إشعارات دفع
-    خالص: مفيش Firebase Cloud Messaging، ولا رمز دفع، ولا سيرفر يقدر يبعت لك أي
-    حاجة. جهازك هو اللي بيجدولها من مواقيت حسبها بنفسه، وهي شغّالة من غير أي
-    اتصال بالإنترنت.</p>
-    <p>ورِفقة بتستخدم منبّهات مضبوطة بالثانية عشان الأذان يرفع في وقته الحقيقي مش
-    يتأخّر بسبب توفير البطارية. ده إذن جدولة، ومش بياخد أي بيانات.</p>
-    <p>إذن الإشعارات اختياري، وتقدر تسحبه من إعدادات جهازك.</p>
+    <p>رِفقة بتبعت لك الأذان في مواقيت الصلاة، وتذكير اختياري بالصلاة على النبي، وتذكير اختياري بالمواظبة.</p>
+    <p>كل مواقيت الصلاة الأساسية والأذان والتذكيرات الإيمانية <strong>بتتولّد محليًا على جهازك</strong>. جهازك هو اللي بيجدولها من مواقيت حسبها بنفسه، وهي شغّالة بالكامل بدون أي اتصال بالإنترنت.</p>
+    <p>ورِفقة فيها كمان خدمة إشعارات دفع للتذكير بالمناسبات الإسلامية (زي رمضان، والأعياد، وموسم الحج، ورأس السنة الهجرية) مدعومة بـ <strong>Firebase Cloud Messaging (FCM)</strong> من Google:</p>
+    <ul>
+    <li><strong>عبر موضوع واحد عام:</strong> عند فتح التطبيق، بيشترك الجهاز في موضوع عام واحد (<code>islamic_occasions</code>). والرسائل بيبعتها المطوّر يدويًا في المناسبات دي.</li>
+    <li><strong>بدون حسابات ولا بيانات شخصية:</strong> Firebase بتعيّن للجهاز رمز تسجيل يفضل موجود لحد ما يتجدد. ورِفقة مش بتعمل أي حسابات مستخدمين، ومش بتبعت الرمز ده لأي سيرفر خاص بيها، ومش بتربطه بحساب، أو اسم، أو موقع جغرافي.</li>
+    <li><strong>تحكّمك فيها:</strong> إشعارات المناسبات دي مفعّلة افتراضيًا ومفيش ليها زر تشغيل/إيقاف جوّه التطبيق، وتقدر تقفلها في أي وقت من إعدادات الإشعارات بنظام Android للتطبيق، ومن غير ما ده يأثر على تنبيهات الأذان والتذكيرات المحلية.</li>
+    </ul>
+    <p>ورِفقة بتستخدم منبّهات مضبوطة بالثانية عشان الأذان يرفع في وقته الحقيقي مش يتأخّر بسبب توفير البطارية. ده إذن جدولة، ومش بياخد أي بيانات.</p>
+    <p>إذن الإشعارات اختياري، وتقدر تسحبه من إعدادات جهازك في أي وقت.</p>
     <h2>تقارير الأعطال</h2>
     <p>رِفقة بتستخدم <strong>Sentry</strong> (<a href="https://sentry.io">https://sentry.io</a>) عشان تبلّغ عن الأعطال
     والأخطاء فتتصلّح. واللي بيتبعت هو وصف فني للمشكلة: الخطأ، وتتبّع المكدّس،
     وتفاصيل الجهاز والنظام زي الموديل وإصدار النظام وإصدار التطبيق.</p>
     <p>واللي <strong>مش</strong> بيتبعت بقصد:</p>
     <ul>
-    <li><strong>موقعك.</strong> الإحداثيات بتتشال من كل تقرير قبل ما يسيب الجهاز، وكمان من
-      روابط الشبكة ورسايل الخطأ اللي كانت هتحتويها. ده مفروض في الكود ومغطّى
-      باختبارات أوتوماتيكية.</li>
+    <li><strong>موقعك.</strong> تقارير الأعطال مش قاصدة تشمل موقعك. الإحداثيات بتتشال باستخدام مطابقة الأنماط قبل ما التقارير تسيب الجهاز، بما في ذلك روابط الشبكة ورسايل الخطأ اللي ممكن تحتويها.</li>
     <li><strong>عنوان الـ IP بتاعك</strong>، وSentry مضبوطة صريح إنها متجمّعوش.</li>
     <li><strong>صور الشاشة أو محتوى الشاشة</strong>، ودي معطّلة.</li>
     <li><strong>أي حاجة تدل عليك</strong>، لأن التطبيق مش عنده حاجة زي كده يبعتها من الأصل.</li>
@@ -791,6 +795,11 @@
     <tr>
     <td>Firebase Remote Config (<code>firebaseremoteconfig.googleapis.com</code>)</td>
     <td>فحص التحديثات والصيانة</td>
+    <td>لا</td>
+    </tr>
+    <tr>
+    <td>Firebase Cloud Messaging (<code>fcm.googleapis.com</code>)</td>
+    <td>إشعارات المناسبات الإسلامية</td>
     <td>لا</td>
     </tr>
     </tbody>
