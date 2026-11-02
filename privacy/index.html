@@ -358,12 +358,6 @@
   :root[data-theme="dark"] .app-icon {
     box-shadow:0 2px 6px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.1);
   }
-  /* An app without a real icon yet gets its initial on the app's own colour,
-     sized and shaped exactly like the image icons. */
-  .app-mono {
-    display:grid; place-items:center; background:var(--mono-bg, #334F88); color:#fff;
-    font-family:var(--serif); font-size:23px; font-weight:700; line-height:1;
-  }
   .card-name {
     font-family:var(--serif); font-size:22px; font-weight:700; line-height:1.15;
     display:flex; align-items:baseline; gap:9px; flex-wrap:wrap;
@@ -492,7 +486,8 @@
       </article>
       <article class="card">
         <div class="card-top">
-          <span class="app-icon app-mono" aria-hidden="true">V</span>
+          <img class="app-icon" src="../images/vaulta/logo.png" alt="" aria-hidden="true"
+               width="512" height="512" decoding="async">
           <h2 class="card-name">Vaulta <span class="alt" lang="ar" dir="rtl">فولتا</span></h2>
         </div>
         <p class="card-tag">On-device</p>
@@ -588,7 +583,8 @@
       </article>
       <article class="card">
         <div class="card-top">
-          <span class="app-icon app-mono" aria-hidden="true">V</span>
+          <img class="app-icon" src="../images/vaulta/logo.png" alt="" aria-hidden="true"
+               width="512" height="512" decoding="async">
           <h2 class="card-name">فولتا <span class="alt" lang="en" dir="ltr">Vaulta</span></h2>
         </div>
         <p class="card-tag">على الجهاز فقط</p>
