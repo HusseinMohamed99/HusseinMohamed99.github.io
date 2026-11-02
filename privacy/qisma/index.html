@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" dir="ltr" data-title-en="Privacy Policy — Qisma" data-title-ar="سياسة الخصوصية — قسمة">
+<html lang="en" dir="ltr" data-title-en="Privacy Policy — Qisma" data-title-ar="سياسة الخصوصية — قِسمة">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Qisma</title>
-<meta name="description" content="Technical Privacy Policy for Qisma (قسمة), an offline-first shared expense splitter by HSM Software. Detailed operating modes, local storage, OCR image handling, and account deletion. Available in English and Arabic.">
+<meta name="description" content="Privacy Policy for Qisma (قِسمة), an offline-first shared expense splitter by HSM Software. Operating modes, local storage, on-device OCR, diagnostics, and account deletion. Available in English and Arabic.">
 <meta name="theme-color" content="#0A6EF5">
 <link rel="canonical" href="https://husseinmohamed99.github.io/privacy/qisma/">
 <link rel="icon" type="image/png" sizes="512x512" href="../../images/brand/hsm-icon-512.png">
@@ -165,9 +165,6 @@
     line-height:1.02; letter-spacing:-.022em; margin:0; color:var(--hero-ink);
     text-wrap:balance;
   }
-  header .app-line {
-    margin:14px 0 0; font-size:19px; color:var(--hero-ink2); max-width:46ch;
-  }
   .updated {
     display:inline-block; margin:26px 0 0; padding:5px 12px;
     background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
@@ -179,7 +176,6 @@
   .siblings {
     margin:-16px 0 34px; display:flex; flex-wrap:wrap; gap:10px;
   }
-  .siblings[hidden] { display:none }
   .siblings a {
     display:inline-block; text-decoration:none;
     font-family:var(--mono); font-size:12.5px; letter-spacing:.03em;
@@ -217,7 +213,6 @@
     font-family:var(--mono); font-size:.84em; background:var(--surface);
     border:1px solid var(--border); border-radius:5px; padding:1.5px 6px;
   }
-  hr { border:0; height:1px; margin:40px 0; background:linear-gradient(90deg,var(--border2),transparent) }
   .table-wrap {
     overflow-x:auto; margin:0 0 15px;
     border:1px solid var(--border); border-radius:10px; background:var(--card);
@@ -239,14 +234,6 @@
     width:3px; border-radius:999px; background:var(--hsm-blue);
   }
   .note p:last-child { margin-bottom:0 }
-
-  .placeholder {
-    font-family:var(--mono); font-size:.88em; font-weight:600;
-    color:#b45309; background:rgba(217,119,6,.12);
-    border:1px dashed rgba(217,119,6,.45); border-radius:4px;
-    padding:2px 7px; display:inline-block;
-  }
-  [dir="rtl"] .placeholder { font-family:var(--arabic); font-size:.92em }
 
   .intro {
     font-family:var(--serif); font-weight:400; font-size:21px; line-height:1.5;
@@ -302,7 +289,7 @@
       <span class="wordmark">HSM<span class="light"> Software</span></span>
     </a>
     <span class="bar-rule" aria-hidden="true"></span>
-    <span class="bar-app" id="bar-app" data-en="Qisma" data-ar="قسمة">Qisma</span>
+    <span class="bar-app" id="bar-app" data-en="Qisma" data-ar="قِسمة">Qisma</span>
     <div class="lang" role="group" aria-label="Language / اللغة">
       <button type="button" data-lang="en" aria-pressed="true">English</button>
       <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
@@ -315,138 +302,84 @@
     <header>
       <p class="eyebrow"><span class="pip" aria-hidden="true"></span>Qisma</p>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated October 2026</p>
+      <p class="updated">Last updated November 2026</p>
     </header>
     <p class="siblings"><a href="account-deletion.html">Account &amp; data deletion &rarr;</a></p>
 
-    <div class="note">
-      <p><strong>Publication Notice:</strong> This technical privacy policy documents actual application code behavior, platform sandboxing, and data flows. It is not legal advice and must not be published live to production without replacing all bracketed placeholders and obtaining formal corporate legal approval.</p>
-    </div>
+    <p class="intro">Qisma helps groups of friends, roommates, and colleagues track shared expenses and settle balances fairly. We believe financial tools should respect personal privacy: you can use Qisma in Guest Mode without creating an account, or sign in to enable optional cloud synchronization for collaborating across devices.</p>
 
-    <p class="intro">Qisma helps groups of people track shared expenses and settle balances fairly. We believe financial tools should respect personal privacy: you can use Qisma entirely offline without creating an account, or choose cloud synchronization to collaborate with others.</p>
-
-    <h2>Controller and Application Identity</h2>
+    <h2>Developer and Application Identity</h2>
     <ul>
       <li><strong>Application Name:</strong> Qisma (قِسمة)</li>
+      <li><strong>Developer &amp; Publisher:</strong> HSM Software (independent software project)</li>
       <li><strong>Technical Application ID (Android):</strong> <code>com.hsmsoftware.splitly</code></li>
       <li><strong>Technical Bundle Identifier (iOS):</strong> <code>com.hsmsoftware.splitly</code></li>
-      <li><strong>Data Controller:</strong> <span class="placeholder">[LEGAL ENTITY REQUIRED]</span></li>
-      <li><strong>Registered Office:</strong> <span class="placeholder">[REGISTERED ADDRESS REQUIRED]</span></li>
       <li><strong>Privacy &amp; Support Contact:</strong> <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a></li>
-      <li><strong>Governing Law / Jurisdiction:</strong> <span class="placeholder">[GOVERNING LAW / JURISDICTION REQUIRED]</span></li>
     </ul>
+    <p>Qisma is published by HSM Software as an independent developer project. For any questions, data access requests, or privacy inquiries regarding the application, you can reach the developer directly at the contact address listed above.</p>
 
-    <h2>Operating Modes and Technical Data Processing</h2>
+    <h2>Operating Modes and Data Processing</h2>
     <h3>2.1 Guest Mode (Unauthenticated)</h3>
-    <p>Qisma is engineered to be fully functional without registering an account or providing an email address:</p>
+    <p>Qisma is engineered so that its core ledger and expense-settlement features work without registering an account or providing an email address:</p>
     <ul>
-      <li><strong>Local Financial Ledger Storage:</strong> The application generates client-side UUIDv7 identifiers for local identities, groups, members, expenses, itemized bill items, and settlements. These records are stored exclusively in an unencrypted SQLite database (<code>splitly.sqlite</code>) inside the operating system's private application sandbox on your physical device. No financial records, expense amounts, splits, settlements, group names, or member names are uploaded or synchronized to any remote server or cloud service.</li>
-      <li><strong>Platform Infrastructure SDK Activity:</strong> While financial ledger bookkeeping remains strictly on-device, the application incorporates native platform SDKs (Firebase Core, Firebase Installations, Firebase App Check, and Firebase Crashlytics) that initialize at startup in staging and production builds. In staging and production builds, these SDKs transmit low-level network packets for anti-abuse verification (App Check device attestation tokens via Google Play Integrity on Android or Apple App Attest on iOS) and app stability monitoring (Firebase Installation ID and sanitized crash telemetry if an unhandled crash occurs). In development builds, remote diagnostic collection is programmatically disabled.</li>
+      <li><strong>Local Financial Ledger Storage:</strong> The application generates client-side UUIDv7 identifiers for local groups, members, expenses, itemized bill items, and settlements. These records are stored locally in an SQLite database (<code>splitly.sqlite</code>) inside the operating system's private application sandbox on your physical device. In Guest Mode, your financial ledger records, expense amounts, split shares, settlements, group names, and member names are not uploaded or synchronized as part of the application's financial synchronization flow.</li>
+      <li><strong>Technical Network &amp; Platform SDK Activity:</strong> While your financial ledger records remain local, the application incorporates native platform SDKs (Google Firebase Core, Firebase Installations, Firebase App Check, and Firebase Crashlytics) that initialize at startup in staging and production builds. Depending on platform configuration and operating system behavior, these SDKs may generate technical network requests for anti-abuse verification (such as App Check device integrity attestation tokens via Google Play Integrity on Android or Apple App Attest on iOS) and app stability monitoring (such as Firebase Installation identifiers and sanitized crash telemetry if an unhandled crash occurs). Guest Mode keeps your financial data local, but it does not represent an offline-only or zero-network-traffic environment.</li>
     </ul>
 
     <h3>2.2 Authenticated Mode (Signed-In with Cloud Synchronization)</h3>
-    <p>If you choose to create an account or sign in to synchronize groups:</p>
+    <p>If you choose to create an account or sign in to synchronize shared groups across devices:</p>
     <ul>
-      <li><strong>Authentication Credentials:</strong> Firebase Authentication processes your email address and password (for email/password accounts) or Google OAuth tokens (for Google Sign-In). Passwords and OAuth tokens are handled exclusively in-memory and by provider SDKs; they are never stored in the application's local database.</li>
-      <li><strong>Explicit Cloud Synchronization:</strong> Eligible signed-in users may explicitly initiate cloud synchronization for eligible groups. When explicitly triggered by you:
+      <li><strong>Authentication Credentials:</strong> Firebase Authentication handles your email address and password (for email/password accounts) or Google OAuth tokens (for Google Sign-In). Passwords and OAuth tokens are handled exclusively by provider SDKs and in-memory workflows; they are never stored in the application's local SQLite database.</li>
+      <li><strong>Explicit Cloud Synchronization:</strong> Cloud synchronization occurs when you explicitly initiate synchronization for shared groups. When triggered:
         <ul>
-          <li>Group metadata, member lists, accepted expense descriptions, monetary amounts (as integer minor units), split allocations, and settlement records are transmitted over Firebase SDK TLS (TLS 1.2/1.3) to Google Cloud Firestore and Cloud Functions.</li>
-          <li><strong>Itemized Bill Line Items Exception:</strong> Detailed bill line items, individual item prices, quantities, and per-item assignments remain <strong>100% local on the device</strong> (per architectural policy D-059). Only the resulting net split totals are synchronized to the cloud.</li>
+          <li>Group metadata, member display names, accepted expense descriptions, monetary amounts (represented strictly as integer minor units to eliminate floating-point rounding errors), split allocations, and settlement records are transmitted over TLS (TLS 1.2/1.3) to Google Cloud Firestore and Cloud Functions.</li>
+          <li><strong>Itemized Bill Line Items Exception:</strong> Detailed bill line items, individual item names, quantities, and per-item assignments remain local on your device. Only the resulting net split totals and expense summaries are synchronized to the shared cloud group.</li>
         </ul>
       </li>
-      <li><strong>No Background Synchronization:</strong> The application implements <strong>zero background sync workers</strong>, zero periodic timers, and zero background lifecycle upload hooks. Cloud synchronization executes strictly upon explicit user interaction in the foreground.</li>
+      <li><strong>Foreground Synchronization:</strong> Cloud synchronization executes upon user interaction in the foreground. Qisma does not employ background sync workers or periodic background polling services.</li>
     </ul>
 
-    <h2>Optical Character Recognition (OCR) and Receipt Photos</h2>
-    <p>When you use the receipt scanner to extract line items:</p>
+    <h2>Receipt Scanning and Optical Character Recognition (OCR)</h2>
+    <p>When you use the receipt scanner to extract line items from paper receipts:</p>
     <ul>
-      <li><strong>On-Device Machine Learning:</strong> Receipt OCR executes entirely on your device using native platform frameworks:
+      <li><strong>On-Device Machine Learning:</strong> Receipt OCR executes locally on your physical device. Receipt images and extracted text are not uploaded to remote cloud servers or remote storage for text extraction.</li>
+      <li><strong>Platform Recognition Capabilities:</strong>
         <ul>
-          <li><strong>Android:</strong> Uses Google ML Kit's bundled on-device Latin model. Receipts with Arabic text require manual verification and entry in the review screen.</li>
-          <li><strong>iOS:</strong> Uses Apple's Vision framework (<code>VNRecognizeTextRequest</code>), supporting Latin script and Arabic script on iOS 16+.</li>
+          <li><strong>Android:</strong> Uses Google ML Kit's bundled on-device Latin text recognition model. This model does not provide general Arabic-script OCR support; receipts with Arabic text require manual verification and entry in the review screen.</li>
+          <li><strong>iOS:</strong> Uses Apple's Vision framework (<code>VNRecognizeTextRequest</code>) where supported by the underlying iOS version. Recognition capabilities depend on the operating system's installed language support.</li>
         </ul>
       </li>
-      <li><strong>Image Lifecycle &amp; Safe Cleanup:</strong>
+      <li><strong>Image Lifecycle &amp; Temporary File Cleanup:</strong>
         <ul>
-          <li>Photographs captured via camera or selected from the photo picker are scaled and cached in the operating system's temporary directory cache.</li>
-          <li>Receipt images and extracted raw text <strong>never leave the device</strong> and are <strong>never uploaded to any server or cloud storage</strong>.</li>
-          <li>Temporary intermediate scaled image files are actively and deterministically deleted immediately upon OCR completion (or failure/cancellation) via <code>TemporaryReceiptImageCleaner</code> inside a <code>try ... finally</code> block.</li>
-          <li>Original photos located in device galleries (<code>/DCIM/</code>, <code>/Pictures/</code>, or Photos) are strictly protected and never modified or deleted.</li>
+          <li>Photographs captured with the camera or selected from the photo picker are scaled and cached in the operating system's temporary directory cache solely to perform text detection.</li>
+          <li>Temporary intermediate scaled image files are deleted from application cache upon completion, cancellation, or failure of the scanning process.</li>
+          <li>Original photos stored in your device's photo gallery (such as <code>/DCIM/</code>, <code>/Pictures/</code>, or Apple Photos) are not modified or deleted by the application.</li>
         </ul>
       </li>
     </ul>
 
     <h2>Diagnostics, Telemetry, and Third-Party Processors</h2>
     <ul>
-      <li><strong>Advertising:</strong> Qisma contains <strong>no advertising SDKs</strong>. Advertising ID permissions (<code>AD_ID</code>, <code>ACCESS_ADSERVICES_*</code>) are explicitly stripped from the Android manifest.</li>
-      <li><strong>Analytics:</strong> No client analytics SDK (such as Google Analytics for Firebase, Mixpanel, or AppsFlyer) is installed. Observability event logging is hardcoded to a no-operation sink.</li>
+      <li><strong>Advertising:</strong> Qisma contains no advertising SDKs. Advertising ID permissions (<code>AD_ID</code>, <code>ACCESS_ADSERVICES_*</code>) are explicitly excluded from the Android manifest.</li>
+      <li><strong>Analytics:</strong> No behavioral analytics SDKs (such as Google Analytics for Firebase, Mixpanel, or AppsFlyer) are integrated.</li>
       <li><strong>Crash Reporting (Firebase Crashlytics):</strong>
         <ul>
-          <li>Active only in staging and production builds; disabled in development.</li>
-          <li>Collects native stack traces, device model, operating system version, free storage/memory, and a pseudonymous Crashlytics Installation ID.</li>
-          <li><code>setUserIdentifier</code> is <strong>never called</strong>; crash reports are unlinked from user accounts.</li>
-          <li>Application error payloads are sanitized: error messages are replaced with the runtime exception type name only (<code>SanitizedReportedError</code>), and contextual metadata is strictly restricted to an allow-list of 15 technical keys.</li>
-          <li>Google documents data retention for Crashlytics closed issues as 90 days.</li>
-          <li><em>Regulatory Disclosure Note:</em> While the application code never links user accounts to crash reports, because the Firebase Installation ID (FID) coexists in the app sandbox, the final App Store Nutrition Label declaration (Option A: "Not Linked to You" vs Option B: "Linked to You") remains an open legal decision (LEG-05) pending final owner sign-off.</li>
+          <li>Active in staging and production builds; disabled in development builds.</li>
+          <li>Collects technical telemetry including stack traces, device model, operating system version, free storage/memory, and pseudonymous Firebase Installation identifiers.</li>
+          <li>Qisma does not associate your personal user account identity (such as user email or user ID) with crash reports (the application does not invoke <code>setUserIdentifier</code>).</li>
+          <li>Application error messages are sanitized: error payloads report runtime exception types and a restricted allow-list of technical parameters.</li>
+          <li>Diagnostic records and crash reports are managed by Google Firebase according to standard platform operational retention and logging configurations rather than a guaranteed custom fixed period.</li>
         </ul>
       </li>
     </ul>
 
-    <h2>Storage Security and Platform Backup Controls</h2>
-    <ul>
-      <li><strong>Local Sandbox:</strong> Financial records reside in <code>getApplicationSupportDirectory() + '/splitly.sqlite'</code>.</li>
-      <li><strong>Android Backup Defense:</strong>
-        <ul>
-          <li>Declares <code>android:allowBackup="false"</code>.</li>
-          <li>Configures <code>android:dataExtractionRules="@xml/data_extraction_rules"</code>, excluding all app data from cloud backups and device-to-device transfers on Android 12+ (API 31+).</li>
-          <li>Configures <code>android:fullBackupContent="@xml/backup_rules"</code>, excluding all backup domains on Android 11 and earlier.</li>
-        </ul>
-      </li>
-      <li><strong>iOS Data Protection &amp; Backup Exclusion:</strong> During application launch, <code>AppDelegate.swift</code> enforces:
-        <ul>
-          <li><code>FileProtectionType.completeUntilFirstUserAuthentication</code> on the application support directory and contained database files.</li>
-          <li><code>URLResourceValues.isExcludedFromBackup = true</code> on the directory and database files, preventing inclusion in iTunes or iCloud backups.</li>
-        </ul>
-      </li>
-      <li><strong>Residual Risk:</strong> SQLite database files are not encrypted at rest with SQLCipher; security relies on the host device's operating system sandbox and hardware encryption. Rooted or jailbroken devices compromise this security boundary.</li>
-    </ul>
-
-    <h2>Account Deletion and Data Retention</h2>
-    <p>Signed-in users can permanently delete their account at any time via <code>Settings &gt; Account &gt; Delete account</code>. Deletion requires recent re-authentication using your original authentication provider (Email/Password or Google Sign-In; Apple Sign-In is unsupported in version 1.0.2).</p>
-    <h3>6.1 What is Deleted Immediately:</h3>
-    <ol>
-      <li>The Firebase Authentication identity record (<code>users/{uid}</code>) is permanently erased from Firebase Auth servers.</li>
-      <li>All cloud access permissions in <code>groups/{groupId}/access/{accountId}</code> and <code>accounts/{accountId}/groupAccess/{groupId}</code> are marked <code>status: "revoked"</code>.</li>
-      <li>Local account identity records in SQLite are marked <code>status: "deleted"</code>, and the user is signed out to Guest Mode.</li>
-    </ol>
-
-    <h3>6.2 What is Intentionally Retained:</h3>
-    <ol>
-      <li><strong>Shared Financial History:</strong> Accepted historical expenses, split shares, settlements, and member display names in shared groups remain in Cloud Firestore and in the local databases of other group members.
-        <br><em>Accounting Integrity Rationale:</em> In shared group ledgers, participant balances, running debts, and settlement obligations depend directly on the collective transaction history. Unilaterally erasing past transactions upon one member's account deletion would distort running balances and deprive surviving group members of their verifiable financial ledger and settlement records.</li>
-      <li><strong>Security Tombstones:</strong> Server-side records <code>accounts/{accountId}</code> and <code>authPrincipals/{uid}</code> are retained with <code>status: "deletionPrepared"</code> to prevent identity resurrection, replay attacks, or synchronization hijacking. These tombstones contain no profile names, emails, or phone numbers. A proposed 365-day tombstone retention period has received preliminary approval, but remains subject to final owner implementation review; no automated TTL or deletion policy is currently active in production.</li>
-      <li><strong>Retention Window Breakdown:</strong>
-        <ul>
-          <li><strong>Active Data:</strong> Stored while account and shared groups remain open.</li>
-          <li><strong>Shared Ledger History:</strong> Preserved in Cloud Firestore for the active lifecycle of the shared group.</li>
-          <li><strong>Security Tombstones:</strong> Retained server-side without PII (preliminary 365-day schedule modeled; production automated TTL held disabled).</li>
-          <li><strong>Diagnostics (Crashlytics):</strong> 90 days retention per Google standard policy.</li>
-          <li><strong>Cloud Logging:</strong> 30 days retention in GCP <code>_Default</code> bucket; 400 days in locked <code>_Required</code> bucket.</li>
-        </ul>
-      </li>
-    </ol>
-
-    <h3>6.3 Sole-Owner Guard:</h3>
-    <p>A user who is the sole owner of an active group cannot delete their account until ownership is transferred to another active member via <code>transferGroupOwnership</code> or the group is deleted.</p>
-
-    <h2>Third-Party Subprocessors</h2>
     <div class="table-wrap">
       <table>
-        <tr><th>Subprocessor</th><th>Purpose</th><th>Data Transmitted</th></tr>
+        <tr><th>Processor</th><th>Purpose</th><th>Data Transmitted</th></tr>
         <tr>
           <td>Google Firebase Authentication</td>
-          <td>User identity, session management, sign-in</td>
-          <td>Email, password hash, OAuth token</td>
+          <td>User identity, session management, and authentication</td>
+          <td>Email address, password hash (provider-managed), OAuth tokens</td>
         </tr>
         <tr>
           <td>Google Cloud Firestore</td>
@@ -455,47 +388,83 @@
         </tr>
         <tr>
           <td>Cloud Functions for Firebase</td>
-          <td>Authoritative group promotion, sync coordination, account deletion</td>
+          <td>Backend group promotion, sync validation, and account deletion</td>
           <td>Sync batches, deletion triggers, ownership transfers</td>
         </tr>
         <tr>
           <td>Firebase App Check / Play Integrity / Apple App Attest</td>
           <td>Device attestation and anti-abuse verification</td>
-          <td>Attestation tokens, device integrity signals</td>
+          <td>Device integrity signals, attestation tokens</td>
         </tr>
         <tr>
           <td>Google Firebase Crashlytics</td>
-          <td>Crash triage and stability monitoring (staging/prod)</td>
-          <td>Sanitized stack traces, device model, OS version (no user ID)</td>
+          <td>Application stability monitoring and crash triage</td>
+          <td>Sanitized stack traces, device model, OS version, technical installation ID</td>
         </tr>
         <tr>
           <td>Google Identity Services</td>
           <td>Optional federated Google Sign-In</td>
-          <td>OAuth credentials, profile display name, email</td>
+          <td>OAuth credentials, profile display name, email address</td>
         </tr>
       </table>
     </div>
 
-    <h2>Unresolved Legal &amp; Operational Decisions</h2>
-    <p>The following items require explicit legal and operational review prior to store launch:</p>
+    <h2>Storage Security and Platform Backup Controls</h2>
     <ul>
-      <li><span class="placeholder">[LEGAL ENTITY REQUIRED]</span>: Formal corporate incorporation name and legal jurisdiction.</li>
-      <li><span class="placeholder">[REGISTERED ADDRESS REQUIRED]</span>: Physical registered business address.</li>
-      <li><span class="placeholder">[GOVERNING LAW / JURISDICTION REQUIRED]</span>: Applicable governing law.</li>
-      <li><span class="placeholder">[RETENTION PERIODS REQUIRED]</span>: Legal determination of retention durations for server tombstones, Cloud Functions logs, and Firestore backups/PITR.</li>
-      <li><span class="placeholder">[DATA EXPORT RIGHTS REQUIRED]</span>: Definition of user data export procedures under GDPR Art. 20 / CCPA.</li>
+      <li><strong>Local Sandbox:</strong> Financial records reside in <code>splitly.sqlite</code> in the operating system's application support directory.</li>
+      <li><strong>Android Backup Controls:</strong>
+        <ul>
+          <li>Declares <code>android:allowBackup="false"</code>.</li>
+          <li>Configures <code>android:dataExtractionRules</code> to exclude application data from cloud backups and device-to-device transfers on Android 12+ (API 31+).</li>
+          <li>Configures <code>android:fullBackupContent</code> to exclude application data on Android 11 and earlier.</li>
+        </ul>
+      </li>
+      <li><strong>iOS Data Protection &amp; Backup Exclusion:</strong> During application launch, the application enforces:
+        <ul>
+          <li><code>FileProtectionType.completeUntilFirstUserAuthentication</code> on the application support directory and database files.</li>
+          <li><code>URLResourceValues.isExcludedFromBackup = true</code> on the directory and database files, preventing inclusion in iTunes or iCloud backups.</li>
+        </ul>
+      </li>
+      <li><strong>Device Security Boundary:</strong> SQLite database files rely on the host device's operating system sandbox and hardware-backed storage encryption. Devices with compromised operating systems (such as rooted Android or jailbroken iOS devices) bypass standard platform protections.</li>
+    </ul>
+
+    <h2>Account Deletion and Data Retention</h2>
+    <p>Signed-in users can permanently delete their account at any time via <code>Settings &gt; Account &gt; Delete account</code>. Deletion requires recent re-authentication with your original sign-in method (Email/Password or Google Sign-In).</p>
+    <h3>6.1 Immediate Deletion Effects:</h3>
+    <ol>
+      <li>The user identity record is permanently erased from Firebase Authentication servers.</li>
+      <li>Cloud access permissions to shared groups are revoked.</li>
+      <li>Local account identity records in SQLite are marked as deleted, and the user session returns to unauthenticated Guest Mode.</li>
+    </ol>
+
+    <h3>6.2 Retained Information and Accounting Integrity:</h3>
+    <ol>
+      <li><strong>Shared Financial History:</strong> Accepted historical expenses, split shares, settlements, and member display names in shared groups remain preserved in Cloud Firestore and in the local databases of surviving group members.
+        <br><em>Accounting Integrity Rationale:</em> In shared group ledgers, participant balances, running debts, and settlement obligations depend directly on the collective transaction history. Unilaterally erasing past transactions upon one member's account deletion would distort running balances and deprive surviving group members of their verifiable financial ledger and settlement records.</li>
+      <li><strong>Local Device Data:</strong> Deleting your cloud account removes your credentials and signs you out. Because Qisma uses an offline-first architecture, local copies of records on your physical device remain stored in local application storage until you clear application data in device settings or uninstall the app.</li>
+      <li><strong>Security Tombstones &amp; Operational Logs:</strong> Administrative tombstone records (retaining technical IDs without personal names or emails) may be maintained server-side to prevent identity resurrection, replay attacks, or synchronization hijacking. Retention of administrative records, service logs, and disaster-recovery backups depends on Google Cloud and Firebase operational configurations and security requirements rather than a guaranteed custom fixed period.</li>
+    </ol>
+
+    <h3>6.3 Sole-Owner Guard:</h3>
+    <p>A user who is the sole owner of an active shared group cannot delete their account until group ownership is transferred to another active member or the group is settled and deleted.</p>
+
+    <h2>User Rights and Data Inquiries</h2>
+    <p>Users may inquire about their personal data, request account deletion, or ask privacy-related questions by emailing <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a>.</p>
+    <ul>
+      <li><strong>In-App Self-Service:</strong> Signed-in users can immediately and permanently delete their account from inside the application under <code>Settings &gt; Account &gt; Delete account</code> without manual review.</li>
+      <li><strong>Support Inquiries:</strong> If you are unable to access the application or have questions regarding personal data associated with your account, contact customer support. To protect user accounts against unauthorized access or fraudulent deletion, inquiries submitted via email require ownership verification confirming that the requester controls the registered email address before account actions are performed.</li>
     </ul>
 
     <div class="contact">
       <h2>Contact Us</h2>
-      <p>If you have questions or data protection requests regarding this Privacy Policy, please contact:</p>
+      <p>If you have questions or requests regarding this Privacy Policy, please contact:</p>
       <p><strong>Email:</strong> <a href="mailto:hussein.mohamed.software@gmail.com">hussein.mohamed.software@gmail.com</a></p>
     </div>
 
     <div class="page-foot">
       <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
       <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
-      <p>Qisma can be used without an account. Until you create one, sections describing account credentials and cloud storage do not apply to you.</p>
+      <p>Qisma can be used in Guest Mode without creating an account. Until you create an account, sections describing account credentials and cloud synchronization do not apply to you.</p>
       <p><a href="../">All HSM Software privacy policies</a> · <a href="/">Portfolio</a></p>
     </div>
   </div>
@@ -503,189 +472,171 @@
   <!-- ==================== ARABIC ==================== -->
   <div id="policy-ar" lang="ar" dir="rtl" hidden>
     <header>
-      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>قسمة</p>
+      <p class="eyebrow"><span class="pip" aria-hidden="true"></span>قِسمة</p>
       <h1>سياسة الخصوصية</h1>
-      <p class="updated">آخر تحديث أكتوبر ٢٠٢٦</p>
+      <p class="updated">آخر تحديث نوفمبر ٢٠٢٦</p>
     </header>
     <p class="siblings"><a href="account-deletion.html">حذف الحساب والبيانات &larr;</a></p>
 
-    <div class="note">
-      <p><strong>إشعار النشر:</strong> توثق هذه السياسة التقنية السلوك الفعلي للكود والبيئة المعزولة وتدفقات البيانات في تطبيق «قِسمة». وهي ليست استشارة قانونية ويجب عدم نشرها للجمهور قبل استبدال كافة النصوص بين الأقواس واعتمادها قانونيًا.</p>
-    </div>
+    <p class="intro">يساعد تطبيق «قِسمة» مجموعات الأصدقاء وزملاء السكن وفرق العمل على تتبّع المصروفات المشتركة وتسوية الأرصدة بإنصاف. ونحن نؤمن بأن الأدوات المالية يجب أن تحترم الخصوصية الشخصية: يمكنك استخدام «قِسمة» في وضع الضيف دون إنشاء حساب، أو اختيار تسجيل الدخول لتفعيل المزامنة السحابية الاختيارية للتعاون عبر أجهزة متعددة.</p>
 
-    <p class="intro">يساعد تطبيق «قِسمة» مجموعات الأشخاص على تتبّع المصروفات المشتركة وتسوية الأرصدة بإنصاف. ونحن نؤمن بأن الأدوات المالية يجب أن تحترم الخصوصية الشخصية: يمكنك استخدام «قِسمة» بالكامل دون اتصال وبلا حاجة لإنشاء حساب، أو اختيار المزامنة السحابية للتعاون مع الآخرين.</p>
-
-    <h2>هوية المسؤول والتطبيق</h2>
+    <h2>هوية المطور والتطبيق</h2>
     <ul>
       <li><strong>اسم التطبيق:</strong> قِسمة (Qisma)</li>
-      <li><strong>المعرف التقني للتطبيق (Android):</strong> <code class="ltr">com.hsmsoftware.splitly</code></li>
-      <li><strong>المعرف التقني للحزمة (iOS):</strong> <code class="ltr">com.hsmsoftware.splitly</code></li>
-      <li><strong>المسؤول عن معالجة البيانات:</strong> <span class="placeholder">[يلزم تحديد الكيان القانوني]</span></li>
-      <li><strong>المقر المسجل:</strong> <span class="placeholder">[يلزم تحديد العنوان المسجل]</span></li>
+      <li><strong>المطور والناشر:</strong> HSM Software (مشروع برمجي مستقل)</li>
+      <li><strong>المعرّف التقني للتطبيق (Android):</strong> <code class="ltr">com.hsmsoftware.splitly</code></li>
+      <li><strong>المعرّف التقني للحزمة (iOS):</strong> <code class="ltr">com.hsmsoftware.splitly</code></li>
       <li><strong>جهة الاتصال للخصوصية والدعم:</strong> <a href="mailto:hussein.mohamed.software@gmail.com" class="ltr">hussein.mohamed.software@gmail.com</a></li>
-      <li><strong>القانون الواجب التطبيق والاختصاص القضائي:</strong> <span class="placeholder">[يلزم تحديد القانون الواجب التطبيق والاختصاص]</span></li>
     </ul>
+    <p>يُنشر تطبيق «قِسمة» بواسطة HSM Software كمشروع تطوير مستقل. لأي استفسارات أو طلبات وصول للبيانات أو أسئلة تتعلق بالخصوصية، يمكنك التواصل مباشرة مع المطور عبر البريد الإلكتروني الموضح أعلاه.</p>
 
-    <h2>أوضاع التشغيل والمعالجة التقنية للبيانات</h2>
+    <h2>أوضاع التشغيل ومعالجة البيانات</h2>
     <h3>٢.١ وضع الضيف (دون تسجيل دخول)</h3>
-    <p>صُمم تطبيق «قِسمة» ليعمل بكامل وظائفه محليًا دون الحاجة لإنشاء حساب أو تقديم عنوان بريد إلكتروني:</p>
+    <p>صُمم تطبيق «قِسمة» ليعمل بكامل وظائف إدارة الدفاتر والتسويات المالية محليًا دون الحاجة لإنشاء حساب أو تقديم عنوان بريد إلكتروني:</p>
     <ul>
-      <li><strong>التخزين المحلي للدفاتر المالية:</strong> يُنشئ التطبيق محليًا معرفات من نوع <span class="ltr">UUIDv7</span> للمستخدمين والمجموعات والأعضاء والمصروفات وبنود الفواتير المفصلة والتسويات. وتُخزن هذه السجلات حصريًا في قاعدة بيانات <span class="ltr">SQLite</span> محلية (<code class="ltr">splitly.sqlite</code>) داخل بيئة التطبيق المعزولة (<span class="ltr">Sandbox</span>) على جهاز المستخدم. ولا يتم رفع أو مزامنة أي سجلات مالية أو مبالغ مصروفات أو حصص أو تسويات أو أسماء مجموعات أو أعضاء إلى أي خادم سحابي خارجي.</li>
-      <li><strong>نشاط حزم البنية التحتية البرمجية:</strong> بينما تظل البيانات المالية للمستخدم محلية بالكامل على الجهاز، يحتوي التطبيق على حزم برمجية لمنصة التشغيل (<span class="ltr">Firebase Core</span> و <span class="ltr">Firebase Installations</span> و <span class="ltr">Firebase App Check</span> و <span class="ltr">Firebase Crashlytics</span>) تبدأ تلقائيًا عند بدء التشغيل في نسختي التجربة والإنتاج. وترسل هذه الحزم حزم بيانات منخفضة المستوى للتحقق من أمان بيئة التشغيل ومكافحة الاحتيال (رموز أمان <span class="ltr">App Check</span> عبر <span class="ltr">Google Play Integrity</span> على <span class="ltr">Android</span> أو <span class="ltr">Apple App Attest</span> على <span class="ltr">iOS</span>) ومتابعة استقرار التطبيق (معرف تثبيت <span class="ltr">Firebase</span> وبيانات تشخيص الانهيارات المنقاة في حال حدوث خطأ غير معالج). وفي نسخة التطوير، يتم تعطيل جمع التشخيصات عن بعد برمجياً.</li>
+      <li><strong>التخزين المحلي للدفاتر المالية:</strong> يُنشئ التطبيق محليًا معرّفات من نوع <span class="ltr">UUIDv7</span> للمجموعات والأعضاء والمصروفات وبنود الفواتير المفصلة والتسويات. وتُخزن هذه السجلات حصريًا في قاعدة بيانات <span class="ltr">SQLite</span> محلية (<code class="ltr">splitly.sqlite</code>) داخل بيئة التطبيق المعزولة (<span class="ltr">Sandbox</span>) على جهاز المستخدم. وفي وضع الضيف، لا يتم رفع أو مزامنة أي سجلات مالية أو مبالغ أو حصص أو تسويات أو أسماء مجموعات أو أعضاء ضمن مسار المزامنة المالية للتطبيق.</li>
+      <li><strong>نشاط الشبكة وحزم المنصة البرمجية:</strong> بينما تظل الدفاتر المالية محلية بالكامل على الجهاز، يحتوي التطبيق على حزم منصة التشغيل الأساسية (<span class="ltr">Google Firebase Core</span> و <span class="ltr">Firebase Installations</span> و <span class="ltr">Firebase App Check</span> و <span class="ltr">Firebase Crashlytics</span>) التي تبدأ تلقائيًا عند بدء التشغيل في نسختي التجربة والإنتاج. وتبعًا لإعدادات المنصة وسلوك نظام التشغيل، قد تُرسل هذه الحزم طلبات شبكة تقنية للتحقق من سلامة بيئة التشغيل ومكافحة التلاعب (مثل رموز أمان <span class="ltr">App Check</span> عبر <span class="ltr">Google Play Integrity</span> على <span class="ltr">Android</span> أو <span class="ltr">Apple App Attest</span> على <span class="ltr">iOS</span>) ومتابعة استقرار التطبيق (مثل معرّف التثبيت وبيانات تشخيص الانهيارات المنقاة في حال حدوث خطأ غير معالج). وضع الضيف يحفظ بياناتك المالية محليًا، ولكنه لا يمثل انعدامًا كليًا لاتصال الشبكة.</li>
     </ul>
 
     <h3>٢.٢ الوضع الموثق (تسجيل الدخول مع المزامنة السحابية)</h3>
-    <p>إذا اخترت إنشاء حساب أو تسجيل الدخول لمزامنة المجموعات:</p>
+    <p>إذا اخترت إنشاء حساب أو تسجيل الدخول لمزامنة المجموعات المشتركة عبر أجهزتك:</p>
     <ul>
-      <li><strong>بيانات الاعتماد:</strong> يعالج <span class="ltr">Firebase Authentication</span> عنوان البريد وكلمة المرور، أو رموز مصادقة <span class="ltr">Google Sign-In</span>. وتُعالج هذه الرموز حصريًا في الذاكرة ومزوّد الخدمة، ولا تُحفظ إطلاقًا في قاعدة البيانات المحلية للتطبيق.</li>
-      <li><strong>المزامنة السحابية الصريحة:</strong> يمكن للمستخدم المسجل بدء مزامنة المجموعات يدويًا وصراحة. وعند تفعيل ذلك:
+      <li><strong>بيانات الاعتماد:</strong> يعالج <span class="ltr">Firebase Authentication</span> عنوان البريد الإلكتروني وكلمة المرور (للحسابات المسجلة بالبريد)، أو رموز مصادقة <span class="ltr">Google Sign-In</span>. وتُعالج هذه الرموز حصريًا عبر حزم المزود وفي الذاكرة المؤقتة، ولا تُحفظ إطلاقًا في قاعدة بيانات التطبيق المحلية.</li>
+      <li><strong>المزامنة السحابية الصريحة:</strong> تبدأ المزامنة السحابية عندما تختار مزامنة المجموعات يدويًا وصراحة. وعند تفعيل ذلك:
         <ul>
-          <li>تُنقل بيانات المجموعة والأعضاء وتفاصيل المصروفات المعتمدة والمبالغ وحصص التقسيم والتسويات عبر اتصال مشفر (<span class="ltr">TLS 1.2/1.3</span>) إلى <span class="ltr">Google Cloud Firestore</span> و <span class="ltr">Cloud Functions</span>.</li>
-          <li><strong>استثناء بنود الفواتير المفصلة:</strong> تبقى التفاصيل الدقيقة للبند (الكمية، وسعر البند الفردي، وتخصيصه لشخص بعينه) <strong>محلية بالكامل على الجهاز بنسبة ١٠٠٪</strong> (وفقًا للقاعدة المعمارية <span class="ltr">D-059</span>)؛ وتتم مزامنة المجاميع الصافية الناتجة فقط إلى السحابة.</li>
+          <li>تُنقل بيانات المجموعة وأسماء الأعضاء المعروضة وتفاصيل المصروفات المعتمدة والمبالغ المالية (المحسوبة حصريًا بالوحدات الصغرى الصحيحة لمنع أخطاء التقريب الحسابي) وحصص التقسيم والتسويات عبر اتصال مشفر (<span class="ltr">TLS 1.2/1.3</span>) إلى <span class="ltr">Google Cloud Firestore</span> و <span class="ltr">Cloud Functions</span>.</li>
+          <li><strong>استثناء بنود الفواتير المفصلة:</strong> تبقى التفاصيل الدقيقة لبنود الفواتير والكميات والأسعار الفردية وتخصيص البنود <strong>محلية بالكامل على جهازك</strong>؛ ولا يُزامن إلى المجموعة المشتركة في السحابة سوى صافي الحصص ومجاميع المصروفات النهائية.</li>
         </ul>
       </li>
-      <li><strong>غياب المزامنة في الخلفية:</strong> لا يحتوي التطبيق على أي مهام مزامنة خلفية مجدولة أو مؤقتات دورية؛ وتعمل المزامنة حصرًا عند التفاعل المباشر والصريح للمستخدم في الواجهة الأمامية.</li>
+      <li><strong>المزامنة في الواجهة الأمامية:</strong> تعمل المزامنة السحابية استجابةً لتفاعل المستخدم في الواجهة الأمامية، ولا يعتمد التطبيق على مهام مزامنة خلفية أو خدمات فحص دوري في الخلفية.</li>
     </ul>
 
-    <h2>التعرف الضوئي على الحروف (OCR) وصور الفواتير</h2>
-    <p>عند استخدام ماسح الفواتير لاستخراج البنود:</p>
+    <h2>مسح الفواتير والتعرف الضوئي على الحروف (OCR)</h2>
+    <p>عند استخدام ماسح الفواتير لاستخراج البنود من الإيصالات الورقية:</p>
     <ul>
-      <li><strong>المعالجة المدمجة على الجهاز:</strong> تتم عملية قراءة الفواتير بالكامل على جهازك باستخدام الذكاء الاصطناعي المدمج في النظام:
+      <li><strong>المعالجة المدمجة على الجهاز:</strong> تتم معالجة قراءة الفواتير بالكامل محليًا على جهازك الفعلي. ولا تُرفع صور الفواتير أو النصوص المستخرجة إلى خوادم سحابية أو وسائط تخزين خارجية لإجراء المعالجة.</li>
+      <li><strong>قدرات التعرف حسب منصة التشغيل:</strong>
         <ul>
-          <li><strong>نظام Android:</strong> يستخدم نموذج <span class="ltr">Google ML Kit</span> المدمج للغات اللاتينية (يتطلب النص العربي إدخالًا يدويًا في شاشة المراجعة).</li>
-          <li><strong>نظام iOS:</strong> يستخدم إطار عمل <span class="ltr">Apple Vision</span> (<code class="ltr">VNRecognizeTextRequest</code>) ويدعم الحروف اللاتينية والعربية على <span class="ltr">iOS 16+</span>.</li>
+          <li><strong>نظام Android:</strong> يستخدم نموذج التعرف على النصوص اللاتينية المدمج على الجهاز من <span class="ltr">Google ML Kit</span>. ولا يوفر هذا النموذج دعمًا عامًا لقراءة النصوص العربية، مما يتطلب مراجعة الفواتير ذات النصوص العربية وإدخال بنودها يدويًا في شاشة المراجعة.</li>
+          <li><strong>نظام iOS:</strong> يستخدم إطار عمل <span class="ltr">Apple Vision</span> (<code class="ltr">VNRecognizeTextRequest</code>) في الإصدارات المدعومة من النظام، وتعتمد دقة التعرف واللغات المتاحة على قدرات نظام التشغيل المثبت على جهازك.</li>
         </ul>
       </li>
-      <li><strong>دورة حياة الصور والتنظيف الآمن:</strong>
+      <li><strong>دورة حياة الصور وتنظيف الملفات المؤقتة:</strong>
         <ul>
-          <li>تُحفظ الصور الملتقطة بالكاميرا أو المختارة من المعرض مؤقتًا في مجلد الذاكرة المؤقتة لنظام التشغيل بعد تحجيمها.</li>
-          <li><strong>لا تُرفع صور الفواتير أو النصوص المستخرجة إلى أي خادم سحابي نهائيًا.</strong></li>
-          <li>تُحذف ملفات الصور المؤقتة فور انتهاء عملية التعرف على النص (أو إلغائها أو فشلها) بشكل حتمي عبر فئة <code class="ltr">TemporaryReceiptImageCleaner</code> داخل كتلة <code class="ltr">try ... finally</code>.</li>
-          <li>صور المستخدم الأصلية الموجودة في معرض الصور (<code class="ltr">/DCIM/</code> أو <code class="ltr">/Pictures/</code> وغيرها) محمية بشكل صارم ولا يتم المساس بها أو حذفها.</li>
-        </ul>
-      </li>
-    </ul>
-
-    <h2>التشخيص وخدمات الطرف الثالث</h2>
-    <ul>
-      <li><strong>الإعلانات:</strong> لا يحتوي تطبيق «قِسمة» على أي حزم إعلانية، وقد حُذفت أذونات المعرف الإعلاني (<code class="ltr">AD_ID</code> و <code class="ltr">ACCESS_ADSERVICES_*</code>) صراحة من ملف البيان في <span class="ltr">Android</span>.</li>
-      <li><strong>التحليلات:</strong> لا توجد أي حزمة تحليلات سلوكية للمستخدم (مثل <span class="ltr">Google Analytics</span> أو <span class="ltr">Mixpanel</span> أو <span class="ltr">AppsFlyer</span>).</li>
-      <li><strong>تقارير الانهيار (Firebase Crashlytics):</strong>
-        <ul>
-          <li>تعمل فقط في نسختي التجربة والإنتاج، ومعطلة تمامًا في التطوير.</li>
-          <li>تجمع تفاصيل تقنية (سلسلة استدعاءات الانهيار، طراز الجهاز، إصدار النظام، معرف تثبيت عشوائي).</li>
-          <li>لا يتم استدعاء <code class="ltr">setUserIdentifier</code> نهائيًا، والتقارير غير مرتبطة بأي حساب شخصي.</li>
-          <li>تُنقى رسائل الأخطاء بحيث لا يُرسل سوى اسم نوع الاستثناء البرمجي (<code class="ltr">SanitizedReportedError</code>) ضمن قائمة بيضاء صارمة تتكون من ١٥ مفتاحًا تقنيًا.</li>
-          <li>مدة الاحتفاظ لدى <span class="ltr">Google</span> لتقارير <span class="ltr">Crashlytics</span> المغلقة هي ٩٠ يومًا.</li>
-          <li><em>إشعار تنظيمي:</em> على الرغم من أن الكود لا يربط أبدًا حسابات المستخدمين بتقارير الانهيار، إلا أنه نظرًا لوجود معرف تثبيت <span class="ltr">Firebase</span> (<span class="ltr">FID</span>) في نفس بيئة التطبيق، فإن التصنيف النهائي في ملصق خصوصية <span class="ltr">Apple</span> (الخيار أ: «غير مرتبطة بك» مقابل الخيار ب: «مرتبطة بك») يظل قرارًا قانونيًا معلقًا (<span class="ltr">LEG-05</span>) بانتظار الاعتماد النهائي.</li>
+          <li>تُحفظ الصور الملتقطة بالكاميرا أو المختارة من المعرض مؤقتًا بعد تحجيمها في مجلد الذاكرة المؤقتة لنظام التشغيل بغرض إجراء المعالجة وقراءة النصوص فقط.</li>
+          <li>تُحذف ملفات الصور المؤقتة فور انتهاء المعالجة أو إلغائها أو فشلها من الذاكرة المؤقتة للتطبيق.</li>
+          <li>لا يتم المساس بالصور الأصلية للمستخدم الموجودة في معرض الصور بالهاتف (مثل <code class="ltr">/DCIM/</code> أو <code class="ltr">/Pictures/</code> أو صور آبل)، ولا يتم تعديلها أو حذفها نهائيًا.</li>
         </ul>
       </li>
     </ul>
 
-    <h2>أمان التخزين والنسخ الاحتياطي للنظام</h2>
+    <h2>التشخيص والبيانات التقنية وخدمات الأطراف الثالثة</h2>
     <ul>
-      <li><strong>بيئة التخزين المعزولة:</strong> تُحفظ السجلات المالية في مسار التطبيق المعزول (<code class="ltr">splitly.sqlite</code>).</li>
-      <li><strong>حماية النسخ الاحتياطي في Android:</strong>
+      <li><strong>الإعلانات:</strong> لا يحتوي تطبيق «قِسمة» على أي حزم برمجية إعلانية، وقد حُذفت أذونات المعرف الإعلاني (<code class="ltr">AD_ID</code> و <code class="ltr">ACCESS_ADSERVICES_*</code>) صراحة من ملف إعدادات <span class="ltr">Android</span>.</li>
+      <li><strong>التحليلات:</strong> لا توجد أي حزم تحليلات سلوكية للمستخدم (مثل <span class="ltr">Google Analytics</span> أو <span class="ltr">Mixpanel</span> أو <span class="ltr">AppsFlyer</span>).</li>
+      <li><strong>تقارير الأعطال (Firebase Crashlytics):</strong>
         <ul>
-          <li>يُعلن التطبيق عن <code class="ltr">android:allowBackup="false"</code>.</li>
-          <li>يتضمن إعدادات <code class="ltr">data_extraction_rules.xml</code> التي تمنع النسخ الاحتياطي السحابي والنقل المباشر بين الأجهزة على <span class="ltr">Android 12+ (API 31+)</span>.</li>
-          <li>يتضمن <code class="ltr">backup_rules.xml</code> لتعطيل النسخ على <span class="ltr">Android 11</span> والإصدارات الأقدم.</li>
+          <li>تعمل في نسختي التجربة والإنتاج لمتابعة استقرار التطبيق، ومعطلة في نسخة التطوير.</li>
+          <li>تجمع بيانات تقنية تشمل سجل استدعاءات الانهيار، وطراز الجهاز، وإصدار النظام، ومساحة الذاكرة المتاحة، ومعرّف تثبيت عشوائي لدى <span class="ltr">Firebase</span>.</li>
+          <li>لا يربط التطبيق هوية حساب المستخدم الشخصية (مثل البريد الإلكتروني أو معرّف الحساب) بتقارير الانهيار (لا يتم استدعاء <code class="ltr">setUserIdentifier</code>).</li>
+          <li>تُنقى رسائل الأخطاء بحيث لا يُرسل سوى نوع الاستثناء البرمجي ضمن قائمة محددة من المعايير التقنية.</li>
+          <li>تخضع مدد الاحتفاظ بتقارير التشخيص وسجلات الأعطال لإعدادات وسياسات منصة <span class="ltr">Google Firebase</span> التشغيلية القياسية، دون تقديم وعود بمدد زمنية مخصصة أو ثابتة.</li>
         </ul>
       </li>
-      <li><strong>حماية البيانات في iOS:</strong> يطبّق ملف <code class="ltr">AppDelegate.swift</code>:
-        <ul>
-          <li>حماية كاملة حتى أول فتح للجهاز (<code class="ltr">completeUntilFirstUserAuthentication</code>) على مجلد التطبيق وقاعدة البيانات.</li>
-          <li>خاصية الاستبعاد من النسخ الاحتياطي (<code class="ltr">isExcludedFromBackup = true</code>) لمنع رفعها إلى <span class="ltr">iCloud</span> أو <span class="ltr">iTunes</span>.</li>
-        </ul>
-      </li>
-      <li><strong>المخاطر المتبقية:</strong> قاعدة بيانات <span class="ltr">SQLite</span> غير مشفرة باستخدام <span class="ltr">SQLCipher</span>؛ ويعتمد الأمان على عزل نظام التشغيل والتشفير العتادي للجهاز. والأجهزة المعدلة برمجياً (<span class="ltr">Rooted / Jailbroken</span>) تفقد هذه الحماية.</li>
     </ul>
 
-    <h2>حذف الحساب والاحتفاظ بالبيانات</h2>
-    <p>يمكن للمستخدم المسجل حذف حسابه في أي وقت عبر <code>الإعدادات &gt; الحساب &gt; حذف الحساب</code>. ويتطلب الحذف مصادقة حديثة باستخدام وسيلة الدخول الأصلية (البريد وكلمة المرور أو حساب <span class="ltr">Google</span>؛ تسجيل الدخول بحساب <span class="ltr">Apple</span> غير مدعوم في الإصدار ١.٠.٢).</p>
-    <h3>٦.١ ما يُحذف فورًا:</h3>
-    <ol>
-      <li>يُحذف سجل هوية المستخدم نهائيًا من خوادم <span class="ltr">Firebase Authentication</span>.</li>
-      <li>تُلغى كافة صلاحيات الوصول السحابية في المجموعات المتزامنة (<code class="ltr">status: "revoked"</code>).</li>
-      <li>يُحدد الحساب المحلي في قاعدة بيانات <span class="ltr">SQLite</span> كحساب محذوف (<code class="ltr">status: "deleted"</code>) ويتم تسجيل الخروج إلى وضع الضيف.</li>
-    </ol>
-
-    <h3>٦.٢ ما يُحتفظ به عمدًا:</h3>
-    <ol>
-      <li><strong>السجل المالي المشترك:</strong> تبقى المصروفات السابقة المعتمدة وحصص التقسيم والتسويات وأسماء الأعضاء في مجموعات المشاركة محفوظة في خوادم <span class="ltr">Firestore</span> السحابية وقواعد بيانات الأعضاء الآخرين.
-        <br><em>سبب النزاهة المحاسبية:</em> في الدفاتر المالية للمجموعات المشتركة، ترتبط أرصدة الأعضاء والتزامات التسوية والديون الجارية ارتباطًا مباشرًا بالسجل التاريخي للمعاملات المعتمدة. ويؤدي الحذف الأحادي للمعاملات السابقة عند حذف حساب أحد الأعضاء إلى تشويه الأرصدة الجارية وحرمان بقية أعضاء المجموعة من سجلاتهم المالية وقسائم التسوية القابلة للتحقق.</li>
-      <li><strong>سجلات الأمان الإجرائية (Security Tombstones):</strong> تُحفظ سجلات تقنية في الخادم لتأكيد اكتمال الحذف (<code class="ltr">status: "deletionPrepared"</code>) لمنع إعادة استخدام الهوية أو هجمات إعادة الإرسال. ولا تحتوي هذه السجلات على أي أسماء أو بريد إلكتروني أو هواتف. وقد نالت خطة الاحتفاظ بها لمدة ٣٦٥ يومًا موافقة مبدئية، لكنها تظل خاضعة للاعتماد التنفيذي النهائي من المالك؛ ولا توجد أي سياسة حذف تلقائي أو <span class="ltr">TTL</span> مفعلة حاليًا في الإنتاج.</li>
-      <li><strong>تفصيل مدد ومدى الاحتفاظ:</strong>
-        <ul>
-          <li><strong>البيانات النشطة:</strong> تُحفظ طالما كان الحساب والمجموعات المشتركة نشطة.</li>
-          <li><strong>سجل الدفتر المشترك:</strong> يُحفظ في <span class="ltr">Cloud Firestore</span> طوال دورة حياة المجموعة المشتركة.</li>
-          <li><strong>سجلات الأمان التقنية:</strong> تُحفظ في الخادم دون بيانات شخصية (موافقة مبدئية على ٣٦٥ يومًا؛ سياسات الحذف التلقائي السحابية معطلة).</li>
-          <li><strong>تقارير التشخيص:</strong> ٩٠ يومًا وفق سياسة <span class="ltr">Crashlytics</span> القياسية لدى <span class="ltr">Google</span>.</li>
-          <li><strong>سجلات السحابة (Cloud Logging):</strong> ٣٠ يومًا في حاوية <code class="ltr">_Default</code> و ٤٠٠ يومًا في حاوية <code class="ltr">_Required</code> المغلقة.</li>
-        </ul>
-      </li>
-    </ol>
-
-    <h3>٦.٣ قيد المالك الوحيد:</h3>
-    <p>لا يمكن للمستخدم الذي يمثل المالك الوحيد لمجموعة نشطة حذف حسابه قبل نقل ملكية المجموعة إلى عضو آخر عبر وظيفة نقل الملكية أو حذف المجموعة.</p>
-
-    <h2>معالجو البيانات من الأطراف الثالثة (Subprocessors)</h2>
     <div class="table-wrap">
       <table>
-        <tr><th>المعالج</th><th>الغرض</th><th>البيانات المنقولة</th></tr>
+        <tr><th>جهة المعالجة</th><th>الغرض</th><th>البيانات المنقولة</th></tr>
         <tr>
           <td>Google Firebase Authentication</td>
-          <td>إدارة الهوية وتسجيل الدخول وجلسات المستخدم</td>
-          <td>البريد، تجزئة كلمة المرور، رموز OAuth</td>
+          <td>إدارة الهوية وجلسات المستخدم وتسجيل الدخول</td>
+          <td>عنوان البريد الإلكتروني، تجزئة كلمة المرور (لدى المزود)، رموز OAuth</td>
         </tr>
         <tr>
           <td>Google Cloud Firestore</td>
-          <td>مزامنة الدفاتر المالية للمجموعات المشتركة سحابيًا</td>
-          <td>بيانات المجموعة، المصروفات، صافي الحصص، التسويات</td>
+          <td>مزامنة دفاتر المجموعات المشتركة سحابيًا</td>
+          <td>بيانات المجموعة، المصروفات المعتمدة، صافي الحصص، التسويات</td>
         </tr>
         <tr>
           <td>Cloud Functions for Firebase</td>
-          <td>تنفيذ عمليات التحقق ونقل الملكية وحذف الحساب المركزية</td>
+          <td>إدارة المجموعات، والتحقق من المزامنة، وتنفيذ حذف الحساب</td>
           <td>دفعات المزامنة، محفزات الحذف، طلبات نقل الملكية</td>
         </tr>
         <tr>
           <td>Firebase App Check / Play Integrity / Apple App Attest</td>
-          <td>التحقق من أصالة بيئة التشغيل ومكافحة التلاعب</td>
-          <td>رموز التحقق، إشارات سلامة نظام التشغيل</td>
+          <td>التحقق من أصالة بيئة التشغيل ومكافحة التلاعب والاحتيال</td>
+          <td>إشارات سلامة نظام التشغيل، رموز التحقق والأصالة</td>
         </tr>
         <tr>
           <td>Google Firebase Crashlytics</td>
-          <td>متابعة استقرار التطبيق ومعالجة الانهيارات (تجربة/إنتاج)</td>
-          <td>سلاسل استدعاء الأخطاء المنقاة، طراز الجهاز، إصدار النظام (دون هوية)</td>
+          <td>متابعة استقرار التطبيق وتحليل أسباب الانهيار</td>
+          <td>سلاسل استدعاء الأخطاء المنقاة، طراز الجهاز، إصدار النظام، معرّف التثبيت</td>
         </tr>
         <tr>
           <td>Google Identity Services</td>
           <td>تسجيل الدخول الاختياري بحساب Google</td>
-          <td>رموز OAuth، الاسم المعروض، البريد الإلكتروني</td>
+          <td>رموز الاعتماد، الاسم المعروض للملف الشخصي، البريد الإلكتروني</td>
         </tr>
       </table>
     </div>
 
-    <h2>القرارات القانونية والتشغيلية المعلقة</h2>
-    <p>تتطلب العناصر التالية اعتمادًا صريحًا من الإدارة القانونية والمالكة للتطبيق قبل النشر:</p>
+    <h2>أمان التخزين وحماية النسخ الاحتياطي</h2>
     <ul>
-      <li><span class="placeholder">[يلزم تحديد الكيان القانوني]</span>: الاسم التجاري للشركة والولاية القضائية.</li>
-      <li><span class="placeholder">[يلزم تحديد المقر المسجل]</span>: العنوان الجغرافي المسجل.</li>
-      <li><span class="placeholder">[يلزم تحديد القانون الواجب التطبيق والاختصاص]</span>: النظام القضائي الحاكم.</li>
-      <li><span class="placeholder">[يلزم تحديد مدد الاحتفاظ]</span>: تحديد المدد القانونية للاحتفاظ بسجلات الخادم التقنية والنسخ الاحتياطية.</li>
-      <li><span class="placeholder">[يلزم تحديد حقوق تصدير البيانات]</span>: تحديد إجراءات تصدير بيانات المستخدم (وفقًا للمادة ٢٠ من GDPR).</li>
+      <li><strong>بيئة التخزين المعزولة:</strong> تُحفظ السجلات المالية محليًا في قاعدة بيانات <code class="ltr">splitly.sqlite</code> داخل مجلد دعم التطبيق المعزول في نظام التشغيل.</li>
+      <li><strong>حماية النسخ الاحتياطي في Android:</strong>
+        <ul>
+          <li>يُعلن التطبيق عن تعطيل النسخ التلقائي عبر <code class="ltr">android:allowBackup="false"</code>.</li>
+          <li>تحدد إعدادات <code class="ltr">android:dataExtractionRules</code> استثناء بيانات التطبيق من النسخ السحابي والنقل المباشر على <span class="ltr">Android 12+ (API 31+)</span>.</li>
+          <li>تحدد إعدادات <code class="ltr">android:fullBackupContent</code> استثناء البيانات على <span class="ltr">Android 11</span> والإصدارات الأقدم.</li>
+        </ul>
+      </li>
+      <li><strong>حماية البيانات في iOS:</strong> يُطبّق التطبيق عند الإقلاع:
+        <ul>
+          <li>حماية كاملة للملفات حتى أول فتح للجهاز (<code class="ltr">completeUntilFirstUserAuthentication</code>) على مجلد التطبيق وقاعدة البيانات.</li>
+          <li>استبعاد البيانات من النسخ الاحتياطي (<code class="ltr">isExcludedFromBackup = true</code>) لمنع رفعها إلى <span class="ltr">iCloud</span> أو <span class="ltr">iTunes</span>.</li>
+        </ul>
+      </li>
+      <li><strong>حدود حماية الجهاز:</strong> يعتمد أمان البيانات المحلية على عزل نظام التشغيل والتشفير العتادي المدمج بالجهاز. وتفقد الأجهزة المعدلة برمجياً (<span class="ltr">Rooted / Jailbroken</span>) هذه الحماية المضمنة.</li>
+    </ul>
+
+    <h2>حذف الحساب والاحتفاظ بالبيانات</h2>
+    <p>يمكن للمستخدم المسجل حذف حسابه نهائيًا في أي وقت من داخل التطبيق عبر <code>الإعدادات &gt; الحساب &gt; حذف الحساب</code>. ويتطلب الحذف مصادقة حديثة بوسيلة الدخول الأصلية (البريد وكلمة المرور أو حساب <span class="ltr">Google</span>).</p>
+    <h3>٦.١ آثار الحذف الفورية:</h3>
+    <ol>
+      <li>يُحذف سجل هوية المستخدم نهائيًا من خوادم <span class="ltr">Firebase Authentication</span>.</li>
+      <li>تُلغى كافة صلاحيات الوصول السحابية للمجموعات المشتركة.</li>
+      <li>تُحدد السجلات المحلية للحساب في قاعدة بيانات <span class="ltr">SQLite</span> كحساب محذوف، وتعود الجلسة إلى وضع الضيف دون حساب.</li>
+    </ol>
+
+    <h3>٦.٢ البيانات المحتفظ بها وأسباب النزاهة المحاسبية:</h3>
+    <ol>
+      <li><strong>السجل المالي المشترك:</strong> تبقى المصروفات السابقة المعتمدة وحصص التقسيم والتسويات وأسماء الأعضاء المعروضة في المجموعات المشتركة محفوظة في سحابة <span class="ltr">Firestore</span> ولدى بقية أعضاء المجموعة المتبقين.
+        <br><em>سبب النزاهة المحاسبية:</em> في الدفاتر المالية للمجموعات المشتركة، ترتبط أرصدة الأعضاء والتزامات التسوية والديون الجارية ارتباطًا مباشرًا بالسجل التاريخي التراكمي للمعاملات. ويؤدي الحذف الأحادي للمعاملات عند حذف حساب أحد الأعضاء إلى تشويه الأرصدة الجارية وحرمان بقية المشاركين من سجلاتهم المالية وقسائم التسوية القابلة للإثبات.</li>
+      <li><strong>البيانات المحلية على الجهاز:</strong> يؤدي حذف الحساب السحابي إلى محو بيانات اعتمادك وتسجيل خروجك. ونظرًا لأن «قِسمة» يعتمد بنية تعمل محليًا أولًا، فإن النسخ المحلية للسجلات المحفوظة على جهازك الفعلي تبقى مخزنة في بيئة هاتفك حتى تمسح بيانات التطبيق يدويًا من إعدادات جهازك أو تلغي تثبيت التطبيق.</li>
+      <li><strong>سجلات الأمان الإجرائية والتشغيلية:</strong> قد تُحفظ سجلات تقنية إجرائية (<span class="ltr">Tombstones</span>) تحتوي على معرّفات تقنية دون أسماء أو بريد إلكتروني لمنع إعادة استخدام المعرّفات أو هجمات إعادة الإرسال أو تعارض المزامنة. وتعتمد مدد الاحتفاظ بالسجلات التشغيلية والنسخ الاحتياطية للكوارث على إعدادات منصات <span class="ltr">Google Cloud</span> و <span class="ltr">Firebase</span> والمتطلبات الأمنية دون جدول زمني مخصص أو محدد سلفًا.</li>
+    </ol>
+
+    <h3>٦.٣ قيد المالك الوحيد للمجموعة:</h3>
+    <p>لا يمكن للمستخدم الذي يمثل المالك الوحيد لمجموعة نشطة حذف حسابه قبل نقل ملكية المجموعة إلى عضو آخر نشط أو تسوية أرصدتها وحذفها.</p>
+
+    <h2>حقوق المستخدم والاستفسار عن البيانات</h2>
+    <p>يحق للمستخدمين الاستفسار عن بياناتهم الشخصية أو طلب حذف الحساب أو توجيه أي أسئلة متعلقة بالخصوصية عبر مراسلتنا على: <a href="mailto:hussein.mohamed.software@gmail.com" class="ltr">hussein.mohamed.software@gmail.com</a>.</p>
+    <ul>
+      <li><strong>الخدمة الذاتية الفورية من التطبيق:</strong> يمكن للمستخدمين المسجلين حذف حساباتهم نهائيًا ومباشرة من داخل التطبيق عبر <code>الإعدادات &gt; الحساب &gt; حذف الحساب</code> دون الحاجة لمراجعة يدوية.</li>
+      <li><strong>طلبات الدعم الفني:</strong> في حال تعذر الوصول إلى التطبيق أو وجود استفسار بشأن البيانات الشخصية المرتبطة بالحساب، يمكنك التواصل مع فريق الدعم. ولحماية الحسابات من الوصول غير المصرح به أو طلبات الحذف الاحتيالية، تتطلب الطلبات المقدمة عبر البريد الإلكتروني التحقق من ملكية الحساب والتأكد من سيطرة مقدم الطلب على البريد المسجل قبل اتخاذ أي إجراء.</li>
     </ul>
 
     <div class="contact">
       <h2>للتواصل معنا</h2>
-      <p>إذا كانت لديك أي استفسارات أو طلبات لحماية البيانات بخصوص سياسة الخصوصية هذه، يُرجى مراسلتنا على:</p>
+      <p>إذا كانت لديك أي استفسارات أو طلبات بخصوص سياسة الخصوصية هذه، يُرجى مراسلتنا على:</p>
       <p><strong>البريد الإلكتروني:</strong> <a href="mailto:hussein.mohamed.software@gmail.com" class="ltr">hussein.mohamed.software@gmail.com</a></p>
     </div>
 
     <div class="page-foot">
       <img class="foot-mark on-light" src="../../images/brand/hsm-logo-light.png" alt="HSM Software" width="443" height="240">
       <img class="foot-mark on-dark" src="../../images/brand/hsm-logo-dark.png" alt="" aria-hidden="true" width="443" height="240">
-      <p>يمكن استخدام «قسمة» دون حساب. وإلى أن تُنشئ حساباً، لا تنطبق عليك الأقسام المتعلقة ببيانات الحساب والتخزين السحابي.</p>
+      <p>يمكن استخدام «قِسمة» في وضع الضيف دون إنشاء حساب. وإلى أن تُنشئ حساباً، لا تنطبق عليك الأقسام المتعلقة ببيانات الحساب والمزامنة السحابية.</p>
       <p><a href="../">كل سياسات الخصوصية</a> · <a href="/">الموقع الشخصي</a></p>
     </div>
   </div>
